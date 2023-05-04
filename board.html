@@ -9,23 +9,43 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="./chess.js"></script>
     <style>
-        th {
-            background-color: beige;
-        }
-
-        td {
-            background-color: beige;
-        }
-
-        .ds {
-            background-color: burlywood;
+        table {
+            width: 100%;
+            aspect-ratio: 1/1;
         }
 
         table,
         th,
         td {
-            border: 3px solid black;
+            border: 5px solid black;
             border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 0px;
+            background-color: beige;
+        }
+
+        th {
+            width: 10%;
+            height: 10%;
+        }
+
+        button {
+            border: 0px;
+            margin: 0px;
+            padding: 0px;
+            background-color: transparent;
+        }
+
+        img {
+            width: 80%;
+            height: 80%;
+        }
+
+        .ds {
+            background-color: burlywood;
         }
 
         #blackBoard {
@@ -36,7 +56,7 @@
 
 <body>
     <div id="whiteBoard">
-        <table width=500px height=500px>
+        <table>
             <tr id="columns">
                 <th> </th>
                 <th> A </th>
@@ -139,7 +159,7 @@
         </table>
     </div>
     <div id="blackBoard">
-        <table width=500px height=500px>
+        <table>
             <tr id="columns">
                 <th> </th>
                 <th> A </th>
