@@ -43,24 +43,24 @@ setup = function () {
     for (var row = 8; row > 0; row--) {
         if (row % 2 == 0) {
             $(`#${row}`).html(`<th> ${row} </th>
-                <td id="a${row}"><button><img src="img/${board[row][0][0]}"></button></td>
-                <td id="b${row}" class="ds"><button><img src="img/${board[row][1][0]}"></button></td>
-                <td id="c${row}"><button><img src="img/${board[row][2][0]}"></button></td>
-                <td id="d${row}" class="ds"><button><img src="img/${board[row][3][0]}"></button></td>
-                <td id="e${row}"><button><img src="img/${board[row][4][0]}"></button></td>
-                <td id="f${row}" class="ds"><button><img src="img/${board[row][5][0]}"></button></td>
-                <td id="g${row}"><button><img src="img/${board[row][6][0]}"></button></td>
-                <td id="h${row}" class="ds"><button><img src="img/${board[row][7][0]}"></button></td>`)
+                <td id="a${row}"><button class="piece"><img src="img/${board[row][0][0]}"></button></td>
+                <td id="b${row}" class="ds"><button class="piece"><img src="img/${board[row][1][0]}"></button></td>
+                <td id="c${row}"><button class="piece"><img src="img/${board[row][2][0]}"></button></td>
+                <td id="d${row}" class="ds"><button class="piece"><img src="img/${board[row][3][0]}"></button></td>
+                <td id="e${row}"><button class="piece"><img src="img/${board[row][4][0]}"></button></td>
+                <td id="f${row}" class="ds"><button class="piece"><img src="img/${board[row][5][0]}"></button></td>
+                <td id="g${row}"><button class="piece"><img src="img/${board[row][6][0]}"></button></td>
+                <td id="h${row}" class="ds"><button class="piece"><img src="img/${board[row][7][0]}"></button></td>`)
         } else {
             $(`#${row}`).html(`<th> ${row} </th>
-                <td id="a${row}" class="ds"><button><img src="img/${board[row][0][0]}"></button></td>
-                <td id="b${row}"><button><img src="img/${board[row][1][0]}"></button></td>
-                <td id="c${row}" class="ds"><button><img src="img/${board[row][2][0]}"></button></td>
-                <td id="d${row}"><button><img src="img/${board[row][3][0]}"></button></td>
-                <td id="e${row}" class="ds"><button><img src="img/${board[row][4][0]}"></button></td>
-                <td id="f${row}"><button><img src="img/${board[row][5][0]}"></button></td>
-                <td id="g${row}" class="ds"><button><img src="img/${board[row][6][0]}"></button></td>
-                <td id="h${row}"><button><img src="img/${board[row][7][0]}"></button></td>`)
+                <td id="a${row}" class="ds"><button class="piece"><img src="img/${board[row][0][0]}"></button></td>
+                <td id="b${row}"><button class="piece"><img src="img/${board[row][1][0]}"></button></td>
+                <td id="c${row}" class="ds"><button class="piece"><img src="img/${board[row][2][0]}"></button></td>
+                <td id="d${row}"><button class="piece"><img src="img/${board[row][3][0]}"></button></td>
+                <td id="e${row}" class="ds"><button class="piece"><img src="img/${board[row][4][0]}"></button></td>
+                <td id="f${row}"><button class="piece"><img src="img/${board[row][5][0]}"></button></td>
+                <td id="g${row}" class="ds"><button class="piece"><img src="img/${board[row][6][0]}"></button></td>
+                <td id="h${row}"><button class="piece"><img src="img/${board[row][7][0]}"></button></td>`)
         }
     }
 }
