@@ -10,26 +10,28 @@
     <script src="./chess.js"></script>
     <style>
         table {
-            width: 100%;
-            aspect-ratio: 1/1;
+            max-height: 90vh;
+            max-width: 90vh;
+            margin-left: calc((100vw - 90vh) / 2);
+            margin-right: calc((100vw - 90vh) / 2);
+            margin-top: 5vh;
+            margin-bottom: 5vh;
         }
 
         table,
         th,
         td {
+            aspect-ratio: 1/1;
             border: 5px solid black;
             border-collapse: collapse;
         }
 
         th,
         td {
+            height: 10%;
+            width: 10%;
             padding: 0px;
             background-color: beige;
-        }
-
-        th {
-            width: 10%;
-            height: 10%;
         }
 
         button {
