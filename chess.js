@@ -1,4 +1,5 @@
 const boardSize = 8;
+var board;
 // Formatting = array of pieces starting from left to right
 // image, selected, position, piece, status
 var whitePieces = [["wrook.png", "null", "a8", "rook", "on board"], ["wknight.png", "null", "b8", "knight", "on board"],
@@ -24,20 +25,8 @@ var whitePawns = [["wpawn.png", "null", "a2", "null", "on board"], ["wpawn.png",
 ["wpawn.png", "null", "e2", "pawn", "on board"], ["wpawn.png", "null", "f2", "pawn", "on board"],
 ["wpawn.png", "null", "g2", "pawn", "on board"], ["wpawn.png", "null", "h2", "pawn", "on board"]];
 
-// Formatting = rows starting from bottom (0) to top (7)
-var board = {
-    1: [whitePieces[0], whitePieces[1], whitePieces[2], whitePieces[3], whitePieces[4], whitePieces[5], whitePieces[6], whitePieces[7]],
-    2: [whitePawns[0], whitePawns[1], whitePawns[2], whitePawns[3], whitePawns[4], whitePawns[5], whitePawns[6], whitePawns[7]],
-    3: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
-    4: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
-    5: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
-    6: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
-    7: [blackPawns[0], blackPawns[1], blackPawns[2], blackPawns[3], blackPawns[4], blackPawns[5], blackPawns[6], blackPawns[7]],
-    8: [blackPieces[0], blackPieces[1], blackPieces[2], blackPieces[3], blackPieces[4], blackPieces[5], blackPieces[6], blackPieces[7]]
-};
-
 function resetPieces() {
-    console.log("resetting pieces");
+    // Formatting = rows starting from bottom (0) to top (7)
     board = {
         1: [whitePieces[0], whitePieces[1], whitePieces[2], whitePieces[3], whitePieces[4], whitePieces[5], whitePieces[6], whitePieces[7]],
         2: [whitePawns[0], whitePawns[1], whitePawns[2], whitePawns[3], whitePawns[4], whitePawns[5], whitePawns[6], whitePawns[7]],
@@ -86,6 +75,7 @@ function selectPiece() {
 
 
 setup = function () {
+    resetPieces();
     for (var row = (boardSize); row > 0; row--) {
         if (row % 2 == 0) {
             $(`#${row}`).html(`<th>  ${row} </th> 
