@@ -1,3 +1,5 @@
+// VARIABLES
+
 // Define size of a chessboard
 const boardSize = 8;
 // Create board variable
@@ -30,8 +32,20 @@ var whitePawns = [["wpawn.png", "null", "a2", "null", "on board"], ["wpawn.png",
 ["wpawn.png", "null", "e2", "pawn", "on board"], ["wpawn.png", "null", "f2", "pawn", "on board"],
 ["wpawn.png", "null", "g2", "pawn", "on board"], ["wpawn.png", "null", "h2", "pawn", "on board"]];
 
-function resetPieces() {
-    // Formatting = rows starting from bottom (0) to top (7)
+// Array row and column of selected piece
+var selectedPieceRow;
+var selectedPieceColumn;
+
+// HTML table row and column of selected piece (as letter and number combo)
+var selectedSquare;
+
+// Number of deleted pieces (used to track adding pieces)
+var deletedPieces = 0;
+
+// Working
+function resetBoard() {
+    // Set the chessboard to a starting position
+    // Formatting = rows starting from bottom (1) to top (8)
     board = {
         1: [whitePieces[0], whitePieces[1], whitePieces[2], whitePieces[3], whitePieces[4], whitePieces[5], whitePieces[6], whitePieces[7]],
         2: [whitePawns[0], whitePawns[1], whitePawns[2], whitePawns[3], whitePawns[4], whitePawns[5], whitePawns[6], whitePawns[7]],
@@ -44,14 +58,38 @@ function resetPieces() {
     };
 }
 
-// Array row and column of selected piece
-var selectedPieceRow;
-var selectedPieceColumn;
+// Working
+function updateBoard() {
+    // Populate the board based on the board variable
+    for (var row = (boardSize); row > 0; row--) {
+        if (row % 2 == 0) {
+            // Populate even row with even square coloring
+            $(`#${row}`).html(`<th>  ${row} </th> 
+                <td id="a${row}"> <button id="${row}0" class="square"> <img src="img/${board[row][0][0]}"> </button> </td> 
+                <td id="b${row}" class="ds"> <button id="${row}1" class="square"> <img src="img/${board[row][1][0]}"> </button> </td> 
+                <td id="c${row}"> <button id="${row}2" class="square"> <img src="img/${board[row][2][0]}"> </button> </td> 
+                <td id="d${row}" class="ds"> <button id="${row}3" class="square"> <img src="img/${board[row][3][0]}"> </button> </td> 
+                <td id="e${row}"> <button id="${row}4" class="square"> <img src="img/${board[row][4][0]}"> </button> </td> 
+                <td id="f${row}" class="ds"> <button id="${row}5" class="square"> <img src="img/${board[row][5][0]}"> </button> </td> 
+                <td id="g${row}"> <button id="${row}6" class="square"> <img src="img/${board[row][6][0]}"> </button> </td> 
+                <td id="h${row}" class="ds"> <button id="${row}7" class="square"> <img src="img/${board[row][7][0]}"> </button> </td> `)
+        } else {
+            // Populate odd row with even odd coloring
+            $(`#${row}`).html(`<th>  ${row} </th> 
+                <td id="a${row}" class="ds"> <button id="${row}0" class="square"> <img src="img/${board[row][0][0]}"> </button> </td> 
+                <td id="b${row}"> <button id="${row}1" class="square"> <img src="img/${board[row][1][0]}"> </button> </td> 
+                <td id="c${row}" class="ds"> <button id="${row}2" class="square"> <img src="img/${board[row][2][0]}"> </button> </td> 
+                <td id="d${row}"> <button id="${row}3" class="square"> <img src="img/${board[row][3][0]}"> </button> </td> 
+                <td id="e${row}" class="ds"> <button id="${row}4" class="square"> <img src="img/${board[row][4][0]}"> </button> </td> 
+                <td id="f${row}"> <button id="${row}5" class="square"> <img src="img/${board[row][5][0]}"> </button> </td> 
+                <td id="g${row}" class="ds"> <button id="${row}6" class="square"> <img src="img/${board[row][6][0]}"> </button> </td> 
+                <td id="h${row}"> <button id="${row}7" class="square"> <img src="img/${board[row][7][0]}"> </button> </td> `)
+        }
+    }
+}
 
-// HTML table row and column of selected piece (as letter and number combo)
-var selectedSquare;
-
-function selectPiece() {
+// To update
+function selectSquare() {
     // Reset color of previous selected piece
     if (selectedSquare != null) {
         // Find square color
@@ -109,10 +147,11 @@ function selectPiece() {
     }
 }
 
-var deletedPieces = 0;
+// Working
 function deletePieces() {
     // Checks if there is a selected piece
     if (selectedPieceRow != null && selectedPieceColumn != null) {
+
         // Set the pieces taken value to taken and empty the square in the board
         board[selectedPieceRow][selectedPieceColumn][4] = 'taken';
         board[selectedPieceRow][selectedPieceColumn] = ['empty.png', 'notPiece'];
@@ -120,49 +159,31 @@ function deletePieces() {
         // Add one to the deleted pieces counter
         deletedPieces += 1;
     }
+
     // Update the board
     updateBoard();
 };
 
-function addPieces() {
+// To implement
+function takePiece() {
 
-};
-
-function updateBoard() {
-    // Populate the board based on the board variable
-    for (var row = (boardSize); row > 0; row--) {
-        if (row % 2 == 0) {
-            $(`#${row}`).html(`<th>  ${row} </th> 
-                <td id="a${row}"> <button id="${row}0" class="piece"> <img src="img/${board[row][0][0]}"> </button> </td> 
-                <td id="b${row}" class="ds"> <button id="${row}1" class="piece"> <img src="img/${board[row][1][0]}"> </button> </td> 
-                <td id="c${row}"> <button id="${row}2" class="piece"> <img src="img/${board[row][2][0]}"> </button> </td> 
-                <td id="d${row}" class="ds"> <button id="${row}3" class="piece"> <img src="img/${board[row][3][0]}"> </button> </td> 
-                <td id="e${row}"> <button id="${row}4" class="piece"> <img src="img/${board[row][4][0]}"> </button> </td> 
-                <td id="f${row}" class="ds"> <button id="${row}5" class="piece"> <img src="img/${board[row][5][0]}"> </button> </td> 
-                <td id="g${row}"> <button id="${row}6" class="piece"> <img src="img/${board[row][6][0]}"> </button> </td> 
-                <td id="h${row}" class="ds"> <button id="${row}7" class="piece"> <img src="img/${board[row][7][0]}"> </button> </td> `)
-        } else {
-            $(`#${row}`).html(`<th>  ${row} </th> 
-                <td id="a${row}" class="ds"> <button id="${row}0" class="piece"> <img src="img/${board[row][0][0]}"> </button> </td> 
-                <td id="b${row}"> <button id="${row}1" class="piece"> <img src="img/${board[row][1][0]}"> </button> </td> 
-                <td id="c${row}" class="ds"> <button id="${row}2" class="piece"> <img src="img/${board[row][2][0]}"> </button> </td> 
-                <td id="d${row}"> <button id="${row}3" class="piece"> <img src="img/${board[row][3][0]}"> </button> </td> 
-                <td id="e${row}" class="ds"> <button id="${row}4" class="piece"> <img src="img/${board[row][4][0]}"> </button> </td> 
-                <td id="f${row}"> <button id="${row}5" class="piece"> <img src="img/${board[row][5][0]}"> </button> </td> 
-                <td id="g${row}" class="ds"> <button id="${row}6" class="piece"> <img src="img/${board[row][6][0]}"> </button> </td> 
-                <td id="h${row}"> <button id="${row}7" class="piece"> <img src="img/${board[row][7][0]}"> </button> </td> `)
-        }
-    }
 }
 
+// To implement
+function addPieces() {
+    if (deletePieces > 0 && selectedPieceRow == null && selectedPieceColumn == null) {
+    }
+};
+
+// To update as needed
 setup = function () {
     // Reset the board and populate it
-    resetPieces();
+    resetBoard();
     updateBoard();
 
     // Add event listeners
-    $("body").on("click", ".piece", selectPiece);
-    $("body").on("click", ".reset", resetPieces);
+    $("body").on("click", ".square", selectSquare);
+    $("body").on("click", ".reset", resetBoard);
     $("body").on("click", ".delete", deletePieces);
     $("body").on("click", ".add", addPieces);
 }
