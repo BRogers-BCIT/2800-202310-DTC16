@@ -1,5 +1,10 @@
+// Define size of a chessboard
 const boardSize = 8;
+// Create board variable
 var board;
+// Set the format for a square with no piece
+var nonePiece = ["empty.png", "notPiece"];
+
 // Formatting = array of pieces starting from left to right
 // image, selected, position, piece, status
 var whitePieces = [["wrook.png", "null", "a8", "rook", "on board"], ["wknight.png", "null", "b8", "knight", "on board"],
@@ -39,43 +44,92 @@ function resetPieces() {
     };
 }
 
-var selectedPiece;
-var selectedPosition;
+// Array row and column of selected piece
+var selectedPieceRow;
+var selectedPieceColumn;
+
+// HTML table row and column of selected piece (as letter and number combo)
+var selectedSquare;
+
 function selectPiece() {
     // Reset color of previous selected piece
-    if (selectedPosition != null) {
+    if (selectedSquare != null) {
         // Find square color
-        var squareColor = jQuery(`#${selectedPosition}`).attr('class');
+        var squareColor = jQuery(`#${selectedSquare}`).attr('class');
         // Reset color
+        console.log(squareColor);
         if (squareColor == 'ds') {
-            $(`#${selectedPosition}`).css("background-color", "brown");
+            $(`#${selectedSquare}`).css("background-color", "brown");
         } else {
-            $(`#${selectedPosition}`).css("background-color", "burlywood");
+            $(`#${selectedSquare}`).css("background-color", "burlywood");
         }
     }
+
     // Find selected piece's position
     tag = jQuery(this).attr('id');
-    selectedPosition = tag;
+
     // Find selected piece's row and column (as both letter and number)
     var row = Math.floor(tag / 10);
     var column = (tag % 10);
     var columnLetter = String.fromCharCode(97 + column);
+
+    // Records the square of the selected piece
+    selectedSquare = `${columnLetter}${row}`;;
+
+    // Updates the color of the selected piece's square
+    $(`#${columnLetter}${row}`).css("background-color", "grey");
+
     // Check if selected position is a piece
     if (board[row][column][1] != "notPiece") {
+
+        // Set the add button to gray to indicate adding to that spot is not possible
+        $(`.add`).css("background-color", "gray");
+
+        // Set the delete button to red to indicate deletion is possible
+        $(`.delete`).css("background-color", "red");
+
         // Record the selected piece and set its square to yellow
-        selectedPiece = board[row][column];
-        selectedPosition = `${columnLetter}${row}`;
-        $(`#${selectedPosition}`).css("background-color", "grey");
+        selectedPieceRow = row;
+        selectedPieceColumn = column;
+
     } else {
-        // Reset selected piece and position
-        selectedPiece = null;
-        selectedPosition = null;
+
+        // Check if there are any deleted pieces
+        if (deletedPieces > 0) {
+            // Set the add button to green to indicate adding to that spot is possible
+            $(`.add`).css("background-color", "green");
+        }
+
+        // Set the delete button to gray to indicate deletion is not possible
+        $(`.delete`).css("background-color", "gray");
+
+        // Sets the selected piece locations to null
+        selectedPieceRow = null;
+        selectedPieceColumn = null;
     }
 }
 
+var deletedPieces = 0;
+function deletePieces() {
+    // Checks if there is a selected piece
+    if (selectedPieceRow != null && selectedPieceColumn != null) {
+        // Set the pieces taken value to taken and empty the square in the board
+        board[selectedPieceRow][selectedPieceColumn][4] = 'taken';
+        board[selectedPieceRow][selectedPieceColumn] = ['empty.png', 'notPiece'];
 
-setup = function () {
-    resetPieces();
+        // Add one to the deleted pieces counter
+        deletedPieces += 1;
+    }
+    // Update the board
+    updateBoard();
+};
+
+function addPieces() {
+
+};
+
+function updateBoard() {
+    // Populate the board based on the board variable
     for (var row = (boardSize); row > 0; row--) {
         if (row % 2 == 0) {
             $(`#${row}`).html(`<th>  ${row} </th> 
@@ -99,8 +153,17 @@ setup = function () {
                 <td id="h${row}"> <button id="${row}7" class="piece"> <img src="img/${board[row][7][0]}"> </button> </td> `)
         }
     }
+}
 
+setup = function () {
+    // Reset the board and populate it
+    resetPieces();
+    updateBoard();
+
+    // Add event listeners
     $("body").on("click", ".piece", selectPiece);
     $("body").on("click", ".reset", resetPieces);
+    $("body").on("click", ".delete", deletePieces);
+    $("body").on("click", ".add", addPieces);
 }
 $(document).ready(setup)
