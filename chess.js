@@ -49,6 +49,10 @@ function resetBoard() {
         7: [blackPawns[0], blackPawns[1], blackPawns[2], blackPawns[3], blackPawns[4], blackPawns[5], blackPawns[6], blackPawns[7]],
         8: [blackPieces[0], blackPieces[1], blackPieces[2], blackPieces[3], blackPieces[4], blackPieces[5], blackPieces[6], blackPieces[7]]
     };
+    selectedPieceRow = null;
+    selectedPieceColumn = null;
+    $(`.add`).css("background-color", "gray");
+    $(`.delete`).css("background-color", "gray");
     deletedPieces = 0;
     updateBoard();
 }
