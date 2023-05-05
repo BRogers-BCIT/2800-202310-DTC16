@@ -1,19 +1,30 @@
 // Define size of a chessboard
 const boardSize = 8;
+
+// Define the format for a square with no piece
+const nonePiece = ["empty.png", "notPiece"];
+
 // Create board variable
 var board;
-// Define the format for a square with no piece
-var nonePiece = ["empty.png", "notPiece"];
 
-// Array row and column of selected piece
+// Array row and column and HTML square of a selected piece (Select / Delete)
 var selectedPieceRow;
 var selectedPieceColumn;
-
-// HTML table row and column of selected piece (as letter and number combo)
 var selectedSquare;
 
-// Number of deleted pieces (used to track adding pieces)
+// Array row and column and HTML square of a piece selected to be moved (Move)
+var movePieceRow;
+var movePieceColumn;
+var movePieceSquare;
+
+// Whether or not a piece is selected (Select)
+var selectedPiece = null;
+
+// Number of deleted pieces (used to track adding pieces) (Delete)
 var deletedPieces = 0;
+
+// Tracks if the user is moving or selecting a piece (Move / Select)
+var moving = false;
 
 // Working
 function resetBoard() {
@@ -49,33 +60,26 @@ function resetBoard() {
         7: [blackPawns[0], blackPawns[1], blackPawns[2], blackPawns[3], blackPawns[4], blackPawns[5], blackPawns[6], blackPawns[7]],
         8: [blackPieces[0], blackPieces[1], blackPieces[2], blackPieces[3], blackPieces[4], blackPieces[5], blackPieces[6], blackPieces[7]]
     };
+
+    // Reset all variables
     selectedPieceRow = null;
     selectedPieceColumn = null;
+    deletedPieces = 0;
+
+    // Reset colors of buttons
     $(`.add`).css("background-color", "gray");
     $(`.delete`).css("background-color", "gray");
-    deletedPieces = 0;
-    updateBoard();
-}
 
-// Working
-function resetSquare() {
-    // Reset color of previous selected piece
-    if (selectedSquare != null) {
-        // Find square color
-        var squareColor = jQuery(`#${selectedSquare}`).attr('class');
-        // Reset color
-        if (squareColor == 'ds') {
-            $(`#${selectedSquare}`).css("background-color", "brown");
-        } else {
-            $(`#${selectedSquare}`).css("background-color", "burlywood");
-        }
-    }
+    // Update the board
+    updateBoard();
+    
 }
 
 // Working
 function updateBoard() {
     // Populate the board based on the board variable
     for (var row = (boardSize); row > 0; row--) {
+
         if (row % 2 == 0) {
             // Populate even row with even square coloring
             $(`#${row}`).html(`<th>  ${row} </th> 
@@ -87,6 +91,7 @@ function updateBoard() {
                 <td id="f${row}" class="ds"> <button id="${row}5" class="square"> <img src="img/${board[row][5][0]}"> </button> </td> 
                 <td id="g${row}"> <button id="${row}6" class="square"> <img src="img/${board[row][6][0]}"> </button> </td> 
                 <td id="h${row}" class="ds"> <button id="${row}7" class="square"> <img src="img/${board[row][7][0]}"> </button> </td> `)
+
         } else {
             // Populate odd row with odd square coloring
             $(`#${row}`).html(`<th>  ${row} </th> 
@@ -99,12 +104,31 @@ function updateBoard() {
                 <td id="g${row}" class="ds"> <button id="${row}6" class="square"> <img src="img/${board[row][6][0]}"> </button> </td> 
                 <td id="h${row}"> <button id="${row}7" class="square"> <img src="img/${board[row][7][0]}"> </button> </td> `)
         }
+
+    }
+}
+
+// Working
+function resetSquare() {
+    // Reset color of previous selected piece
+    if (selectedSquare != null) {
+
+        // Find square color
+        var squareColor = jQuery(`#${selectedSquare}`).attr('class');
+
+        // Reset color
+        if (squareColor == 'ds') {
+            $(`#${selectedSquare}`).css("background-color", "brown");
+        } else {
+            $(`#${selectedSquare}`).css("background-color", "burlywood");
+        }
+
     }
 }
 
 // Working
 function selectSquare() {
-    // Reset the color of the lsat selected piece
+    // Reset the color of the last selected piece
     resetSquare();
 
     // Find selected piece's position
@@ -117,58 +141,129 @@ function selectSquare() {
     // Records the square of the selected piece with the first number as a letter
     // (a=1 - h=8)
     selectedSquare = `${String.fromCharCode(97 + column)}${row}`;
+    selectedPieceRow = row;
+    selectedPieceColumn = column;
 
-    // Updates the color of the selected piece's square
-    $(`#${selectedSquare}`).css("background-color", "grey");
+    // Set the selected square to gray
+    $(`#${selectedSquare}`).css("background-color", "gray");
 
-    // Check if selected position is a piece
-    // Selected an piece square
-    if (board[row][column][1] != "notPiece") {
+    if (moving == false) {
+        // If the player is not moving a piece then call piece selection
+        selectedSquareCheck();
+    } else {
+        // If the player is moving a piece then call piece movement
+        movePieceMove();
+    }
+
+    // Set the movement to false
+    moving = false;
+
+}
+
+// Working
+function selectedSquareCheck() {
+
+    // Check if selected position is a piece and sets the values
+    if (board[selectedPieceRow][selectedPieceColumn][1] != "notPiece") {
+        // Selected a piece square then set the selected piece to true
+        selectedPiece = true;
+    } else {
+        // Selected a non-piece square then set the selected piece to false
+        selectedPiece = false;
+    }
+
+    // update the buttons
+    updateButtons();
+
+}
+
+// Working
+function updateButtons() {
+
+    // Selected a piece
+    if (selectedPiece == true) {
+
         // Set the add button to gray to indicate adding to that spot is not possible
         $(`.move`).css("background-color", "blue");
         // Set the add button to gray to indicate adding to that spot is not possible
         $(`.add`).css("background-color", "gray");
         // Set the delete button to red to indicate deletion is possible
         $(`.delete`).css("background-color", "red");
-        // Record the selected piece and set its square to yellow
-        selectedPieceRow = row;
-        selectedPieceColumn = column;
 
         // Selected a non-piece square
-    } else {
+    } else if (selectedPiece == false) {
+
         // Check if there are any deleted pieces
         if (deletedPieces > 0) {
             // Set the add button to green to indicate adding to that spot is possible
             $(`.add`).css("background-color", "green");
         }
-        // Set the delete button to gray to indicate deletion is not possible
+
+        // Set the delete and move button to gray to indicate it is not possible
+        $(`.delete`).css("background-color", "gray"); e
+        $(`.move`).css("background-color", "gray");
+
+    } else {
+        // Set all non-reset buttons to gray to indicate they are not possible
+        $(`.add`).css("background-color", "gray");
         $(`.delete`).css("background-color", "gray");
-        // Sets the selected piece locations to null
-        selectedPieceRow = null;
-        selectedPieceColumn = null;
+        $(`.move`).css("background-color", "gray");
+    }
+
+}
+
+// In progress
+function movePieceSelect() {
+
+    // Checks if there is a selected piece
+    if (selectedPiece == true) {
+
+        // Highlight the selected piece and record its values
+        $(`#${selectedSquare}`).css("background-color", "blue");
+        movePieceSquare = selectedSquare;
+        movePieceRow = selectedPieceRow;
+        movePieceColumn = selectedPieceColumn;
+
+        // Wait for user to select a square and records its values as the selected square and piece
+        moving = true;
+
     }
 }
 
-function getSquare() {
-    // Find selected piece's position
-    var tag = jQuery(this).attr('id');
+// In progress
+function movePieceMove() {
 
-    // Find selected piece's row and column
-    var row = Math.floor(tag / 10);
-    var column = (tag % 10);
+    // If the selected square is a piece then delete it
+    if (selectedPiece == true) {
+        deletePiece();
+    }
 
-    // Records the square of the selected piece with the first number as a letter
-    // (a=1 - h=8)
-    selectedSquare = `${String.fromCharCode(97 + column)}${row}`;
+    // Move the piece to the selected square
+    board[selectedPieceRow][selectedPieceColumn] = board[movePieceRow][movePieceColumn];
+
+    // Set the selected square to the old square and delete it then reset the old square
+    selectedSquare = movePieceSquare;
+    selectedPieceRow = movePieceRow;
+    selectedPieceColumn = movePieceColumn;
+    deletePiece();
+    resetSquare();
+
+    // Unselect all squares
+    selectedPiece = null;
+
+    // Update the board
+    updateBoard();
+    updateButtons();
+
 }
 
 // Working
-function deletePieces() {
+function deletePiece() {
     // Checks if there is a selected piece
-    if (selectedPieceRow != null && selectedPieceColumn != null) {
+    if (selectedPiece == true) {
 
         // Set the pieces taken value to taken and empty the square in the board
-        board[selectedPieceRow][selectedPieceColumn][4] = 'taken';
+        board[selectedPieceRow][selectedPieceColumn][2] = 'taken';
         board[selectedPieceRow][selectedPieceColumn] = ['empty.png', 'notPiece'];
 
         // Add one to the deleted pieces counter
@@ -178,54 +273,15 @@ function deletePieces() {
     updateBoard();
 };
 
-// To implement
-function movePiece() {
-    // Checks if there is a selected piece
-    if (selectedPieceRow != null && selectedPieceColumn != null) {
-
-        // Highlight the selected piece and record its values
-        $(`#${selectedSquare}`).css("background-color", "blue");
-        var currentSquare = selectedSquare;
-        var currentPieceRow = selectedPieceRow;
-        var currentPieceColumn = selectedPieceColumn;
-
-        // Wait for user to select a square and records its values as the selected square and piece
-        $("body").on("click", ".square", getSquare);
-
-        // If the selected square is a piece then delete is
-        if (selectedPieceRow != null && selectedPieceColumn != null) {
-            deletePieces();
-        }
-
-        board[selectedPieceRow][selectedPieceColumn] = ['empty.png', 'notPiece'];
-
-        // Reset old square
-        selectedSquare = currentSquare;
-        resetSquare();
-
-        // Unselect all squares
-        selectedSquare = null;
-        selectedPieceColumn = null;
-        selectedPieceRow = null;
-
-        // Update the board
-        updateBoard();
-    }
-}
-
-// To implement (next week)
-function takePiece() {
-
-}
-
 // To implement (next week)
 function addPieces() {
-    if (deletePieces > 0 && selectedPieceRow == null && selectedPieceColumn == null) {
+    if (deletePieces > 0 && (selectedPiece == false)) {
     }
 };
 
 // To update as needed
 setup = function () {
+    console.log(moving)
     // Reset the board and populate it
     resetBoard();
     updateBoard();
@@ -233,9 +289,10 @@ setup = function () {
     // Add event listeners
     $("body").on("click", ".square", selectSquare);
     $("body").on("click", ".reset", resetBoard);
-    $("body").on("click", ".delete", deletePieces);
+    $("body").on("click", ".delete", deletePiece);
     $("body").on("click", ".add", addPieces);
-    $("body").on("click", ".move", movePiece);
+    $("body").on("click", ".move", movePieceSelect);
+
 
 }
 $(document).ready(setup)
