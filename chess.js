@@ -184,4 +184,4 @@ setup = function () {
 }
 $(document).ready(setup)
 
-// Merge Pull Request Test
+// Merge Pull Request Test Through GitHub
