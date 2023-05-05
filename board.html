@@ -62,20 +62,20 @@
 
         .reset,
         .delete,
-        .add {
+        .add,
+        .move {
             float: right;
             height: 20vh;
             width: calc((100vw - 90vh) / 2);
             margin-right: 10vh;
             margin-top: 3vh;
-            margin-bottom: 12vh;
             background-color: gray;
             border-radius: 5px;
         }
 
         .reset {
             margin-bottom: 0px;
-            background-color: blue;
+            background-color: yellow;
         }
     </style>
 </head>
@@ -289,14 +289,19 @@
             </tr>
         </table>
     </div>
+    <!-- Testing button for move function -->
+    <div>
+        <button class="move" id="move">Move</button>
+    </div>
+    <br>
     <!-- Testing button for add function -->
     <div>
-        <button class="add" id="add">Add</button>
+        <button class="delete" id="delete">Delete</button>
     </div>
     <br>
     <!-- Testing button for delete function -->
     <div>
-        <button class="delete" id="delete">Delete</button>
+        <button class="add" id="add">Add</button>
     </div>
     <br>
     <!-- Testing button for reset function -->
