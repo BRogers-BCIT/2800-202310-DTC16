@@ -183,3 +183,5 @@ setup = function () {
     $("body").on("click", ".add", addPieces);
 }
 $(document).ready(setup)
+
+// Merge Pull Request Test
