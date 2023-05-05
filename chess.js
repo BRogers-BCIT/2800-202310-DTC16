@@ -26,6 +26,19 @@ var deletedPieces = 0;
 // Tracks if the user is moving or selecting a piece (Move / Select)
 var moving = false;
 
+// Possible implementation]
+function resetVariables() {
+    selectedPiece = null;
+    selectedSquare = null;
+    selectedPieceRow = null;
+    selectedPieceColumn = null;
+    movePieceRow = null;
+    movePieceColumn = null;
+    movePieceSquare = null;
+    moving = false;
+    deletedPieces = 0;
+}
+
 // Working
 function resetBoard() {
 
@@ -63,15 +76,7 @@ function resetBoard() {
     };
 
     // Reset all variables
-    selectedPiece = null;
-    selectedSquare = null;
-    selectedPieceRow = null;
-    selectedPieceColumn = null;
-    movePieceRow = null;
-    movePieceColumn = null;
-    movePieceSquare = null;
-    moving = false;
-    deletedPieces = 0;
+    resetVariables();
 
     // Reset colors of buttons
     $(`.add`).css("background-color", "gray");
@@ -83,6 +88,7 @@ function resetBoard() {
 
 }
 
+// Needs button
 function clearBoard() {
 
     // Set all pieces to taken states except for the kings
@@ -118,15 +124,8 @@ function clearBoard() {
         8: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], whitePieces[4], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
     };
 
-    // Reset all variables
-    selectedPiece = null;
-    selectedSquare = null;
-    selectedPieceRow = null;
-    selectedPieceColumn = null;
-    movePieceRow = null;
-    movePieceColumn = null;
-    movePieceSquare = null;
-    moving = false;
+    // Reset all variables then set taken pieces to 30 (all but kings)
+    resetVariables();
     deletedPieces = 30;
 
     // Update the board
