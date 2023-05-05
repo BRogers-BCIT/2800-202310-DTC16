@@ -15,11 +15,11 @@
     <!-- Also currently missing mobile view -->
     <style>
         table {
+            float: left;
             max-height: 90vh;
             max-width: 90vh;
-            margin-left: calc((100vw - 90vh) / 2);
-            margin-right: calc((100vw - 90vh) / 2);
-            margin-top: 5vh;
+            margin-left: calc((100vw - 90vh) / 8);
+            margin-top: 3vh;
             margin-bottom: 5vh;
         }
 
@@ -60,28 +60,22 @@
             display: none;
         }
 
-        .reset {
-            margin-left: calc((100vw - 90vh) / 2);
-            margin-right: calc((100vw - 90vh) / 2);
-            width: 85vh;
-            height: 100px;
-            background-color: blue;
-        }
-
-        .delete {
-            margin-left: calc((100vw - 90vh) / 2);
-            margin-right: calc((100vw - 90vh) / 2);
-            width: 85vh;
-            height: 100px;
-            background-color: grey;
-        }
-
+        .reset,
+        .delete,
         .add {
-            margin-left: calc((100vw - 90vh) / 2);
-            margin-right: calc((100vw - 90vh) / 2);
-            width: 85vh;
-            height: 100px;
-            background-color: grey;
+            float: right;
+            height: 20vh;
+            width: calc((100vw - 90vh) / 2);
+            margin-right: 10vh;
+            margin-top: 3vh;
+            margin-bottom: 12vh;
+            background-color: gray;
+            border-radius: 5px;
+        }
+
+        .reset {
+            margin-bottom: 0px;
+            background-color: blue;
         }
     </style>
 </head>
