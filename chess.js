@@ -32,12 +32,12 @@ function resetBoard() {
     // Set all pieces to original states
     var whitePieces = [["wrook.png", "rook", "on board"], ["wknight.png", "knight", "on board"],
     ["wbishop.png", "c8", "bishop", "on board"], ["wqueen.png", "d8", "queen", "on board"],
-    ["wking.png", "e8", "king", "on board"], ["wbishop.png", "f8", "bishop", "on board"],
+    ["wking.png", "e8", "king", "on board"], ["wbishop.png", "f8", "bishop", "king"],
     ["wknight.png", "g8", "knight", "on board"], ["wrook.png", "h8", "rook", "on board"]];
 
     var blackPieces = [["brook.png", "rook", "on board"], ["bknight.png", "knight", "on board"],
     ["bbishop.png", "bishop", "on board"], ["bqueen.png", "d8", "queen", "on board"],
-    ["bking.png", "king", "on board"], ["bbishop.png", "f8", "bishop", "on board"],
+    ["bking.png", "king", "king"], ["bbishop.png", "f8", "bishop", "on board"],
     ["bknight.png", "knight", "on board"], ["brook.png", "h8", "rook", "on board"]];
 
     var blackPawns = [["bpawn.png", "pawn", "on board"], ["bpawn.png", "pawn", "on board"],
@@ -63,8 +63,14 @@ function resetBoard() {
     };
 
     // Reset all variables
+    selectedPiece = null;
+    selectedSquare = null;
     selectedPieceRow = null;
     selectedPieceColumn = null;
+    movePieceRow = null;
+    movePieceColumn = null;
+    movePieceSquare = null;
+    moving = false;
     deletedPieces = 0;
 
     // Reset colors of buttons
@@ -73,7 +79,59 @@ function resetBoard() {
 
     // Update the board
     updateBoard();
+    updateButtons();
 
+}
+
+function clearBoard() {
+
+    // Set all pieces to taken states except for the kings
+    var whitePieces = [["wrook.png", "rook", "taken"], ["wknight.png", "knight", "taken"],
+    ["wbishop.png", "c8", "bishop", "taken"], ["wqueen.png", "d8", "queen", "taken"],
+    ["wking.png", "e8", "king", "taken"], ["wbishop.png", "f8", "bishop", "taken"],
+    ["wknight.png", "g8", "knight", "taken"], ["wrook.png", "h8", "rook", "taken"]];
+
+    var blackPieces = [["brook.png", "rook", "taken"], ["bknight.png", "knight", "taken"],
+    ["bbishop.png", "bishop", "taken"], ["bqueen.png", "d8", "queen", "taken"],
+    ["bking.png", "king", "taken"], ["bbishop.png", "f8", "bishop", "taken"],
+    ["bknight.png", "knight", "taken"], ["brook.png", "h8", "rook", "taken"]];
+
+    var blackPawns = [["bpawn.png", "pawn", "taken"], ["bpawn.png", "pawn", "taken"],
+    ["bpawn.png", "pawn", "taken"], ["bpawn.png", "pawn", "taken"],
+    ["bpawn.png", "pawn", "taken"], ["bpawn.png", "pawn", "taken"],
+    ["bpawn.png", "pawn", "taken"], ["bpawn.png", "pawn", "taken"]];
+
+    var whitePawns = [["wpawn.png", "pawn", "taken"], ["wpawn.png", "pawn", "taken"],
+    ["wpawn.png", "pawn", "taken"], ["wpawn.png", "pawn", "taken"],
+    ["wpawn.png", "pawn", "taken"], ["wpawn.png", "pawn", "taken"],
+    ["wpawn.png", "pawn", "taken"], ["wpawn.png", "pawn", "taken"]];
+
+    // Set the chessboard to a cleared position
+    board = {
+        1: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], blackPieces[4], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
+        2: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
+        3: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
+        4: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
+        5: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
+        6: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
+        7: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
+        8: [['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], whitePieces[4], ['empty.png', 'notPiece'], ['empty.png', 'notPiece'], ['empty.png', 'notPiece']],
+    };
+
+    // Reset all variables
+    selectedPiece = null;
+    selectedSquare = null;
+    selectedPieceRow = null;
+    selectedPieceColumn = null;
+    movePieceRow = null;
+    movePieceColumn = null;
+    movePieceSquare = null;
+    moving = false;
+    deletedPieces = 30;
+
+    // Update the board
+    updateBoard();
+    updateButtons();
 }
 
 // Working
@@ -265,7 +323,7 @@ function movePieceMove() {
 function deletePiece() {
 
     // Checks if there is a selected piece
-    if (selectedPiece == true) {
+    if (selectedPiece == true && board[selectedPieceRow][selectedPieceColumn][2] != 'king') {
 
         // Set the pieces taken value to taken and empty the square in the board
         board[selectedPieceRow][selectedPieceColumn][2] = 'taken';
@@ -273,6 +331,8 @@ function deletePiece() {
 
         // Add one to the deleted pieces counter
         deletedPieces += 1;
+    } else {
+        console.log("Cannot take king")
     }
 
     // Update the board
@@ -302,6 +362,6 @@ setup = function () {
     $("body").on("click", ".delete", deletePiece);
     $("body").on("click", ".add", addPieces);
     $("body").on("click", ".move", movePieceSelect);
-
+    $("body").on("click", ".clear", clearBoard);
 }
 $(document).ready(setup)
