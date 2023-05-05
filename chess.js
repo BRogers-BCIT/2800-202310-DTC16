@@ -28,6 +28,7 @@ var moving = false;
 
 // Working
 function resetBoard() {
+
     // Set all pieces to original states
     var whitePieces = [["wrook.png", "rook", "on board"], ["wknight.png", "knight", "on board"],
     ["wbishop.png", "c8", "bishop", "on board"], ["wqueen.png", "d8", "queen", "on board"],
@@ -72,11 +73,12 @@ function resetBoard() {
 
     // Update the board
     updateBoard();
-    
+
 }
 
 // Working
 function updateBoard() {
+
     // Populate the board based on the board variable
     for (var row = (boardSize); row > 0; row--) {
 
@@ -110,6 +112,7 @@ function updateBoard() {
 
 // Working
 function resetSquare() {
+
     // Reset color of previous selected piece
     if (selectedSquare != null) {
 
@@ -128,6 +131,7 @@ function resetSquare() {
 
 // Working
 function selectSquare() {
+
     // Reset the color of the last selected piece
     resetSquare();
 
@@ -212,7 +216,7 @@ function updateButtons() {
 
 }
 
-// In progress
+// Working
 function movePieceSelect() {
 
     // Checks if there is a selected piece
@@ -230,7 +234,7 @@ function movePieceSelect() {
     }
 }
 
-// In progress
+// Working
 function movePieceMove() {
 
     // If the selected square is a piece then delete it
@@ -259,6 +263,7 @@ function movePieceMove() {
 
 // Working
 function deletePiece() {
+
     // Checks if there is a selected piece
     if (selectedPiece == true) {
 
@@ -269,19 +274,24 @@ function deletePiece() {
         // Add one to the deleted pieces counter
         deletedPieces += 1;
     }
+
     // Update the board
     updateBoard();
+    updateButtons();
+
 };
 
 // To implement (next week)
 function addPieces() {
+
     if (deletePieces > 0 && (selectedPiece == false)) {
     }
+
 };
 
 // To update as needed
 setup = function () {
-    console.log(moving)
+
     // Reset the board and populate it
     resetBoard();
     updateBoard();
@@ -293,8 +303,5 @@ setup = function () {
     $("body").on("click", ".add", addPieces);
     $("body").on("click", ".move", movePieceSelect);
 
-
 }
 $(document).ready(setup)
-
-// Merge Pull Request Test Through GitHub
