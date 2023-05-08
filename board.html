@@ -16,11 +16,10 @@
     <style>
         table {
             float: left;
-            max-height: 90vh;
-            max-width: 90vh;
-            margin-left: calc((100vw - 90vh) / 8);
-            margin-top: 3vh;
-            margin-bottom: 5vh;
+            max-height: 80vh;
+            max-width: 80vh;
+            margin-left: calc((100vw - 80vh) / 8);
+            margin-top: 5vh;
         }
 
         table,
@@ -37,7 +36,7 @@
             height: 10%;
             width: 10%;
             padding: 0px;
-            background-color: burlywood;
+            background-color: tan;
         }
 
         button {
@@ -65,17 +64,14 @@
         .add,
         .move {
             float: right;
-            height: 20vh;
-            width: calc((100vw - 90vh) / 2);
-            margin-right: 10vh;
-            margin-top: 3vh;
-            background-color: gray;
-            border-radius: 5px;
-        }
-
-        .reset {
-            margin-bottom: 0px;
-            background-color: yellow;
+            aspect-ratio: 1/1;
+            float: left;
+            width: 15vw;
+            margin-left: 5vw;
+            margin-top: 10vh;
+            background-color: tan;
+            border: 3px solid brown;
+            border-radius: 2px;
         }
     </style>
 </head>
@@ -289,24 +285,11 @@
             </tr>
         </table>
     </div>
-    <!-- Testing button for move function -->
     <div>
-        <button class="move" id="move">Move</button>
-    </div>
-    <br>
-    <!-- Testing button for add function -->
-    <div>
-        <button class="delete" id="delete">Delete</button>
-    </div>
-    <br>
-    <!-- Testing button for delete function -->
-    <div>
-        <button class="add" id="add">Add</button>
-    </div>
-    <br>
-    <!-- Testing button for reset function -->
-    <div>
-        <button class="reset" id="reset">Reset</button>
+        <button class="move" id="move"><img src="img/move.png" alt="move piece"></button>
+        <button class="delete" id="delete"><img src="img/delete.png" alt="delete piece"></button>
+        <button class="add" id="add"><img src="img/add.png" alt="add piece"></button>
+        <button class="reset" id="reset"><img src="img/reset.png" alt="reset board"></button>
     </div>
 </body>
 
