@@ -96,10 +96,3 @@ class Chessboard {
         return fen;
     }
 }
-
-const chessboard = new Chessboard();
-const whitePawn = new ChessPiece("a", 2, "white", "pawn");
-const blackQueen = new ChessPiece("d", 8, "black", "queen");
-chessboard.addPiece(whitePawn);
-chessboard.addPiece(blackQueen);
-console.log(chessboard.exportToFEN());
