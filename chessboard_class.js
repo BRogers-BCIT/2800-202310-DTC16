@@ -99,4 +99,54 @@ class Chessboard {
         }
         return fen;
     }
+
+    initializePieces() {
+        // White Pawns
+        for (let i = 0; i < 8; i++) {
+            let letter = boardColumns[i];
+            this.addPiece(new Pawn(letter, 2, "white"));
+        }
+
+        // Black Pawns
+        for (let i = 0; i < 8; i++) {
+            let letter = boardColumns[i];
+            this.addPiece(new Pawn(letter, 7, "black"));
+        }
+
+        // White Rooks
+        this.addPiece(new Rook("a", 1, "white"));
+        this.addPiece(new Rook("h", 1, "white"));
+
+        // Black Rooks
+        this.addPiece(new Rook("a", 8, "black"));
+        this.addPiece(new Rook("h", 8, "black"));
+
+        // White Knights
+        this.addPiece(new Knight("b", 1, "white"));
+        this.addPiece(new Knight("g", 1, "white"));
+
+        // Black Knights
+        this.addPiece(new Knight("b", 8, "black"));
+        this.addPiece(new Knight("g", 8, "black"));
+
+        // White Bishops
+        this.addPiece(new Bishop("c", 1, "white"));
+        this.addPiece(new Bishop("f", 1, "white"));
+
+        // Black Bishops
+        this.addPiece(new Bishop("c", 8, "black"));
+        this.addPiece(new Bishop("f", 8, "black"));
+
+        // White Queen
+        this.addPiece(new Queen("d", 1, "white"));
+
+        // Black Queen
+        this.addPiece(new Queen("d", 8, "black"));
+
+        // White King
+        this.addPiece(new King("e", 1, "white"));
+
+        // Black King
+        this.addPiece(new King("e", 8, "black"));
+    }
 }
