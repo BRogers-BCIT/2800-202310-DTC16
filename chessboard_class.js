@@ -3,51 +3,51 @@ const boardColumns = "abcdefgh";
 /* Chess Piece Classes */
 
 class ChessPiece {
-    constructor(letter, number, color, name) {
+    constructor(letter, number, color, fenSymbol) {
         this.letter = letter;
         this.number = number;
         this.color = color;
-        this.name = name;
+        this.fenSymbol = fenSymbol;
     }
 
     getFenLetter() {
-        return this.color === "white" ? this.name[0].toUpperCase() : this.name[0].toLowerCase();
+        return this.color === "white" ? this.fenSymbol.toUpperCase() : this.fenSymbol.toLowerCase();
     }
 }
 
 class Pawn extends ChessPiece {
     constructor(letter, number, color) {
-        super(letter, number, color, "pawn");
+        super(letter, number, color, "p");
     }
 }
 
 class Rook extends ChessPiece {
     constructor(letter, number, color) {
-        super(letter, number, color, "rook");
+        super(letter, number, color, "r");
     }
 }
 
 class Knight extends ChessPiece {
     constructor(letter, number, color) {
-        super(letter, number, color, "knight");
+        super(letter, number, color, "n");
     }
 }
 
 class Bishop extends ChessPiece {
     constructor(letter, number, color) {
-        super(letter, number, color, "bishop");
+        super(letter, number, color, "b");
     }
 }
 
 class Queen extends ChessPiece {
     constructor(letter, number, color) {
-        super(letter, number, color, "queen");
+        super(letter, number, color, "q");
     }
 }
 
 class King extends ChessPiece {
     constructor(letter, number, color) {
-        super(letter, number, color, "king");
+        super(letter, number, color, "k");
     }
 }
 
