@@ -1,5 +1,7 @@
 const boardColumns = "abcdefgh";
 
+/* Chess Piece Classes */
+
 class ChessPiece {
     constructor(letter, number, color, name) {
         this.letter = letter;
@@ -49,6 +51,8 @@ class King extends ChessPiece {
     }
 }
 
+/* Chessboard Class */
+
 class Chessboard {
     constructor() {
         this.board = {};
@@ -69,29 +73,29 @@ class Chessboard {
         this.board[`${letter}${number}`] = null;
     }
 
-    exportToFEN() {
+    exportToFEN() { // Copilot got really close with this one, but alas, I had to pick up the pieces
         let fen = "";
-        let emptyCounter = 0;
-        for (let i = 0; i < 8; i++) {
-            let emptyCounter = 0;
-            for (let j = 0; j < 8; j++) {
-                let letter = boardColumns[i];
-                let piece = this.board[`${letter}${j + 1}`];
-                if (piece == null) {
-                    emptyCounter++;
+        for (let row = 8; row >= 1; row--) {
+            let emptyCount = 0;
+            for (let col = 0; col < 8; col++) {
+                let letter = boardColumns[col];
+                let piece = this.board[`${letter}${row}`];
+                if (piece === null) {
+                    emptyCount++;
                 } else {
-                    if (emptyCounter > 0) {
-                        fen += emptyCounter;
-                        emptyCounter = 0;
+                    if (emptyCount > 0) {
+                        fen += emptyCount;
+                        emptyCount = 0;
                     }
                     fen += piece.getFenLetter();
                 }
             }
-            if (emptyCounter > 0) {
-                fen += emptyCounter;
-                emptyCounter = 0;
+            if (emptyCount > 0) {
+                fen += emptyCount;
             }
-            fen += "/";
+            if (row > 1) {
+                fen += "/";
+            }
         }
         return fen;
     }
