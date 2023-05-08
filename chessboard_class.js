@@ -13,6 +13,42 @@ class ChessPiece {
     }
 }
 
+class Pawn extends ChessPiece {
+    constructor(letter, number, color) {
+        super(letter, number, color, "pawn");
+    }
+}
+
+class Rook extends ChessPiece {
+    constructor(letter, number, color) {
+        super(letter, number, color, "rook");
+    }
+}
+
+class Knight extends ChessPiece {
+    constructor(letter, number, color) {
+        super(letter, number, color, "knight");
+    }
+}
+
+class Bishop extends ChessPiece {
+    constructor(letter, number, color) {
+        super(letter, number, color, "bishop");
+    }
+}
+
+class Queen extends ChessPiece {
+    constructor(letter, number, color) {
+        super(letter, number, color, "queen");
+    }
+}
+
+class King extends ChessPiece {
+    constructor(letter, number, color) {
+        super(letter, number, color, "king");
+    }
+}
+
 class Chessboard {
     constructor() {
         this.board = {};
