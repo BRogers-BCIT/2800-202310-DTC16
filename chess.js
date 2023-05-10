@@ -215,8 +215,18 @@ function exportToJSStorage() {
         }); 
     });
 
-    // Print the final product
-    console.log(boardJS);
+    // Return the final board for whatever you may enjoy
+    return boardJS;
+}
+
+// To implement
+function getFenFromBoardData() {
+    let JSBoard = exportToJSStorage();
+    let JSFEN = JSBoard.exportToFEN("w");
+    $(`#fenOutput`).html(`
+        <p>${JSFEN}</p>
+        `);
+    return JSFEN;
 }
 
 // To update as needed
@@ -230,7 +240,7 @@ setup = function () {
     $("body").on("click", ".reset", resetBoard);
     $("body").on("click", ".delete", deletePieces);
     $("body").on("click", ".add", addPieces);
-    $(`.exportToFEN`).click(exportToJSStorage);
+    $(`.exportToFEN`).click(getFenFromBoardData);
 }
 $(document).ready(setup)
 
