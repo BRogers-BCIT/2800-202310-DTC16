@@ -23,13 +23,13 @@
     <div id="featureLinks">
         <!-- Div for save board to user account-->
         <div id="saveBoard">
-            <button>
+            <button class="saveBoard">
                 <H3>Save Board</H3>
             </button>
         </div>
         <!-- Div to get analysis of current board -->
         <div id="analyzeBoard">
-            <button>
+            <button class="analyzeBoard">
                 <H3>Analyze Board</H3>
             </button>
         </div>
@@ -281,34 +281,54 @@
             <h3>White Pawns</h3>
         </div>
         <br>
-        <button class="close">Close</button>
+        <button class="closeAdd">Close</button>
         <br>
     </div>
 
 
-    <!-- Population div for analyze board menu -->
-    <div id="fenInputs">
+    <div id="analyzeBoard">
         <div id="castles">
             <div id="whiteCastles">
                 <h3>White</h3>
                 <input type="checkbox" id="whiteKings" class="castles"> <label for="whiteKings">(O-O)</label>
-                <input type="checkbox" id="whiteQueens" class="castles"> <label for="whiteQueens">(O-O-O)
-                </label>
+                <input type="checkbox" id="whiteQueens" class="castles"> <label for="whiteQueens">(O-O-O)</label>
             </div>
             <div id="blackCastles">
                 <h3>Black</h3>
                 <input type="checkbox" id="blackKings" class="castles"> <label for="blackKings">(O-O)</label>
-                <input type="checkbox" id="blackQueens" class="castles"> <label for="blackQueens">(O-O-O)
-                </label>
+                <input type="checkbox" id="blackQueens" class="castles"> <label for="blackQueens">(O-O-O)</label>
             </div>
         </div>
         <br>
-        <!-- Div to have user set current moving color-->
+
         <div id="movingColor">
             <div id="currentColor">
                 <h3>Moving: White</h3>
             </div>
-            <button class="swapColor" id="swapColor">Swap Moving Color</button>
+            <div id="swapColor">
+                <button class="swapColor" id="swapColorButton">Swap Moving Color</button>
+            </div>
+        </div>
+
+        <div id="endButtons">
+            <div id="close">
+                <button class="closeAnalyze" id="closeAnalyzeButton">Close</button>
+            </div>
+            <div id="analyze">
+                <button class="goToAnalyze" id="goToAnalyzeButton">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="saveBoard">
+        <div id="endButtons">
+            <div id="close">
+                <button class="closeSave" id="closeSaveButton">Close</button>
+            </div>
+            <div id="analyze">
+                <button class="saveToUser" id="saveToUserButton">Close</button>
+            </div>
         </div>
     </div>
 
