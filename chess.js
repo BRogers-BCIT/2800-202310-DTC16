@@ -88,9 +88,6 @@ function resetBoard() {
     // Reset all variables
     resetVariables();
 
-    // Reset buttons
-    $(`.delete`).css("opacity", "0.5");
-    $(`.move`).css("opacity", "0.5");
 
     // Update the board
     updateBoard();
@@ -137,10 +134,6 @@ function clearBoard() {
 
     // Reset all variables then set taken pieces to 30 (all but kings)
     resetVariables();
-
-    // Reset buttons
-    $(`.delete`).css("opacity", "0.5");
-    $(`.move`).css("opacity", "0.5");
 
     // Update the board
     updateBoard();
@@ -256,7 +249,8 @@ function selectedSquareCheck() {
 function updateButtons() {
     // Selected a piece
     if (selectedPiece == true) {
-
+        // Set the add button to tan to indicate moving from that spot is possible
+        $(`.add`).css("opacity", "1");
         // Set the add button to tan to indicate moving from that spot is possible
         $(`.move`).css("opacity", "1");
         // Set the delete button to tan to indicate deletion is possible
@@ -273,6 +267,7 @@ function updateButtons() {
         // Set all non-reset buttons to half transparency to indicate they are not possible
         $(`.delete`).css("opacity", "0.5");
         $(`.move`).css("opacity", "0.5");
+        $(`.add`).css("opacity", "0.5");
     }
 
 }
@@ -468,8 +463,16 @@ function closeAddPieces() {
 
 }
 
+function swapPlayingColor() {
+
+}
+
 // To implement
 function boardToFEN() {
+}
+
+// To implement
+function analyzeBoard() {
 }
 
 // To update as needed
