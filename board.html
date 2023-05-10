@@ -73,6 +73,11 @@
             border: 3px solid brown;
             border-radius: 2px;
         }
+
+        #addPieceMenu {
+            display: none;
+            position: absolute;
+        }
     </style>
 </head>
 
@@ -181,6 +186,15 @@
             </tr>
         </table>
     </div>
+
+    <div id="addPieceMenu">
+        <div id="blackPieces"><h3>Black Pieces</h3></div>
+        <div id="blackPawns"><h3>Black Pawns</h3></div>
+        <div id="whitePieces"><h3>White Pieces</h3></div>
+        <div id="whitePawns"><h3>White Pawns</h3></div>
+        <button class="close">Close</button>
+    </div>
+
     <!-- Board form black position view -->
     <div id="blackBoard">
         <table>

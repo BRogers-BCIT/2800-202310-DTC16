@@ -7,6 +7,12 @@ const nonePiece = ["empty.png", "notPiece"];
 // Create board variable
 var board;
 
+//
+var blackPieces;
+var whitePieces;
+var blackPawns;
+var whitePawns;
+
 // Array row and column and HTML square of a selected piece (Select / Delete)
 var selectedPieceRow;
 var selectedPieceColumn;
@@ -46,22 +52,22 @@ function resetVariables() {
 function resetBoard() {
 
     // Set all pieces to original states
-    var whitePieces = [["white", "wrook.png", "rook", "on board"], ["white", "wknight.png", "knight", "on board"],
+    whitePieces = [["white", "wrook.png", "rook", "on board"], ["white", "wknight.png", "knight", "on board"],
     ["white", "wbishop.png", "c8", "bishop", "on board"], ["white", "wqueen.png", "d8", "queen", "on board"],
     ["white", "wking.png", "e8", "king", "on board"], ["white", "wbishop.png", "f8", "bishop", "king"],
     ["white", "wknight.png", "g8", "knight", "on board"], ["white", "wrook.png", "h8", "rook", "on board"]];
 
-    var blackPieces = [["black", "brook.png", "rook", "on board"], ["black", "bknight.png", "knight", "on board"],
+    blackPieces = [["black", "brook.png", "rook", "on board"], ["black", "bknight.png", "knight", "on board"],
     ["black", "bbishop.png", "bishop", "on board"], ["black", "bqueen.png", "d8", "queen", "on board"],
     ["black", "bking.png", "king", "king"], ["black", "bbishop.png", "f8", "bishop", "on board"],
     ["black", "bknight.png", "knight", "on board"], ["black", "brook.png", "h8", "rook", "on board"]];
 
-    var blackPawns = [["black", "bpawn.png", "pawn", "on board"], ["black", "bpawn.png", "pawn", "on board"],
+    blackPawns = [["black", "bpawn.png", "pawn", "on board"], ["black", "bpawn.png", "pawn", "on board"],
     ["black", "bpawn.png", "pawn", "on board"], ["black", "bpawn.png", "pawn", "on board"],
     ["black", "bpawn.png", "pawn", "on board"], ["black", "bpawn.png", "pawn", "on board"],
     ["black", "bpawn.png", "pawn", "on board"], ["black", "bpawn.png", "pawn", "on board"]];
 
-    var whitePawns = [["white", "wpawn.png", "pawn", "on board"], ["white", "wpawn.png", "pawn", "on board"],
+    whitePawns = [["white", "wpawn.png", "pawn", "on board"], ["white", "wpawn.png", "pawn", "on board"],
     ["white", "wpawn.png", "pawn", "on board"], ["white", "wpawn.png", "pawn", "on board"],
     ["white", "wpawn.png", "pawn", "on board"], ["white", "wpawn.png", "pawn", "on board"],
     ["white", "wpawn.png", "pawn", "on board"], ["white", "wpawn.png", "pawn", "on board"]];
@@ -96,22 +102,22 @@ function resetBoard() {
 function clearBoard() {
 
     // Set all pieces to taken states except for the kings
-    var whitePieces = [["white", "wrook.png", "rook", "taken"], ["white", "wknight.png", "knight", "taken"],
+    whitePieces = [["white", "wrook.png", "rook", "taken"], ["white", "wknight.png", "knight", "taken"],
     ["white", "wbishop.png", "c8", "bishop", "taken"], ["white", "wqueen.png", "d8", "queen", "taken"],
     ["white", "wking.png", "e8", "king", "taken"], ["white", "wbishop.png", "f8", "bishop", "king"],
     ["white", "wknight.png", "g8", "knight", "taken"], ["white", "wrook.png", "h8", "rook", "taken"]];
 
-    var blackPieces = [["black", "brook.png", "rook", "taken"], ["black", "bknight.png", "knight", "taken"],
+    blackPieces = [["black", "brook.png", "rook", "taken"], ["black", "bknight.png", "knight", "taken"],
     ["black", "bbishop.png", "bishop", "taken"], ["black", "bqueen.png", "d8", "queen", "taken"],
     ["black", "bking.png", "king", "king"], ["black", "bbishop.png", "f8", "bishop", "taken"],
     ["black", "bknight.png", "knight", "taken"], ["black", "brook.png", "h8", "rook", "taken"]];
 
-    var blackPawns = [["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
+    blackPawns = [["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
     ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
     ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
     ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"]];
 
-    var whitePawns = [["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
+    whitePawns = [["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
     ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
     ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
     ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"]];
@@ -143,7 +149,7 @@ function clearBoard() {
 
 // Working
 function updateBoard() {
-
+    closeAddPieces();
     // Populate the board based on the board variable
     for (var row = (boardSize); row > 0; row--) {
 
@@ -329,10 +335,10 @@ function movePieceMove() {
 function deletePiece() {
 
     // Checks if there is a selected piece
-    if (selectedPiece == true && board[selectedPieceRow][selectedPieceColumn][2] != 'king') {
+    if (selectedPiece == true && board[selectedPieceRow][selectedPieceColumn][3] != 'king') {
 
         // Set the pieces taken value to taken and empty the square in the board
-        board[selectedPieceRow][selectedPieceColumn][2] = 'taken';
+        board[selectedPieceRow][selectedPieceColumn][3] = 'taken';
         board[selectedPieceRow][selectedPieceColumn] = ['', 'empty.png', 'notPiece'];
 
         // Add one to the deleted pieces counter
@@ -350,9 +356,58 @@ function deletePiece() {
 
 // To implement
 function openAddPieces() {
+    $(`#addPieceMenu`).css("display", "block");
+    $(`#whiteBoard`).css("opacity", "0.5");
+    $(`#blackBoard`).css("opacity", "0.5");
 
-    if (deletePieces > 0 && (selectedPiece == false)) {
+    var takenBlackPieces = 8;
+    for (var blackPiece = 0; blackPiece < 8; blackPiece++) {
+        if (blackPieces[blackPiece][3] == "taken") {
+            $(`#blackPieces`).append(`<button class="takenPiece"><img src="images/${blackPieces[blackPiece][1]}" class="piece" id="blackPiece${blackPiece}"></button>`);
+        } else {
+            takenBlackPieces -= 1;
+        }
     }
+    if (takenBlackPieces == 0) {
+        $(`#blackPieces`).append(`<h3>None</h3>`);
+    }
+
+    var takenWhitePieces = 8;
+    for (var whitePiece = 0; whitePiece < 8; whitePiece++) {
+        if (whitePieces[whitePiece][3] == "taken") {
+            $(`#whitePieces`).append(`<button class="takenPiece"><img src="images/${whitePieces[whitePiece][1]}" class="piece" id="whitePiece${whitePiece}"></button>`);
+        } else {
+            takenWhitePieces -= 1;
+        }
+    }
+    if (takenWhitePieces == 0) {
+        $(`#whitePieces`).append(`<h3>None</h3>`);
+    }
+
+    var takenBlackPawns = 8;
+    for (var blackPawn = 0; blackPawn < 8; blackPawn++) {
+        if (blackPawns[blackPawn][3] == "taken") {
+            $(`#blackPawns`).append(`<button class="takenPiece"><img src="images/${blackPawns[blackPawn][1]}" class="piece" id="blackPawn${blackPawn}"></button>`);
+        } else {
+            takenBlackPawns -= 1;
+        }
+    }
+    if (takenBlackPawns == 0) {
+        $(`#blackPawns`).append(`<h3>None</h3>`);
+    }
+
+    var takenWhitePawns = 8;
+    for (var whitePawn = 0; whitePawn < 8; whitePawn++) {
+        if (whitePawns[whitePawn][3] == "taken") {
+            $(`#whitePawns`).append(`<button class="takenPiece"><img src="images/${whitePawns[whitePawn][1]}" class="piece" id="whitePawn${whitePawn}"></button>`);
+        } else {
+            takenWhitePawns -= 1;
+        }
+    }
+    if (takenWhitePawns == 0) {
+        $(`#whitePawns`).append(`<h3>None</h3>`);
+    }
+
 
 };
 
@@ -362,6 +417,9 @@ function addPieceToBoard() {
 
 // To implement
 function closeAddPieces() {
+    $(`#addPieceMenu`).css("display", "hidden");
+    $(`#whiteBoard`).css("opacity", "1");
+    $(`#blackBoard`).css("opacity", "1");
 }
 
 // To implement
