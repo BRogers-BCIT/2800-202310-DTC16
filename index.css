@@ -155,7 +155,81 @@ img {
     margin-bottom: 10px;
 }
 
-.close {
+.closeAdd {
+    width: 60%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-left: 20%;
+    background-color: gray;
+    border: 3px solid brown;
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+
+#saveBoardMenu {
+    display: none;
+    position: absolute;
+    width: 90%;
+    height: 60%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5vh;
+    overflow-y: scroll;
+    background-color: tan;
+    margin-bottom: 5vh;
+
+}
+
+.closeSave,
+.saveToUser {
+    float: left;
+    width: 40%;
+    margin-top: 5%;
+    margin-bottom: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: gray;
+    border: 3px solid brown;
+    border-radius: 2px;
+}
+
+#boardName,
+#boardDescriptionText {
+    margin-left: 10%;
+    width: 80%;
+}
+
+#boardDescriptionText {
+    min-width: 80%;
+    max-width: 80%;
+    height: 15vh;
+    min-height: 15vh;
+    max-height: 15vh;
+    overflow-y: scroll;
+}
+
+
+
+
+#analyzeBoardMenu {
+    display: none;
+    position: absolute;
+    width: 90%;
+    height: 70%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5vh;
+    overflow-y: scroll;
+    background-color: tan;
+    margin-bottom: 5vh;
+
+}
+
+.closeAnalyze,
+.goToAnalyze {
     width: 60%;
     padding-top: 5%;
     padding-bottom: 5%;

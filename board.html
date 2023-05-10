@@ -141,7 +141,7 @@
         </table>
     </div>
 
-    <!-- Board form black position view -->
+    <!-- Board form black position view (currently unused) -->
     <div id="blackBoard">
         <table>
             <tr id="columns">
@@ -286,7 +286,7 @@
     </div>
 
 
-    <div id="analyzeBoard">
+    <div id="analyzeBoardMenu">
         <div id="castles">
             <div id="whiteCastles">
                 <h3>White</h3>
@@ -321,13 +321,25 @@
 
     </div>
 
-    <div id="saveBoard">
+    <div id="saveBoardMenu">
+        <h3 id="title">Save Board</h3>
+
+        <div id="saveName">
+            <h3>&nbsp;&nbsp;Board Name</h3>
+            <input type="text" id="boardName" placeholder="Board Name">
+        </div>
+        <br>
+        <div id="boardDescription">
+            <h3>&nbsp;&nbsp;Board Description</h3>
+            <textarea id="boardDescriptionText" placeholder="Board Description"></textarea>
+        </div>
+        <br>
         <div id="endButtons">
             <div id="close">
                 <button class="closeSave" id="closeSaveButton">Close</button>
             </div>
             <div id="analyze">
-                <button class="saveToUser" id="saveToUserButton">Close</button>
+                <button class="saveToUser" id="saveToUserButton">Save</button>
             </div>
         </div>
     </div>
