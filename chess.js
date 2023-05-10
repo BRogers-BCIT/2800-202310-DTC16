@@ -45,7 +45,6 @@ function resetVariables() {
     movePieceColumn = null;
     movePieceSquare = null;
     moving = false;
-    deletedPieces = 0;
 }
 
 // Working
@@ -54,14 +53,14 @@ function resetBoard() {
 
     // Set all pieces to original states
     whitePieces = [["white", "wrook.png", "rook", "on board"], ["white", "wknight.png", "knight", "on board"],
-    ["white", "wbishop.png", "c8", "bishop", "on board"], ["white", "wqueen.png", "d8", "queen", "on board"],
-    ["white", "wking.png", "e8", "king", "on board"], ["white", "wbishop.png", "f8", "bishop", "king"],
-    ["white", "wknight.png", "g8", "knight", "on board"], ["white", "wrook.png", "h8", "rook", "on board"]];
+    ["white", "wbishop.png", "bishop", "on board"], ["white", "wqueen.png", "queen", "on board"],
+    ["white", "wking.png", "king", "on board"], ["white", "wbishop.png", "bishop", "king"],
+    ["white", "wknight.png", "knight", "on board"], ["white", "wrook.png", "rook", "on board"]];
 
     blackPieces = [["black", "brook.png", "rook", "on board"], ["black", "bknight.png", "knight", "on board"],
-    ["black", "bbishop.png", "bishop", "on board"], ["black", "bqueen.png", "d8", "queen", "on board"],
-    ["black", "bking.png", "king", "king"], ["black", "bbishop.png", "f8", "bishop", "on board"],
-    ["black", "bknight.png", "knight", "on board"], ["black", "brook.png", "h8", "rook", "on board"]];
+    ["black", "bbishop.png", "bishop", "on board"], ["black", "bqueen.png", "queen", "on board"],
+    ["black", "bking.png", "king", "king"], ["black", "bbishop.png", "bishop", "on board"],
+    ["black", "bknight.png", "knight", "on board"], ["black", "brook.png", "rook", "on board"]];
 
     blackPawns = [["black", "bpawn.png", "pawn", "on board"], ["black", "bpawn.png", "pawn", "on board"],
     ["black", "bpawn.png", "pawn", "on board"], ["black", "bpawn.png", "pawn", "on board"],
@@ -87,7 +86,7 @@ function resetBoard() {
 
     // Reset all variables
     resetVariables();
-
+    deletedPieces = 0;
 
     // Update the board
     updateBoard();
@@ -134,6 +133,7 @@ function clearBoard() {
 
     // Reset all variables then set taken pieces to 30 (all but kings)
     resetVariables();
+    deletedPieces = 0;
 
     // Update the board
     updateBoard();
@@ -259,8 +259,13 @@ function updateButtons() {
 
     // Selected a piece
     if (selectedPiece == true) {
-        // Set the add button to full transparency to indicate moving from that spot is possible
-        $(`.add`).css("opacity", "1");
+        if (board[selectedPieceRow][selectedPieceColumn][2] != "king") {
+            // Set the add button to full transparency to indicate moving from that spot is possible
+            $(`.add`).css("opacity", "1");
+        } else {
+            // Set the add button to half transparency to indicate moving from that spot is not possible
+            $(`.add`).css("opacity", "0.5");
+        }
         // Set the add button to full transparency to indicate moving from that spot is possible
         $(`.move`).css("opacity", "1");
         // Set the delete button to full transparency to indicate deletion is possible
@@ -302,29 +307,33 @@ function movePieceSelect() {
 
 // Working
 function movePieceMove() {
+    if (board[selectedPieceRow][selectedPieceColumn][3] != 'king') {
+        // If the selected square is a piece then delete it
+        if (selectedPiece == true) {
+            deletePiece();
+        }
 
-    // If the selected square is a piece then delete it
-    if (selectedPiece == true) {
+        // Move the piece to the selected square
+        board[selectedPieceRow][selectedPieceColumn] = board[movePieceRow][movePieceColumn];
+
+        // Set the selected square to the old square and delete it then reset the old square
+        selectedSquare = movePieceSquare;
+        selectedPieceRow = movePieceRow;
+        selectedPieceColumn = movePieceColumn;
         deletePiece();
+        resetSquare();
+
+        // Unselect all squares
+        selectedPiece = null;
+
+        // Update the board
+        updateBoard();
+        updateButtons();
+    } else {
+        resetVariables();
+        updateBoard();
+        updateButtons();
     }
-
-    // Move the piece to the selected square
-    board[selectedPieceRow][selectedPieceColumn] = board[movePieceRow][movePieceColumn];
-
-    // Set the selected square to the old square and delete it then reset the old square
-    selectedSquare = movePieceSquare;
-    selectedPieceRow = movePieceRow;
-    selectedPieceColumn = movePieceColumn;
-    deletePiece();
-    resetSquare();
-
-    // Unselect all squares
-    selectedPiece = null;
-
-    // Update the board
-    updateBoard();
-    updateButtons();
-
 }
 
 // Working
@@ -344,14 +353,8 @@ function deletePiece() {
         console.log("Cannot take king")
     }
 
-    // Reset the selected piece resetVariables() would reset the deleted count so it cannot be used
-    selectedPiece = null;
-    selectedSquare = null;
-    selectedPieceRow = null;
-    selectedPieceColumn = null;
-    movePieceRow = null;
-    movePieceColumn = null;
-    movePieceSquare = null;
+    // Reset the selected piece
+    resetVariables();
 
     // Update the board
     updateBoard();
@@ -436,31 +439,32 @@ function openAddPieces() {
 
 // Working
 function addPieceToBoard() {
-    // Get the piece type from button class and index from button id
-    var pieceType = jQuery(this).attr('class');
-    var pieceIndex = jQuery(this).attr('id');
+    if (board[selectedPieceRow][selectedPieceColumn][3] != 'king') {
+        // Get the piece type from button class and index from button id
+        var pieceType = jQuery(this).attr('class');
+        var pieceIndex = jQuery(this).attr('id');
 
-    // If moving to a square with a piece then delete it
-    if (selectedPiece == true) {
-        deletePiece();
+        // If moving to a square with a piece then delete it
+        if (selectedPiece == true) {
+            deletePiece();
+        }
+
+        // For each piece type check if the piece to add is that type
+        // Them set it to not be taken and add it to the board
+        if (pieceType == "blackPiece") {
+            blackPieces[pieceIndex][3] = "on board";
+            board[selectedPieceRow][selectedPieceColumn] = blackPieces[pieceIndex]
+        } else if (pieceType == "whitePiece") {
+            whitePieces[pieceIndex][3] = "on board";
+            board[selectedPieceRow][selectedPieceColumn] = whitePieces[pieceIndex]
+        } else if (pieceType == "blackPawn") {
+            blackPawns[pieceIndex][3] = "on board";
+            board[selectedPieceRow][selectedPieceColumn] = blackPawns[pieceIndex]
+        } else if (pieceType == "whitePawn") {
+            whitePawns[pieceIndex][3] = "on board";
+            board[selectedPieceRow][selectedPieceColumn] = whitePawns[pieceIndex]
+        }
     }
-
-    // For each piece type check if the piece to add is that type
-    // Them set it to not be taken and add it to the board
-    if (pieceType == "blackPiece") {
-        blackPieces[pieceIndex][3] = "on board";
-        board[selectedPieceRow][selectedPieceColumn] = blackPieces[pieceIndex]
-    } else if (pieceType == "whitePiece") {
-        whitePieces[pieceIndex][3] = "on board";
-        board[selectedPieceRow][selectedPieceColumn] = whitePieces[pieceIndex]
-    } else if (pieceType == "blackPawn") {
-        blackPawns[pieceIndex][3] = "on board";
-        board[selectedPieceRow][selectedPieceColumn] = blackPawns[pieceIndex]
-    } else if (pieceType == "whitePawn") {
-        whitePawns[pieceIndex][3] = "on board";
-        board[selectedPieceRow][selectedPieceColumn] = whitePawns[pieceIndex]
-    }
-
     // Update the board with new pieces
     updateBoard();
     updateButtons();
@@ -484,6 +488,7 @@ function closeAddPieces() {
 
 }
 
+// Working
 function promotePawn() {
     var type = jQuery(this).attr('id');
     if (selectedPiece == true && board[selectedPieceRow][selectedPieceColumn][2] == "pawn") {
