@@ -65,14 +65,20 @@ img {
     display: none;
     position: absolute;
     width: 50vw;
+    height: 90vh;
     margin-left: 25vw;
     margin-right: 25vw;
     margin-top: 5vh;
     overflow-y: scroll;
     background-color: tan;
+    margin-bottom: 5vh;
+
 }
 
-.takenPiece {
+.whitePawn,
+.blackPawn,
+.blackPiece,
+.whitePiece {
     width: 20%;
     height: 20%;
     margin-left: 5%;
