@@ -35,16 +35,128 @@ var moving = false;
 // Stores the FEN of the board
 var currentFEN;
 
-// Possible implementation]
-function resetVariables() {
-    selectedPiece = null;
-    selectedSquare = null;
-    selectedPieceRow = null;
-    selectedPieceColumn = null;
-    movePieceRow = null;
-    movePieceColumn = null;
-    movePieceSquare = null;
-    moving = false;
+
+// Working
+function updateBoard() {
+    closeAddPieces();
+    // Populate the board based on the board variable
+    for (var row = (boardSize); row > 0; row--) {
+
+        if (row % 2 == 0) {
+            // Populate even row with even square coloring
+            $(`#${row}`).html(`<th>  ${row} </th> 
+                <td id="a${row}"> <button id="${row}0" class="square"> <img src="img/${board[row][0][1]}"> </button> </td> 
+                <td id="b${row}" class="ds"> <button id="${row}1" class="square"> <img src="img/${board[row][1][1]}"> </button> </td> 
+                <td id="c${row}"> <button id="${row}2" class="square"> <img src="img/${board[row][2][1]}"> </button> </td> 
+                <td id="d${row}" class="ds"> <button id="${row}3" class="square"> <img src="img/${board[row][3][1]}"> </button> </td> 
+                <td id="e${row}"> <button id="${row}4" class="square"> <img src="img/${board[row][4][1]}"> </button> </td> 
+                <td id="f${row}" class="ds"> <button id="${row}5" class="square"> <img src="img/${board[row][5][1]}"> </button> </td> 
+                <td id="g${row}"> <button id="${row}6" class="square"> <img src="img/${board[row][6][1]}"> </button> </td> 
+                <td id="h${row}" class="ds"> <button id="${row}7" class="square"> <img src="img/${board[row][7][1]}"> </button> </td> `)
+
+        } else {
+            // Populate odd row with odd square coloring
+            $(`#${row}`).html(`<th>  ${row} </th> 
+                <td id="a${row}" class="ds"> <button id="${row}0" class="square"> <img src="img/${board[row][0][1]}"> </button> </td> 
+                <td id="b${row}"> <button id="${row}1" class="square"> <img src="img/${board[row][1][1]}"> </button> </td> 
+                <td id="c${row}" class="ds"> <button id="${row}2" class="square"> <img src="img/${board[row][2][1]}"> </button> </td> 
+                <td id="d${row}"> <button id="${row}3" class="square"> <img src="img/${board[row][3][1]}"> </button> </td> 
+                <td id="e${row}" class="ds"> <button id="${row}4" class="square"> <img src="img/${board[row][4][1]}"> </button> </td> 
+                <td id="f${row}"> <button id="${row}5" class="square"> <img src="img/${board[row][5][1]}"> </button> </td> 
+                <td id="g${row}" class="ds"> <button id="${row}6" class="square"> <img src="img/${board[row][6][1]}"> </button> </td> 
+                <td id="h${row}"> <button id="${row}7" class="square"> <img src="img/${board[row][7][1]}"> </button> </td> `)
+        }
+
+    }
+}
+
+// Working
+function updateButtons() {
+
+    //Promotion
+    if (selectedPiece == true && board[selectedPieceRow][selectedPieceColumn][2] == "pawn") {
+        // Set the promotion button to full transparency to indicate promotion is possible
+        $(`.promote`).css("opacity", "1");
+    } else {
+        // Set the promotion button to half transparency to indicate promotion is not possible
+        $(`.promote`).css("opacity", "0.5");
+    }
+
+    // Selected a piece
+    if (selectedPiece == true) {
+        if (board[selectedPieceRow][selectedPieceColumn][2] != "king") {
+            // Set the add button to full transparency to indicate moving from that spot is possible
+            $(`.add`).css("opacity", "1");
+        } else {
+            // Set the add button to half transparency to indicate moving from that spot is not possible
+            $(`.add`).css("opacity", "0.5");
+        }
+        // Set the add button to full transparency to indicate moving from that spot is possible
+        $(`.move`).css("opacity", "1");
+        // Set the delete button to full transparency to indicate deletion is possible
+        $(`.delete`).css("opacity", "1");
+
+        // Selected a non-piece square
+    } else if (selectedPiece == false) {
+        // Set the add button to full transparency to indicate it is possible
+        $(`.add`).css("opacity", "1");
+        // Set the delete and move button to half transparency to indicate it is not possible
+        $(`.delete`).css("opacity", "0.5");
+        $(`.move`).css("opacity", "0.5");
+
+    } else {
+        // Set all non-reset buttons to half transparency to indicate they are not possible
+        $(`.delete`).css("opacity", "0.5");
+        $(`.move`).css("opacity", "0.5");
+        $(`.add`).css("opacity", "0.5");
+    }
+
+}
+
+// Unimplemented
+function clearBoard() {
+    closeAddPieces();
+
+    // Set all pieces to taken states except for the kings
+    whitePieces = [["white", "wrook.png", "rook", "taken"], ["white", "wknight.png", "knight", "taken"],
+    ["white", "wbishop.png", "c8", "bishop", "taken"], ["white", "wqueen.png", "d8", "queen", "taken"],
+    ["white", "wking.png", "e8", "king", "taken"], ["white", "wbishop.png", "f8", "bishop", "king"],
+    ["white", "wknight.png", "g8", "knight", "taken"], ["white", "wrook.png", "h8", "rook", "taken"]];
+
+    blackPieces = [["black", "brook.png", "rook", "taken"], ["black", "bknight.png", "knight", "taken"],
+    ["black", "bbishop.png", "bishop", "taken"], ["black", "bqueen.png", "d8", "queen", "taken"],
+    ["black", "bking.png", "king", "king"], ["black", "bbishop.png", "f8", "bishop", "taken"],
+    ["black", "bknight.png", "knight", "taken"], ["black", "brook.png", "h8", "rook", "taken"]];
+
+    blackPawns = [["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
+    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
+    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
+    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"]];
+
+    whitePawns = [["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
+    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
+    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
+    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"]];
+
+    // Set the chessboard to a cleared position
+    board = {
+        1: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], blackPieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        2: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        3: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        4: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        5: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        6: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        7: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        8: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], whitePieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+    };
+
+    // Reset all variables then set taken pieces to 30 (all but kings)
+    resetVariables();
+    deletedPieces = 0;
+
+    // Update the board
+    updateBoard();
+    updateButtons();
 }
 
 // Working
@@ -94,86 +206,6 @@ function resetBoard() {
 
 }
 
-// Needs button
-function clearBoard() {
-    closeAddPieces();
-
-    // Set all pieces to taken states except for the kings
-    whitePieces = [["white", "wrook.png", "rook", "taken"], ["white", "wknight.png", "knight", "taken"],
-    ["white", "wbishop.png", "c8", "bishop", "taken"], ["white", "wqueen.png", "d8", "queen", "taken"],
-    ["white", "wking.png", "e8", "king", "taken"], ["white", "wbishop.png", "f8", "bishop", "king"],
-    ["white", "wknight.png", "g8", "knight", "taken"], ["white", "wrook.png", "h8", "rook", "taken"]];
-
-    blackPieces = [["black", "brook.png", "rook", "taken"], ["black", "bknight.png", "knight", "taken"],
-    ["black", "bbishop.png", "bishop", "taken"], ["black", "bqueen.png", "d8", "queen", "taken"],
-    ["black", "bking.png", "king", "king"], ["black", "bbishop.png", "f8", "bishop", "taken"],
-    ["black", "bknight.png", "knight", "taken"], ["black", "brook.png", "h8", "rook", "taken"]];
-
-    blackPawns = [["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"]];
-
-    whitePawns = [["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"]];
-
-    // Set the chessboard to a cleared position
-    board = {
-        1: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], blackPieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-        2: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-        3: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-        4: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-        5: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-        6: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-        7: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-        8: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], whitePieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-    };
-
-    // Reset all variables then set taken pieces to 30 (all but kings)
-    resetVariables();
-    deletedPieces = 0;
-
-    // Update the board
-    updateBoard();
-    updateButtons();
-}
-
-// Working
-function updateBoard() {
-    closeAddPieces();
-    // Populate the board based on the board variable
-    for (var row = (boardSize); row > 0; row--) {
-
-        if (row % 2 == 0) {
-            // Populate even row with even square coloring
-            $(`#${row}`).html(`<th>  ${row} </th> 
-                <td id="a${row}"> <button id="${row}0" class="square"> <img src="img/${board[row][0][1]}"> </button> </td> 
-                <td id="b${row}" class="ds"> <button id="${row}1" class="square"> <img src="img/${board[row][1][1]}"> </button> </td> 
-                <td id="c${row}"> <button id="${row}2" class="square"> <img src="img/${board[row][2][1]}"> </button> </td> 
-                <td id="d${row}" class="ds"> <button id="${row}3" class="square"> <img src="img/${board[row][3][1]}"> </button> </td> 
-                <td id="e${row}"> <button id="${row}4" class="square"> <img src="img/${board[row][4][1]}"> </button> </td> 
-                <td id="f${row}" class="ds"> <button id="${row}5" class="square"> <img src="img/${board[row][5][1]}"> </button> </td> 
-                <td id="g${row}"> <button id="${row}6" class="square"> <img src="img/${board[row][6][1]}"> </button> </td> 
-                <td id="h${row}" class="ds"> <button id="${row}7" class="square"> <img src="img/${board[row][7][1]}"> </button> </td> `)
-
-        } else {
-            // Populate odd row with odd square coloring
-            $(`#${row}`).html(`<th>  ${row} </th> 
-                <td id="a${row}" class="ds"> <button id="${row}0" class="square"> <img src="img/${board[row][0][1]}"> </button> </td> 
-                <td id="b${row}"> <button id="${row}1" class="square"> <img src="img/${board[row][1][1]}"> </button> </td> 
-                <td id="c${row}" class="ds"> <button id="${row}2" class="square"> <img src="img/${board[row][2][1]}"> </button> </td> 
-                <td id="d${row}"> <button id="${row}3" class="square"> <img src="img/${board[row][3][1]}"> </button> </td> 
-                <td id="e${row}" class="ds"> <button id="${row}4" class="square"> <img src="img/${board[row][4][1]}"> </button> </td> 
-                <td id="f${row}"> <button id="${row}5" class="square"> <img src="img/${board[row][5][1]}"> </button> </td> 
-                <td id="g${row}" class="ds"> <button id="${row}6" class="square"> <img src="img/${board[row][6][1]}"> </button> </td> 
-                <td id="h${row}"> <button id="${row}7" class="square"> <img src="img/${board[row][7][1]}"> </button> </td> `)
-        }
-
-    }
-}
-
 // Working
 function resetSquare() {
 
@@ -191,6 +223,18 @@ function resetSquare() {
         }
 
     }
+}
+
+// Working
+function resetVariables() {
+    selectedPiece = null;
+    selectedSquare = null;
+    selectedPieceRow = null;
+    selectedPieceColumn = null;
+    movePieceRow = null;
+    movePieceColumn = null;
+    movePieceSquare = null;
+    moving = false;
 }
 
 // Working
@@ -246,46 +290,20 @@ function selectedSquareCheck() {
 }
 
 // Working
-function updateButtons() {
-
-    //Promotion
+function promotePawn() {
+    var type = jQuery(this).attr('id');
     if (selectedPiece == true && board[selectedPieceRow][selectedPieceColumn][2] == "pawn") {
-        // Set the promotion button to full transparency to indicate promotion is possible
-        $(`.promote`).css("opacity", "1");
-    } else {
-        // Set the promotion button to half transparency to indicate promotion is not possible
-        $(`.promote`).css("opacity", "0.5");
-    }
-
-    // Selected a piece
-    if (selectedPiece == true) {
-        if (board[selectedPieceRow][selectedPieceColumn][2] != "king") {
-            // Set the add button to full transparency to indicate moving from that spot is possible
-            $(`.add`).css("opacity", "1");
-        } else {
-            // Set the add button to half transparency to indicate moving from that spot is not possible
-            $(`.add`).css("opacity", "0.5");
+        if (board[selectedPieceRow][selectedPieceColumn][0] == "black") {
+            console.log("black")
+            board[selectedPieceRow][selectedPieceColumn][1] = `bp${type}.png`;
         }
-        // Set the add button to full transparency to indicate moving from that spot is possible
-        $(`.move`).css("opacity", "1");
-        // Set the delete button to full transparency to indicate deletion is possible
-        $(`.delete`).css("opacity", "1");
-
-        // Selected a non-piece square
-    } else if (selectedPiece == false) {
-        // Set the add button to full transparency to indicate it is possible
-        $(`.add`).css("opacity", "1");
-        // Set the delete and move button to half transparency to indicate it is not possible
-        $(`.delete`).css("opacity", "0.5");
-        $(`.move`).css("opacity", "0.5");
-
-    } else {
-        // Set all non-reset buttons to half transparency to indicate they are not possible
-        $(`.delete`).css("opacity", "0.5");
-        $(`.move`).css("opacity", "0.5");
-        $(`.add`).css("opacity", "0.5");
+        if (board[selectedPieceRow][selectedPieceColumn][0] == "white") {
+            board[selectedPieceRow][selectedPieceColumn][1] = `wp${type}.png`;
+        }
     }
-
+    resetVariables();
+    updateBoard();
+    updateButtons();
 }
 
 // Working
@@ -361,6 +379,7 @@ function deletePiece() {
     updateButtons();
 
 };
+
 
 // Working
 function openAddPieces() {
@@ -488,34 +507,44 @@ function closeAddPieces() {
 
 }
 
-// Working
-function promotePawn() {
-    var type = jQuery(this).attr('id');
-    if (selectedPiece == true && board[selectedPieceRow][selectedPieceColumn][2] == "pawn") {
-        if (board[selectedPieceRow][selectedPieceColumn][0] == "black") {
-            console.log("black")
-            board[selectedPieceRow][selectedPieceColumn][1] = `bp${type}.png`;
-        }
-        if (board[selectedPieceRow][selectedPieceColumn][0] == "white") {
-            board[selectedPieceRow][selectedPieceColumn][1] = `wp${type}.png`;
-        }
-    }
-    resetVariables();
-    updateBoard();
-    updateButtons();
+
+
+// To implement (Analyze)
+function openAnalyzeMenu() {
 }
 
-// To implement
+// To implement (Analyze)
 function swapPlayingColor() {
 }
 
-// To implement
+// To implement (Analyze)
+function updatedAvailableCastles() {
+}
+
+// To implement (Analyze)
 function boardToFEN() {
 }
 
-// To implement
-function analyzeBoard() {
+// To implement (Analyze)
+function closeAnalyzeMenu() {
 }
+
+
+
+
+// To implement (Save)
+function openSaveMenu() {
+}
+
+// To implement (Save)
+function saveBoard() {
+}
+
+// To implement (Save)
+function closeSaveMenu() {
+}
+
+
 
 // To update as needed
 setup = function () {
@@ -524,20 +553,40 @@ setup = function () {
     resetBoard();
     updateBoard();
 
-    // Add event listeners
+    // Select a square
     $("body").on("click", ".square", selectSquare);
-    $("body").on("click", ".reset", resetBoard);
-    $("body").on("click", ".delete", deletePiece);
-    $("body").on("click", ".add", openAddPieces);
-    $("body").on("click", ".move", movePieceSelect);
-    $("body").on("click", ".clear", clearBoard);
-    $("body").on("click", ".close", closeAddPieces);
 
+    // Basic board functions
+    $("body").on("click", ".move", movePieceSelect);
+    $("body").on("click", ".delete", deletePiece);
+    $("body").on("click", ".reset", resetBoard);
+
+    // Open and Close add menu buttons
+    $("body").on("click", ".add", openAddPieces);
+    $("body").on("click", ".closeAdd", closeAddPieces);
+
+    // Add piece buttons
     $("body").on("click", ".blackPiece", addPieceToBoard);
     $("body").on("click", ".blackPawn", addPieceToBoard);
     $("body").on("click", ".whitePiece", addPieceToBoard);
     $("body").on("click", ".whitePawn", addPieceToBoard);
 
+    // Promote pawn button class
     $("body").on("click", ".promote", promotePawn);
+
+    // Feature link buttons (Save)
+    $("body").on("click", ".saveBoard", openSaveMenu);
+    $("body").on("click", ".saveToUser", saveBoard);
+    $("body").on("click", ".closeSave", closeSaveMenu);
+
+    // Feature link buttons (Analysis)
+    $("body").on("click", ".analyzeBoard", openAnalyzeMenu);
+    $("body").on("click", ".castles", updatedAvailableCastles);
+    $("body").on("click", ".swapColor", swapPlayingColor);
+    $("body").on("click", ".goToAnalyze", boardToFEN);
+    $("body").on("click", ".closeAnalyze", closeAnalyzeMenu);
+
+    // Not Currently used
+    $("body").on("click", ".clear", clearBoard);
 }
 $(document).ready(setup)
