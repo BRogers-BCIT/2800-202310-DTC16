@@ -77,11 +77,40 @@
         #addPieceMenu {
             display: none;
             position: absolute;
+            width: 50vw;
+            margin-left: 25vw;
+            margin-right: 25vw;
+            margin-top: 5vh;
+            overflow-y: scroll;
+            background-color: tan;
+            opacity: 1;
         }
     </style>
 </head>
 
 <body>
+
+    <div id="addPieceMenu">
+        <br>
+        <div id="blackPieces">
+            <h3>Black Pieces</h3>
+        </div>
+        <br>
+        <div id="blackPawns">
+            <h3>Black Pawns</h3>
+        </div>
+        <br>
+        <div id="whitePieces">
+            <h3>White Pieces</h3>
+        </div>
+        <br>
+        <div id="whitePawns">
+            <h3>White Pawns</h3>
+        </div>
+        <br>
+        <button class="close">Close</button>
+    </div>
+
     <!-- Board form white position view -->
     <div id="whiteBoard">
         <table>
@@ -187,13 +216,6 @@
         </table>
     </div>
 
-    <div id="addPieceMenu">
-        <div id="blackPieces"><h3>Black Pieces</h3></div>
-        <div id="blackPawns"><h3>Black Pawns</h3></div>
-        <div id="whitePieces"><h3>White Pieces</h3></div>
-        <div id="whitePawns"><h3>White Pawns</h3></div>
-        <button class="close">Close</button>
-    </div>
 
     <!-- Board form black position view -->
     <div id="blackBoard">
@@ -299,7 +321,7 @@
             </tr>
         </table>
     </div>
-    <div>
+    <div id="buttons">
         <button class="move" id="move"><img src="img/move.png" alt="move piece"></button>
         <button class="delete" id="delete"><img src="img/delete.png" alt="delete piece"></button>
         <button class="add" id="add"><img src="img/add.png" alt="add piece"></button>

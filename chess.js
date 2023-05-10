@@ -50,6 +50,7 @@ function resetVariables() {
 
 // Working
 function resetBoard() {
+    closeAddPieces();
 
     // Set all pieces to original states
     whitePieces = [["white", "wrook.png", "rook", "on board"], ["white", "wknight.png", "knight", "on board"],
@@ -88,7 +89,6 @@ function resetBoard() {
     resetVariables();
 
     // Reset buttons
-    $(`.add`).css("opacity", "0.5");
     $(`.delete`).css("opacity", "0.5");
     $(`.move`).css("opacity", "0.5");
 
@@ -100,6 +100,7 @@ function resetBoard() {
 
 // Needs button
 function clearBoard() {
+    closeAddPieces();
 
     // Set all pieces to taken states except for the kings
     whitePieces = [["white", "wrook.png", "rook", "taken"], ["white", "wknight.png", "knight", "taken"],
@@ -138,7 +139,6 @@ function clearBoard() {
     resetVariables();
 
     // Reset buttons
-    $(`.add`).css("opacity", "0.5");
     $(`.delete`).css("opacity", "0.5");
     $(`.move`).css("opacity", "0.5");
 
@@ -259,19 +259,11 @@ function updateButtons() {
 
         // Set the add button to tan to indicate moving from that spot is possible
         $(`.move`).css("opacity", "1");
-        // Set the add button to half transparency to indicate adding to that spot is not possible
-        $(`.add`).css("opacity", "0.5");
         // Set the delete button to tan to indicate deletion is possible
         $(`.delete`).css("opacity", "1");
 
         // Selected a non-piece square
     } else if (selectedPiece == false) {
-
-        // Check if there are any deleted pieces
-        if (deletedPieces > 0) {
-            // Set the add button to green to indicate adding to that spot is possible
-            $(`.add`).css("opacity", "1");
-        }
 
         // Set the delete and move button to half transparency to indicate it is not possible
         $(`.delete`).css("opacity", "0.5");
@@ -279,7 +271,6 @@ function updateButtons() {
 
     } else {
         // Set all non-reset buttons to half transparency to indicate they are not possible
-        $(`.add`).css("opacity", "0.5");
         $(`.delete`).css("opacity", "0.5");
         $(`.move`).css("opacity", "0.5");
     }
@@ -359,11 +350,12 @@ function openAddPieces() {
     $(`#addPieceMenu`).css("display", "block");
     $(`#whiteBoard`).css("opacity", "0.5");
     $(`#blackBoard`).css("opacity", "0.5");
+    $(`#buttons`).css("opacity", "0.5");
 
     var takenBlackPieces = 8;
     for (var blackPiece = 0; blackPiece < 8; blackPiece++) {
         if (blackPieces[blackPiece][3] == "taken") {
-            $(`#blackPieces`).append(`<button class="takenPiece"><img src="images/${blackPieces[blackPiece][1]}" class="piece" id="blackPiece${blackPiece}"></button>`);
+            $(`#blackPieces`).append(`<button class="takenPiece"><img src="img/${blackPieces[blackPiece][1]}" class="piece" id="blackPiece${blackPiece}"></button>`);
         } else {
             takenBlackPieces -= 1;
         }
@@ -375,7 +367,7 @@ function openAddPieces() {
     var takenWhitePieces = 8;
     for (var whitePiece = 0; whitePiece < 8; whitePiece++) {
         if (whitePieces[whitePiece][3] == "taken") {
-            $(`#whitePieces`).append(`<button class="takenPiece"><img src="images/${whitePieces[whitePiece][1]}" class="piece" id="whitePiece${whitePiece}"></button>`);
+            $(`#whitePieces`).append(`<button class="takenPiece"><img src="img/${whitePieces[whitePiece][1]}" class="piece" id="whitePiece${whitePiece}"></button>`);
         } else {
             takenWhitePieces -= 1;
         }
@@ -387,7 +379,7 @@ function openAddPieces() {
     var takenBlackPawns = 8;
     for (var blackPawn = 0; blackPawn < 8; blackPawn++) {
         if (blackPawns[blackPawn][3] == "taken") {
-            $(`#blackPawns`).append(`<button class="takenPiece"><img src="images/${blackPawns[blackPawn][1]}" class="piece" id="blackPawn${blackPawn}"></button>`);
+            $(`#blackPawns`).append(`<button class="takenPiece"><img src="img/${blackPawns[blackPawn][1]}" class="piece" id="blackPawn${blackPawn}"></button>`);
         } else {
             takenBlackPawns -= 1;
         }
@@ -399,7 +391,7 @@ function openAddPieces() {
     var takenWhitePawns = 8;
     for (var whitePawn = 0; whitePawn < 8; whitePawn++) {
         if (whitePawns[whitePawn][3] == "taken") {
-            $(`#whitePawns`).append(`<button class="takenPiece"><img src="images/${whitePawns[whitePawn][1]}" class="piece" id="whitePawn${whitePawn}"></button>`);
+            $(`#whitePawns`).append(`<button class="takenPiece"><img src="img/${whitePawns[whitePawn][1]}" class="piece" id="whitePawn${whitePawn}"></button>`);
         } else {
             takenWhitePawns -= 1;
         }
@@ -417,9 +409,15 @@ function addPieceToBoard() {
 
 // To implement
 function closeAddPieces() {
-    $(`#addPieceMenu`).css("display", "hidden");
+    console.log("close")
+    $(`#blackPieces`).empty();
+    $(`#blackPawns`).empty();
+    $(`#whitePieces`).empty();
+    $(`#whitePawns`).empty();
+    $(`#addPieceMenu`).css("display", "none");
     $(`#whiteBoard`).css("opacity", "1");
     $(`#blackBoard`).css("opacity", "1");
+    $(`#buttons`).css("opacity", "1");
 }
 
 // To implement
