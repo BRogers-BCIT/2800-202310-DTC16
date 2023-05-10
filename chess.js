@@ -247,6 +247,16 @@ function selectedSquareCheck() {
 
 // Working
 function updateButtons() {
+
+    //Promotion
+    if (selectedPiece == true && board[selectedPieceRow][selectedPieceColumn][2] == "pawn") {
+        // Set the promotion button to full transparency to indicate promotion is possible
+        $(`.promote`).css("opacity", "1");
+    } else {
+        // Set the promotion button to half transparency to indicate promotion is not possible
+        $(`.promote`).css("opacity", "0.5");
+    }
+
     // Selected a piece
     if (selectedPiece == true) {
         // Set the add button to full transparency to indicate moving from that spot is possible
@@ -474,8 +484,24 @@ function closeAddPieces() {
 
 }
 
-function swapPlayingColor() {
+function promotePawn() {
+    var type = jQuery(this).attr('id');
+    if (selectedPiece == true && board[selectedPieceRow][selectedPieceColumn][2] == "pawn") {
+        if (board[selectedPieceRow][selectedPieceColumn][0] == "black") {
+            console.log("black")
+            board[selectedPieceRow][selectedPieceColumn][1] = `bp${type}.png`;
+        }
+        if (board[selectedPieceRow][selectedPieceColumn][0] == "white") {
+            board[selectedPieceRow][selectedPieceColumn][1] = `wp${type}.png`;
+        }
+    }
+    resetVariables();
+    updateBoard();
+    updateButtons();
+}
 
+// To implement
+function swapPlayingColor() {
 }
 
 // To implement
@@ -506,5 +532,7 @@ setup = function () {
     $("body").on("click", ".blackPawn", addPieceToBoard);
     $("body").on("click", ".whitePiece", addPieceToBoard);
     $("body").on("click", ".whitePawn", addPieceToBoard);
+
+    $("body").on("click", ".promote", promotePawn);
 }
 $(document).ready(setup)
