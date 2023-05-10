@@ -83,33 +83,38 @@
             margin-top: 5vh;
             overflow-y: scroll;
             background-color: tan;
-            opacity: 1;
+        }
+
+        #title {
+            text-align: center;
+        }
+
+        .piece {
+            width: 80%;
+            height: 80%;
+        }
+
+        .takenPiece {
+            width: 20%;
+            height: 20%;
+            margin-left: 5%;
+            margin-bottom: 10px;
+        }
+
+        .close {
+            width: 60%;
+            padding-top: 5%;
+            padding-bottom: 5%;
+            margin-left: 20%;
+            background-color: gray;
+            border: 3px solid brown;
+            border-radius: 2px;
+            margin-bottom: 15px;
         }
     </style>
 </head>
 
 <body>
-
-    <div id="addPieceMenu">
-        <br>
-        <div id="blackPieces">
-            <h3>Black Pieces</h3>
-        </div>
-        <br>
-        <div id="blackPawns">
-            <h3>Black Pawns</h3>
-        </div>
-        <br>
-        <div id="whitePieces">
-            <h3>White Pieces</h3>
-        </div>
-        <br>
-        <div id="whitePawns">
-            <h3>White Pawns</h3>
-        </div>
-        <br>
-        <button class="close">Close</button>
-    </div>
 
     <!-- Board form white position view -->
     <div id="whiteBoard">
@@ -326,6 +331,28 @@
         <button class="delete" id="delete"><img src="img/delete.png" alt="delete piece"></button>
         <button class="add" id="add"><img src="img/add.png" alt="add piece"></button>
         <button class="reset" id="reset"><img src="img/reset.png" alt="reset board"></button>
+    </div>
+
+    <div id="addPieceMenu">
+        <h3 id="title">Add Pieces</h3>
+        <div id="blackPieces">
+            <h3>Black Pieces</h3>
+        </div>
+        <br>
+        <div id="blackPawns">
+            <h3>Black Pawns</h3>
+        </div>
+        <br>
+        <div id="whitePieces">
+            <h3>White Pieces</h3>
+        </div>
+        <br>
+        <div id="whitePawns">
+            <h3>White Pawns</h3>
+        </div>
+        <br>
+        <button class="close">Close</button>
+        <br>
     </div>
 </body>
 

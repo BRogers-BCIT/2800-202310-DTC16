@@ -345,75 +345,77 @@ function deletePiece() {
 
 };
 
-// To implement
+// Working
 function openAddPieces() {
-    $(`#addPieceMenu`).css("display", "block");
-    $(`#whiteBoard`).css("opacity", "0.5");
-    $(`#blackBoard`).css("opacity", "0.5");
-    $(`#buttons`).css("opacity", "0.5");
+    if (selectedSquare != null) {
+        $(`#addPieceMenu`).css("display", "block");
+        $(`#whiteBoard`).css("opacity", "0.5");
+        $(`#blackBoard`).css("opacity", "0.5");
+        $(`#buttons`).css("opacity", "0.5");
 
-    var takenBlackPieces = 8;
-    for (var blackPiece = 0; blackPiece < 8; blackPiece++) {
-        if (blackPieces[blackPiece][3] == "taken") {
-            $(`#blackPieces`).append(`<button class="takenPiece"><img src="img/${blackPieces[blackPiece][1]}" class="piece" id="blackPiece${blackPiece}"></button>`);
-        } else {
-            takenBlackPieces -= 1;
+        var takenBlackPieces = 8;
+        for (var blackPiece = 0; blackPiece < 8; blackPiece++) {
+            if (blackPieces[blackPiece][3] == "taken") {
+                $(`#blackPieces`).append(`<button class="takenPiece"><img src="img/${blackPieces[blackPiece][1]}" class="piece" id="blackPiece${blackPiece}"></button>`);
+            } else {
+                takenBlackPieces -= 1;
+            }
+        }
+        if (takenBlackPieces == 0) {
+            $(`#blackPieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
+        }
+
+        var takenWhitePieces = 8;
+        for (var whitePiece = 0; whitePiece < 8; whitePiece++) {
+            if (whitePieces[whitePiece][3] == "taken") {
+                $(`#whitePieces`).append(`<button class="takenPiece"><img src="img/${whitePieces[whitePiece][1]}" class="piece" id="whitePiece${whitePiece}"></button>`);
+            } else {
+                takenWhitePieces -= 1;
+            }
+        }
+        if (takenWhitePieces == 0) {
+            $(`#whitePieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
+        }
+
+        var takenBlackPawns = 8;
+        for (var blackPawn = 0; blackPawn < 8; blackPawn++) {
+            if (blackPawns[blackPawn][3] == "taken") {
+                $(`#blackPawns`).append(`<button class="takenPiece"><img src="img/${blackPawns[blackPawn][1]}" class="piece" id="blackPawn${blackPawn}"></button>`);
+            } else {
+                takenBlackPawns -= 1;
+            }
+        }
+        if (takenBlackPawns == 0) {
+            $(`#blackPawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
+        }
+
+        var takenWhitePawns = 8;
+        for (var whitePawn = 0; whitePawn < 8; whitePawn++) {
+            if (whitePawns[whitePawn][3] == "taken") {
+                $(`#whitePawns`).append(`<button class="takenPiece"><img src="img/${whitePawns[whitePawn][1]}" class="piece" id="whitePawn${whitePawn}"></button>`);
+            } else {
+                takenWhitePawns -= 1;
+            }
+        }
+        if (takenWhitePawns == 0) {
+            $(`#whitePawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
         }
     }
-    if (takenBlackPieces == 0) {
-        $(`#blackPieces`).append(`<h3>None</h3>`);
-    }
-
-    var takenWhitePieces = 8;
-    for (var whitePiece = 0; whitePiece < 8; whitePiece++) {
-        if (whitePieces[whitePiece][3] == "taken") {
-            $(`#whitePieces`).append(`<button class="takenPiece"><img src="img/${whitePieces[whitePiece][1]}" class="piece" id="whitePiece${whitePiece}"></button>`);
-        } else {
-            takenWhitePieces -= 1;
-        }
-    }
-    if (takenWhitePieces == 0) {
-        $(`#whitePieces`).append(`<h3>None</h3>`);
-    }
-
-    var takenBlackPawns = 8;
-    for (var blackPawn = 0; blackPawn < 8; blackPawn++) {
-        if (blackPawns[blackPawn][3] == "taken") {
-            $(`#blackPawns`).append(`<button class="takenPiece"><img src="img/${blackPawns[blackPawn][1]}" class="piece" id="blackPawn${blackPawn}"></button>`);
-        } else {
-            takenBlackPawns -= 1;
-        }
-    }
-    if (takenBlackPawns == 0) {
-        $(`#blackPawns`).append(`<h3>None</h3>`);
-    }
-
-    var takenWhitePawns = 8;
-    for (var whitePawn = 0; whitePawn < 8; whitePawn++) {
-        if (whitePawns[whitePawn][3] == "taken") {
-            $(`#whitePawns`).append(`<button class="takenPiece"><img src="img/${whitePawns[whitePawn][1]}" class="piece" id="whitePawn${whitePawn}"></button>`);
-        } else {
-            takenWhitePawns -= 1;
-        }
-    }
-    if (takenWhitePawns == 0) {
-        $(`#whitePawns`).append(`<h3>None</h3>`);
-    }
-
-
 };
 
 // To implement
 function addPieceToBoard() {
+    if (selectedSquare != null){
+        
+    }
 }
 
-// To implement
+// Working
 function closeAddPieces() {
-    console.log("close")
-    $(`#blackPieces`).empty();
-    $(`#blackPawns`).empty();
-    $(`#whitePieces`).empty();
-    $(`#whitePawns`).empty();
+    $(`#blackPieces`).html(`<h3>&nbsp;&nbsp;Black Pieces</h3>`);
+    $(`#blackPawns`).html(`<h3>&nbsp;&nbsp;Black Pawns</h3>`);
+    $(`#whitePieces`).html(`<h3>&nbsp;&nbsp;White Pieces</h3>`);
+    $(`#whitePawns`).html(`<h3>&nbsp;&nbsp;White Pawns</h3>`);
     $(`#addPieceMenu`).css("display", "none");
     $(`#whiteBoard`).css("opacity", "1");
     $(`#blackBoard`).css("opacity", "1");
