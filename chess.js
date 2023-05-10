@@ -1,3 +1,5 @@
+console.log(new Chessboard());
+
 // Define size of a chessboard
 const boardSize = 8;
 // Create board variable
