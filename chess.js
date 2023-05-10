@@ -1,5 +1,3 @@
-console.log(new Chessboard());
-
 // Define size of a chessboard
 const boardSize = 8;
 // Create board variable
@@ -172,6 +170,12 @@ function addPieces() {
     }
 };
 
+// Work in Progress
+function exportToFEN() {
+    let workingBoard = new Chessboard();
+    console.log(workingBoard);
+}
+
 // To update as needed
 setup = function () {
     // Reset the board and populate it
@@ -183,6 +187,7 @@ setup = function () {
     $("body").on("click", ".reset", resetBoard);
     $("body").on("click", ".delete", deletePieces);
     $("body").on("click", ".add", addPieces);
+    $("body").on("click", ".export", exportToFEN);
 }
 $(document).ready(setup)
 
