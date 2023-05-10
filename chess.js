@@ -249,16 +249,17 @@ function selectedSquareCheck() {
 function updateButtons() {
     // Selected a piece
     if (selectedPiece == true) {
-        // Set the add button to tan to indicate moving from that spot is possible
+        // Set the add button to full transparency to indicate moving from that spot is possible
         $(`.add`).css("opacity", "1");
-        // Set the add button to tan to indicate moving from that spot is possible
+        // Set the add button to full transparency to indicate moving from that spot is possible
         $(`.move`).css("opacity", "1");
-        // Set the delete button to tan to indicate deletion is possible
+        // Set the delete button to full transparency to indicate deletion is possible
         $(`.delete`).css("opacity", "1");
 
         // Selected a non-piece square
     } else if (selectedPiece == false) {
-
+        // Set the add button to full transparency to indicate it is possible
+        $(`.add`).css("opacity", "1");
         // Set the delete and move button to half transparency to indicate it is not possible
         $(`.delete`).css("opacity", "0.5");
         $(`.move`).css("opacity", "0.5");
@@ -333,6 +334,15 @@ function deletePiece() {
         console.log("Cannot take king")
     }
 
+    // Reset the selected piece resetVariables() would reset the deleted count so it cannot be used
+    selectedPiece = null;
+    selectedSquare = null;
+    selectedPieceRow = null;
+    selectedPieceColumn = null;
+    movePieceRow = null;
+    movePieceColumn = null;
+    movePieceSquare = null;
+
     // Update the board
     updateBoard();
     updateButtons();
@@ -350,6 +360,7 @@ function openAddPieces() {
         $(`#whiteBoard`).css("opacity", "0.5");
         $(`#blackBoard`).css("opacity", "0.5");
         $(`#buttons`).css("opacity", "0.5");
+        $(`#featureLinks`).css("opacity", "0.5");
 
         // For each black piece, add a button with the piece's image if it has been taken
         var takenBlackPieces = 8;
