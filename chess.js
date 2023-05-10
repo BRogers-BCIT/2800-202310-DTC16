@@ -348,18 +348,24 @@ function deletePiece() {
 
 };
 
-// To implement (next week)
-function addPieces() {
+// To implement
+function openAddPieces() {
 
     if (deletePieces > 0 && (selectedPiece == false)) {
     }
 
 };
 
+// To implement
+function addPieceToBoard() {
+}
 
+// To implement
+function closeAddPieces() {
+}
+
+// To implement
 function boardToFEN() {
-
-
 }
 
 // To update as needed
@@ -373,8 +379,10 @@ setup = function () {
     $("body").on("click", ".square", selectSquare);
     $("body").on("click", ".reset", resetBoard);
     $("body").on("click", ".delete", deletePiece);
-    $("body").on("click", ".add", addPieces);
+    $("body").on("click", ".add", openAddPieces);
     $("body").on("click", ".move", movePieceSelect);
     $("body").on("click", ".clear", clearBoard);
+    $("body").on("click", ".close", closeAddPieces);
+    $("body").on("click", ".removed", addPieceToBoard);
 }
 $(document).ready(setup)
