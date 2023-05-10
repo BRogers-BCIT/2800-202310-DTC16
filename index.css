@@ -141,7 +141,8 @@ img {
 
 }
 
-#title {
+#title,
+#currentColor {
     text-align: center;
 }
 
@@ -212,13 +213,11 @@ img {
 }
 
 
-
-
 #analyzeBoardMenu {
     display: none;
     position: absolute;
     width: 90%;
-    height: 70%;
+    height: 50%;
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 5vh;
@@ -230,12 +229,30 @@ img {
 
 .closeAnalyze,
 .goToAnalyze {
-    width: 60%;
+    float: left;
+    width: 40%;
+    margin-top: 10%;
+    margin-bottom: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
     padding-top: 5%;
     padding-bottom: 5%;
-    margin-left: 20%;
     background-color: gray;
     border: 3px solid brown;
     border-radius: 2px;
-    margin-bottom: 15px;
+}
+
+.castles {
+    margin-left: 5%;
+}
+
+#swapColorButton {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: gray;
+    border: 3px solid brown;
+    border-radius: 2px;
 }

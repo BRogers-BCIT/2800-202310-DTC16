@@ -511,6 +511,12 @@ function closeAddPieces() {
 
 // To implement (Analyze)
 function openAnalyzeMenu() {
+    // Set the analyze board menu to visible and the board to half transparency
+    $(`#analyzeBoardMenu`).css("display", "block");
+    $(`#whiteBoard`).css("opacity", "0.5");
+    $(`#blackBoard`).css("opacity", "0.5");
+    $(`#buttons`).css("opacity", "0.5");
+    $(`#featureLinks`).css("opacity", "0.5");
 }
 
 // To implement (Analyze)
@@ -534,7 +540,7 @@ function closeAnalyzeMenu() {
 
 // To implement (Save)
 function openSaveMenu() {
-    // Set the add piece menu to visible and the board to half transparency
+    // Set the save board menu to visible and the board to half transparency
     $(`#saveBoardMenu`).css("display", "block");
     $(`#whiteBoard`).css("opacity", "0.5");
     $(`#blackBoard`).css("opacity", "0.5");
