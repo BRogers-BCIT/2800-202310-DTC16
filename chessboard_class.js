@@ -73,7 +73,7 @@ class Chessboard {
         this.board[`${letter}${number}`] = null;
     }
 
-    exportToFEN() { // Copilot got really close with this one, but alas, I had to pick up the pieces
+    exportToFEN(activeColor) {
         let fen = "";
         for (let row = 8; row >= 1; row--) {
             let emptyCount = 0;
@@ -97,6 +97,7 @@ class Chessboard {
                 fen += "/";
             }
         }
+        fen += ` ${activeColor[0]}`;
         return fen;
     }
 
