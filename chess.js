@@ -346,12 +346,17 @@ function deletePiece() {
 
 // Working
 function openAddPieces() {
+
+    // Checks if there is a selected square to add to
     if (selectedSquare != null) {
+
+        // Set the add piece menu to visible and the board to half transparency
         $(`#addPieceMenu`).css("display", "block");
         $(`#whiteBoard`).css("opacity", "0.5");
         $(`#blackBoard`).css("opacity", "0.5");
         $(`#buttons`).css("opacity", "0.5");
 
+        // For each black piece, add a button with the piece's image if it has been taken
         var takenBlackPieces = 8;
         for (var blackPiece = 0; blackPiece < 8; blackPiece++) {
             if (blackPieces[blackPiece][3] == "taken") {
@@ -360,10 +365,13 @@ function openAddPieces() {
                 takenBlackPieces -= 1;
             }
         }
+
+        // If not black pieces have been taken then display none
         if (takenBlackPieces == 0) {
             $(`#blackPieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
         }
 
+        // For each white piece, add a button with the piece's image if it has been taken
         var takenWhitePieces = 8;
         for (var whitePiece = 0; whitePiece < 8; whitePiece++) {
             if (whitePieces[whitePiece][3] == "taken") {
@@ -372,10 +380,13 @@ function openAddPieces() {
                 takenWhitePieces -= 1;
             }
         }
+
+        // If not white pieces have been taken then display none
         if (takenWhitePieces == 0) {
             $(`#whitePieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
         }
 
+        // For each black pawn, add a button with the piece's image if it has been taken
         var takenBlackPawns = 8;
         for (var blackPawn = 0; blackPawn < 8; blackPawn++) {
             if (blackPawns[blackPawn][3] == "taken") {
@@ -384,10 +395,13 @@ function openAddPieces() {
                 takenBlackPawns -= 1;
             }
         }
+
+        // If not black pawns have been taken then display none
         if (takenBlackPawns == 0) {
             $(`#blackPawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
         }
 
+        // For each white pawn, add a button with the piece's image if it has been taken
         var takenWhitePawns = 8;
         for (var whitePawn = 0; whitePawn < 8; whitePawn++) {
             if (whitePawns[whitePawn][3] == "taken") {
@@ -396,6 +410,8 @@ function openAddPieces() {
                 takenWhitePawns -= 1;
             }
         }
+
+        // If not white pawns have been taken then display none
         if (takenWhitePawns == 0) {
             $(`#whitePawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
         }
@@ -404,12 +420,17 @@ function openAddPieces() {
 
 // Working
 function addPieceToBoard() {
+    // Get the piece type from button class and index from button id
     var pieceType = jQuery(this).attr('class');
     var pieceIndex = jQuery(this).attr('id');
-    console.log(pieceType, pieceIndex)
+
+    // If moving to a square with a piece then delete it
     if (selectedPiece == true) {
         deletePiece();
     }
+
+    // For each piece type check if the piece to add is that type
+    // Them set it to not be taken and add it to the board
     if (pieceType == "blackPiece") {
         blackPieces[pieceIndex][3] = "on board";
         board[selectedPieceRow][selectedPieceColumn] = blackPieces[pieceIndex]
@@ -423,19 +444,28 @@ function addPieceToBoard() {
         whitePawns[pieceIndex][3] = "on board";
         board[selectedPieceRow][selectedPieceColumn] = whitePawns[pieceIndex]
     }
+
+    // Update the board with new pieces
     updateBoard();
+    updateButtons();
+
 }
 
 // Working
 function closeAddPieces() {
+
+    // Reset the add piece menu for next call
     $(`#blackPieces`).html(`<h3>&nbsp;&nbsp;Black Pieces</h3>`);
     $(`#blackPawns`).html(`<h3>&nbsp;&nbsp;Black Pawns</h3>`);
     $(`#whitePieces`).html(`<h3>&nbsp;&nbsp;White Pieces</h3>`);
     $(`#whitePawns`).html(`<h3>&nbsp;&nbsp;White Pawns</h3>`);
+
+    // Hide the add piece menu and set the board back to normal
     $(`#addPieceMenu`).css("display", "none");
     $(`#whiteBoard`).css("opacity", "1");
     $(`#blackBoard`).css("opacity", "1");
     $(`#buttons`).css("opacity", "1");
+
 }
 
 // To implement
