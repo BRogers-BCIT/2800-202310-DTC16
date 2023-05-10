@@ -1,0 +1,93 @@
+table,
+th,
+td {
+    aspect-ratio: 1/1;
+    border: solid black;
+    border-width: 1vh 1vh 1vh 1vh;
+    border-collapse: collapse;
+}
+
+table {
+    float: left;
+    max-height: 80vh;
+    max-width: 80vh;
+    margin-left: calc((100vw - 80vh) / 8);
+    margin-top: 5vh;
+}
+
+th,
+td {
+    height: 10%;
+    width: 10%;
+    padding: 0px;
+    background-color: tan;
+}
+
+button {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+}
+
+img {
+    width: 80%;
+    height: 80%;
+}
+
+.reset,
+.delete,
+.add,
+.move {
+    float: right;
+    aspect-ratio: 1/1;
+    float: left;
+    width: 15vw;
+    margin-left: 5vw;
+    margin-top: 10vh;
+    background-color: tan;
+    border: 3px solid brown;
+    border-radius: 2px;
+}
+
+.close {
+    width: 60%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-left: 20%;
+    background-color: gray;
+    border: 3px solid brown;
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+#addPieceMenu {
+    display: none;
+    position: absolute;
+    width: 50vw;
+    margin-left: 25vw;
+    margin-right: 25vw;
+    margin-top: 5vh;
+    overflow-y: scroll;
+    background-color: tan;
+}
+
+.takenPiece {
+    width: 20%;
+    height: 20%;
+    margin-left: 5%;
+    margin-bottom: 10px;
+}
+
+
+#title {
+    text-align: center;
+}
+
+.ds {
+    background-color: brown;
+}
+
+#blackBoard {
+    display: none;
+}
