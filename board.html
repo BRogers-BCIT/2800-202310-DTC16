@@ -35,6 +35,8 @@
         </div>
     </div>
 
+
+
     <!-- Board form white position view -->
     <div id="whiteBoard">
         <table>
@@ -243,6 +245,65 @@
                 <td id="h8" class="ds"></td>
             </tr>
         </table>
+    </div>
+
+    <!-- User selection buttons-->
+    <div id="buttons">
+        <button class="move" id="move"><img src="img/move.png" alt="move piece"></button>
+        <button class="delete" id="delete"><img src="img/delete.png" alt="delete piece"></button>
+        <button class="add" id="add"><img src="img/add.png" alt="add piece"></button>
+        <button class="reset" id="reset"><img src="img/reset.png" alt="reset board"></button>
+    </div>
+
+
+    <!-- Population div for add piece menu -->
+    <div id="addPieceMenu">
+        <h3 id="title">Add Pieces</h3>
+        <div id="blackPieces">
+            <h3>Black Pieces</h3>
+        </div>
+        <br>
+        <div id="blackPawns">
+            <h3>Black Pawns</h3>
+        </div>
+        <br>
+        <div id="whitePieces">
+            <h3>White Pieces</h3>
+        </div>
+        <br>
+        <div id="whitePawns">
+            <h3>White Pawns</h3>
+        </div>
+        <br>
+        <button class="close">Close</button>
+        <br>
+    </div>
+
+
+    <!-- Population div for analyze board menu -->
+    <div id="fenInputs">
+        <div id="castles">
+            <div id="whiteCastles">
+                <h3>White</h3>
+                <input type="checkbox" id="whiteKings" class="castles"> <label for="whiteKings">(O-O)</label>
+                <input type="checkbox" id="whiteQueens" class="castles"> <label for="whiteQueens">(O-O-O)
+                </label>
+            </div>
+            <div id="blackCastles">
+                <h3>Black</h3>
+                <input type="checkbox" id="blackKings" class="castles"> <label for="blackKings">(O-O)</label>
+                <input type="checkbox" id="blackQueens" class="castles"> <label for="blackQueens">(O-O-O)
+                </label>
+            </div>
+        </div>
+        <br>
+        <!-- Div to have user set current moving color-->
+        <div id="movingColor">
+            <div id="currentColor">
+                <h3>Moving: White</h3>
+            </div>
+            <button class="swapColor" id="swapColor">Swap Moving Color</button>
+        </div>
     </div>
 
 </body>
