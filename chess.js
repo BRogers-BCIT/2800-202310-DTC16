@@ -291,7 +291,6 @@ function movePieceSelect() {
 
         // Wait for user to select a square and records its values as the selected square and piece
         moving = true;
-
     }
 }
 
@@ -356,7 +355,7 @@ function openAddPieces() {
         var takenBlackPieces = 8;
         for (var blackPiece = 0; blackPiece < 8; blackPiece++) {
             if (blackPieces[blackPiece][3] == "taken") {
-                $(`#blackPieces`).append(`<button class="takenPiece"><img src="img/${blackPieces[blackPiece][1]}" class="piece" id="blackPiece${blackPiece}"></button>`);
+                $(`#blackPieces`).append(`<button class="blackPiece" id="${blackPiece}"><img src="img/${blackPieces[blackPiece][1]}" class="piece" id="${blackPiece}"></button>`);
             } else {
                 takenBlackPieces -= 1;
             }
@@ -368,7 +367,7 @@ function openAddPieces() {
         var takenWhitePieces = 8;
         for (var whitePiece = 0; whitePiece < 8; whitePiece++) {
             if (whitePieces[whitePiece][3] == "taken") {
-                $(`#whitePieces`).append(`<button class="takenPiece"><img src="img/${whitePieces[whitePiece][1]}" class="piece" id="whitePiece${whitePiece}"></button>`);
+                $(`#whitePieces`).append(`<button class="whitePiece" id="${whitePiece}"><img src="img/${whitePieces[whitePiece][1]}" class="piece" id="${whitePiece}"></button>`);
             } else {
                 takenWhitePieces -= 1;
             }
@@ -380,7 +379,7 @@ function openAddPieces() {
         var takenBlackPawns = 8;
         for (var blackPawn = 0; blackPawn < 8; blackPawn++) {
             if (blackPawns[blackPawn][3] == "taken") {
-                $(`#blackPawns`).append(`<button class="takenPiece"><img src="img/${blackPawns[blackPawn][1]}" class="piece" id="blackPawn${blackPawn}"></button>`);
+                $(`#blackPawns`).append(`<button class="blackPawn" id="${blackPawn}"><img src="img/${blackPawns[blackPawn][1]}" class="piece" id="${blackPawn}"></button>`);
             } else {
                 takenBlackPawns -= 1;
             }
@@ -392,7 +391,7 @@ function openAddPieces() {
         var takenWhitePawns = 8;
         for (var whitePawn = 0; whitePawn < 8; whitePawn++) {
             if (whitePawns[whitePawn][3] == "taken") {
-                $(`#whitePawns`).append(`<button class="takenPiece"><img src="img/${whitePawns[whitePawn][1]}" class="piece" id="whitePawn${whitePawn}"></button>`);
+                $(`#whitePawns`).append(`<button class="whitePawn" id="${whitePawn}"><img src="img/${whitePawns[whitePawn][1]}" class="piece" id="${whitePawn}"></button>`);
             } else {
                 takenWhitePawns -= 1;
             }
@@ -403,11 +402,28 @@ function openAddPieces() {
     }
 };
 
-// To implement
+// Working
 function addPieceToBoard() {
-    if (selectedSquare != null){
-        
+    var pieceType = jQuery(this).attr('class');
+    var pieceIndex = jQuery(this).attr('id');
+    console.log(pieceType, pieceIndex)
+    if (selectedPiece == true) {
+        deletePiece();
     }
+    if (pieceType == "blackPiece") {
+        blackPieces[pieceIndex][3] = "on board";
+        board[selectedPieceRow][selectedPieceColumn] = blackPieces[pieceIndex]
+    } else if (pieceType == "whitePiece") {
+        whitePieces[pieceIndex][3] = "on board";
+        board[selectedPieceRow][selectedPieceColumn] = whitePieces[pieceIndex]
+    } else if (pieceType == "blackPawn") {
+        blackPawns[pieceIndex][3] = "on board";
+        board[selectedPieceRow][selectedPieceColumn] = blackPawns[pieceIndex]
+    } else if (pieceType == "whitePawn") {
+        whitePawns[pieceIndex][3] = "on board";
+        board[selectedPieceRow][selectedPieceColumn] = whitePawns[pieceIndex]
+    }
+    updateBoard();
 }
 
 // Working
@@ -441,6 +457,10 @@ setup = function () {
     $("body").on("click", ".move", movePieceSelect);
     $("body").on("click", ".clear", clearBoard);
     $("body").on("click", ".close", closeAddPieces);
-    $("body").on("click", ".removed", addPieceToBoard);
+
+    $("body").on("click", ".blackPiece", addPieceToBoard);
+    $("body").on("click", ".blackPawn", addPieceToBoard);
+    $("body").on("click", ".whitePiece", addPieceToBoard);
+    $("body").on("click", ".whitePawn", addPieceToBoard);
 }
 $(document).ready(setup)
