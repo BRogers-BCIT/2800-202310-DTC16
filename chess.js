@@ -33,7 +33,7 @@ function resetBoard() {
     ["bpawn.png", "null", "e7", "pawn", "on board"], ["bpawn.png", "null", "f7", "pawn", "on board"],
     ["bpawn.png", "null", "g7", "pawn", "on board"], ["bpawn.png", "null", "h7", "pawn", "on board"],];
 
-    var whitePawns = [["wpawn.png", "null", "a2", "null", "on board"], ["wpawn.png", "null", "b2", "null", "on board"],
+    var whitePawns = [["wpawn.png", "null", "a2", "pawn", "on board"], ["wpawn.png", "null", "b2", "pawn", "on board"],
     ["wpawn.png", "null", "c2", "pawn", "on board"], ["wpawn.png", "null", "d2", "pawn", "on board"],
     ["wpawn.png", "null", "e2", "pawn", "on board"], ["wpawn.png", "null", "f2", "pawn", "on board"],
     ["wpawn.png", "null", "g2", "pawn", "on board"], ["wpawn.png", "null", "h2", "pawn", "on board"]];
@@ -171,9 +171,52 @@ function addPieces() {
 };
 
 // Work in Progress
-function exportToFEN() {
-    let workingBoard = new Chessboard();
-    console.log(workingBoard);
+function exportToJSStorage() {
+
+    // Initialize a JS Chessboard
+    let boardJS = new Chessboard();
+    
+    // For each row in the HTML board
+    $.each(board, function (row, value) {
+        
+        // Assigns a number matching that of an actual chessboard
+        let boardNumber = row;
+        
+        // For each column on the board
+        $.each(value, function (column, value) {
+            
+            // Assigns a letter matching that of an actual chessboard
+            let boardLetter = boardColumns[column];
+        
+            // If the current square has a piece on it
+            // (If the square's array has a third entry)
+            if (value.length > 3) {
+                
+                // Gets the name of the piece
+                let pieceName = value[3];
+        
+                // Gets a corresponding Piece object from the JS Chessboard
+                let pieceCode = boardJS.getPieceFromCodename(pieceName);
+        
+                // It's currently empty at the moment, so add all of the important info
+                pieceCode.setLetter(boardLetter);
+                pieceCode.setNumber(boardNumber);
+
+                // Set the color of the piece
+                if (value[0].charAt(0) === 'w') {
+                    pieceCode.setColor("white");
+                } else {
+                    pieceCode.setColor("black");
+                }
+        
+                // Add the piece to the JS Chessboard
+                boardJS.addPiece(pieceCode);
+            }
+        }); 
+    });
+
+    // Print the final product
+    console.log(boardJS);
 }
 
 // To update as needed
@@ -187,7 +230,7 @@ setup = function () {
     $("body").on("click", ".reset", resetBoard);
     $("body").on("click", ".delete", deletePieces);
     $("body").on("click", ".add", addPieces);
-    $("body").on("click", ".export", exportToFEN);
+    $(`.exportToFEN`).click(exportToJSStorage);
 }
 $(document).ready(setup)
 
