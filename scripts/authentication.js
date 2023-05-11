@@ -1,4 +1,4 @@
-var ui = new firebaseui.auth.AuthUI( firebase.auth() );
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 var uiConfig = {
   callbacks: {
@@ -16,6 +16,7 @@ var uiConfig = {
       //------------------------------------------------------------------------------------------
       var user = authResult.user; // get the user object from the Firebase authentication database
       if (authResult.additionalUserInfo.isNewUser) {
+        console.log(user)
         //if new user
         db.collection("users")
           .doc(user.uid)
@@ -23,8 +24,7 @@ var uiConfig = {
             //write to firestore. We are using the UID for the ID in users collection
             name: user.displayName, //"users" collection
             email: user.email, //with authenticated user's ID (user.uid)
-            password: "XXXXXX",
-            rating: "XXXXXX",
+            rating: "0000",
           })
           .then(function () {
             console.log("New user added to firestore");
@@ -34,14 +34,14 @@ var uiConfig = {
             console.log("Error adding new user: " + error);
           });
       } else {
-          return true;
+        return true;
       }
       return false;
-  },
+    },
     uiShown: function () {
       // The widget is rendered.
       // Hide the loader.
-      document.getElementById( 'loader' ).style.display = 'none';
+      document.getElementById('loader').style.display = 'none';
     }
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
@@ -60,4 +60,4 @@ var uiConfig = {
   privacyPolicyUrl: '<your-privacy-policy-url>'
 };
 
-ui.start( '#firebaseui-auth-container', uiConfig );
+ui.start('#firebaseui-auth-container', uiConfig);

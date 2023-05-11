@@ -48,22 +48,29 @@
       <form>
         <fieldset class="mb-3" id="personalInfoFields" disabled>
           <div class="form-group">
-            <label>Name</label>
-            <input type="text" id="nameInput" class="form-control" placeholder="Enter" />
+            <label>Name or ID</label>
+            <input type="text" id="nameInput" class="form-control" placeholder="Name or ID" />
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="text" id="emailInput" class="form-control" placeholder="" />
+            <input type="text" id="emailInput" class="form-control" placeholder="example@mail.com" />
           </div>
           <div class="form-group">
-            <label>Password</label>
-            <input type="password" id="passwordInput" class="form-control" placeholder="" />
-          </div>
-          <div class="form-group">
-            <label>Keyword</label>
-            <input type="text" id="keywordInput" class="form-control" placeholder="" />
+            <label>Rating</label>
+            <input type="text" id="ratingInput" class="form-control" placeholder="" />
           </div>
         </fieldset>
+        <div class="d-flex justify-content-center mt-5">
+          <button type="button" class="btn btn-secondary" onclick="sendPasswordReset()">
+            Reset Password
+          </button>
+          <br>
+        </div>
+        <div class="d-flex justify-content-center mt-5">
+          <div id="resetSent">
+            <p id="resetSentText"></p>
+          </div>
+        </div>
         <div class="d-flex justify-content-end mt-5">
           <button type="button" class="btn btn-secondary" onclick="editUserInfo()">
             Edit
@@ -75,12 +82,6 @@
         </div>
       </form>
     </div>
-
-    <div class="container">
-      <h1>Something Relevant Here</h1>
-    </div>
-
-
   </main>
 
   <nav id="footerPlaceholder"></nav>
