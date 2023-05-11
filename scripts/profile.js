@@ -7,6 +7,7 @@ function populateUserInfo() {
 
             //go to the correct user document by referencing to the user uid
             currentUser = db.collection("users").doc(user.uid)
+
             //get the document for current user.
             currentUser.get()
                 .then(userDoc => {
@@ -33,36 +34,30 @@ function populateUserInfo() {
     });
 }
 
-//call the function to run it 
-populateUserInfo();
-
 function editUserInfo() {
     //Enable the form fields
     document.getElementById('personalInfoFields').disabled = false;
 }
 
 function saveUserInfo() {
-    // console.log("inside saveUserInfo")
-    //enter code here
 
     //a) get user entered values
     var userName = document.getElementById("nameInput").value;
     var userEmail = document.getElementById("emailInput").value;
-    var userKeyword = document.getElementById("keywordInput").value;
+    var userRating = document.getElementById("ratingInput").value;
 
-
-    //b) update user's document in Firestore
+    // b) update user's document in Firestore
     currentUser.update({
         name: userName,
         email: userEmail,
-        keyword: userKeyword,
+        rating: userRating,
     })
         .then(() => {
             console.log("Document successfully updated!");
         })
-
-    //c) disable edit 
-    document.getElementById('personalInfoFields').disabled = true;
+        .catch((error) => {
+            console.error("Error updating document: ", error);
+        });
 }
 
 function sendPasswordReset() {
@@ -77,3 +72,10 @@ function sendPasswordReset() {
         $(`#resetSentText`).html(`Error sending email to ${emailAddress}`);
     });
 }
+
+setup = function () {
+
+    //call the function to run it 
+    populateUserInfo();
+}
+$(document).ready(setup)
