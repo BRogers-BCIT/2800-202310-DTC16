@@ -371,13 +371,9 @@ function deletePiece() {
         console.log("Cannot take king")
     }
 
-    // Reset the selected piece
-    resetVariables();
-
     // Update the board
     updateBoard();
     updateButtons();
-
 };
 
 
@@ -508,7 +504,6 @@ function closeAddPieces() {
 }
 
 
-
 // To implement (Analyze)
 function openAnalyzeMenu() {
     // Set the analyze board menu to visible and the board to half transparency
@@ -536,8 +531,6 @@ function closeAnalyzeMenu() {
 }
 
 
-
-
 // To implement (Save)
 function openSaveMenu() {
     // Set the save board menu to visible and the board to half transparency
@@ -555,7 +548,6 @@ function saveBoard() {
 // To implement (Save)
 function closeSaveMenu() {
 }
-
 
 
 // To update as needed
