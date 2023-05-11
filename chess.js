@@ -7,7 +7,16 @@ const nonePiece = ["empty.png", "notPiece"];
 // Create board variable
 var board;
 
-//
+// FEN variable
+var FEN;
+var currentColor = "w";
+var currentColorFull = "White";
+var castleWhiteKings = "K";
+var castleWhiteQueens = "Q";
+var castleBlackKings = "k";
+var castleBlackQueens = "q";
+
+// Create piece variables
 var blackPieces;
 var whitePieces;
 var blackPawns;
@@ -32,8 +41,6 @@ var deletedPieces = 0;
 // Tracks if the user is moving or selecting a piece (Move / Select)
 var moving = false;
 
-// Stores the FEN of the board
-var currentFEN;
 
 
 // Working
@@ -74,7 +81,7 @@ function updateBoard() {
 function updateButtons() {
 
     //Promotion
-    if (selectedPiece == true && board[selectedPieceRow][selectedPieceColumn][2] == "pawn") {
+    if (selectedPiece == true && (board[selectedPieceRow][selectedPieceColumn][2] == "p" || board[selectedPieceRow][selectedPieceColumn][2] == "P")) {
         // Set the promotion button to full transparency to indicate promotion is possible
         $(`.promote`).css("opacity", "1");
     } else {
@@ -84,7 +91,7 @@ function updateButtons() {
 
     // Selected a piece
     if (selectedPiece == true) {
-        if (board[selectedPieceRow][selectedPieceColumn][2] != "king") {
+        if (board[selectedPieceRow][selectedPieceColumn][2] != "k" && board[selectedPieceRow][selectedPieceColumn][2] != "K") {
             // Set the add button to full transparency to indicate moving from that spot is possible
             $(`.add`).css("opacity", "1");
         } else {
@@ -164,25 +171,25 @@ function resetBoard() {
     closeAddPieces();
 
     // Set all pieces to original states
-    whitePieces = [["white", "wrook.png", "rook", "on board"], ["white", "wknight.png", "knight", "on board"],
-    ["white", "wbishop.png", "bishop", "on board"], ["white", "wqueen.png", "queen", "on board"],
-    ["white", "wking.png", "king", "on board"], ["white", "wbishop.png", "bishop", "king"],
-    ["white", "wknight.png", "knight", "on board"], ["white", "wrook.png", "rook", "on board"]];
+    whitePieces = [["white", "wrook.png", "R", "on board"], ["white", "wknight.png", "N", "on board"],
+    ["white", "wbishop.png", "B", "on board"], ["white", "wqueen.png", "Q", "on board"],
+    ["white", "wking.png", "K", "on board"], ["white", "wbishop.png", "B", "on board"],
+    ["white", "wknight.png", "N", "on board"], ["white", "wrook.png", "R", "on board"]];
 
-    blackPieces = [["black", "brook.png", "rook", "on board"], ["black", "bknight.png", "knight", "on board"],
-    ["black", "bbishop.png", "bishop", "on board"], ["black", "bqueen.png", "queen", "on board"],
-    ["black", "bking.png", "king", "king"], ["black", "bbishop.png", "bishop", "on board"],
-    ["black", "bknight.png", "knight", "on board"], ["black", "brook.png", "rook", "on board"]];
+    blackPieces = [["black", "brook.png", "r", "on board"], ["black", "bknight.png", "n", "on board"],
+    ["black", "bbishop.png", "b", "on board"], ["black", "bqueen.png", "q", "on board"],
+    ["black", "bking.png", "k", "king"], ["black", "bbishop.png", "b", "on board"],
+    ["black", "bknight.png", "n", "on board"], ["black", "brook.png", "r", "on board"]];
 
-    blackPawns = [["black", "bpawn.png", "pawn", "on board"], ["black", "bpawn.png", "pawn", "on board"],
-    ["black", "bpawn.png", "pawn", "on board"], ["black", "bpawn.png", "pawn", "on board"],
-    ["black", "bpawn.png", "pawn", "on board"], ["black", "bpawn.png", "pawn", "on board"],
-    ["black", "bpawn.png", "pawn", "on board"], ["black", "bpawn.png", "pawn", "on board"]];
+    blackPawns = [["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+    ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+    ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+    ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"]];
 
-    whitePawns = [["white", "wpawn.png", "pawn", "on board"], ["white", "wpawn.png", "pawn", "on board"],
-    ["white", "wpawn.png", "pawn", "on board"], ["white", "wpawn.png", "pawn", "on board"],
-    ["white", "wpawn.png", "pawn", "on board"], ["white", "wpawn.png", "pawn", "on board"],
-    ["white", "wpawn.png", "pawn", "on board"], ["white", "wpawn.png", "pawn", "on board"]];
+    whitePawns = [["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+    ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+    ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+    ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"]];
 
     // Set the chessboard to a starting position
     board = {
@@ -292,9 +299,8 @@ function selectedSquareCheck() {
 // Working
 function promotePawn() {
     var type = jQuery(this).attr('id');
-    if (selectedPiece == true && board[selectedPieceRow][selectedPieceColumn][2] == "pawn") {
+    if (selectedPiece == true && (board[selectedPieceRow][selectedPieceColumn][2] == "p" || board[selectedPieceRow][selectedPieceColumn][2] == "P")) {
         if (board[selectedPieceRow][selectedPieceColumn][0] == "black") {
-            console.log("black")
             board[selectedPieceRow][selectedPieceColumn][1] = `bp${type}.png`;
         }
         if (board[selectedPieceRow][selectedPieceColumn][0] == "white") {
@@ -338,7 +344,7 @@ function movePieceMove() {
         selectedSquare = movePieceSquare;
         selectedPieceRow = movePieceRow;
         selectedPieceColumn = movePieceColumn;
-        deletePiece();
+        deletePieceMove();
         resetSquare();
 
         // Unselect all squares
@@ -366,10 +372,18 @@ function deletePiece() {
 
         // Add one to the deleted pieces counter
         deletedPieces += 1;
-        console.log(deletedPieces)
     } else {
         console.log("Cannot take king")
     }
+
+    // Update the board
+    updateBoard();
+    updateButtons();
+};
+
+// In progress
+function deletePieceMove() {
+    board[selectedPieceRow][selectedPieceColumn] = ['', 'empty.png', 'notPiece'];
 
     // Update the board
     updateBoard();
@@ -524,6 +538,54 @@ function updatedAvailableCastles() {
 
 // To implement (Analyze)
 function boardToFEN() {
+    // Record the board state
+    // Start with empty string and empty square count
+    let boardToFEN = "";
+    var emptySquares = 0;
+
+    // For each row reset the number of empty squares
+    for (var row = 8; row >= 1; row--) {
+        emptySquares = 0;
+        // For each column in that row
+        for (var column = 0; column < 8; column++) {
+            // Record the piece type
+            let piece = board[row][column][2];
+            // For each column check if the square is empty
+            // If it is we add 1 to the empty square count
+            if (piece == 'notPiece') {
+                emptySquares += 1;
+            } else {
+                // If the square is not empty then we add the number of empty squares
+                // then record the piece
+                if (emptySquares > 0) {
+                    boardToFEN += emptySquares;
+                    emptySquares = 0;
+                }
+                // Only record the number of empty squares if there are any
+                boardToFEN += piece;
+            }
+        }
+        // If there are any empty squares left then record them
+        if (emptySquares > 0) {
+            boardToFEN += emptySquares;
+        }
+        if (row > 1) {
+            boardToFEN += "/";
+        }
+    }
+
+    // Record current moving color
+    boardToFEN += ` ${currentColor}`;
+
+    // Record castling availability
+    boardToFEN += ` ${castleWhiteKings}${castleWhiteQueens}${castleBlackKings}${castleBlackQueens}`;
+
+    // Record en passant squares, full move number, and half move clock (Static set to - 0 1)
+    boardToFEN += " - 0 1";
+
+    // Set the global FEN to the fen just created
+    FEN = boardToFEN
+    console.log(FEN);
 }
 
 // To implement (Analyze)
