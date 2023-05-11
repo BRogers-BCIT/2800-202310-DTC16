@@ -10,6 +10,18 @@ class ChessPiece {
         this.fenSymbol = fenSymbol;
     }
 
+    setLetter(letter) {
+        this.letter = letter;
+    }
+
+    setNumber(number) {
+        this.number = number;
+    }
+
+    setColor(color) {
+        this.color = color;
+    }
+
     getFenLetter() {
         return this.color === "white" ? this.fenSymbol.toUpperCase() : this.fenSymbol.toLowerCase();
     }
@@ -51,6 +63,16 @@ class King extends ChessPiece {
     }
 }
 
+/* Chess Piece Codenames */
+const pieceCodenames = {
+    "pawn": function () { return new Pawn(...arguments) },
+    "rook": function () { return new Rook(...arguments) },
+    "knight": function () { return new Knight(...arguments) },
+    "bishop": function () { return new Bishop(...arguments) },
+    "queen": function () { return new Queen(...arguments) },
+    "king": function () { return new King(...arguments) }
+};
+
 /* Chessboard Class */
 
 class Chessboard {
@@ -62,7 +84,6 @@ class Chessboard {
                 this.board[`${letter}${j + 1}`] = null;
             }
         }
-        console.log(this.board);
     }
 
     addPiece(piece) {
@@ -71,6 +92,14 @@ class Chessboard {
 
     clearTile(letter, number) {
         this.board[`${letter}${number}`] = null;
+    }
+
+    getPieceFromCodename(pieceName) {
+        if (pieceName in pieceCodenames) {
+            let result = pieceCodenames[pieceName]();
+            return result;
+        }
+        return null;
     }
 
     exportToFEN(activeColor) {
