@@ -1,0 +1,40 @@
+table {
+    max-width: 100%;
+    max-height: none;
+    margin: 0;
+}
+
+#mainControls {
+    margin: 1em auto;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.boardDisplay {
+    max-width: 60%;
+    margin: auto;
+}
+
+.promote {
+    width: 70%;
+    margin: 0.2em auto;
+}
+
+#promote {
+    flex-direction: column;
+    min-width: auto;
+    max-width: 30%;
+}
+
+.modButton {
+    width: 59%;
+    margin: 0.2em 0;
+}
+
+#buttons {
+    flex-direction: column;
+    min-width: auto;
+    max-width: 24%;
+    margin-left: 0;
+}
