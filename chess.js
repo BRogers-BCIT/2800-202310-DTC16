@@ -390,7 +390,6 @@ function deletePieceMove() {
     updateButtons();
 };
 
-
 // Working
 function openAddPieces() {
 
@@ -518,7 +517,32 @@ function closeAddPieces() {
 }
 
 
-// To implement (Analyze)
+
+
+// To implement (Save)
+function openSaveMenu() {
+    // Set the save board menu to visible and the board to half transparency
+    $(`#saveBoardMenu`).css("display", "block");
+    $(`#whiteBoard`).css("opacity", "0.5");
+    $(`#blackBoard`).css("opacity", "0.5");
+    $(`#buttons`).css("opacity", "0.5");
+    $(`#featureLinks`).css("opacity", "0.5");
+}
+
+// To implement (Save)
+function saveBoard() {
+}
+
+// To implement (Save)
+function closeSaveMenu() {
+}
+
+
+
+
+
+
+// Working
 function openAnalyzeMenu() {
     // Set the analyze board menu to visible and the board to half transparency
     $(`#analyzeBoardMenu`).css("display", "block");
@@ -528,16 +552,48 @@ function openAnalyzeMenu() {
     $(`#featureLinks`).css("opacity", "0.5");
 }
 
-// To implement (Analyze)
+// Working
 function swapPlayingColor() {
+    if (currentColor == "b") {
+        currentColor = "w";
+        currentColorFull = "White";
+    } else {
+        currentColor = "b";
+        currentColorFull = "Black";
+    }
+    $(`#currentColorText`).html(`&nbsp;&nbsp; Moving: ${currentColorFull}`);
 }
 
-// To implement (Analyze)
+// Working
 function updatedAvailableCastles() {
+    if ($(`#whiteKings`).prop("checked") == true) {
+        castleWhiteKings = "K"
+    } else {
+        castleWhiteKings = ""
+    }
+    if ($(`#whiteQueens`).prop("checked") == true) {
+        castleWhiteQueens = "Q"
+    } else {
+        castleWhiteQueens = ""
+    }
+    if ($(`#blackKings`).prop("checked") == true) {
+        castleBlackKings = "k"
+    } else {
+        castleBlackKings = ""
+    }
+    if ($(`#blackQueens`).prop("checked") == true) {
+        castleBlackQueens = "q"
+    } else {
+        castleBlackQueens = ""
+    }
+    console.log(castleWhiteKings, castleWhiteQueens, castleBlackKings, castleBlackQueens);
 }
 
-// To implement (Analyze)
+// Working
 function boardToFEN() {
+    // Check the castle avalibility
+    updatedAvailableCastles();
+
     // Record the board state
     // Start with empty string and empty square count
     let boardToFEN = "";
@@ -586,29 +642,21 @@ function boardToFEN() {
     // Set the global FEN to the fen just created
     FEN = boardToFEN
     console.log(FEN);
+    SaveBoardAndFENForAnalysis();
 }
 
-// To implement (Analyze)
+// To implement (Analysis)
+function SaveBoardAndFENForAnalysis() {
+}
+
+// Working
 function closeAnalyzeMenu() {
-}
-
-
-// To implement (Save)
-function openSaveMenu() {
-    // Set the save board menu to visible and the board to half transparency
-    $(`#saveBoardMenu`).css("display", "block");
-    $(`#whiteBoard`).css("opacity", "0.5");
-    $(`#blackBoard`).css("opacity", "0.5");
-    $(`#buttons`).css("opacity", "0.5");
-    $(`#featureLinks`).css("opacity", "0.5");
-}
-
-// To implement (Save)
-function saveBoard() {
-}
-
-// To implement (Save)
-function closeSaveMenu() {
+    // Set the analyze board menu to visible and the board to half transparency
+    $(`#analyzeBoardMenu`).css("display", "none");
+    $(`#whiteBoard`).css("opacity", "1");
+    $(`#blackBoard`).css("opacity", "1");
+    $(`#buttons`).css("opacity", "1");
+    $(`#featureLinks`).css("opacity", "1");
 }
 
 
