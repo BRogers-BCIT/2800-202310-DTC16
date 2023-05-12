@@ -527,7 +527,7 @@ function closeAddPieces() {
     $(`#buttons`).css("opacity", "1");
 
     // Set open menu to false
-    openMenu = false;
+    menuOpen = false;
 
 }
 
@@ -563,7 +563,7 @@ function closeSaveMenu() {
     $(`#featureLinks`).css("opacity", "1");
 
     // Set open menu to false
-    openMenu = false;
+    menuOpen = false;
 }
 
 
@@ -616,7 +616,6 @@ function updatedAvailableCastles() {
     } else {
         castleBlackQueens = ""
     }
-    console.log(castleWhiteKings, castleWhiteQueens, castleBlackKings, castleBlackQueens);
 }
 
 // Working
@@ -663,8 +662,13 @@ function boardToFEN() {
     // Record current moving color
     boardToFEN += ` ${currentColor}`;
 
+    // Put a space between color and castles if there are any
+    if (castleWhiteKings != "" || castleWhiteQueens != "" || castleBlackKings != "" || castleBlackQueens != "") {
+        boardToFEN += " ";
+    }
+
     // Record castling availability
-    boardToFEN += ` ${castleWhiteKings}${castleWhiteQueens}${castleBlackKings}${castleBlackQueens}`;
+    boardToFEN += `${castleWhiteKings}${castleWhiteQueens}${castleBlackKings}${castleBlackQueens}`;
 
     // Record en passant squares, full move number, and half move clock (Static set to - 0 1)
     boardToFEN += " - 0 1";
@@ -691,7 +695,7 @@ function closeAnalyzeMenu() {
     $(`#featureLinks`).css("opacity", "1");
 
     // Set open menu to false
-    openMenu = false;
+    menuOpen = false;
 }
 
 
