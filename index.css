@@ -170,7 +170,8 @@ img {
     padding-top: 5%;
     padding-bottom: 5%;
     margin-left: 20%;
-    background-color: var(--buttonBackground) border: 3px solid var(--buttonBorder);
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
     border-radius: 2px;
     margin-bottom: 15px;
 }
