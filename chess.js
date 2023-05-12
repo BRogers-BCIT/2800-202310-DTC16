@@ -51,7 +51,7 @@ function updateBoard() {
 
         if (row % 2 == 0) {
             // Populate even row with even square coloring
-            $(`#${row}`).html(`<th>  ${row} </th> 
+            $(`#${row}`).html(`
                 <td id="a${row}"> <button id="${row}0" class="square"> <img src="img/${board[row][0][1]}"> </button> </td> 
                 <td id="b${row}" class="ds"> <button id="${row}1" class="square"> <img src="img/${board[row][1][1]}"> </button> </td> 
                 <td id="c${row}"> <button id="${row}2" class="square"> <img src="img/${board[row][2][1]}"> </button> </td> 
@@ -63,7 +63,7 @@ function updateBoard() {
 
         } else {
             // Populate odd row with odd square coloring
-            $(`#${row}`).html(`<th>  ${row} </th> 
+            $(`#${row}`).html(`
                 <td id="a${row}" class="ds"> <button id="${row}0" class="square"> <img src="img/${board[row][0][1]}"> </button> </td> 
                 <td id="b${row}"> <button id="${row}1" class="square"> <img src="img/${board[row][1][1]}"> </button> </td> 
                 <td id="c${row}" class="ds"> <button id="${row}2" class="square"> <img src="img/${board[row][2][1]}"> </button> </td> 
@@ -224,9 +224,9 @@ function resetSquare() {
 
         // Reset color
         if (squareColor == 'ds') {
-            $(`#${selectedSquare}`).css("background-color", "brown");
+            $(`#${selectedSquare}`).css("background-color", "#329BFA");
         } else {
-            $(`#${selectedSquare}`).css("background-color", "tan");
+            $(`#${selectedSquare}`).css("background-color", "#C9E7FA");
         }
 
     }
@@ -264,7 +264,7 @@ function selectSquare() {
     selectedPieceColumn = column;
 
     // Set the selected square to gray
-    $(`#${selectedSquare}`).css("background-color", "gray");
+    $(`#${selectedSquare}`).css("background-color", "#280BE3");
 
     if (moving == false) {
         // If the player is not moving a piece then call piece selection
@@ -319,7 +319,7 @@ function movePieceSelect() {
     if (selectedPiece == true) {
 
         // Highlight the selected piece and record its values
-        $(`#${selectedSquare}`).css("background-color", "blue");
+        $(`#${selectedSquare}`).css("background-color", "#00BCFA");
         movePieceSquare = selectedSquare;
         movePieceRow = selectedPieceRow;
         movePieceColumn = selectedPieceColumn;
@@ -519,7 +519,7 @@ function closeAddPieces() {
 
 
 
-// To implement (Save)
+// Working
 function openSaveMenu() {
     // Set the save board menu to visible and the board to half transparency
     $(`#saveBoardMenu`).css("display", "block");
@@ -531,10 +531,17 @@ function openSaveMenu() {
 
 // To implement (Save)
 function saveBoard() {
+
 }
 
-// To implement (Save)
+// Working
 function closeSaveMenu() {
+    // Set the save board menu to not visible and the board to full transparency
+    $(`#saveBoardMenu`).css("display", "none");
+    $(`#whiteBoard`).css("opacity", "1");
+    $(`#blackBoard`).css("opacity", "1");
+    $(`#buttons`).css("opacity", "1");
+    $(`#featureLinks`).css("opacity", "1");
 }
 
 
@@ -642,11 +649,13 @@ function boardToFEN() {
     // Set the global FEN to the fen just created
     FEN = boardToFEN
     console.log(FEN);
-    SaveBoardAndFENForAnalysis();
 }
 
 // To implement (Analysis)
 function SaveBoardAndFENForAnalysis() {
+    boardToFEN();
+    // Save the board and FEN to the database
+    // Call the analysis page
 }
 
 // Working
@@ -697,7 +706,7 @@ setup = function () {
     $("body").on("click", ".analyzeBoard", openAnalyzeMenu);
     $("body").on("click", ".castles", updatedAvailableCastles);
     $("body").on("click", ".swapColor", swapPlayingColor);
-    $("body").on("click", ".goToAnalyze", boardToFEN);
+    $("body").on("click", ".goToAnalyze", SaveBoardAndFENForAnalysis);
     $("body").on("click", ".closeAnalyze", closeAnalyzeMenu);
 
     // Not Currently used
