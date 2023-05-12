@@ -141,8 +141,7 @@ img {
 
 }
 
-#title,
-#currentColor {
+#title {
     text-align: center;
 }
 
@@ -217,7 +216,7 @@ img {
     display: none;
     position: absolute;
     width: 90%;
-    height: 50%;
+    height: 55%;
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 5vh;
@@ -227,11 +226,10 @@ img {
 
 }
 
-.closeAnalyze,
-.goToAnalyze {
+.closeAnalyze {
     float: left;
     width: 40%;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 15px;
     margin-left: 5%;
     margin-right: 5%;
@@ -242,17 +240,48 @@ img {
     border-radius: 2px;
 }
 
-.castles {
+.goToAnalyze {
+    float: right;
+    width: 40%;
+    margin-top: 5%;
+    margin-bottom: 15px;
     margin-left: 5%;
-}
-
-#swapColorButton {
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-right: 5%;
     padding-top: 5%;
     padding-bottom: 5%;
     background-color: gray;
     border: 3px solid brown;
     border-radius: 2px;
+}
+
+#whiteKings,
+#blackKings {
+    margin-left: 20%;
+    margin-bottom: 2%;
+}
+
+#whiteQueens,
+#blackQueens {
+    margin-left: 20%;
+}
+
+#currentColorText {
+    float: left;
+}
+
+#swapColorButton {
+    float: right;
+    width: 40%;
+    margin-top: 10px;
+    margin-right: 12%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-color: gray;
+    border: 3px solid brown;
+    border-radius: 2px;
+    margin-bottom: 15.72px;
+}
+
+label {
+    margin-right: calc(75% - 150px);
 }
