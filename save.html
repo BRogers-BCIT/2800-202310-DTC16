@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- jQuery Import -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- Script call-->
+    <script src="./save.js"></script>
+    <!-- Widescreen CSS Import -->
+    <link rel="stylesheet" href="./save.css">
+
 </head>
+
 <body>
-    <!--Template file for saved boards page-->
+
+    <!-- Select Saved Board Menu Template -->
+    <div id="savedBoardMenu">
+        <h3 id="title">{$savedName}</h3>
+
+        <div id="boardDescription">
+            <h3 id="descriptionLabel">&nbsp;&nbsp;Board Description:</h3>
+            <textarea id="boardDescriptionText" placeholder="Board Description" disabled>{$savedDescription}</textarea>
+        </div>
+        <br>
+        <div id="endButtons">
+
+            <button class="savedBoardMenuButton" id="closeSaveMenuButton">Return to Saved Boards</button>
+
+            <button class="savedBoardMenuButton" id="openBoardMenuButton">Open Board in Editor</button>
+
+            <button class="savedBoardMenuButton" id="analyzeBoardMenuButton">Open Board in Analysis</button>
+
+        </div>
+    </div>
 </body>
+
 </html>
