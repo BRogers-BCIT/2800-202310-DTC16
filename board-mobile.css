@@ -1,15 +1,14 @@
-/* screens 450 px or less */
-@media screen and (max-width: 450px) {
-
-    /* Color Palate */
     :root {
         --lightSquare: #C9E7FA;
-        --buttonBackground: #C9E7FA;
-        --menuBackground: #C9E7FA;
         --darkSquare: #329BFA;
-        --buttonBorder: #329BFA;
         --selectSquare: #280BE3;
         --movePiece: #00BCFA;
+
+        --buttonBorder: #329BFA;
+        --buttonBackground: #C9E7FA;
+        --text-color: black;
+
+        --menuBackground: #C9E7FA;
     }
 
     body {
@@ -298,4 +297,3 @@
     label {
         margin-right: calc(75% - 150px);
     }
-}
