@@ -543,14 +543,26 @@ function createBoardFromFEN(fenString) {
     if (FENRegEx.test(fenString)) {
         console.log("Valid FEN");
         // Split the FEN string by spaces, grab the board, discard the rest
+        
         var fenSplit = fenString.split(" ");
         var fenBoard = fenSplit[0].split("/");  // Split the board into rows
+
         fenBoard.forEach(function (row, index) {  // For each row
-            for (let space = 0; space < row.length; space++) {  // For each space in the row
+
+            let columnIndex = 0;  // Create the index to actually use for placing pieces
+
+            for (let space = 0; space < row.length; ++space) {  // For each space in the row
+                
                 if (/^\d+$/.test(row[space])) {  // If the space is a number
-                    space += parseInt(row[space]) - 1;  // Skip all spaces marked by the number
+
+                    let spacesToSkip = parseInt(row[space]);  // Get the number of spaces to skip
+                    columnIndex += spacesToSkip;  // Skip all spaces marked by the number
+
                 } else {  // If the space is a piece
-                    console.log(`${index}-${space} | ${row[space]}`);  // Log the piece
+
+                    console.log(`${index}-${columnIndex} | ${row[space]}`);  // Log the piece
+                    columnIndex++; // Increment the space index
+
                     // Add the piece to the board
                     // TODO: Add the piece to the board
                 }
