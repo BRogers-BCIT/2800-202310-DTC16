@@ -1,4 +1,6 @@
 let eggStep = 0;
+const homePage = `../index.html`;
+const eggPage = `../egg.html`;
 
 function eggFeedback() {
     console.log(eggStep);
@@ -20,23 +22,24 @@ setup = function () {
 
     $("#firstStep").click(function () {
         eggStep = 1;
-        $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="#">.AI</a>`);
+        $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${homePage}">.AI</a>`);
         eggFeedback();
     });
-    $("#secondStep").click(function () {
+    $("#secondStep").click(function (event) {
         if (eggStep == 1) {
+            event.preventDefault();
             eggStep = 2;
-            $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="../egg.html">.AI</a>`);
+            $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${eggPage}">.AI</a>`);
         } else {
             eggStep = 0;
-            $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="#">.AI</a>`);
+            $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${homePage}">.AI</a>`);
         }
         eggFeedback();
     });
     $("#thirdStep").click(function () {
         if (eggStep != 2) {
             eggStep = 0;
-            $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="#">.AI</a>`);
+            $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${homePage}">.AI</a>`);
         }
         eggFeedback();
     });
