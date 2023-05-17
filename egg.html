@@ -6,10 +6,384 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #board {
+            aspect-ratio: 1/1;
+            margin: auto;
+            max-width: 50vw;
+            max-height: 50vh;
+            /* filter: contrast(1);
+            filter: saturate(1);
+            filter: invert(1);
+            filter: opacity(1);
+            filter: brightness(1); */
+        }
+
+        #logo1,
+        #logo2,
+        #logo3,
+        #logo4 {
+            position: absolute;
+            max-width: 25vw;
+            min-width: 25vw;
+            min-height: 25vh;
+            max-height: 25vh;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+        }
+
+        #logo1 {
+            animation-name: logo1;
+        }
+
+        #logo2 {
+            right: 0px;
+            animation-name: logo2;
+        }
+
+        #logo3 {
+            bottom: 0px;
+            right: 0px;
+            animation-name: logo3;
+        }
+
+        #logo4 {
+            bottom: 0px;
+            animation-name: logo4;
+        }
+
+        @keyframes logo1 {
+            0% {
+                filter: hue-rotate(0deg);
+                transform: translate(0, 0);
+            }
+
+            25% {
+                filter: hue-rotate(360deg);
+                transform: translate(75vw, 0);
+            }
+
+            50% {
+                filter: hue-rotate(0deg);
+                transform: translate(75vw, 75vh);
+            }
+
+            75% {
+                filter: hue-rotate(360deg);
+                transform: translate(0, 75vh);
+            }
+
+            100% {
+                filter: hue-rotate(0deg);
+                transform: translate(0, 0);
+            }
+        }
+
+        @keyframes logo2 {
+            0% {
+                opacity: 1;
+                filter: brightness(1);
+                transform: translate(0, 0);
+            }
+
+            25% {
+                filter: brightness(0.25);
+                opacity: 0.1;
+                transform: translate(0, 75vh);
+
+            }
+
+            50% {
+                opacity: 1;
+                filter: brightness(1);
+                transform: translate(-75vw, 75vh);
+            }
+
+            75% {
+                opacity: 0.1;
+                filter: brightness(0.25);
+                transform: translate(-75vw, 0);
+            }
+
+            100% {
+                opacity: 1;
+                filter: brightness(1);
+                transform: translate(0, 0);
+            }
+        }
+
+        @keyframes logo3 {
+            0% {
+
+                transform: translate(0, 0) scale(1, 1);
+            }
+
+            25% {
+
+                transform: translate(-75vw, 0) scale(0.5, 0.5);
+            }
+
+            50% {
+
+                transform: translate(-75vw, -75vh) scale(1, 1);
+            }
+
+            75% {
+
+                transform: translate(0, -75vh) scale(0.5, 0.5);
+            }
+
+            100% {
+
+                transform: translate(0, 0) scale(1, 1);
+            }
+        }
+
+        @keyframes logo4 {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(0, -75vh);
+            }
+
+            50% {
+                transform: translate(75vw, -75vh);
+            }
+
+            75% {
+                transform: translate(75vw, 0);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        @media screen and (max-width: 650px) {
+
+            #logo1,
+            #logo2,
+            #logo3,
+            #logo4 {
+                padding-top: 10vh;
+                padding-bottom: 10vh;
+                max-width: 25vw;
+                min-width: 25vw;
+                min-height: calc(40vh - (50vw / 2));
+                max-height: calc(40vh - (50vw / 2));
+            }
+
+            @keyframes logo1 {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                25% {
+                    transform: translate(75vw, 0);
+                }
+
+                50% {
+                    transform: translate(75vw, calc(80vh - (40vh - (50vw / 2))));
+                }
+
+                75% {
+                    transform: translate(0, calc(80vh - (40vh - (50vw / 2))));
+                }
+
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+
+            @keyframes logo2 {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                25% {
+                    transform: translate(0, calc(80vh - (40vh - (50vw / 2))));
+
+                }
+
+                50% {
+                    transform: translate(-75vw, calc(80vh - (40vh - (50vw / 2))));
+                }
+
+                75% {
+                    transform: translate(-75vw, 0);
+                }
+
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+
+            @keyframes logo3 {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                25% {
+                    transform: translate(-75vw, 0);
+                }
+
+                50% {
+                    transform: translate(-75vw, calc(-80vh + (40vh - (50vw / 2))));
+                }
+
+                75% {
+                    transform: translate(0, calc(-80vh + (40vh - (50vw / 2))));
+                }
+
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+
+            @keyframes logo4 {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                25% {
+                    transform: translate(0, calc(-80vh + (40vh - (50vw / 2))));
+                }
+
+                50% {
+                    transform: translate(75vw, calc(-80vh + (40vh - (50vw / 2))));
+                }
+
+                75% {
+                    transform: translate(75vw, 0);
+                }
+
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+
+            #logo1,
+            #logo2,
+            #logo3,
+            #logo4 {
+                padding-top: 10vh;
+                padding-bottom: 10vh;
+                max-width: 25vw;
+                min-width: 25vw;
+                min-height: calc(32vh - (50vw / 2));
+                max-height: calc(32vh - (50vw / 2));
+            }
+
+            @keyframes logo1 {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                25% {
+                    transform: translate(75vw, 0);
+                }
+
+                50% {
+                    transform: translate(75vw, calc(80vh - (32vh - (50vw / 2))));
+                }
+
+                75% {
+                    transform: translate(0, calc(80vh - (32vh - (50vw / 2))));
+                }
+
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+
+            @keyframes logo2 {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                25% {
+                    transform: translate(0, calc(80vh - (32vh - (50vw / 2))));
+
+                }
+
+                50% {
+                    transform: translate(-75vw, calc(80vh - (32vh - (50vw / 2))));
+                }
+
+                75% {
+                    transform: translate(-75vw, 0);
+                }
+
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+
+            @keyframes logo3 {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                25% {
+                    transform: translate(-75vw, 0);
+                }
+
+                50% {
+                    transform: translate(-75vw, calc(-80vh + (32vh - (50vw / 2))));
+                }
+
+                75% {
+                    transform: translate(0, calc(-80vh + (32vh - (50vw / 2))));
+                }
+
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+
+            @keyframes logo4 {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                25% {
+                    transform: translate(0, calc(-80vh + (32vh - (50vw / 2))));
+                }
+
+                50% {
+                    transform: translate(75vw, calc(-80vh + (32vh - (50vw / 2))));
+                }
+
+                75% {
+                    transform: translate(75vw, 0);
+                }
+
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Egg test</h1>
+    <img id="logo1" src="img/eggLogo.png" alt="">
+    <img id="logo2" src="img/eggLogo.png" alt="">
+    <img id="logo3" src="img/eggLogo.png" alt="">
+    <img id="logo4" src="img/eggLogo.png" alt="">
+    <img id="board" src="img/egg.png" alt="">
 </body>
 
 </html>
