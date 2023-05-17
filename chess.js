@@ -536,6 +536,9 @@ function closeAddPieces() {
 
 // In progress
 function createBoardFromFEN(fenString) {
+    // Must clear the board first
+    // TODO: Ask braden if clearPieces() is functional and work from there
+
     console.log(fenString);
     if (FENRegEx.test(fenString)) {
         console.log("Valid FEN");
@@ -548,6 +551,8 @@ function createBoardFromFEN(fenString) {
                     space += parseInt(row[space]) - 1;  // Skip all spaces marked by the number
                 } else {  // If the space is a piece
                     console.log(`${index}-${space} | ${row[space]}`);  // Log the piece
+                    // Add the piece to the board
+                    // TODO: Add the piece to the board
                 }
             }
         })
