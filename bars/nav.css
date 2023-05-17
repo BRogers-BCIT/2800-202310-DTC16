@@ -35,7 +35,7 @@
 }
 
 #chessMindLogo button a {
-    transition-property: background-color, color;
+    transition-property: text-shadow, color;
     transition-duration: 1s;
 }
 
