@@ -383,6 +383,7 @@ function deletePiece() {
         } else {
             console.log("Cannot take king")
         }
+        selectedPiece = null;
 
         // Update the board
         updateBoard();
@@ -680,9 +681,19 @@ function boardToFEN() {
 
 // To implement (Analysis)
 function SaveBoardAndFENForAnalysis() {
+    // Convert the board to FEN
     boardToFEN();
     // Save the board and FEN to the database
-    // Call the analysis page
+    const uUid = localStorage.getItem('userUid')
+    db.collection("users").doc(uUid).update({
+        currentFEN: FEN
+    }).then(function () {
+        // Call the analysis page
+        window.location.href = "analysis.html";
+    }).catch(function (error) {
+        // Catch any errors
+        console.error("Error writing document: ", error);
+    });
 }
 
 // Working
