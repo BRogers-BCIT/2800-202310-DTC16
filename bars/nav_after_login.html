@@ -9,6 +9,21 @@
     <script src="./eggLink.js"></script>
 
     <link rel="stylesheet" href="./bars/nav.css">
+
+    <script>
+        function redirectButton() {
+          // Check if the user is currently logged in
+          firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is logged in, redirect to a specific page
+              window.location.href = 'board.html';
+            } else {
+              // User is not logged in, redirect to a different page
+              window.location.href = 'index.html';
+            }
+          });
+        }
+      </script>
 </head>
 
 <body>
@@ -16,10 +31,10 @@
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
                 <div id="chessMindLogo">
-                    <button id="firstStep"><img src="../img/logo.png" alt="logo" width="50" height="50"></button>
-                    <button id="notAStep"><a class="navbar-brand" href="#">Chess</a></button>
-                    <button id="secondStep"><a class="navbar-brand" href="#">Mind</a></button>
-                    <button id="thirdStep"><a class="navbar-brand" href="#">.AI</a></button>
+                    <button id="firstStep"><img src="../img/logo.png" alt="logo" width="50" height="50" onclick="redirectButton()"></button>
+                    <button id="notAStep"><a class="navbar-brand" href="#" onclick="redirectButton()">Chess</a></button>
+                    <button id="secondStep"><a class="navbar-brand" href="#"  onclick="redirectButton()">Mind</a></button>
+                    <button id="thirdStep"><a class="navbar-brand" href="#" onclick="redirectButton()">.AI</a></button>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
