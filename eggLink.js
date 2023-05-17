@@ -2,7 +2,6 @@
 setup = function () {
     let firstStep = false;
     let secondStep = false;
-    let thirdStep = false;
 
     $("#firstStep").click(function () {
         firstStep = true;
