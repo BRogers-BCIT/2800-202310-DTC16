@@ -531,7 +531,10 @@ function closeAddPieces() {
 
 }
 
-
+// In progress
+function createBoardFromFEN(fenString) {
+    console.log(fenString);
+}
 
 
 // Working
