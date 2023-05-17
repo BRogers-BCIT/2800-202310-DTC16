@@ -1,3 +1,20 @@
+#firstStep img {
+    transition-property: filter;
+    transition-duration: 0.5s;
+}
+
+.logoInvert {
+    filter: invert(1);
+}
+
+#secondStep.deepBlue a {
+    color: #0d6efd;
+    text-shadow: 1px 1px 0px darkblue,
+    -1px -1px 0px darkblue,
+    1px -1px 0px darkblue,
+    -1px 1px 0px darkblue;
+}
+
 #firstStep,
 #secondStep,
 #thirdStep,
@@ -15,6 +32,11 @@
 #chessMindLogo {
     display: flex;
     flex-direction: row;
+}
+
+#chessMindLogo button a {
+    transition-property: text-shadow, color;
+    transition-duration: 1s;
 }
 
 .navbar-brand {
