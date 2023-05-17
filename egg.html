@@ -12,6 +12,36 @@
             display: flex;
             width: 100vw;
             height: 100vh;
+            backdrop-filter: saturate(0.5);
+            animation-name: backdrop;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes backdrop {
+            0% {
+                background-color: tomato;
+            }
+
+            20% {
+                background-color: orange;
+            }
+
+            40% {
+                background-color: yellow;
+            }
+
+            60% {
+                background-color: greenyellow;
+            }
+
+            80% {
+                background-color: lime;
+            }
+
+            100% {
+                background-color: tomato;
+            }
         }
 
         #board {
@@ -19,11 +49,6 @@
             margin: auto;
             max-width: 50vw;
             max-height: 50vh;
-            /* filter: contrast(1);
-            filter: saturate(1);
-            filter: invert(1);
-            filter: opacity(1);
-            filter: brightness(1); */
         }
 
 
@@ -38,7 +63,7 @@
             min-width: 25vw;
             min-height: 24vh;
             max-height: 24vh;
-            animation-duration: 0s;
+            animation-duration: 6s;
             animation-iteration-count: infinite;
         }
 
