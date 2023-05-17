@@ -538,7 +538,20 @@ function closeAddPieces() {
 function createBoardFromFEN(fenString) {
     console.log(fenString);
     if (FENRegEx.test(fenString)) {
-        console.log("Valid FEN");    
+        console.log("Valid FEN");
+        // Split the FEN string by spaces, grab the board, discard the rest
+        var fenSplit = fenString.split(" ");
+        var fenBoard = fenSplit[0].split("/");  // Split the board into rows
+        fenBoard.forEach(function (row, index) {  // For each row
+            for (let space = 0; space < row.length; space++) {  // For each space in the row
+                if (/^\d+$/.test(row[space])) {  // If the space is a number
+                    space += parseInt(row[space]) - 1;  // Skip all spaces marked by the number
+                } else {  // If the space is a piece
+                    console.log(`${index}-${space} | ${row[space]}`);  // Log the piece
+                }
+            }
+        })
+        
     } else {
         console.log("Invalid FEN");
         alert("Invalid FEN");
