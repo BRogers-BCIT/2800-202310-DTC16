@@ -11,13 +11,35 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="../egg.js"></script>
+    <style>
+        #firstStep,
+        #secondStep,
+        #thirdStep {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            padding: 0px;
+        }
+
+        #thirdStep {
+            margin-right: 1rem;
+        }
+
+        .navbar-brand {
+            margin-right: 0px;
+        }
+    </style>
 </head>
 
 <body>
     <header class="bg-secondary py-3">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="#">ChessMind.AI</a>
+                <button id="firstStep"><img src="../img/bpawn.png" alt="logo" width="50" height="50"></button>
+                <a class="navbar-brand" href="#">Chess</a>
+                <button id="secondStep"><a class="navbar-brand" href="#">Mind</a></button>
+                <button id="thirdStep"><a class="navbar-brand" href="#">.AI</a></button>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
