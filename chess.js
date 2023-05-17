@@ -1,3 +1,6 @@
+// Create RegEx for FEN validation
+const FENRegEx = /^([rnbqkpRNBQKP1-8]{1,8}\/){7}[rnbqkpRNBQKP1-8]{1,8} [wb] [KQkq-]{1,4} ([a-h][3-6]|-) \d+ \d+$/;
+
 // Define size of a chessboard
 const boardSize = 8;
 
@@ -534,6 +537,12 @@ function closeAddPieces() {
 // In progress
 function createBoardFromFEN(fenString) {
     console.log(fenString);
+    if (FENRegEx.test(fenString)) {
+        console.log("Valid FEN");    
+    } else {
+        console.log("Invalid FEN");
+        alert("Invalid FEN");
+    }
 }
 
 
