@@ -7,6 +7,11 @@ function eggFeedback() {
     } else {
         $(`#firstStep img`).removeClass(`logoInvert`);
     }
+    if (eggStep >= 2) {
+        $(`#secondStep`).addClass(`deepBlue`);
+    } else {
+        $(`#secondStep`).removeClass(`deepBlue`);
+    }
 }
 
 
