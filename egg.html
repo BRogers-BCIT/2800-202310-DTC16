@@ -26,62 +26,87 @@
             filter: brightness(1); */
         }
 
+
         #logo1,
         #logo2,
         #logo3,
         #logo4 {
+            margin-left: calc(((50vw - 50vh) / 4));
+            margin-right: calc(((50vw - 50vh) / 4));
             position: absolute;
             max-width: 25vw;
             min-width: 25vw;
-            min-height: 25vh;
-            max-height: 25vh;
-            animation-duration: 6s;
+            min-height: 24vh;
+            max-height: 24vh;
+            animation-duration: 0s;
             animation-iteration-count: infinite;
         }
 
         #logo1 {
+            top: 1vh;
             animation-name: logo1;
         }
 
         #logo2 {
+            top: 1vh;
             right: 0px;
             animation-name: logo2;
         }
 
         #logo3 {
-            bottom: 0px;
+            bottom: 1vh;
             right: 0px;
             animation-name: logo3;
         }
 
         #logo4 {
-            bottom: 0px;
+            bottom: 1vh;
             animation-name: logo4;
         }
 
         @keyframes logo1 {
             0% {
-                filter: hue-rotate(0deg);
+                filter: hue-rotate(0);
                 transform: translate(0, 0);
             }
 
-            25% {
+            12.5% {
                 filter: hue-rotate(360deg);
+                transform: translate(37.5vw, 0);
+            }
+
+            25% {
+                filter: hue-rotate(0);
                 transform: translate(75vw, 0);
             }
 
+            37.5% {
+                filter: hue-rotate(360deg);
+                transform: translate(75vw, 37.5vh);
+            }
+
             50% {
-                filter: hue-rotate(0deg);
+                filter: hue-rotate(0);
                 transform: translate(75vw, 75vh);
             }
 
-            75% {
+            62.5% {
                 filter: hue-rotate(360deg);
+                transform: translate(37.5vh, 75vh);
+            }
+
+            75% {
+                filter: hue-rotate(0);
                 transform: translate(0, 75vh);
             }
 
+            87.5% {
+                filter: hue-rotate(360deg);
+                transform: translate(0, 37.5vh);
+            }
+
             100% {
-                filter: hue-rotate(0deg);
+                filter: hue-rotate(0);
                 transform: translate(0, 0);
             }
         }
@@ -93,11 +118,23 @@
                 transform: translate(0, 0);
             }
 
-            25% {
-                filter: brightness(0.25);
+            12.5% {
+                filter: brightness(0.1);
                 opacity: 0.1;
+                transform: translate(0, 37.5vh);
+            }
+
+            25% {
+                opacity: 1;
+                filter: brightness(1);
                 transform: translate(0, 75vh);
 
+            }
+
+            37.5% {
+                filter: brightness(0.1);
+                opacity: 0.1;
+                transform: translate(-37.5vw, 75vh);
             }
 
             50% {
@@ -106,10 +143,22 @@
                 transform: translate(-75vw, 75vh);
             }
 
-            75% {
+            62.5% {
+                filter: brightness(0.1);
                 opacity: 0.1;
-                filter: brightness(0.25);
+                transform: translate(-75vw, 37.5vh);
+            }
+
+            75% {
+                opacity: 1;
+                filter: brightness(1);
                 transform: translate(-75vw, 0);
+            }
+
+            87.5% {
+                filter: brightness(0.1);
+                opacity: 0.1;
+                transform: translate(-37.5vw, 0);
             }
 
             100% {
@@ -125,9 +174,17 @@
                 transform: translate(0, 0) scale(1, 1);
             }
 
+            12.5% {
+                transform: translate(-37.5vw, 0) scale(0.5, 0.5);
+            }
+
             25% {
 
-                transform: translate(-75vw, 0) scale(0.5, 0.5);
+                transform: translate(-75vw, 0) scale(1, 1);
+            }
+
+            37.5% {
+                transform: translate(-75vw, -37.5vh) scale(0.5, 0.5);
             }
 
             50% {
@@ -135,9 +192,17 @@
                 transform: translate(-75vw, -75vh) scale(1, 1);
             }
 
+            62.5% {
+                transform: translate(-37.5vw, -75vh) scale(0.5, 0.5);
+            }
+
             75% {
 
-                transform: translate(0, -75vh) scale(0.5, 0.5);
+                transform: translate(0, -75vh) scale(1, 1);
+            }
+
+            87.5% {
+                transform: translate(0, -37.5vh) scale(0.5, 0.5);
             }
 
             100% {
@@ -151,17 +216,34 @@
                 transform: translate(0, 0);
             }
 
+            12.5% {
+                transform: translate(0, -37.5vh) rotate(180deg);
+            }
+
             25% {
-                transform: translate(0, -75vh);
+                transform: translate(0, -75vh) rotate(360deg);
+            }
+
+            37.5% {
+                transform: translate(37.5vw, -75vh) rotate(180deg);
             }
 
             50% {
                 transform: translate(75vw, -75vh);
             }
 
-            75% {
-                transform: translate(75vw, 0);
+            62.5% {
+                transform: translate(75vw, -37.5vh) rotate(180deg);
             }
+
+            75% {
+                transform: translate(75vw, 0) rotate(360deg);
+            }
+
+            87.5% {
+                transform: translate(37.5vw, 0) rotate(180deg);
+            }
+
 
             100% {
                 transform: translate(0, 0);
@@ -174,10 +256,12 @@
             #logo2,
             #logo3,
             #logo4 {
+                margin-left: 0.5vw;
+                margin-right: 0.5vw;
                 padding-top: 10vh;
                 padding-bottom: 10vh;
-                max-width: 25vw;
-                min-width: 25vw;
+                max-width: 24vw;
+                min-width: 24vw;
                 min-height: calc(40vh - (50vw / 2));
                 max-height: calc(40vh - (50vw / 2));
             }
@@ -278,10 +362,12 @@
             #logo2,
             #logo3,
             #logo4 {
+                margin-left: 0.5vw;
+                margin-right: 0.5vw;
                 padding-top: 10vh;
                 padding-bottom: 10vh;
-                max-width: 25vw;
-                min-width: 25vw;
+                max-width: 24vw;
+                min-width: 24vw;
                 min-height: calc(32vh - (50vw / 2));
                 max-height: calc(32vh - (50vw / 2));
             }
