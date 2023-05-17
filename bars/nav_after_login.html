@@ -5,32 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bootstrap Navbar with Hamburger Menu</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Why does having bootstrap here break things?!? -->
+    <script src="./eggLinkafterlogin.js"></script>
+
+    <link rel="stylesheet" href="./bars/nav.css">
+
 </head>
 
 <body>
     <header class="bg-secondary py-3">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="#">ChessMind.AI</a>
+                <div id="chessMindLogo">
+                    <button id="firstStep"><img src="../img/logo.png" alt="logo" width="50" height="50"></button>
+                    <button id="notAStep"><a class="navbar-brand" href="board.html">Chess</a></button>
+                    <button id="secondStep"><a class="navbar-brand" href="board.html">Mind</a></button>
+                    <button id="thirdStep"><a class="navbar-brand" href="board.html">.AI</a></button>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="">Board Editor</a>
+                            <a class="nav-link" href="board.html">Board Editor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Board Analysis</a>
+                            <a class="nav-link" href="analysis.html">Board Analysis</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Previous Boards</a>
+                            <a class="nav-link" href="saved.html">Previous Boards</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="profile.html">My Profile</a>

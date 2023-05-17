@@ -25,7 +25,7 @@ td {
     height: 10%;
     width: 10%;
     padding: 0px;
-    background-color: tan;
+    background-color: var(--lightSquare);
 }
 
 
@@ -48,7 +48,7 @@ img {
 }
 
 .ds {
-    background-color: brown;
+    background-color: var(--darkSquare);
 }
 
 #blackBoard {
@@ -67,8 +67,8 @@ img {
     text-align: center;
     float: left;
     width: calc(35vw);
-    background-color: tan;
-    border: 3px solid brown;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
     border-radius: 2px;
     margin-left: 5vw;
 }
@@ -77,8 +77,8 @@ img {
     text-align: center;
     float: right;
     width: calc(35vw);
-    background-color: tan;
-    border: 3px solid brown;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
     border-radius: 2px;
     margin-right: 5vw;
 }
@@ -89,8 +89,8 @@ img {
     text-align: center;
     float: left;
     width: 10vw;
-    background-color: tan;
-    border: 3px solid brown;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
     border-radius: 2px;
     margin-left: 5vw;
     margin-right: 5vw;
@@ -105,8 +105,8 @@ img {
 .delete,
 .reset {
     float: left;
-    background-color: tan;
-    border: 3px solid brown;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
     border-radius: 2px;
     width: 35%;
     margin-top: 2vh;
@@ -136,7 +136,7 @@ img {
     margin-right: 5%;
     margin-top: 5vh;
     overflow-y: scroll;
-    background-color: tan;
+    background-color: var(--menuBackground);
     margin-bottom: 5vh;
 
 }
@@ -161,8 +161,8 @@ img {
     padding-top: 5%;
     padding-bottom: 5%;
     margin-left: 20%;
-    background-color: gray;
-    border: 3px solid brown;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
     border-radius: 2px;
     margin-bottom: 15px;
 }
@@ -177,7 +177,7 @@ img {
     margin-right: 5%;
     margin-top: 5vh;
     overflow-y: scroll;
-    background-color: tan;
+    background-color: var(--menuBackground);
     margin-bottom: 5vh;
 
 }
@@ -192,8 +192,8 @@ img {
     margin-right: 5%;
     padding-top: 5%;
     padding-bottom: 5%;
-    background-color: gray;
-    border: 3px solid brown;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
     border-radius: 2px;
 }
 
@@ -222,7 +222,7 @@ img {
     margin-right: 5%;
     margin-top: 5vh;
     overflow-y: scroll;
-    background-color: tan;
+    background-color: var(--menuBackground);
     margin-bottom: 5vh;
 
 }
@@ -237,8 +237,8 @@ img {
     margin-right: 5%;
     padding-top: 5%;
     padding-bottom: 5%;
-    background-color: gray;
-    border: 3px solid brown;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
     border-radius: 2px;
 }
 
@@ -252,7 +252,7 @@ img {
     margin-right: 20%;
     padding-top: 5%;
     padding-bottom: 5%;
-    background-color: gray;
-    border: 3px solid brown;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
     border-radius: 2px;
 }

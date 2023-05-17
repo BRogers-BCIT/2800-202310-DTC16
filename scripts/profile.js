@@ -58,6 +58,8 @@ function saveUserInfo() {
         .catch((error) => {
             console.error("Error updating document: ", error);
         });
+    // c) disable the form fields
+    document.getElementById('personalInfoFields').disabled = true;
 }
 
 function sendPasswordReset() {
