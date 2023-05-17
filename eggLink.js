@@ -3,9 +3,9 @@ let eggStep = 0;
 function eggFeedback() {
     console.log(eggStep);
     if (eggStep >= 1) {
-        $(`header`).removeClass(`bg-secondary`).addClass(`bg-primary`);
+        $(`#firstStep img`).addClass(`logoInvert`);
     } else {
-        $(`header`).removeClass(`bg-primary`).addClass(`bg-secondary`);
+        $(`#firstStep img`).removeClass(`logoInvert`);
     }
 }
 
