@@ -1,0 +1,16 @@
+#firstStep,
+        #secondStep,
+        #thirdStep {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            padding: 0px;
+        }
+
+        #thirdStep {
+            margin-right: 1rem;
+        }
+
+        .navbar-brand {
+            margin-right: 0px;
+        }
