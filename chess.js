@@ -533,8 +533,6 @@ function closeAddPieces() {
 }
 
 
-
-
 // Working
 function openSaveMenu() {
     if (menuOpen == false) {
@@ -551,7 +549,26 @@ function openSaveMenu() {
 
 // To implement (Save)
 function saveBoard() {
+    console.log("Saving board");
+    let boardName = document.getElementById("boardName").value;
+    let boardDescription = document.getElementById("boardDescriptionText").value;
+    // Convert the board to FEN
+    boardToFEN();
+    // Save the board and FEN to the database
+    let uUid = localStorage.getItem('userUid')
+    let uDisplayName = localStorage.getItem('userDisplayName')
+    db.collection("users").doc(uUid).collection(uDisplayName + "savedBoards").doc(boardName).set({
+        boardName: boardName,
+        boardDescription: boardDescription,
+        boardFEN: FEN
+    }).then(function () {
+        // Call the analysis page
+        window.location.href = "saved.html";
 
+    }).catch(function (error) {
+        // Catch any errors
+        console.error("Error writing document: ", error);
+    });
 }
 
 // Working
@@ -679,7 +696,7 @@ function boardToFEN() {
     console.log(FEN);
 }
 
-// To implement (Analysis)
+// Working
 function SaveBoardAndFENForAnalysis() {
     // Convert the board to FEN
     boardToFEN();
