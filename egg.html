@@ -67,6 +67,8 @@
             animation-iteration-count: infinite;
         }
 
+
+
         #logo1 {
             top: 1vh;
             animation-name: logo1;
@@ -97,37 +99,37 @@
 
             12.5% {
                 filter: hue-rotate(360deg);
-                transform: translate(37.5vw, 0);
+                transform: translate(calc(37.5vw - ((50vw - 50vh) / 2)), 0);
             }
 
             25% {
                 filter: hue-rotate(0);
-                transform: translate(75vw, 0);
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), 0);
             }
 
             37.5% {
                 filter: hue-rotate(360deg);
-                transform: translate(75vw, 37.5vh);
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), 37vh);
             }
 
             50% {
                 filter: hue-rotate(0);
-                transform: translate(75vw, 75vh);
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), 74vh);
             }
 
             62.5% {
                 filter: hue-rotate(360deg);
-                transform: translate(37.5vh, 75vh);
+                transform: translate(calc(37.5vw - ((50vw - 50vh) / 2)), 74vh);
             }
 
             75% {
                 filter: hue-rotate(0);
-                transform: translate(0, 75vh);
+                transform: translate(0, 74vh);
             }
 
             87.5% {
                 filter: hue-rotate(360deg);
-                transform: translate(0, 37.5vh);
+                transform: translate(0, 37vh);
             }
 
             100% {
@@ -146,44 +148,44 @@
             12.5% {
                 filter: brightness(0.1);
                 opacity: 0.1;
-                transform: translate(0, 37.5vh);
+                transform: translate(0, 37vh);
             }
 
             25% {
                 opacity: 1;
                 filter: brightness(1);
-                transform: translate(0, 75vh);
+                transform: translate(0, 74vh);
 
             }
 
             37.5% {
                 filter: brightness(0.1);
                 opacity: 0.1;
-                transform: translate(-37.5vw, 75vh);
+                transform: translate(calc(-37.5vw + ((50vw - 50vh) / 2)), 74vh);
             }
 
             50% {
                 opacity: 1;
                 filter: brightness(1);
-                transform: translate(-75vw, 75vh);
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 74vh);
             }
 
             62.5% {
                 filter: brightness(0.1);
                 opacity: 0.1;
-                transform: translate(-75vw, 37.5vh);
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 37vh);
             }
 
             75% {
                 opacity: 1;
                 filter: brightness(1);
-                transform: translate(-75vw, 0);
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 0);
             }
 
             87.5% {
                 filter: brightness(0.1);
                 opacity: 0.1;
-                transform: translate(-37.5vw, 0);
+                transform: translate(calc(-37.5vw + ((50vw - 50vh) / 2)), 0);
             }
 
             100% {
@@ -200,34 +202,34 @@
             }
 
             12.5% {
-                transform: translate(-37.5vw, 0) scale(0.5, 0.5);
+                transform: translate(calc(-37.5vw + ((50vw - 50vh) / 2)), 0) scale(0.5, 0.5);
             }
 
             25% {
 
-                transform: translate(-75vw, 0) scale(1, 1);
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 0) scale(1, 1);
             }
 
             37.5% {
-                transform: translate(-75vw, -37.5vh) scale(0.5, 0.5);
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), -37vh) scale(0.5, 0.5);
             }
 
             50% {
 
-                transform: translate(-75vw, -75vh) scale(1, 1);
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), -74vh) scale(1, 1);
             }
 
             62.5% {
-                transform: translate(-37.5vw, -75vh) scale(0.5, 0.5);
+                transform: translate(calc(-37.5vw + ((50vw - 50vh) / 2)), -74vh) scale(0.5, 0.5);
             }
 
             75% {
 
-                transform: translate(0, -75vh) scale(1, 1);
+                transform: translate(0, -74vh) scale(1, 1);
             }
 
             87.5% {
-                transform: translate(0, -37.5vh) scale(0.5, 0.5);
+                transform: translate(0, -37vh) scale(0.5, 0.5);
             }
 
             100% {
@@ -242,31 +244,31 @@
             }
 
             12.5% {
-                transform: translate(0, -37.5vh) rotate(180deg);
+                transform: translate(0, -37vh) rotate(180deg);
             }
 
             25% {
-                transform: translate(0, -75vh) rotate(360deg);
+                transform: translate(0, -74vh) rotate(360deg);
             }
 
             37.5% {
-                transform: translate(37.5vw, -75vh) rotate(180deg);
+                transform: translate(calc(37.5vw - ((50vw - 50vh) / 2)), -74vh) rotate(180deg);
             }
 
             50% {
-                transform: translate(75vw, -75vh);
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), -74vh);
             }
 
             62.5% {
-                transform: translate(75vw, -37.5vh) rotate(180deg);
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), -37vh) rotate(180deg);
             }
 
             75% {
-                transform: translate(75vw, 0) rotate(360deg);
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), 0) rotate(360deg);
             }
 
             87.5% {
-                transform: translate(37.5vw, 0) rotate(180deg);
+                transform: translate(calc(37.5vw - ((50vw - 50vh) / 2)), 0) rotate(180deg);
             }
 
 
@@ -324,11 +326,11 @@
                 }
 
                 50% {
-                    transform: translate(-75vw, calc(80vh - (40vh - (50vw / 2))));
+                    transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), calc(80vh - (40vh - (50vw / 2))));
                 }
 
                 75% {
-                    transform: translate(-75vw, 0);
+                    transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 0);
                 }
 
                 100% {
@@ -342,11 +344,11 @@
                 }
 
                 25% {
-                    transform: translate(-75vw, 0);
+                    transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 0);
                 }
 
                 50% {
-                    transform: translate(-75vw, calc(-80vh + (40vh - (50vw / 2))));
+                    transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), calc(-80vh + (40vh - (50vw / 2))));
                 }
 
                 75% {
@@ -430,11 +432,11 @@
                 }
 
                 50% {
-                    transform: translate(-75vw, calc(80vh - (32vh - (50vw / 2))));
+                    transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), calc(80vh - (32vh - (50vw / 2))));
                 }
 
                 75% {
-                    transform: translate(-75vw, 0);
+                    transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 0);
                 }
 
                 100% {
@@ -448,11 +450,11 @@
                 }
 
                 25% {
-                    transform: translate(-75vw, 0);
+                    transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 0);
                 }
 
                 50% {
-                    transform: translate(-75vw, calc(-80vh + (32vh - (50vw / 2))));
+                    transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), calc(-80vh + (32vh - (50vw / 2))));
                 }
 
                 75% {
