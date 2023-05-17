@@ -738,6 +738,10 @@ setup = function () {
     $("body").on("click", ".swapColor", swapPlayingColor);
     $("body").on("click", ".goToAnalyze", SaveBoardAndFENForAnalysis);
 
+    // Print to console
+    $(`#tempPrint`).click(function () {
+        console.log(board);
+    });
 
     // Not Currently used
     $("body").on("click", ".clear", clearBoard);
