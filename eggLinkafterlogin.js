@@ -1,5 +1,5 @@
 let eggStep = 0;
-const homePage = `../index.html`;
+const boardPage = `../board.html`;
 const eggPage = `../egg.html`;
 
 function eggFeedback() {
@@ -22,7 +22,7 @@ setup = function () {
 
     $("#firstStep").click(function () {
         eggStep = 1;
-        $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${homePage}">.AI</a>`);
+        $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${boardPage}">.AI</a>`);
         eggFeedback();
     });
     $("#secondStep").click(function (event) {
@@ -32,14 +32,14 @@ setup = function () {
             $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${eggPage}">.AI</a>`);
         } else {
             eggStep = 0;
-            $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${homePage}">.AI</a>`);
+            $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${boardPage}">.AI</a>`);
         }
         eggFeedback();
     });
     $("#thirdStep").click(function () {
         if (eggStep != 2) {
             eggStep = 0;
-            $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${homePage}">.AI</a>`);
+            $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${boardPage}">.AI</a>`);
         }
         eggFeedback();
     });
