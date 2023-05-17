@@ -741,9 +741,19 @@ setup = function () {
     $("body").on("click", ".swapColor", swapPlayingColor);
     $("body").on("click", ".goToAnalyze", SaveBoardAndFENForAnalysis);
 
-    // Print to console
+    // Dev Controls
     $(`#tempPrint`).click(function () {
         console.log(board);
+    });
+
+    $(`#getFEN`).click(function() {
+        boardToFEN();
+        $(`#fenSpace`).text(FEN);
+    });
+
+    $(`#createFromFEN h3`).click(function() {
+        let inputFEN = $(`#fenInput`).val();
+        createBoardFromFEN(inputFEN);
     });
 
     // Not Currently used

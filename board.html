@@ -18,13 +18,48 @@
     <link rel="stylesheet" href="./board-medium.css" media="(min-width: 415px)">
     <!-- Widescreen CSS Import -->
     <link rel="stylesheet" href="./board-wide.css" media="(min-width: 600px)">
-    <!-- Temp style used for board testing -->
-    <!-- Will need visual updates in future -->
-    <!-- Also currently missing mobile view -->
 
+    <!-- Temp style used for dev controls -->
+    <style>
+        .devButton {
+            background-color: lightgreen;
+            border: solid 2px green;
+            padding: 0em 0.5em;
+            margin: auto 0.5em;
+        }
+        #fenSpace {
+            padding: 0.5em;
+            margin: 0.5em;
+            background-color: lightgray;
+        }
+        #devControls, #fenOutput {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+    </style>
 </head>
 
 <body>
+    <!-- Div for developer controls -->
+    <nav id="devPanel">
+        <div id="devControls">
+            <button id="tempPrint" class="devButton">
+                <h3>Print to Console</h3>
+            </button>
+            <button id="getFEN" class="devButton">
+                <h3>Get FEN String</h3>
+            </button>
+            <button id="createFromFEN" class="devButton">
+                <h3>Create from FEN</h3>
+                <input type="text" name="FEN String" id="fenInput">
+            </button>
+        </div>
+        <div id="fenOutput">
+            <h4 id="fenSpace">placeholder</h4>
+        </div>
+    </nav>
     <div id="featureLinks">
         <!-- Div for save board to user account-->
         <div id="saveBoard">
@@ -38,12 +73,7 @@
                 <H3>Analyze Board</H3>
             </button>
         </div>
-        <!-- Temporary button to print to console -->
-        <button id="tempPrint" class="featureButton">
-            <h3>Print to Console</h3>
-        </button>
     </div>
-
     <!-- Container to make controls fit on widescreens -->
     <div id="mainControls">
         <!-- Board form white position view -->
