@@ -1,0 +1,22 @@
+#firstStep,
+#secondStep,
+#thirdStep,
+#notAStep {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0px;
+}
+
+#thirdStep {
+    margin-right: 1rem;
+}
+
+#chessMindLogo {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-brand {
+    margin-right: 0px;
+}
