@@ -1,32 +1,28 @@
 
 setup = function () {
-    let firstStep = false;
-    let secondStep = false;
+    let eggStep = 0;
 
     $("#firstStep").click(function () {
-        firstStep = true;
-        secondStep = false;
+        eggStep = 1;
         $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="#">.AI</a>`);
-        console.log(firstStep);
+        console.log(eggStep);
     });
     $("#secondStep").click(function () {
-        if (firstStep == true && secondStep == false) {
-            secondStep = true;
+        if (eggStep == 1) {
+            eggStep = 2;
             $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="../egg.html">.AI</a>`);
         } else {
-            firstStep = false;
-            secondStep = false;
+            eggStep = 0;
             $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="#">.AI</a>`);
         }
-        console.log(secondStep);
+        console.log(eggStep);
     });
     $("#thirdStep").click(function () {
-        if (firstStep != true || secondStep != true) {
-            firstStep = false;
-            secondStep = false;
+        if (eggStep != 2) {
+            eggStep = 0;
             $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="#">.AI</a>`);
         }
-        console
+        console.log(eggStep);
     });
 }
 $(document).ready(setup)
