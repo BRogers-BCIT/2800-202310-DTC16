@@ -680,7 +680,7 @@ function boardToFEN() {
     }
 
     // Record castling availability
-    boardToFEN += `${castleWhiteKings}${castleWhiteQueens}${castleBlackKings}${castleBlackQueens}`;
+    boardToFEN += `${castleWhiteKings}${castleWhiteQueens}${castleBlackKings}${castleBlackQueens}` || " -";
 
     // Record en passant squares, full move number, and half move clock (Static set to - 0 1)
     boardToFEN += " - 0 1";
