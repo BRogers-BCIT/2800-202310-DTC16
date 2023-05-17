@@ -26,7 +26,6 @@ var uiConfig = {
             email: user.email, //with authenticated user's ID (user.uid)
             rating: "0000",
             currentFEN: "XXXXXXXXXXX",
-            savedBoards: []
           })
           .then(function () {
             console.log("New user added to firestore");
@@ -40,6 +39,12 @@ var uiConfig = {
         localStorage.setItem('userDisplayName', user.displayName)
         return true;
       }
+      db.collection("users").doc(user.uid).collection(user.displayName + "savedBoards").doc("Starting Board").set({
+        //create placeholder recipe
+        name: "Starting Board",
+        description: "This is the starting board",
+        boardFEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      });
       localStorage.setItem('userUid', user.uid)
       localStorage.setItem('userDisplayName', user.displayName)
       return false;
