@@ -6,6 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!--Firebase and Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <!--Javascript Firebase-->
+    <script src="../scripts/firebaseapi.js"></script>
     <!-- jQuery Import -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- Script call-->
@@ -26,53 +35,58 @@
     <!-- Select Saved Board Menu Template -->
     <div id="savedBoardMenu">
 
-        <input type="text" id="boardName" placeholder="Board Name" disabled>
+        <div id="${cardNum}">
+            <h3 id="title"></h3>
 
-        <div id="boardDescription">
-            <h3 id="descriptionLabel">&nbsp;&nbsp;Board Description:</h3>
-            <textarea id="boardDescriptionText" placeholder="Board Description" disabled></textarea>
+            <div id="boardDescription">
+                <h3 id="descriptionLabel">&nbsp;&nbsp;Board Description:</h3>
+                <textarea id="boardDescriptionText" placeholder="Board Description" disabled></textarea>
+            </div>
+            <br>
+            <div id="endButtons">
+
+                <button class="boardCardButton" id="editBoardCardButton">Edit</button>
+
+                <button class="boardCardButton" id="saveBoardCardButton">Save</button>
+
+                <button class="savedBoardMenuButton" id="closeSaveMenuButton">Return to Saved Boards</button>
+
+                <button class="savedBoardMenuButton" id="openBoardMenuButton">Open Board in Editor</button>
+
+                <button class="savedBoardMenuButton" id="analyzeBoardMenuButton">Open Board in Analysis</button>
+            </div>
+
         </div>
-        <br>
-        <div id="endButtons">
-
-            <button class="savedBoardMenuButton" id="closeSaveMenuButton">Return to Saved Boards</button>
-
-            <button class="savedBoardMenuButton" id="openBoardMenuButton">Open Board in Editor</button>
-
-            <button class="savedBoardMenuButton" id="analyzeBoardMenuButton">Open Board in Analysis</button>
-
-        </div>
-    </div>
 
 
 
 
-    <div class="container">
-        <h1>Saved Chessboards</h1>
-        <!-- Here is container for cards  -->
         <div class="container">
-            <div id="chessCardGroup" class="row row-cols-auto">
+            <h1>Saved Chessboards</h1>
+            <!-- Here is container for cards  -->
+            <div class="container">
+                <div id="chessCardGroup" class="row row-cols-auto">
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <!-- Templates for general use, not displayed -->
-    <template id="chessCardTemplate">
-        <div class="card py-2 mx-2 bg-light" style="width: 10rem;">
-            <!-- <img class="card-image card-img-top" src=" ..." alt="..."> -->
-            <div class="card-body">
-                <h5 class="Board-title" id="boardName">Board Name</h5>
-                <ul>
-                    <li class="FEN">placeholder</li>
-                    <li class="description">placeholder</li>
-                    <li class="dateSaved">placeholder</li>
-                </ul>
-                <br>
-                <a class="btn btn-secondary card-href" id="read-more">Select Board</a>
+        <!-- Templates for general use, not displayed -->
+        <template id="chessCardTemplate">
+            <div class="card py-2 mx-2 bg-light" style="width: 10rem;">
+                <!-- <img class="card-image card-img-top" src=" ..." alt="..."> -->
+                <div class="card-body">
+                    <h5 class="Board-title" id="boardName">Board Name</h5>
+                    <ul>
+                        <li class="FEN">placeholder</li>
+                        <li class="description">placeholder</li>
+                        <li class="dateSaved">placeholder</li>
+                    </ul>
+                    <br>
+                    <a class="btn btn-secondary card-href" id="read-more">Select Board</a>
+                </div>
             </div>
-        </div>
-    </template>
+        </template>
 
 
 
