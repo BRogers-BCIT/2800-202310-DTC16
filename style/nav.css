@@ -35,6 +35,8 @@
 }
 
 #chessMindLogo button a {
+    font-weight: bold;
+    font-size: large;
     transition-property: text-shadow, color;
     transition-duration: 1s;
 }
