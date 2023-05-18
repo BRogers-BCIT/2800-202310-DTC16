@@ -43,6 +43,40 @@
 
         </div>
     </div>
+
+
+
+
+    <div class="container">
+        <h1>Saved Chessboards</h1>
+        <!-- Here is container for cards  -->
+        <div class="container">
+            <div id="chessCardGroup" class="row row-cols-auto">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Templates for general use, not displayed -->
+    <template id="chessCardTemplate">
+        <div class="card py-2 mx-2 bg-light" style="width: 10rem;">
+            <!-- <img class="card-image card-img-top" src=" ..." alt="..."> -->
+            <div class="card-body">
+                <h5 class="Board-title" id="boardName">Board Name</h5>
+                <ul>
+                    <li class="FEN">placeholder</li>
+                    <li class="description">placeholder</li>
+                    <li class="dateSaved">placeholder</li>
+                </ul>
+                <br>
+                <a class="btn btn-secondary card-href" id="read-more">Select Board</a>
+            </div>
+        </div>
+    </template>
+
+
+
+
 </body>
 
 </html>
