@@ -608,10 +608,9 @@ function closeAddPieces() {
 
 // In progress
 function createBoardFromFEN(fenString) {
-    // Must clear the board first
-    // TODO: Ask braden if clearPieces() is functional and work from there
+    // Clear the board first
+    clearBoard();
 
-    console.log(fenString);
     if (FENRegEx.test(fenString)) {
         console.log("Valid FEN");
         // Split the FEN string by spaces, grab the board, discard the rest
@@ -632,7 +631,7 @@ function createBoardFromFEN(fenString) {
 
                 } else {  // If the space is a piece
                     let pieceName = pieceDictionary[row[space]];  // Get the piece name
-                    console.log(`${index}-${columnIndex} | ${pieceName}`);  // Log the piece
+                    console.log(`#${index + 1}${columnIndex} | ${pieceName}`);  // Log the piece
                     columnIndex++; // Increment the space index
 
                     // Add the piece to the board
