@@ -44,9 +44,10 @@ var uiConfig = {
       }
       db.collection("users").doc(user.uid).collection(user.displayName + " savedBoards").doc("Starting Board").set({
         //create placeholder recipe
-        name: "Starting Board",
-        description: "This is the starting board",
+        boardName: "Starting Board",
+        boardDescription: "This is the starting board",
         boardFEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        savedDate: new Date().toISOString().split('T')[0],
       });
       localStorage.setItem('userUid', user.uid)
       localStorage.setItem('userDisplayName', user.displayName)

@@ -6,6 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!--Bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!--Bootstrap links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
     <!--Firebase and Jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -13,10 +22,10 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-    <!--Javascript Firebase-->
-    <script src="../scripts/firebaseapi.js"></script>
-    
+
     <!-- Script call-->
+    <script src="../scripts/firebaseapi.js"></script>
+    <script src="../scripts/skeleton.js"></script>
     <script src="../scripts/chess.js"></script>
     <!-- Widescreen CSS Import -->
     <link rel="stylesheet" href="../style/board-mobile.css" media="(min-width: 350px)">
@@ -31,6 +40,7 @@
 </head>
 
 <body>
+
     <!-- Div for developer controls -->
     <!-- Hidden by default -->
     <nav id="devPanel" style="display: none;">
@@ -50,6 +60,9 @@
             <h4 id="fenSpace">Generated FEN string goes here</h4>
         </div>
     </nav>
+  
+    <nav id="navbarPlaceholder"></nav>
+  
     <div id="featureLinks">
         <!-- Div for save board to user account-->
         <div id="saveBoard">
@@ -362,6 +375,7 @@
         </div>
     </div>
 
+    <nav id="footerPlaceholder"></nav>
 </body>
 
 </html>

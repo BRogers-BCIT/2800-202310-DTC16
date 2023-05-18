@@ -581,7 +581,7 @@ function addPieceToBoard() {
     // Update the board with the new pieces
     updateBoard();
     updateButtons();
-
+    closeAddPieces();
 }
 
 // Working (Add)
@@ -763,6 +763,7 @@ function saveBoard() {
 
     // Get the board name and description from the input fields
     let boardName = document.getElementById("boardName").value;
+    boardName = boardName.toLowerCase();
     let boardDescription = document.getElementById("boardDescriptionText").value;
 
     // Convert the board to FEN for saving
@@ -773,15 +774,15 @@ function saveBoard() {
     let uDisplayName = localStorage.getItem('userDisplayName')
 
     // Save the board to the database
-    db.collection("users").doc(uUid).collection(uDisplayName + "savedBoards").doc(boardName).set({
+    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
         boardName: boardName,
         boardDescription: boardDescription,
-        boardFEN: FEN
+        boardFEN: FEN,
+        savedDate: new Date().toISOString().split('T')[0],
 
     }).then(function () {
 
-        // Call the analysis page
-        window.location.href = "../pages/saved.html";
+        closeSaveMenu();
 
     }).catch(function (error) {
 
@@ -1050,7 +1051,7 @@ function clearBoard() {
     ["black", "bbishop.png", "b", "taken"], ["black", "bqueen.png", "q", "taken"],
     ["black", "bking.png", "k", "taken"], ["black", "bbishop.png", "b", "taken"],
     ["black", "bknight.png", "n", "taken"], ["black", "brook.png", "r", "taken"]];
-
+  
     // Black pawns
     blackPawns = [["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
     ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
