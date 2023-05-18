@@ -21,63 +21,79 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-   
+
     <!-- Script call-->
     <script src="../scripts/firebaseapi.js"></script>
     <script src="../scripts/skeleton.js"></script>
     <script src="../scripts/saved.js"></script>
     <!-- CSS Import -->
     <link rel="stylesheet" href="../style/saved.css">
+    <!-- Google Icons (Material Design)-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 
 <body>
     <nav id="navbarPlaceholder"></nav>
 
-    <div id="titleArea"></div>
 
-    <div id="searchArea"></div>
 
-    <div id="boardCards"></div>
 
-    <!-- Select Saved Board Menu Template -->
+    <div class="container">
+        <!-- Title -->
+        <h1>Saved Chessboards</h1>
+
+        <!-- Search Bar -->
+        <div id="searchArea">
+            <!-- Location of all the search function -->
+            <input type="text" class="form-control" id="search"
+                placeholder="Search for the name of a previous game"></input>
+            <button id="searchButton"><i class="material-icons md-48" id="searchImage">search</i></button>
+
+        </div>
+
+        <!-- Cards Container  -->
+        <div class="container">
+            <div id="chessCardGroup" class="row row-cols-auto">
+            </div>
+        </div>
+    </div>
+
+    <!-- Select Saved Board Menu (Hidden) -->
     <div id="savedBoardMenu">
 
-        <div id="${cardNum}">
-            <h3 id="title"></h3>
+        <div id="">
+            <h3 id="menuTitle"></h3>
 
             <div id="boardDescription">
                 <h3 id="descriptionLabel">&nbsp;&nbsp;Board Description:</h3>
                 <textarea id="boardDescriptionText" placeholder="Board Description" disabled></textarea>
             </div>
+
+            <div>
+                <h3 id="FENLabel">&nbsp;&nbsp;FEN:</h3>
+                <H4 id="boardFEN"></H4>
+            </div>
+
+            <div>
+                <h3 id="dateSavedLabel">&nbsp;&nbsp;Date Saved:</h3>
+                <H4 id="dateSaved"></H4>
+            </div>
             <br>
             <div id="endButtons">
 
-                <button class="boardCardButton" id="editBoardCardButton">Edit</button>
+                <button class="edit" id="editBoardCardButton">Edit</button>
 
-                <button class="boardCardButton" id="saveBoardCardButton">Save</button>
+                <button class="save" id="saveBoardCardButton">Save</button>
 
-                <button class="savedBoardMenuButton" id="closeSaveMenuButton">Return to Saved Boards</button>
+                <button class="closeCard" id="closeCard">Return to Saved Boards</button>
 
-                <button class="savedBoardMenuButton" id="openBoardMenuButton">Open Board in Editor</button>
+                <button class="openEditor" id="openBoardMenuButton">Open Board in Editor</button>
 
-                <button class="savedBoardMenuButton" id="analyzeBoardMenuButton">Open Board in Analysis</button>
+                <button class="openAnalysis" id="analyzeBoardMenuButton">Open Board in Analysis</button>
             </div>
 
         </div>
-
-
-
-
-        <div class="container">
-            <h1>Saved Chessboards</h1>
-            <!-- Here is container for cards  -->
-            <div class="container">
-                <div id="chessCardGroup" class="row row-cols-auto">
-                </div>
-            </div>
-        </div>
-
 
         <!-- Templates for general use, not displayed -->
         <template id="chessCardTemplate">

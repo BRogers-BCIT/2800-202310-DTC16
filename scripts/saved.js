@@ -1,5 +1,5 @@
 var menuOpen = false;
-var currentBoardCard = null;
+var currentBoardID = null;
 const uUid = localStorage.getItem('userUid')
 const uDisplayName = localStorage.getItem('userDisplayName')
 
@@ -15,21 +15,19 @@ const populateBoardCards = function () {
                 querySnapshot.forEach((doc) => { // get all chessboards
                     cardNum += 1
                     // populate a chess board to the page
-                    $("#boardCards").append(`
-
-                    <div id="${cardNum}" class="card py-2 mx-2 bg-light" style="width: 10rem;">
-                <!-- <img class="card-image card-img-top" src=" ..." alt="..."> -->
-                <div class="card-body">
-                    <h5 class="Board-title" id="${doc.data().boardName}">${doc.data().boardName}</h5>
-                    <ul>
-                        <li class="FEN">${doc.data().boardFEN}</li>
-                        <li class="description">${doc.data().boardDescription}</li>
-                        <li class="dateSaved">${doc.data().savedDate}</li>
-                    </ul>
-                    <br>
-                    <a class="btn btn-secondary card-href" id="read-more">Select Board</a>
-                </div>
-            </div>`)
+                    $("#chessCardGroup").append(`
+                        <div id="${cardNum}" class="card py-2 mx-2 bg-light" style="width: 10rem;">
+                            <button class="openCard" id="${doc.id}">
+                                <div class="card-body>
+                                        <h5 class="boardTitle" id="title">${doc.data().boardName}</h5>
+                                    <ul>
+                                        <li class="FEN">${doc.data().boardFEN}</li>
+                                        <li class="description">${doc.data().boardDescription}</li>
+                                        <li class="dateSaved">${doc.data().savedDate}</li>
+                                    </ul>
+                                </div>
+                            </button>
+                        </div>`)
                 });
             })
             .catch((error) => { // catch errors
@@ -42,20 +40,31 @@ const populateBoardCards = function () {
 
 // TODO: Test (Boards Functions)
 const searchBoardCards = function () {
+    console.log("searching")
     if (menuOpen == true && jQuery("#searchName").val() != "") {
         let cardNum = 0
         let nameSearch = jQuery("#searchName").val();
         nameSearch = nameSearch.toLowerCase();
         function cardSkeleton() {
-            db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").where("name", "==", nameSearch)
+            db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").where("boardName", "==", nameSearch)
                 .get()
                 .then((querySnapshot) => {
                     querySnapshot.forEach((doc) => { // get all recipes
                         cardNum += 1
                         // populate a recipe card to the page
-                        $("#boardCards").append(`
-                    
-                `)
+                        $("#chessCardGroup").append(`
+                        <div id="${cardNum}" class="card py-2 mx-2 bg-light" style="width: 10rem;">
+                            <button class="openCard" id="${doc.id}">
+                                <div class="card-body>
+                                        <h5 class="boardTitle" id="title">${doc.data().boardName}</h5>
+                                    <ul>
+                                        <li class="FEN">${doc.data().boardFEN}</li>
+                                        <li class="description">${doc.data().boardDescription}</li>
+                                        <li class="dateSaved">${doc.data().savedDate}</li>
+                                    </ul>
+                                </div>
+                            </button>
+                        </div>`)
                     });
                 })
                 .catch((error) => { // catch errors
@@ -71,8 +80,15 @@ const searchBoardCards = function () {
 
 // TODO: Test (Menu Functions)
 const openBoardMenu = function () {
+    console.log("opening menu")
     // If no menu is already open
     if (menuOpen == false) {
+
+        let boardName = null;
+        let boardDescription = null;
+        let boardFEN = null;
+        let boardDate = null;
+        currentBoardID = $(this).attr("id");
 
         // Set the save board menu to visible and the background to half transparency
         $(`#savedBoardMenu`).css("display", "block");
@@ -81,11 +97,25 @@ const openBoardMenu = function () {
         $(`#boardCards`).css("opacity", "0.5");
 
         // Save the name of the clicked board
-        currentBoardCard = $(this).find(`#title`).text()
+        currentBoard = $(this).attr("id");
 
-        // Populate the menu with the board's information
-        $(`#boardName`).val($(this).find(`#title`).text());
-        $(`#boardDescriptionText`).val($(this).find(`#boardDescriptionText`).text());
+        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID).get().then(function (doc) {
+            boardName = doc.data().boardName;
+            boardDescription = doc.data().boardDescription;
+            boardFEN = doc.data().boardFEN;
+            boardDate = doc.data().savedDate;
+        })
+            // Populate the menu with the board's information
+            .then(function () {
+                $(`#menuTitle`).html(boardName);
+                $(`#boardDescriptionText`).val(boardDescription);
+                $(`#boardFEN`).html(boardFEN);
+                $(`#dateSaved`).html(boardDate);
+            })
+
+            .catch(function (error) {
+                console.log("Error getting document:", error);
+            });
 
         // Set open menu to true to indicate a menu is open
         menuOpen = true;
@@ -131,7 +161,7 @@ const saveBoardCard = function () {
     let boardDescription = $(`#boardDescriptionText`).val();
 
     // Save the board to the database
-    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).update({
+    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID).update({
         boardName: boardName,
         boardDescription: boardDescription,
         savedDate: new Date().toISOString().split('T')[0],
@@ -240,19 +270,19 @@ setup = function () {
 
     // Boards Functions
     populateBoardCards();
-    $("body").on("click", ".search", searchBoardCards);
+    $("body").on("click", "#searchButton", searchBoardCards);
 
     // Menu Functions
-    $("body").on("click", ".boardCard", openBoardMenu);
-    $("body").on("click", ".close", closeBoardMenu);
+    $("body").on("click", ".openCard", openBoardMenu);
+    $("body").on("click", ".closeCard", closeBoardMenu);
 
     // Card Functions
     $("body").on("click", ".edit", editBoardCard);
     $("body").on("click", ".save", saveBoardCard);
 
     // Call Functions
-    $("body").on("click", ".editCard", openBoardInEditor);
-    $("body").on("click", ".analyzeCard", openBoardInAnalyzer);
+    $("body").on("click", ".openEditor", openBoardInEditor);
+    $("body").on("click", ".openAnalysis", openBoardInAnalyzer);
 
 }
 $(document).ready(setup)
