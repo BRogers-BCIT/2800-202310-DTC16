@@ -562,7 +562,7 @@ function addPieceToBoard() {
     // Update the board with the new pieces
     updateBoard();
     updateButtons();
-
+    closeAddPieces();
 }
 
 // Working (Add)
@@ -944,28 +944,28 @@ function clearBoard() {
     // Set all pieces to taken states except for the kings
 
     // White pieces
-    whitePieces = [["white", "wrook.png", "rook", "taken"], ["white", "wknight.png", "knight", "taken"],
-    ["white", "wbishop.png", "c8", "bishop", "taken"], ["white", "wqueen.png", "d8", "queen", "taken"],
-    ["white", "wking.png", "e8", "king", "taken"], ["white", "wbishop.png", "f8", "bishop", "king"],
-    ["white", "wknight.png", "g8", "knight", "taken"], ["white", "wrook.png", "h8", "rook", "taken"]];
+    whitePieces = [["white", "wrook.png", "R", "taken"], ["white", "wknight.png", "N", "taken"],
+    ["white", "wbishop.png", "c8", "B", "taken"], ["white", "wqueen.png", "d8", "Q", "taken"],
+    ["white", "wking.png", "e8", "K", "taken"], ["white", "wbishop.png", "f8", "B", "king"],
+        ["white", "wknight.png", "g8", "N", "taken"], ["white", "wrook.png", "h8", "R", "taken"]];
 
     // White pawns
-    whitePawns = [["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"]];
+    whitePawns = [["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"],
+    ["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"],
+    ["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"],
+    ["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"]];
 
     // Black pieces
-    blackPieces = [["black", "brook.png", "rook", "taken"], ["black", "bknight.png", "knight", "taken"],
-    ["black", "bbishop.png", "bishop", "taken"], ["black", "bqueen.png", "d8", "queen", "taken"],
-    ["black", "bking.png", "king", "king"], ["black", "bbishop.png", "f8", "bishop", "taken"],
-    ["black", "bknight.png", "knight", "taken"], ["black", "brook.png", "h8", "rook", "taken"]];
+    blackPieces = [["black", "brook.png", "r", "taken"], ["black", "bknight.png", "n", "taken"],
+    ["black", "bbishop.png", "b", "taken"], ["black", "bqueen.png", "d8", "q", "taken"],
+    ["black", "bking.png", "k", "king"], ["black", "bbishop.png", "f8", "b", "taken"],
+    ["black", "bknight.png", "n", "taken"], ["black", "brook.png", "h8", "r", "taken"]];
 
     // Black pawns
-    blackPawns = [["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"]];
+    blackPawns = [["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
+    ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
+    ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
+    ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"]];
 
 
     // Set the chessboard to a cleared position
