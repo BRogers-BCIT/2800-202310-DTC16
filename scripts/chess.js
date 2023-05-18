@@ -690,7 +690,7 @@ function saveBoard() {
     }).then(function () {
 
         // Call the analysis page
-        window.location.href = "saved.html";
+        window.location.href = "../pages/saved.html";
 
     }).catch(function (error) {
 
@@ -880,7 +880,7 @@ function SaveFENForAnalysis() {
 
     }).then(function () {
         // Call the analysis page
-        window.location.href = "analysis.html";
+        window.location.href = "../pages/analysis.html";
 
     }).catch(function (error) {
         // Catch any errors
