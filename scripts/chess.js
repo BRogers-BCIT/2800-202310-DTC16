@@ -7,6 +7,9 @@ const boardSize = 8;
 // Define the format for a square with no piece (Const)
 const nonePiece = ["empty.png", "notPiece"];
 
+// User data
+const uUid = localStorage.getItem('userUid')
+const uDisplayName = localStorage.getItem('userDisplayName')
 
 // Create board variable (Board)
 var board;
@@ -620,9 +623,9 @@ function createBoardFromFEN(fenString) {
             "Q": [whitePieces[3]],
             "q": [blackPieces[3]]
         };
-        
+
         // Split the FEN string by spaces, grab the board, discard the rest
-        
+
         var fenSplit = fenString.split(" ");
         var fenBoard = fenSplit[0].split("/");  // Split the board into rows
 
@@ -631,7 +634,7 @@ function createBoardFromFEN(fenString) {
             let columnIndex = 0;  // Create the index to actually use for placing pieces
 
             for (let space = 0; space < row.length; ++space) {  // For each space in the row
-                
+
                 if (/^\d+$/.test(row[space])) {  // If the space is a number
 
                     let spacesToSkip = parseInt(row[space]);  // Get the number of spaces to skip
@@ -653,7 +656,7 @@ function createBoardFromFEN(fenString) {
 
                         console.log(`#${index + 1}${columnIndex} | ${piece}`);  // Log the piece
 
-                    } catch(error) { // If there are no more pieces of this type
+                    } catch (error) { // If there are no more pieces of this type
                         console.log(`ERROR: #${index + 1}${columnIndex} | No more pieces of this type, skipping`);
                     }
 
@@ -662,7 +665,7 @@ function createBoardFromFEN(fenString) {
             }
         });
         updateBoard(); // Update the board
-        
+
     } else {
         console.log("Invalid FEN");
         alert("Invalid FEN");
@@ -1073,15 +1076,17 @@ function clearBoard() {
 
 const openSavedBoard = function () {
 
-    // Get the saved board information from the current user's document
-    savedName = localStorage.getItem("savedName");
-    savedDescription = localStorage.getItem("savedDescription");
-    savedFEN = localStorage.getItem("savedFEN");
-    savedDate = localStorage.getItem("savedDate");
-
-    // Create the board from the saved FEN
-    createBoardFromFEN(savedFEN);
-
+    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards")
+        .get()
+        .then((doc) => {
+            // Get the saved board information from the current user's document
+            savedName = doc.data().currentBoardName;
+            savedDescription = doc.data().currentBoardDescription;
+            savedFEN = doc.data().currentBoardFEN;
+            savedDate = doc.data.currentBoardSavedDate
+            // Create the board from the saved FEN
+            createBoardFromFEN(savedFEN);
+        })
 }
 
 // Working (ALL)
@@ -1136,12 +1141,12 @@ setup = function () {
         console.log(board);
     });
 
-    $(`#getFEN`).click(function() {
+    $(`#getFEN`).click(function () {
         boardToFEN();
         $(`#fenSpace`).text(FEN);
     });
 
-    $(`#createFromFEN h3`).click(function() {
+    $(`#createFromFEN h3`).click(function () {
         let inputFEN = $(`#fenInput`).val();
         createBoardFromFEN(inputFEN);
     });
