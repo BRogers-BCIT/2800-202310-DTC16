@@ -26,6 +26,8 @@ var uiConfig = {
             email: user.email, //with authenticated user's ID (user.uid)
             rating: "0000",
             currentFEN: "XXXXXXXXXXX",
+            currentBoardName: "XXXXXXXXXXX",
+            currentBoardDescription: "XXXXXXXXXXX",
           })
           .then(function () {
             console.log("New user added to firestore");
