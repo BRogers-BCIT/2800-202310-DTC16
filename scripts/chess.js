@@ -672,6 +672,7 @@ function saveBoard() {
 
     // Get the board name and description from the input fields
     let boardName = document.getElementById("boardName").value;
+    boardName = boardName.toLowerCase();
     let boardDescription = document.getElementById("boardDescriptionText").value;
 
     // Convert the board to FEN for saving
