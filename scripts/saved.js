@@ -4,7 +4,7 @@ const uUid = localStorage.getItem('userUid')
 const uDisplayName = localStorage.getItem('userDisplayName')
 
 
-// TODO: Implement (Boards Functions)
+// TODO: Test (Boards Functions)
 const populateBoardCards = function () {
     function cardSkeleton() {
         let cardNum = 0
@@ -46,7 +46,7 @@ const populateBoardCards = function () {
     cardSkeleton(); //invoke the function
 }
 
-// TODO: Implement (Boards Functions)
+// TODO: Test (Boards Functions)
 const searchBoardCards = function () {
     if (menuOpen == true && jQuery("#searchName").val() != "") {
         let cardNum = 0
@@ -94,7 +94,7 @@ const searchBoardCards = function () {
 
 
 
-// TODO: Implement (Menu Functions)
+// TODO: Test (Menu Functions)
 const openBoardMenu = function () {
     // If no menu is already open
     if (menuOpen == false) {
@@ -117,7 +117,7 @@ const openBoardMenu = function () {
     }
 }
 
-// TODO: Implement (Menu Functions)
+// TODO: Test (Menu Functions)
 const closeBoardMenu = function () {
 
     // If the menu is open
@@ -139,7 +139,7 @@ const closeBoardMenu = function () {
 
 
 
-// TODO: Implement (Card Functions)
+// TODO: Test (Card Functions)
 const editBoardCard = function () {
 
     // Enable the board name and description text boxes to be edited
@@ -148,7 +148,7 @@ const editBoardCard = function () {
 
 }
 
-// TODO: Implement (Card Functions)
+// TODO: Test (Card Functions)
 const saveBoardCard = function () {
 
     // Get the board name and description
@@ -178,7 +178,7 @@ const saveBoardCard = function () {
 
 
 
-// TODO: Implement (Call Functions)
+// TODO: Test (Call Functions)
 const openBoardInEditor = function () {
     let boardFEN = null;
     let boardName = null;
@@ -218,7 +218,7 @@ const openBoardInEditor = function () {
 
 }
 
-// TODO: Implement (Call Functions)
+// TODO: Test (Call Functions)
 const openBoardInAnalyzer = function () {
     let boardFEN = null;
     let boardName = null;
@@ -259,7 +259,7 @@ const openBoardInAnalyzer = function () {
 }
 
 
-
+// TODO: Test (Setup)
 setup = function () {
 
     // Boards Functions
