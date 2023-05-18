@@ -8,9 +8,9 @@ const populateBoardCards = function () {
         db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards")
             .get()
             .then((querySnapshot) => {
-                querySnapshot.forEach((doc) => { // get all recipes
+                querySnapshot.forEach((doc) => { // get all chessboards
                     cardNum += 1
-                    // populate a recipe card to the page
+                    // populate a chess board to the page
                     $("#boardCards").append(`
                     <div id="${cardNum}">
                     <h3 id="title">${doc.data().savedName}</h3>
