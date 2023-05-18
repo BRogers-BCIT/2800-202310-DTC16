@@ -1,5 +1,5 @@
 // Create RegEx for FEN validation (Const)
-const FENRegEx = /^([rnbqkpRNBQKP1-8]{1,8}\/){7}[rnbqkpRNBQKP1-8]{1,8}$/;
+const FENRegEx = /^([rnbqkpRNBQKP1-8]{1,8}\/){7}[rnbqkpRNBQKP1-8]{1,8}/;
 
 // Define size of a chessboard (Const)
 const boardSize = 8;
