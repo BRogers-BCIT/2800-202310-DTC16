@@ -277,6 +277,7 @@ const openBoardInEditor = function () {
                     boardFEN = doc.data().FEN;
                     boardName = doc.data().name;
                     boardDescription = doc.data().description;
+                    boardSavedDate = doc.data().savedDate;
                 });
             })
             .catch((error) => {
@@ -295,7 +296,8 @@ const openBoardInEditor = function () {
     db.collection("users").doc(uUid).update({
         currentFEN: boardFEN,
         currentBoardName: boardName,
-        currentBoardDescription: boardDescription
+        currentBoardDescription: boardDescription,
+        currentBoardSavedDate: boardSavedDate,
 
     }).then(function () {
         // Call the analysis page

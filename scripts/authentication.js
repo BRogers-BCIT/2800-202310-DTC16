@@ -28,6 +28,7 @@ var uiConfig = {
             currentFEN: "XXXXXXXXXXX",
             currentBoardName: "XXXXXXXXXXX",
             currentBoardDescription: "XXXXXXXXXXX",
+            currentBoardSavedDate: "XXXXXXXXXXX",
           })
           .then(function () {
             console.log("New user added to firestore");
