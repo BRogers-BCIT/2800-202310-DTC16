@@ -11,31 +11,20 @@ const populateBoardCards = function () {
         db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards")
             .get()
             .then((querySnapshot) => {
+                console.log(querySnapshot)
                 querySnapshot.forEach((doc) => { // get all chessboards
                     cardNum += 1
                     // populate a chess board to the page
                     $("#boardCards").append(`
                     <div id="${cardNum}">
-                    <h3 id="title">${doc.data().savedName}</h3>
+                        <h3 id="title">${doc.data().boardName}</h3>
 
-        <div id="boardDescription">
-            <h3 id="descriptionLabel">&nbsp;&nbsp;Board Description:</h3>
-            <textarea id="boardDescriptionText" placeholder="Board Description" disabled>${doc.data().description}</textarea>
-        </div>
-        <br>
-        <div id="endButtons">
+                        <div id="boardDescription">
+                            <h3 id="descriptionLabel">&nbsp;&nbsp;Board Description:</h3>
+                            <textarea id="boardDescriptionText" placeholder="Board Description" disabled>${doc.data().boardDescription}</textarea>
+                        </div>
 
-            <button class="boardCardButton" id="editBoardCardButton">Edit</button>
-
-            <button class="boardCardButton" id="saveBoardCardButton">Save</button>
-
-            <button class="savedBoardMenuButton" id="closeSaveMenuButton">Return to Saved Boards</button>
-
-            <button class="savedBoardMenuButton" id="openBoardMenuButton">Open Board in Editor</button>
-
-            <button class="savedBoardMenuButton" id="analyzeBoardMenuButton">Open Board in Analysis</button>
-            </div>
-                `)
+                    </div>`)
                 });
             })
             .catch((error) => { // catch errors
@@ -60,26 +49,7 @@ const searchBoardCards = function () {
                         cardNum += 1
                         // populate a recipe card to the page
                         $("#boardCards").append(`
-                    <div id="${cardNum}">
-                    <h3 id="title">${doc.data().savedName}</h3>
-
-        <div id="boardDescription">
-            <h3 id="descriptionLabel">&nbsp;&nbsp;Board Description:</h3>
-            <textarea id="boardDescriptionText" placeholder="Board Description" disabled>${doc.data().description}</textarea>
-        </div>
-        <br>
-        <div id="endButtons">
-
-            <button class="boardCardButton" id="editBoardCardButton">Edit</button>
-
-            <button class="boardCardButton" id="saveBoardCardButton">Save</button>
-
-            <button class="savedBoardMenuButton" id="closeSaveMenuButton">Return to Saved Boards</button>
-
-            <button class="savedBoardMenuButton" id="openBoardMenuButton">Open Board in Editor</button>
-
-            <button class="savedBoardMenuButton" id="analyzeBoardMenuButton">Open Board in Analysis</button>
-            </div>
+                    
                 `)
                     });
                 })
