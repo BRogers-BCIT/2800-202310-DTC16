@@ -31,16 +31,20 @@ const populateBoardCards = function () {
 
                     // populate a chess board to the page
                     $("#chessCardGroup").append(`
-                        <div id="${cardNum}" class="card" style="width: 18rem;">
-                            <button class="openCard" id="${doc.id}">
-                                <div class="card-body">
-                                        <h5 class="boardTitle" id="title">Board Name: ${doc.data().boardName}</h5>
+                        <div id="${cardNum}" class="card" style="width: 20rem;">
+                        <button class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg">
+                        <div class="card-body">
+                            
+                                
+                                        <h5 class="boardTitle" id="title">${doc.data().boardName}</h5>
                                     <ul>
                                         <li class="FEN">FEN: ${doc.data().boardFEN}</li>
                                         <li class="description">Description: ${doc.data().boardDescription}</li>
                                         <li class="dateSaved">Date Saved: ${doc.data().savedDate}</li>
                                     </ul>
-                                </div>
+
+
+                            </div>
                             </button>
                         </div>`
                     )
@@ -85,8 +89,8 @@ const searchBoardCards = function () {
 
                     // populate a chess board to the page
                     $("#chessCardGroup").append(`
-                        <div id="${cardNum}" class="card" style="width: 18rem;">
-                            <button class="openCard" id="${doc.id}">
+                        <div id="${cardNum}" class="card" style="width: 20rem;">
+                            <button class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg" >
                                 <div class="card-body">
                                         <h5 class="boardTitle" id="title">Board Name: ${doc.data().boardName}</h5>
                                     <ul>
@@ -174,7 +178,7 @@ const closeBoardMenu = function () {
     if (menuOpen == true) {
 
         // Set the save board menu to visible and the background to half transparency
-        $(`#savedBoardMenu`).css("display", "none");
+        $(`#savedBoardMenu`).css("display", "block");
         $(`#titleArea`).css("opacity", "1");
         $(`#searchArea`).css("opacity", "1");
         $(`#boardCards`).css("opacity", "1");
