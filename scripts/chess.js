@@ -594,28 +594,28 @@ function closeAddPieces() {
 // In progress
 function createBoardFromFEN(fenString) {
 
-    // Map FEN letters to their piece equivalents
-    const pieceDictionary = {
-        "P": [whitePawns[0], whitePawns[1], whitePawns[2], whitePawns[3], whitePawns[4], whitePawns[5], whitePawns[6], whitePawns[7]],
-        "p": [blackPawns[0], blackPawns[1], blackPawns[2], blackPawns[3], blackPawns[4], blackPawns[5], blackPawns[6], blackPawns[7]],
-        "R": [whitePieces[0], whitePieces[7]],
-        "r": [blackPieces[0], blackPieces[7]],
-        "N": [whitePieces[1], whitePieces[6]],
-        "n": [blackPieces[1], blackPieces[6]],
-        "B": [whitePieces[2], whitePieces[5]],
-        "b": [blackPieces[2], blackPieces[5]],
-        "K": [whitePieces[4]],
-        "k": [blackPieces[4]],
-        "Q": [whitePieces[3]],
-        "q": [blackPieces[3]]
-    };
-
     // Test if the FEN string is valid
     if (FENRegEx.test(fenString)) {
         console.log("Valid FEN");
 
         // Clear the board first
         clearBoard();
+
+        // Map FEN letters to their piece equivalents
+        const pieceDictionary = {
+            "P": [whitePawns[0], whitePawns[1], whitePawns[2], whitePawns[3], whitePawns[4], whitePawns[5], whitePawns[6], whitePawns[7]],
+            "p": [blackPawns[0], blackPawns[1], blackPawns[2], blackPawns[3], blackPawns[4], blackPawns[5], blackPawns[6], blackPawns[7]],
+            "R": [whitePieces[0], whitePieces[7]],
+            "r": [blackPieces[0], blackPieces[7]],
+            "N": [whitePieces[1], whitePieces[6]],
+            "n": [blackPieces[1], blackPieces[6]],
+            "B": [whitePieces[2], whitePieces[5]],
+            "b": [blackPieces[2], blackPieces[5]],
+            "K": [whitePieces[4]],
+            "k": [blackPieces[4]],
+            "Q": [whitePieces[3]],
+            "q": [blackPieces[3]]
+        };
         
         // Split the FEN string by spaces, grab the board, discard the rest
         
@@ -638,6 +638,7 @@ function createBoardFromFEN(fenString) {
                     let pieceArray = pieceDictionary[pieceName];  // Get the array corresponding to the piece name
 
                     try {
+                        pieceArray[0][3] = "on board";  // Set the piece to be on the board
                         let piece = pieceArray.pop();  // Get the piece from the array
 
                         // TODO: do stuff to the piece
@@ -1020,28 +1021,28 @@ function clearBoard() {
     // Set all pieces to taken states except for the kings
 
     // White pieces
-    whitePieces = [["white", "wrook.png", "R", "on board"], ["white", "wknight.png", "N", "on board"],
-    ["white", "wbishop.png", "B", "on board"], ["white", "wqueen.png", "Q", "on board"],
-    ["white", "wking.png", "K", "on board"], ["white", "wbishop.png", "B", "on board"],
-    ["white", "wknight.png", "N", "on board"], ["white", "wrook.png", "R", "on board"]];
+    whitePieces = [["white", "wrook.png", "R", "taken"], ["white", "wknight.png", "N", "taken"],
+    ["white", "wbishop.png", "B", "taken"], ["white", "wqueen.png", "Q", "taken"],
+    ["white", "wking.png", "K", "taken"], ["white", "wbishop.png", "B", "taken"],
+    ["white", "wknight.png", "N", "taken"], ["white", "wrook.png", "R", "taken"]];
 
     // White pawns
-    whitePawns = [["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
-    ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
-    ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
-    ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"]];
+    whitePawns = [["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"],
+    ["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"],
+    ["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"],
+    ["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"]];
 
     // Black pieces
-    blackPieces = [["black", "brook.png", "r", "on board"], ["black", "bknight.png", "n", "on board"],
-    ["black", "bbishop.png", "b", "on board"], ["black", "bqueen.png", "q", "on board"],
-    ["black", "bking.png", "k", "king"], ["black", "bbishop.png", "b", "on board"],
-    ["black", "bknight.png", "n", "on board"], ["black", "brook.png", "r", "on board"]];
+    blackPieces = [["black", "brook.png", "r", "taken"], ["black", "bknight.png", "n", "taken"],
+    ["black", "bbishop.png", "b", "taken"], ["black", "bqueen.png", "q", "taken"],
+    ["black", "bking.png", "k", "taken"], ["black", "bbishop.png", "b", "taken"],
+    ["black", "bknight.png", "n", "taken"], ["black", "brook.png", "r", "taken"]];
 
     // Black pawns
-    blackPawns = [["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
-    ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
-    ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
-    ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"]];
+    blackPawns = [["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
+    ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
+    ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
+    ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"]];
 
 
     // Set the chessboard to a cleared position
