@@ -41,6 +41,10 @@
     transition-duration: 1s;
 }
 
+.nav-link {
+    font-weight: bold;
+}
+
 .navbar-brand {
     margin-right: 0px;
 }
