@@ -27,6 +27,24 @@ var castleWhiteQueens = "Q";
 var castleBlackKings = "k";
 var castleBlackQueens = "q";
 
+// Map FEN letters to their piece equivalents (Const)
+// TODO: Replace values with indexes from board[]
+const pieceDictionary = {
+    "p": "blackPawn",
+    "r": "blackRook",
+    "n": "blackKnight",
+    "b": "blackBishop",
+    "q": "blackQueen",
+    "k": "blackKing",
+    "P": "whitePawn",
+    "R": "whiteRook",
+    "N": "whiteKnight",
+    "B": "whiteBishop",
+    "Q": "whiteQueen",
+    "K": "whiteKing"
+}
+
+
 
 // Array row and column and HTML square of a selected piece (Select / Delete / Move)
 var selectedPieceRow;
@@ -613,8 +631,8 @@ function createBoardFromFEN(fenString) {
                     columnIndex += spacesToSkip;  // Skip all spaces marked by the number
 
                 } else {  // If the space is a piece
-
-                    console.log(`${index}-${columnIndex} | ${row[space]}`);  // Log the piece
+                    let pieceName = pieceDictionary[row[space]];  // Get the piece name
+                    console.log(`${index}-${columnIndex} | ${pieceName}`);  // Log the piece
                     columnIndex++; // Increment the space index
 
                     // Add the piece to the board
