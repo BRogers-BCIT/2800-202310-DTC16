@@ -690,8 +690,7 @@ function saveBoard() {
 
     }).then(function () {
 
-        // Call the analysis page
-        window.location.href = "../pages/saved.html";
+        closeSaveMenu();
 
     }).catch(function (error) {
 
