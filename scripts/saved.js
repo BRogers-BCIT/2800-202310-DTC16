@@ -156,7 +156,7 @@ const saveBoardCard = function () {
     let boardDescription = $(`#boardDescriptionText`).val();
 
     // Save the board to the database
-    db.collection("users").doc(uUid).collection(uDisplayName + "savedBoards").doc(boardName).update({
+    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).update({
         boardName: boardName,
         boardDescription: boardDescription,
 
