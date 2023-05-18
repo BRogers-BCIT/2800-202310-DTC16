@@ -27,22 +27,7 @@ var castleWhiteQueens = "Q";
 var castleBlackKings = "k";
 var castleBlackQueens = "q";
 
-// Map FEN letters to their piece equivalents (Const)
-// TODO: Replace values with indexes from board[]
-const pieceDictionary = {
-    "p": "blackPawn",
-    "r": "blackRook",
-    "n": "blackKnight",
-    "b": "blackBishop",
-    "q": "blackQueen",
-    "k": "blackKing",
-    "P": "whitePawn",
-    "R": "whiteRook",
-    "N": "whiteKnight",
-    "B": "whiteBishop",
-    "Q": "whiteQueen",
-    "K": "whiteKing"
-}
+
 
 
 
@@ -611,6 +596,23 @@ function createBoardFromFEN(fenString) {
     // Clear the board first
     clearBoard();
 
+    // Map FEN letters to their piece equivalents
+    const pieceDictionary = {
+        "P": [whitePawns[0], whitePawns[1], whitePawns[2], whitePawns[3], whitePawns[4], whitePawns[5], whitePawns[6], whitePawns[7]],
+        "p": [blackPawns[0], blackPawns[1], blackPawns[2], blackPawns[3], blackPawns[4], blackPawns[5], blackPawns[6], blackPawns[7]],
+        "R": [whitePieces[0], whitePieces[7]],
+        "r": [blackPieces[0], blackPieces[7]],
+        "N": [whitePieces[1], whitePieces[6]],
+        "n": [blackPieces[1], blackPieces[6]],
+        "B": [whitePieces[2], whitePieces[5]],
+        "b": [blackPieces[2], blackPieces[5]],
+        "K": [whitePieces[3]],
+        "k": [blackPieces[3]],
+        "Q": [whitePieces[4]],
+        "q": [blackPieces[4]]
+    };
+
+    // Test if the FEN string is valid
     if (FENRegEx.test(fenString)) {
         console.log("Valid FEN");
         // Split the FEN string by spaces, grab the board, discard the rest
@@ -630,15 +632,26 @@ function createBoardFromFEN(fenString) {
                     columnIndex += spacesToSkip;  // Skip all spaces marked by the number
 
                 } else {  // If the space is a piece
-                    let pieceName = pieceDictionary[row[space]];  // Get the piece name
-                    console.log(`#${index + 1}${columnIndex} | ${pieceName}`);  // Log the piece
+                    let pieceName = row[space];  // Get the piece letter
+                    let pieceArray = pieceDictionary[pieceName];  // Get the array corresponding to the piece name
+
                     columnIndex++; // Increment the space index
 
-                    // Add the piece to the board
-                    // TODO: Add the piece to the board
+                    try {
+                        let piece = pieceArray.pop();  // Get the piece from the array
+
+                        // TODO: do stuff to the piece
+                        piece[3] = "on board"; // Set the piece to be on the board
+                        deletedPieces--;  // Decrement the deleted pieces counter
+                        //board[index][columnIndex] = piece;  // Add the piece to the board
+                        console.log(`#${index + 1}${columnIndex} | ${piece}`);  // Log the piece
+                    } catch(error) {
+                        console.log(`ERROR: #${index + 1}${columnIndex} | Too many pieces of this type, skipping`);
+                    }
                 }
             }
-        })
+        });
+        updateBoard(); // Update the board
         
     } else {
         console.log("Invalid FEN");
@@ -1029,19 +1042,19 @@ function clearBoard() {
     // Set the chessboard to a cleared position
     // All pieces are taken except for the kings
     board = {
-        1: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], blackPieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        1: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         2: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         3: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         4: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         5: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         6: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         7: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-        8: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], whitePieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        8: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
     };
 
     // Reset all variables then set taken pieces to 30 (all but kings)
     resetVariables();
-    deletedPieces = 30;
+    deletedPieces = 32;
 
     // Update the board and buttons
     updateBoard();
