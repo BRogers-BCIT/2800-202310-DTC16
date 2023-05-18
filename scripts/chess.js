@@ -173,7 +173,7 @@ function resetBoard() {
     // Check if the user is not opening a saved board
     let currentPage = window.location.href;
 
-    if (!currentPage.includes("openBoard")) {
+    if (currentPage.includes("openBoard")) {
 
         // Prevents the board from being reset if a menu is open
         if (menuOpen == false) {
@@ -1108,7 +1108,10 @@ const openSavedBoard = function () {
 
                 // Get the saved FEN from the current user's document
                 savedFEN = doc.data().currentBoardFEN;
+                savedFEN = "test FEN"
+                console.log(savedFEN)
 
+                resetBoard();
                 // Create the board from the saved FEN
                 // createBoardFromFEN(savedFEN);
             })
