@@ -16,15 +16,20 @@ const populateBoardCards = function () {
                     cardNum += 1
                     // populate a chess board to the page
                     $("#boardCards").append(`
-                    <div id="${cardNum}">
-                        <h3 id="title">${doc.data().boardName}</h3>
 
-                        <div id="boardDescription">
-                            <h3 id="descriptionLabel">&nbsp;&nbsp;Board Description:</h3>
-                            <textarea id="boardDescriptionText" placeholder="Board Description" disabled>${doc.data().boardDescription}</textarea>
-                        </div>
-
-                    </div>`)
+                    <div id="${cardNum}" class="card py-2 mx-2 bg-light" style="width: 10rem;">
+                <!-- <img class="card-image card-img-top" src=" ..." alt="..."> -->
+                <div class="card-body">
+                    <h5 class="Board-title" id="${doc.data().boardName}">${doc.data().boardName}</h5>
+                    <ul>
+                        <li class="FEN">${doc.data().boardFEN}</li>
+                        <li class="description">${doc.data().boardDescription}</li>
+                        <li class="dateSaved">${doc.data().savedDate}</li>
+                    </ul>
+                    <br>
+                    <a class="btn btn-secondary card-href" id="read-more">Select Board</a>
+                </div>
+            </div>`)
                 });
             })
             .catch((error) => { // catch errors
@@ -129,6 +134,7 @@ const saveBoardCard = function () {
     db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).update({
         boardName: boardName,
         boardDescription: boardDescription,
+        savedDate: new Date().toISOString().split('T')[0],
 
     }).then(function () {
 

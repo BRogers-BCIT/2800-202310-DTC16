@@ -686,7 +686,8 @@ function saveBoard() {
     db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
         boardName: boardName,
         boardDescription: boardDescription,
-        boardFEN: FEN
+        boardFEN: FEN,
+        savedDate: new Date().toISOString().split('T')[0],
 
     }).then(function () {
 
