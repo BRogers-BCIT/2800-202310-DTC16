@@ -28,7 +28,11 @@ var castleBlackKings = "k";
 var castleBlackQueens = "q";
 
 
-
+// Saved board information
+let savedFEN = "";
+let savedName = "";
+let savedDescription = "";
+let savedDate = "";
 
 
 // Array row and column and HTML square of a selected piece (Select / Delete / Move)
@@ -1067,14 +1071,24 @@ function clearBoard() {
     updateButtons();
 }
 
+const openSavedBoard = function () {
 
+    // Get the saved board information from the current user's document
+    savedName = localStorage.getItem("savedName");
+    savedDescription = localStorage.getItem("savedDescription");
+    savedFEN = localStorage.getItem("savedFEN");
+    savedDate = localStorage.getItem("savedDate");
+
+    // Create the board from the saved FEN
+    createBoardFromFEN(savedFEN);
+
+}
 
 // Working (ALL)
 setup = function () {
 
-    // Reset the board and populate it
-    resetBoard();
-    updateBoard();
+    // Open the board from the users saved board
+    openSavedBoard();
 
     // Prevent buttons from being used while menus are open
 
