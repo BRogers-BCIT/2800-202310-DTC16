@@ -683,7 +683,7 @@ function saveBoard() {
     let uDisplayName = localStorage.getItem('userDisplayName')
 
     // Save the board to the database
-    db.collection("users").doc(uUid).collection(uDisplayName + "savedBoards").doc(boardName).set({
+    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
         boardName: boardName,
         boardDescription: boardDescription,
         boardFEN: FEN
