@@ -8,6 +8,9 @@ const uDisplayName = localStorage.getItem('userDisplayName')
 // TODO: Test (Boards Functions)
 const populateBoardCards = function () {
 
+    // Clear the populated board cards
+    $("#chessCardGroup").html("");
+
     // Populate the cards with the saved boards
     function cardSkeleton() {
 
@@ -37,7 +40,7 @@ const populateBoardCards = function () {
                                 </div>
                             </button>
                         </div>`
-)
+                    )
                 });
             })
 
@@ -55,6 +58,9 @@ const populateBoardCards = function () {
 
 // TODO: Test (Boards Functions)
 const searchBoardCards = function () {
+
+    // Clear the populated board cards
+    $("#chessCardGroup").html("");
 
     // Populate the cards with the saved boards
     function cardSkeleton() {
@@ -214,6 +220,10 @@ const saveBoardCard = function () {
         console.error("Error writing document: ", error);
     });
 
+    // Close the menu and refresh the board cards
+    closeBoardMenu();
+    populateBoardCards();
+
 }
 
 const deleteBoardCard = function () {
@@ -338,9 +348,6 @@ setup = function () {
 
     // Boards Functions
     populateBoardCards();
-
-    // Clear the populated board cards
-    $("#chessCardGroup").html("");
 
     // Disable editing the board name and description text boxes
     $(`#boardName`).prop("disabled", true);
