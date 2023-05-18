@@ -15,18 +15,19 @@ const populateBoardCards = function () {
                     cardNum += 1
                     // populate a chess board to the page
                     $("#chessCardGroup").append(`
-                        <div id="${cardNum}" class="card py-2 mx-2 bg-light" style="width: 10rem;">
+                        <div id="${cardNum}" class="card" style="width: 18rem;">
                             <button class="openCard" id="${doc.id}">
-                                <div class="card-body>
-                                        <h5 class="boardTitle" id="title">${doc.data().boardName}</h5>
+                                <div class="card-body">
+                                        <h5 class="boardTitle" id="title">Board Name: ${doc.data().boardName}</h5>
                                     <ul>
-                                        <li class="FEN">${doc.data().boardFEN}</li>
-                                        <li class="description">${doc.data().boardDescription}</li>
-                                        <li class="dateSaved">${doc.data().savedDate}</li>
+                                        <li class="FEN">FEN: ${doc.data().boardFEN}</li>
+                                        <li class="description">Description: ${doc.data().boardDescription}</li>
+                                        <li class="dateSaved">Date Saved: ${doc.data().savedDate}</li>
                                     </ul>
                                 </div>
                             </button>
-                        </div>`)
+                        </div>`
+)
                 });
             })
             .catch((error) => { // catch errors
