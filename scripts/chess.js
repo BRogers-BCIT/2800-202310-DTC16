@@ -62,27 +62,27 @@ function updateBoard() {
         if (row % 2 == 0) {
             // Populate even row with even square coloring pattern
             $(`#${row}`).html(`
-                <td id="a${row}"> <button id="${row}0" class="square"> <img src="img/${board[row][0][1]}"> </button> </td> 
-                <td id="b${row}" class="ds"> <button id="${row}1" class="square"> <img src="img/${board[row][1][1]}"> </button> </td> 
-                <td id="c${row}"> <button id="${row}2" class="square"> <img src="img/${board[row][2][1]}"> </button> </td> 
-                <td id="d${row}" class="ds"> <button id="${row}3" class="square"> <img src="img/${board[row][3][1]}"> </button> </td> 
-                <td id="e${row}"> <button id="${row}4" class="square"> <img src="img/${board[row][4][1]}"> </button> </td> 
-                <td id="f${row}" class="ds"> <button id="${row}5" class="square"> <img src="img/${board[row][5][1]}"> </button> </td> 
-                <td id="g${row}"> <button id="${row}6" class="square"> <img src="img/${board[row][6][1]}"> </button> </td> 
-                <td id="h${row}" class="ds"> <button id="${row}7" class="square"> <img src="img/${board[row][7][1]}"> </button> </td> `)
+                <td id="a${row}"> <button id="${row}0" class="square"> <img src="../img/${board[row][0][1]}"> </button> </td> 
+                <td id="b${row}" class="ds"> <button id="${row}1" class="square"> <img src="../img/${board[row][1][1]}"> </button> </td> 
+                <td id="c${row}"> <button id="${row}2" class="square"> <img src="../img/${board[row][2][1]}"> </button> </td> 
+                <td id="d${row}" class="ds"> <button id="${row}3" class="square"> <img src="../img/${board[row][3][1]}"> </button> </td> 
+                <td id="e${row}"> <button id="${row}4" class="square"> <img src="../img/${board[row][4][1]}"> </button> </td> 
+                <td id="f${row}" class="ds"> <button id="${row}5" class="square"> <img src="../img/${board[row][5][1]}"> </button> </td> 
+                <td id="g${row}"> <button id="${row}6" class="square"> <img src="../img/${board[row][6][1]}"> </button> </td> 
+                <td id="h${row}" class="ds"> <button id="${row}7" class="square"> <img src="../img/${board[row][7][1]}"> </button> </td> `)
 
             //Odd Row
         } else {
             // Populate odd row with odd square coloring pattern
             $(`#${row}`).html(`
-                <td id="a${row}" class="ds"> <button id="${row}0" class="square"> <img src="img/${board[row][0][1]}"> </button> </td> 
-                <td id="b${row}"> <button id="${row}1" class="square"> <img src="img/${board[row][1][1]}"> </button> </td> 
-                <td id="c${row}" class="ds"> <button id="${row}2" class="square"> <img src="img/${board[row][2][1]}"> </button> </td> 
-                <td id="d${row}"> <button id="${row}3" class="square"> <img src="img/${board[row][3][1]}"> </button> </td> 
-                <td id="e${row}" class="ds"> <button id="${row}4" class="square"> <img src="img/${board[row][4][1]}"> </button> </td> 
-                <td id="f${row}"> <button id="${row}5" class="square"> <img src="img/${board[row][5][1]}"> </button> </td> 
-                <td id="g${row}" class="ds"> <button id="${row}6" class="square"> <img src="img/${board[row][6][1]}"> </button> </td> 
-                <td id="h${row}"> <button id="${row}7" class="square"> <img src="img/${board[row][7][1]}"> </button> </td> `)
+                <td id="a${row}" class="ds"> <button id="${row}0" class="square"> <img src="../img/${board[row][0][1]}"> </button> </td> 
+                <td id="b${row}"> <button id="${row}1" class="square"> <img src="../img/${board[row][1][1]}"> </button> </td> 
+                <td id="c${row}" class="ds"> <button id="${row}2" class="square"> <img src="../img/${board[row][2][1]}"> </button> </td> 
+                <td id="d${row}"> <button id="${row}3" class="square"> <img src="../img/${board[row][3][1]}"> </button> </td> 
+                <td id="e${row}" class="ds"> <button id="${row}4" class="square"> <img src="../img/${board[row][4][1]}"> </button> </td> 
+                <td id="f${row}"> <button id="${row}5" class="square"> <img src="../img/${board[row][5][1]}"> </button> </td> 
+                <td id="g${row}" class="ds"> <button id="${row}6" class="square"> <img src="../img/${board[row][6][1]}"> </button> </td> 
+                <td id="h${row}"> <button id="${row}7" class="square"> <img src="../img/${board[row][7][1]}"> </button> </td> `)
         }
 
     }
@@ -455,7 +455,7 @@ function openAddPieces() {
             for (var blackPiece = 0; blackPiece < 8; blackPiece++) {
                 //  If it has been taken, add a button with the piece's image
                 if (blackPieces[blackPiece][3] == "taken") {
-                    $(`#blackPieces`).append(`<button class="blackPiece" id="${blackPiece}"><img src="img/${blackPieces[blackPiece][1]}" class="piece" id="${blackPiece}"></button>`);
+                    $(`#blackPieces`).append(`<button class="blackPiece" id="${blackPiece}"><img src="../img/${blackPieces[blackPiece][1]}" class="piece" id="${blackPiece}"></button>`);
                 } else {
                     // Otherwise take one from the taken black pieces counter
                     takenBlackPieces -= 1;
@@ -472,7 +472,7 @@ function openAddPieces() {
             for (var whitePiece = 0; whitePiece < 8; whitePiece++) {
                 //  If it has been taken, add a button with the piece's image
                 if (whitePieces[whitePiece][3] == "taken") {
-                    $(`#whitePieces`).append(`<button class="whitePiece" id="${whitePiece}"><img src="img/${whitePieces[whitePiece][1]}" class="piece" id="${whitePiece}"></button>`);
+                    $(`#whitePieces`).append(`<button class="whitePiece" id="${whitePiece}"><img src="../img/${whitePieces[whitePiece][1]}" class="piece" id="${whitePiece}"></button>`);
                 } else {
                     // Otherwise take one from the taken white pieces counter
                     takenWhitePieces -= 1;
@@ -489,7 +489,7 @@ function openAddPieces() {
             for (var blackPawn = 0; blackPawn < 8; blackPawn++) {
                 //  If it has been taken, add a button with the piece's image
                 if (blackPawns[blackPawn][3] == "taken") {
-                    $(`#blackPawns`).append(`<button class="blackPawn" id="${blackPawn}"><img src="img/${blackPawns[blackPawn][1]}" class="piece" id="${blackPawn}"></button>`);
+                    $(`#blackPawns`).append(`<button class="blackPawn" id="${blackPawn}"><img src="../img/${blackPawns[blackPawn][1]}" class="piece" id="${blackPawn}"></button>`);
                 } else {
                     // Otherwise take one from the taken black pawns counter
                     takenBlackPawns -= 1;
@@ -506,7 +506,7 @@ function openAddPieces() {
             for (var whitePawn = 0; whitePawn < 8; whitePawn++) {
                 //  If it has been taken, add a button with the piece's image
                 if (whitePawns[whitePawn][3] == "taken") {
-                    $(`#whitePawns`).append(`<button class="whitePawn" id="${whitePawn}"><img src="img/${whitePawns[whitePawn][1]}" class="piece" id="${whitePawn}"></button>`);
+                    $(`#whitePawns`).append(`<button class="whitePawn" id="${whitePawn}"><img src="../img/${whitePawns[whitePawn][1]}" class="piece" id="${whitePawn}"></button>`);
                 } else {
                     // Otherwise take one from the taken white pawns counter
                     takenWhitePawns -= 1;
