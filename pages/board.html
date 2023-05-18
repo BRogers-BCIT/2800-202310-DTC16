@@ -28,10 +28,30 @@
     <link rel="stylesheet" href="../style/board-medium.css" media="(min-width: 415px)">
     <!-- Widescreen CSS Import -->
     <link rel="stylesheet" href="../style/board-wide.css" media="(min-width: 600px)">
-
+    <!-- Dev Controls CSS Import -->
+    <link rel="stylesheet" href="../style/board-dev-controls.css">
 </head>
 
 <body>
+    <!-- Div for developer controls -->
+    <!-- Hidden by default -->
+    <nav id="devPanel" style="display: none;">
+        <div id="devControls">
+            <button id="tempPrint" class="devButton">
+                <h3>Print to Console</h3>
+            </button>
+            <button id="getFEN" class="devButton">
+                <h3>Get FEN String</h3>
+            </button>
+            <button id="createFromFEN" class="devButton">
+                <h3>Create from FEN</h3>
+                <input type="text" name="FEN String" id="fenInput">
+            </button>
+        </div>
+        <div id="fenOutput">
+            <h4 id="fenSpace">Generated FEN string goes here</h4>
+        </div>
+    </nav>
     <div id="featureLinks">
         <!-- Div for save board to user account-->
         <div id="saveBoard">
@@ -46,7 +66,6 @@
             </button>
         </div>
     </div>
-
     <!-- Container to make controls fit on widescreens -->
     <div id="mainControls">
         <!-- Board form white position view -->

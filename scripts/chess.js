@@ -1,3 +1,6 @@
+// Create RegEx for FEN validation (Const)
+const FENRegEx = /^([rnbqkpRNBQKP1-8]{1,8}\/){7}[rnbqkpRNBQKP1-8]{1,8}/;
+
 // Define size of a chessboard (Const)
 const boardSize = 8;
 
@@ -23,6 +26,9 @@ var castleWhiteKings = "K";
 var castleWhiteQueens = "Q";
 var castleBlackKings = "k";
 var castleBlackQueens = "q";
+
+
+
 
 
 // Array row and column and HTML square of a selected piece (Select / Delete / Move)
@@ -59,27 +65,27 @@ function updateBoard() {
         if (row % 2 == 0) {
             // Populate even row with even square coloring pattern
             $(`#${row}`).html(`
-                <td id="a${row}"> <button id="${row}0" class="square"> <img src="img/${board[row][0][1]}"> </button> </td> 
-                <td id="b${row}" class="ds"> <button id="${row}1" class="square"> <img src="img/${board[row][1][1]}"> </button> </td> 
-                <td id="c${row}"> <button id="${row}2" class="square"> <img src="img/${board[row][2][1]}"> </button> </td> 
-                <td id="d${row}" class="ds"> <button id="${row}3" class="square"> <img src="img/${board[row][3][1]}"> </button> </td> 
-                <td id="e${row}"> <button id="${row}4" class="square"> <img src="img/${board[row][4][1]}"> </button> </td> 
-                <td id="f${row}" class="ds"> <button id="${row}5" class="square"> <img src="img/${board[row][5][1]}"> </button> </td> 
-                <td id="g${row}"> <button id="${row}6" class="square"> <img src="img/${board[row][6][1]}"> </button> </td> 
-                <td id="h${row}" class="ds"> <button id="${row}7" class="square"> <img src="img/${board[row][7][1]}"> </button> </td> `)
+                <td id="a${row}"> <button id="${row}0" class="square"> <img src="../img/${board[row][0][1]}"> </button> </td> 
+                <td id="b${row}" class="ds"> <button id="${row}1" class="square"> <img src="../img/${board[row][1][1]}"> </button> </td> 
+                <td id="c${row}"> <button id="${row}2" class="square"> <img src="../img/${board[row][2][1]}"> </button> </td> 
+                <td id="d${row}" class="ds"> <button id="${row}3" class="square"> <img src="../img/${board[row][3][1]}"> </button> </td> 
+                <td id="e${row}"> <button id="${row}4" class="square"> <img src="../img/${board[row][4][1]}"> </button> </td> 
+                <td id="f${row}" class="ds"> <button id="${row}5" class="square"> <img src="../img/${board[row][5][1]}"> </button> </td> 
+                <td id="g${row}"> <button id="${row}6" class="square"> <img src="../img/${board[row][6][1]}"> </button> </td> 
+                <td id="h${row}" class="ds"> <button id="${row}7" class="square"> <img src="../img/${board[row][7][1]}"> </button> </td> `)
 
             //Odd Row
         } else {
             // Populate odd row with odd square coloring pattern
             $(`#${row}`).html(`
-                <td id="a${row}" class="ds"> <button id="${row}0" class="square"> <img src="img/${board[row][0][1]}"> </button> </td> 
-                <td id="b${row}"> <button id="${row}1" class="square"> <img src="img/${board[row][1][1]}"> </button> </td> 
-                <td id="c${row}" class="ds"> <button id="${row}2" class="square"> <img src="img/${board[row][2][1]}"> </button> </td> 
-                <td id="d${row}"> <button id="${row}3" class="square"> <img src="img/${board[row][3][1]}"> </button> </td> 
-                <td id="e${row}" class="ds"> <button id="${row}4" class="square"> <img src="img/${board[row][4][1]}"> </button> </td> 
-                <td id="f${row}"> <button id="${row}5" class="square"> <img src="img/${board[row][5][1]}"> </button> </td> 
-                <td id="g${row}" class="ds"> <button id="${row}6" class="square"> <img src="img/${board[row][6][1]}"> </button> </td> 
-                <td id="h${row}"> <button id="${row}7" class="square"> <img src="img/${board[row][7][1]}"> </button> </td> `)
+                <td id="a${row}" class="ds"> <button id="${row}0" class="square"> <img src="../img/${board[row][0][1]}"> </button> </td> 
+                <td id="b${row}"> <button id="${row}1" class="square"> <img src="../img/${board[row][1][1]}"> </button> </td> 
+                <td id="c${row}" class="ds"> <button id="${row}2" class="square"> <img src="../img/${board[row][2][1]}"> </button> </td> 
+                <td id="d${row}"> <button id="${row}3" class="square"> <img src="../img/${board[row][3][1]}"> </button> </td> 
+                <td id="e${row}" class="ds"> <button id="${row}4" class="square"> <img src="../img/${board[row][4][1]}"> </button> </td> 
+                <td id="f${row}"> <button id="${row}5" class="square"> <img src="../img/${board[row][5][1]}"> </button> </td> 
+                <td id="g${row}" class="ds"> <button id="${row}6" class="square"> <img src="../img/${board[row][6][1]}"> </button> </td> 
+                <td id="h${row}"> <button id="${row}7" class="square"> <img src="../img/${board[row][7][1]}"> </button> </td> `)
         }
 
     }
@@ -452,7 +458,7 @@ function openAddPieces() {
             for (var blackPiece = 0; blackPiece < 8; blackPiece++) {
                 //  If it has been taken, add a button with the piece's image
                 if (blackPieces[blackPiece][3] == "taken") {
-                    $(`#blackPieces`).append(`<button class="blackPiece" id="${blackPiece}"><img src="img/${blackPieces[blackPiece][1]}" class="piece" id="${blackPiece}"></button>`);
+                    $(`#blackPieces`).append(`<button class="blackPiece" id="${blackPiece}"><img src="../img/${blackPieces[blackPiece][1]}" class="piece" id="${blackPiece}"></button>`);
                 } else {
                     // Otherwise take one from the taken black pieces counter
                     takenBlackPieces -= 1;
@@ -469,7 +475,7 @@ function openAddPieces() {
             for (var whitePiece = 0; whitePiece < 8; whitePiece++) {
                 //  If it has been taken, add a button with the piece's image
                 if (whitePieces[whitePiece][3] == "taken") {
-                    $(`#whitePieces`).append(`<button class="whitePiece" id="${whitePiece}"><img src="img/${whitePieces[whitePiece][1]}" class="piece" id="${whitePiece}"></button>`);
+                    $(`#whitePieces`).append(`<button class="whitePiece" id="${whitePiece}"><img src="../img/${whitePieces[whitePiece][1]}" class="piece" id="${whitePiece}"></button>`);
                 } else {
                     // Otherwise take one from the taken white pieces counter
                     takenWhitePieces -= 1;
@@ -486,7 +492,7 @@ function openAddPieces() {
             for (var blackPawn = 0; blackPawn < 8; blackPawn++) {
                 //  If it has been taken, add a button with the piece's image
                 if (blackPawns[blackPawn][3] == "taken") {
-                    $(`#blackPawns`).append(`<button class="blackPawn" id="${blackPawn}"><img src="img/${blackPawns[blackPawn][1]}" class="piece" id="${blackPawn}"></button>`);
+                    $(`#blackPawns`).append(`<button class="blackPawn" id="${blackPawn}"><img src="../img/${blackPawns[blackPawn][1]}" class="piece" id="${blackPawn}"></button>`);
                 } else {
                     // Otherwise take one from the taken black pawns counter
                     takenBlackPawns -= 1;
@@ -503,7 +509,7 @@ function openAddPieces() {
             for (var whitePawn = 0; whitePawn < 8; whitePawn++) {
                 //  If it has been taken, add a button with the piece's image
                 if (whitePawns[whitePawn][3] == "taken") {
-                    $(`#whitePawns`).append(`<button class="whitePawn" id="${whitePawn}"><img src="img/${whitePawns[whitePawn][1]}" class="piece" id="${whitePawn}"></button>`);
+                    $(`#whitePawns`).append(`<button class="whitePawn" id="${whitePawn}"><img src="../img/${whitePawns[whitePawn][1]}" class="piece" id="${whitePawn}"></button>`);
                 } else {
                     // Otherwise take one from the taken white pawns counter
                     takenWhitePawns -= 1;
@@ -585,7 +591,79 @@ function closeAddPieces() {
 
 }
 
+// In progress
+function createBoardFromFEN(fenString) {
 
+    // Test if the FEN string is valid
+    if (FENRegEx.test(fenString)) {
+        console.log("Valid FEN");
+
+        // Clear the board first
+        clearBoard();
+
+        // Map FEN letters to their piece equivalents
+        const pieceDictionary = {
+            "P": [whitePawns[0], whitePawns[1], whitePawns[2], whitePawns[3], whitePawns[4], whitePawns[5], whitePawns[6], whitePawns[7]],
+            "p": [blackPawns[0], blackPawns[1], blackPawns[2], blackPawns[3], blackPawns[4], blackPawns[5], blackPawns[6], blackPawns[7]],
+            "R": [whitePieces[0], whitePieces[7]],
+            "r": [blackPieces[0], blackPieces[7]],
+            "N": [whitePieces[1], whitePieces[6]],
+            "n": [blackPieces[1], blackPieces[6]],
+            "B": [whitePieces[2], whitePieces[5]],
+            "b": [blackPieces[2], blackPieces[5]],
+            "K": [whitePieces[4]],
+            "k": [blackPieces[4]],
+            "Q": [whitePieces[3]],
+            "q": [blackPieces[3]]
+        };
+        
+        // Split the FEN string by spaces, grab the board, discard the rest
+        
+        var fenSplit = fenString.split(" ");
+        var fenBoard = fenSplit[0].split("/");  // Split the board into rows
+
+        fenBoard.forEach(function (row, index) {  // For each row
+
+            let columnIndex = 0;  // Create the index to actually use for placing pieces
+
+            for (let space = 0; space < row.length; ++space) {  // For each space in the row
+                
+                if (/^\d+$/.test(row[space])) {  // If the space is a number
+
+                    let spacesToSkip = parseInt(row[space]);  // Get the number of spaces to skip
+                    columnIndex += spacesToSkip;  // Skip all spaces marked by the number
+
+                } else {  // If the space is a piece
+                    let pieceName = row[space];  // Get the piece letter
+                    let pieceArray = pieceDictionary[pieceName];  // Get the array corresponding to the piece name
+
+                    try {
+                        pieceArray[0][3] = "on board";  // Set the piece to be on the board
+                        let piece = pieceArray.pop();  // Get the piece from the array
+
+                        // TODO: do stuff to the piece
+                        piece[3] = "on board"; // Set the piece to be on the board
+                        deletedPieces--;  // Decrement the deleted pieces counter
+
+                        board[boardSize - index][columnIndex] = piece;  // Add the piece to the board
+
+                        console.log(`#${index + 1}${columnIndex} | ${piece}`);  // Log the piece
+
+                    } catch(error) { // If there are no more pieces of this type
+                        console.log(`ERROR: #${index + 1}${columnIndex} | No more pieces of this type, skipping`);
+                    }
+
+                    columnIndex++; // Increment the space index
+                }
+            }
+        });
+        updateBoard(); // Update the board
+        
+    } else {
+        console.log("Invalid FEN");
+        alert("Invalid FEN");
+    }
+}
 
 
 // Working (Save)
@@ -856,8 +934,8 @@ function boardToFullFEN() {
         boardToFEN += " ";
     }
 
-    // Record the castling availability
-    boardToFEN += `${castleWhiteKings}${castleWhiteQueens}${castleBlackKings}${castleBlackQueens}`;
+    // Record castling availability
+    boardToFEN += `${castleWhiteKings}${castleWhiteQueens}${castleBlackKings}${castleBlackQueens}` || " -";
 
     // Record the en passant squares, full move number, and half move clock (Static set to - 0 1)
     boardToFEN += " - 0 1";
@@ -937,52 +1015,52 @@ function promotePawn() {
     }
 }
 
-// Unimplemented
+// Used for createBoardFromFen()
 function clearBoard() {
 
     // Set all pieces to taken states except for the kings
 
     // White pieces
-    whitePieces = [["white", "wrook.png", "rook", "taken"], ["white", "wknight.png", "knight", "taken"],
-    ["white", "wbishop.png", "c8", "bishop", "taken"], ["white", "wqueen.png", "d8", "queen", "taken"],
-    ["white", "wking.png", "e8", "king", "taken"], ["white", "wbishop.png", "f8", "bishop", "king"],
-    ["white", "wknight.png", "g8", "knight", "taken"], ["white", "wrook.png", "h8", "rook", "taken"]];
+    whitePieces = [["white", "wrook.png", "R", "taken"], ["white", "wknight.png", "N", "taken"],
+    ["white", "wbishop.png", "B", "taken"], ["white", "wqueen.png", "Q", "taken"],
+    ["white", "wking.png", "K", "taken"], ["white", "wbishop.png", "B", "taken"],
+    ["white", "wknight.png", "N", "taken"], ["white", "wrook.png", "R", "taken"]];
 
     // White pawns
-    whitePawns = [["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"]];
+    whitePawns = [["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"],
+    ["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"],
+    ["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"],
+    ["white", "wpawn.png", "P", "taken"], ["white", "wpawn.png", "P", "taken"]];
 
     // Black pieces
-    blackPieces = [["black", "brook.png", "rook", "taken"], ["black", "bknight.png", "knight", "taken"],
-    ["black", "bbishop.png", "bishop", "taken"], ["black", "bqueen.png", "d8", "queen", "taken"],
-    ["black", "bking.png", "king", "king"], ["black", "bbishop.png", "f8", "bishop", "taken"],
-    ["black", "bknight.png", "knight", "taken"], ["black", "brook.png", "h8", "rook", "taken"]];
+    blackPieces = [["black", "brook.png", "r", "taken"], ["black", "bknight.png", "n", "taken"],
+    ["black", "bbishop.png", "b", "taken"], ["black", "bqueen.png", "q", "taken"],
+    ["black", "bking.png", "k", "taken"], ["black", "bbishop.png", "b", "taken"],
+    ["black", "bknight.png", "n", "taken"], ["black", "brook.png", "r", "taken"]];
 
     // Black pawns
-    blackPawns = [["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"]];
+    blackPawns = [["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
+    ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
+    ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
+    ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"]];
 
 
     // Set the chessboard to a cleared position
     // All pieces are taken except for the kings
     board = {
-        1: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], blackPieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        1: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         2: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         3: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         4: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         5: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         6: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         7: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-        8: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], whitePieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        8: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
     };
 
     // Reset all variables then set taken pieces to 30 (all but kings)
     resetVariables();
-    deletedPieces = 30;
+    deletedPieces = 32;
 
     // Update the board and buttons
     updateBoard();
@@ -1038,6 +1116,21 @@ setup = function () {
 
     // Not Currently used
     $("body").on("click", ".clear", clearBoard);
+
+    // Dev Controls
+    $(`#tempPrint`).click(function () {
+        console.log(board);
+    });
+
+    $(`#getFEN`).click(function() {
+        boardToFEN();
+        $(`#fenSpace`).text(FEN);
+    });
+
+    $(`#createFromFEN h3`).click(function() {
+        let inputFEN = $(`#fenInput`).val();
+        createBoardFromFEN(inputFEN);
+    });
 
 }
 $(document).ready(setup)
