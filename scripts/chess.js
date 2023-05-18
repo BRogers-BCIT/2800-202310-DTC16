@@ -1,5 +1,5 @@
 // Create RegEx for FEN validation (Const)
-const FENRegEx = /^([rnbqkpRNBQKP1-8]{1,8}\/){7}[rnbqkpRNBQKP1-8]{1,8} [wb] [KQkq-]{1,4} ([a-h][3-6]|-) \d+ \d+$/;
+const FENRegEx = /^([rnbqkpRNBQKP1-8]{1,8}\/){7}[rnbqkpRNBQKP1-8]{1,8}$/;
 
 // Define size of a chessboard (Const)
 const boardSize = 8;
@@ -593,8 +593,6 @@ function closeAddPieces() {
 
 // In progress
 function createBoardFromFEN(fenString) {
-    // Clear the board first
-    clearBoard();
 
     // Map FEN letters to their piece equivalents
     const pieceDictionary = {
@@ -606,15 +604,19 @@ function createBoardFromFEN(fenString) {
         "n": [blackPieces[1], blackPieces[6]],
         "B": [whitePieces[2], whitePieces[5]],
         "b": [blackPieces[2], blackPieces[5]],
-        "K": [whitePieces[3]],
-        "k": [blackPieces[3]],
-        "Q": [whitePieces[4]],
-        "q": [blackPieces[4]]
+        "K": [whitePieces[4]],
+        "k": [blackPieces[4]],
+        "Q": [whitePieces[3]],
+        "q": [blackPieces[3]]
     };
 
     // Test if the FEN string is valid
     if (FENRegEx.test(fenString)) {
         console.log("Valid FEN");
+
+        // Clear the board first
+        clearBoard();
+        
         // Split the FEN string by spaces, grab the board, discard the rest
         
         var fenSplit = fenString.split(" ");
@@ -635,19 +637,22 @@ function createBoardFromFEN(fenString) {
                     let pieceName = row[space];  // Get the piece letter
                     let pieceArray = pieceDictionary[pieceName];  // Get the array corresponding to the piece name
 
-                    columnIndex++; // Increment the space index
-
                     try {
                         let piece = pieceArray.pop();  // Get the piece from the array
 
                         // TODO: do stuff to the piece
                         piece[3] = "on board"; // Set the piece to be on the board
                         deletedPieces--;  // Decrement the deleted pieces counter
-                        //board[index][columnIndex] = piece;  // Add the piece to the board
+
+                        board[boardSize - index][columnIndex] = piece;  // Add the piece to the board
+
                         console.log(`#${index + 1}${columnIndex} | ${piece}`);  // Log the piece
-                    } catch(error) {
-                        console.log(`ERROR: #${index + 1}${columnIndex} | Too many pieces of this type, skipping`);
+
+                    } catch(error) { // If there are no more pieces of this type
+                        console.log(`ERROR: #${index + 1}${columnIndex} | No more pieces of this type, skipping`);
                     }
+
+                    columnIndex++; // Increment the space index
                 }
             }
         });
@@ -1009,34 +1014,34 @@ function promotePawn() {
     }
 }
 
-// Unimplemented
+// Used for createBoardFromFen()
 function clearBoard() {
 
     // Set all pieces to taken states except for the kings
 
     // White pieces
-    whitePieces = [["white", "wrook.png", "rook", "taken"], ["white", "wknight.png", "knight", "taken"],
-    ["white", "wbishop.png", "c8", "bishop", "taken"], ["white", "wqueen.png", "d8", "queen", "taken"],
-    ["white", "wking.png", "e8", "king", "taken"], ["white", "wbishop.png", "f8", "bishop", "king"],
-    ["white", "wknight.png", "g8", "knight", "taken"], ["white", "wrook.png", "h8", "rook", "taken"]];
+    whitePieces = [["white", "wrook.png", "R", "on board"], ["white", "wknight.png", "N", "on board"],
+    ["white", "wbishop.png", "B", "on board"], ["white", "wqueen.png", "Q", "on board"],
+    ["white", "wking.png", "K", "on board"], ["white", "wbishop.png", "B", "on board"],
+    ["white", "wknight.png", "N", "on board"], ["white", "wrook.png", "R", "on board"]];
 
     // White pawns
-    whitePawns = [["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"],
-    ["white", "wpawn.png", "pawn", "taken"], ["white", "wpawn.png", "pawn", "taken"]];
+    whitePawns = [["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+    ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+    ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+    ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"]];
 
     // Black pieces
-    blackPieces = [["black", "brook.png", "rook", "taken"], ["black", "bknight.png", "knight", "taken"],
-    ["black", "bbishop.png", "bishop", "taken"], ["black", "bqueen.png", "d8", "queen", "taken"],
-    ["black", "bking.png", "king", "king"], ["black", "bbishop.png", "f8", "bishop", "taken"],
-    ["black", "bknight.png", "knight", "taken"], ["black", "brook.png", "h8", "rook", "taken"]];
+    blackPieces = [["black", "brook.png", "r", "on board"], ["black", "bknight.png", "n", "on board"],
+    ["black", "bbishop.png", "b", "on board"], ["black", "bqueen.png", "q", "on board"],
+    ["black", "bking.png", "k", "king"], ["black", "bbishop.png", "b", "on board"],
+    ["black", "bknight.png", "n", "on board"], ["black", "brook.png", "r", "on board"]];
 
     // Black pawns
-    blackPawns = [["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"],
-    ["black", "bpawn.png", "pawn", "taken"], ["black", "bpawn.png", "pawn", "taken"]];
+    blackPawns = [["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+    ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+    ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+    ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"]];
 
 
     // Set the chessboard to a cleared position
