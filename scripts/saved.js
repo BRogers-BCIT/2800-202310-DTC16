@@ -11,7 +11,6 @@ const populateBoardCards = function () {
         db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards")
             .get()
             .then((querySnapshot) => {
-                console.log(querySnapshot)
                 querySnapshot.forEach((doc) => { // get all chessboards
                     cardNum += 1
                     // populate a chess board to the page
@@ -40,7 +39,6 @@ const populateBoardCards = function () {
 
 // TODO: Test (Boards Functions)
 const searchBoardCards = function () {
-    console.log("searching")
     if (menuOpen == true && jQuery("#searchName").val() != "") {
         let cardNum = 0
         let nameSearch = jQuery("#searchName").val();
@@ -80,7 +78,6 @@ const searchBoardCards = function () {
 
 // TODO: Test (Menu Functions)
 const openBoardMenu = function () {
-    console.log("opening menu")
     // If no menu is already open
     if (menuOpen == false) {
 
@@ -107,7 +104,7 @@ const openBoardMenu = function () {
         })
             // Populate the menu with the board's information
             .then(function () {
-                $(`#menuTitle`).html(boardName);
+                $(`#boardName`).val(boardName);
                 $(`#boardDescriptionText`).val(boardDescription);
                 $(`#boardFEN`).html(boardFEN);
                 $(`#dateSaved`).html(boardDate);
@@ -133,6 +130,10 @@ const closeBoardMenu = function () {
         $(`#titleArea`).css("opacity", "1");
         $(`#searchArea`).css("opacity", "1");
         $(`#boardCards`).css("opacity", "1");
+
+        // Disable editing the board name and description text boxes
+        $(`#boardName`).prop("disabled", true);
+        $(`#boardDescriptionText`).prop("disabled", true);
 
         // Forget the name of the clicked board
         currentBoardCard = null;
@@ -270,6 +271,12 @@ setup = function () {
 
     // Boards Functions
     populateBoardCards();
+
+    // Disable editing the board name and description text boxes
+    $(`#boardName`).prop("disabled", true);
+    $(`#boardDescriptionText`).prop("disabled", true);
+
+    // Search Functions
     $("body").on("click", "#searchButton", searchBoardCards);
 
     // Menu Functions
