@@ -11,6 +11,65 @@
         --menuBackground: #C9E7FA;
     }
 
+    #boardInformation {
+        float: left;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 165px;
+        width: calc(34% - 6px);
+        padding-left: 2%;
+        padding-right: 2%;
+        margin-left: 6%;
+        margin-right: 6%;
+        border: #280BE3 solid 3px;
+        border-radius: 5px;
+    }
+
+    #boardDescription {
+        float: right;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 165px;
+        width: calc(34% - 6px);
+        padding-left: 2%;
+        padding-right: 2%;
+        margin-left: 6%;
+        margin-right: 6%;
+        border: #280BE3 solid 3px;
+        border-radius: 5px;
+    }
+
+    #savedBoardName,
+    #savedBoardDate,
+    #savedBoardDescription {
+        float: left;
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+
+    #savedBoardName {
+        min-height: 115px;
+        max-height: 115px;
+        margin-bottom: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #savedBoardDate {
+        margin-bottom: 0px;
+    }
+
+    #savedBoardDescriptionText {
+        min-height: 93px;
+        max-height: 93px;
+        margin-left: 10%;
+        margin-bottom: 15px;
+        min-width: 80%;
+        max-width: 80%;
+        overflow-y: scroll;
+    }
+
     body {
         margin: 0px;
     }
