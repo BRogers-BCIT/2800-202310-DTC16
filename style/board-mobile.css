@@ -25,7 +25,7 @@
         border-radius: 5px;
     }
 
-    #boardDescription {
+    #savedBoardDescription {
         float: right;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -41,7 +41,7 @@
 
     #savedBoardName,
     #savedBoardDate,
-    #savedBoardDescription {
+    #savedBoardDescriptionTitle {
         float: left;
         width: 100%;
         margin-top: 5px;
