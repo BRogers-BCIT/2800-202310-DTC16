@@ -25,6 +25,7 @@ var uiConfig = {
             name: user.displayName, //"users" collection
             email: user.email, //with authenticated user's ID (user.uid)
             rating: "0000",
+            currentFEN: "XXXXXXXXXXX",
           })
           .then(function () {
             console.log("New user added to firestore");
@@ -34,16 +35,30 @@ var uiConfig = {
             console.log("Error adding new user: " + error);
           });
       } else {
+        localStorage.setItem('userUid', user.uid)
+        localStorage.setItem('userDisplayName', user.displayName)
         return true;
       }
+      db.collection("users").doc(user.uid).collection(user.displayName + "savedBoards").doc("Starting Board").set({
+        //create placeholder recipe
+        name: "Starting Board",
+        description: "This is the starting board",
+        boardFEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      });
+      localStorage.setItem('userUid', user.uid)
+      localStorage.setItem('userDisplayName', user.displayName)
       return false;
+
     },
     uiShown: function () {
       // The widget is rendered.
       // Hide the loader.
       document.getElementById('loader').style.display = 'none';
     }
+    //sets userUid and userDisplayName as a local storage variable
+
   },
+
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
 
   signInFlow: "popup",
