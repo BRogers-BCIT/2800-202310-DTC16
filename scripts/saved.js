@@ -8,6 +8,9 @@ const uDisplayName = localStorage.getItem('userDisplayName')
 // TODO: Test (Boards Functions)
 const populateBoardCards = function () {
 
+    // Clear the search term
+    $("#searchInput").val("");
+
     // Clear the populated board cards
     $("#chessCardGroup").html("");
 
@@ -68,6 +71,9 @@ const searchBoardCards = function () {
         // Set the card number
         let cardNum = 0
 
+        // Get the search term
+        let nameSearch = $("#searchInput").val();
+
         // Get all the saved boards from the users collection
         db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").where("boardName", "==", nameSearch)
             .get()
@@ -79,18 +85,19 @@ const searchBoardCards = function () {
 
                     // populate a chess board to the page
                     $("#chessCardGroup").append(`
-                        <div id="${cardNum}" class="card py-2 mx-2 bg-light" style="width: 10rem;">
+                        <div id="${cardNum}" class="card" style="width: 18rem;">
                             <button class="openCard" id="${doc.id}">
-                                <div class="card-body>
-                                        <h5 class="boardTitle" id="title">${doc.data().boardName}</h5>
+                                <div class="card-body">
+                                        <h5 class="boardTitle" id="title">Board Name: ${doc.data().boardName}</h5>
                                     <ul>
-                                        <li class="FEN">${doc.data().boardFEN}</li>
-                                        <li class="description">${doc.data().boardDescription}</li>
-                                        <li class="dateSaved">${doc.data().savedDate}</li>
+                                        <li class="FEN">FEN: ${doc.data().boardFEN}</li>
+                                        <li class="description">Description: ${doc.data().boardDescription}</li>
+                                        <li class="dateSaved">Date Saved: ${doc.data().savedDate}</li>
                                     </ul>
                                 </div>
                             </button>
-                        </div>`)
+                        </div>`
+                    )
                 });
             })
 
