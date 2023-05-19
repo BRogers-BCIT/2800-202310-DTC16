@@ -28,6 +28,10 @@ table {
     flex: 1;
 }
 
+.featureButton h3 {
+    font-size: 1.75rem;
+}
+
 #featureLinks {
     display: flex;
     flex-direction: row;
