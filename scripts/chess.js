@@ -1089,28 +1089,23 @@ const openSavedBoard = function () {
     if (currentPage.includes("openBoard")) {
 
         // Get the user's information
-        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards")
-            .get()
+        db.collection("users").doc(uUid).get()
             .then((doc) => {
                 // Get the saved board name from the current user's document
-                savedName = doc.data().currentBoardName;
-                savedName = "test name"
+                savedName = doc.data().name;
                 $("#savedBoardName").html(savedName)
 
                 // Get the saved description from the current user's document
-                savedDescription = doc.data().currentBoardDescription;
-                savedDescription = "test description"
+                savedDescription = doc.data().name;
                 $("#savedBoardDescriptionText").val(savedDescription)
 
                 // Get the saved date from the current user's document
-                savedDate = doc.data().currentBoardSavedDate
-                savedDate = "test date"
+                savedDate = doc.data().name
                 $("#savedBoardDate").html(`DATE SAVED:  ${savedDate}`)
 
                 // Get the saved FEN from the current user's document
-                savedFEN = doc.data().currentBoardFEN;
-                savedFEN = "test FEN"
-                console.log(savedFEN)
+                savedFEN = doc.data().name;
+
 
                 resetBoard();
                 // Create the board from the saved FEN
