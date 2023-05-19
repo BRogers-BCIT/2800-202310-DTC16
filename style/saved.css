@@ -6,12 +6,31 @@
         --text-color: black;
     }
 
+    main {
+        margin-bottom: 60px;
+    }
+
+    @media screen and (max-width: 590px) {
+        main {
+            margin-bottom: 80px;
+        }
+    }
+
+    .container {
+        padding: 0px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+
     #savedBoardMenu {
         display: none;
     }
 
     #searchArea {
-        margin-top: 20px;
+        margin-top: 10px;
         float: left;
         width: 100%;
         border-radius: 5px;
@@ -29,8 +48,6 @@
         border-color: var(--border);
         border-radius: 3px;
     }
-
-
 
     #searchImage {
         margin-left: 5px;
@@ -50,13 +67,51 @@
         border-radius: 3px;
     }
 
-
     #searchLabel {
         float: right;
         margin-right: 10px;
-        margin-top: 3px;
+        margin-top: 6px;
     }
 
     #search_image {
         font-size: 36px;
+    }
+
+    .card {
+        width: 44%;
+        height: 234.25px;
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-bottom: 35px;
+    }
+
+    .openCard {
+        width: 100%;
+        height: 234.25px;
+        color: var(--text-color);
+        background-color: var(--background);
+        border-color: var(--border);
+        border-radius: 3px;
+    }
+
+    .card-body {
+        margin: auto;
+    }
+
+    ul {
+        text-align: left;
+        list-style-type: none;
+        margin-bottom: 0px;
+        padding-left: 5%;
+    }
+
+    li {
+        margin-top: 5px;
+        max-height: 48px;
+        overflow-y: hidden;
+    }
+
+    .description {
+        max-height: 72.75px;
+        overflow-y: hidden;
     }

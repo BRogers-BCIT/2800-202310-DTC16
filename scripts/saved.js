@@ -31,7 +31,7 @@ const populateBoardCards = function () {
 
                     // populate a chess board to the page
                     $("#chessCardGroup").append(`
-                        <div id="${cardNum}" class="card" style="width: 20rem;">
+                        <div id="${cardNum}" class="card">
                         <button class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg">
                         <div class="card-body">
                             
