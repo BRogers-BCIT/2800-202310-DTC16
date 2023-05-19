@@ -1,0 +1,8 @@
+@font-face {
+    font-family: useFont;
+    src: url(Urbanist-VariableFont_wght.ttf);
+}
+
+main {
+    font-family: useFont;
+}
