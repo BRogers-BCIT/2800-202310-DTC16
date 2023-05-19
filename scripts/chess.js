@@ -173,58 +173,58 @@ function resetBoard() {
     // Check if the user is not opening a saved board
     let currentPage = window.location.href;
 
-    if (currentPage.includes("openBoard")) {
+    // if (currentPage.includes("openBoard")) {
 
-        // Prevents the board from being reset if a menu is open
-        if (menuOpen == false) {
+    // Prevents the board from being reset if a menu is open
+    if (menuOpen == false) {
 
-            // Set all pieces to original states
-            // White pieces
-            whitePieces = [["white", "wrook.png", "R", "on board"], ["white", "wknight.png", "N", "on board"],
-            ["white", "wbishop.png", "B", "on board"], ["white", "wqueen.png", "Q", "on board"],
-            ["white", "wking.png", "K", "on board"], ["white", "wbishop.png", "B", "on board"],
-            ["white", "wknight.png", "N", "on board"], ["white", "wrook.png", "R", "on board"]];
+        // Set all pieces to original states
+        // White pieces
+        whitePieces = [["white", "wrook.png", "R", "on board"], ["white", "wknight.png", "N", "on board"],
+        ["white", "wbishop.png", "B", "on board"], ["white", "wqueen.png", "Q", "on board"],
+        ["white", "wking.png", "K", "on board"], ["white", "wbishop.png", "B", "on board"],
+        ["white", "wknight.png", "N", "on board"], ["white", "wrook.png", "R", "on board"]];
 
-            // White pawns
-            whitePawns = [["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
-            ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
-            ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
-            ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"]];
+        // White pawns
+        whitePawns = [["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+        ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+        ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+        ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"]];
 
-            // Black pieces
-            blackPieces = [["black", "brook.png", "r", "on board"], ["black", "bknight.png", "n", "on board"],
-            ["black", "bbishop.png", "b", "on board"], ["black", "bqueen.png", "q", "on board"],
-            ["black", "bking.png", "k", "king"], ["black", "bbishop.png", "b", "on board"],
-            ["black", "bknight.png", "n", "on board"], ["black", "brook.png", "r", "on board"]];
+        // Black pieces
+        blackPieces = [["black", "brook.png", "r", "on board"], ["black", "bknight.png", "n", "on board"],
+        ["black", "bbishop.png", "b", "on board"], ["black", "bqueen.png", "q", "on board"],
+        ["black", "bking.png", "k", "king"], ["black", "bbishop.png", "b", "on board"],
+        ["black", "bknight.png", "n", "on board"], ["black", "brook.png", "r", "on board"]];
 
-            // Black pawns
-            blackPawns = [["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
-            ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
-            ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
-            ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"]];
+        // Black pawns
+        blackPawns = [["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+        ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+        ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+        ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"]];
 
-            // Set the chessboard to a starting position
-            board = {
-                1: [whitePieces[0], whitePieces[1], whitePieces[2], whitePieces[3], whitePieces[4], whitePieces[5], whitePieces[6], whitePieces[7]],
-                2: [whitePawns[0], whitePawns[1], whitePawns[2], whitePawns[3], whitePawns[4], whitePawns[5], whitePawns[6], whitePawns[7]],
-                3: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-                4: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-                5: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-                6: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-                7: [blackPawns[0], blackPawns[1], blackPawns[2], blackPawns[3], blackPawns[4], blackPawns[5], blackPawns[6], blackPawns[7]],
-                8: [blackPieces[0], blackPieces[1], blackPieces[2], blackPieces[3], blackPieces[4], blackPieces[5], blackPieces[6], blackPieces[7]]
-            };
+        // Set the chessboard to a starting position
+        board = {
+            1: [whitePieces[0], whitePieces[1], whitePieces[2], whitePieces[3], whitePieces[4], whitePieces[5], whitePieces[6], whitePieces[7]],
+            2: [whitePawns[0], whitePawns[1], whitePawns[2], whitePawns[3], whitePawns[4], whitePawns[5], whitePawns[6], whitePawns[7]],
+            3: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+            4: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+            5: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+            6: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+            7: [blackPawns[0], blackPawns[1], blackPawns[2], blackPawns[3], blackPawns[4], blackPawns[5], blackPawns[6], blackPawns[7]],
+            8: [blackPieces[0], blackPieces[1], blackPieces[2], blackPieces[3], blackPieces[4], blackPieces[5], blackPieces[6], blackPieces[7]]
+        };
 
-            // Reset all variables
-            resetVariables();
-            deletedPieces = 0;
+        // Reset all variables
+        resetVariables();
+        deletedPieces = 0;
 
-            // Update the board and buttons
-            updateBoard();
-            updateButtons();
+        // Update the board and buttons
+        updateBoard();
+        updateButtons();
 
-        }
     }
+    // }
 }
 
 // Working (Reset)
@@ -1051,7 +1051,7 @@ function clearBoard() {
     ["black", "bbishop.png", "b", "taken"], ["black", "bqueen.png", "q", "taken"],
     ["black", "bking.png", "k", "taken"], ["black", "bbishop.png", "b", "taken"],
     ["black", "bknight.png", "n", "taken"], ["black", "brook.png", "r", "taken"]];
-  
+
     // Black pawns
     blackPawns = [["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
     ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
