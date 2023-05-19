@@ -63,3 +63,7 @@ header {
 .navbar-brand {
     margin-right: 0px;
 }
+
+.material-icons {
+    font-size: 2em;
+}
