@@ -803,8 +803,6 @@ function closeSaveMenu() {
 }
 
 
-
-
 // Working (Analyze)
 function openAnalyzeMenu() {
 
@@ -1082,6 +1080,7 @@ const openSavedBoard = function () {
     let currentPage = window.location.href;
 
     if (currentPage.includes("openBoard")) {
+        console.log("Opening saved board")
 
         // Get the user's information
         db.collection("users").doc(uUid).get()
@@ -1101,12 +1100,13 @@ const openSavedBoard = function () {
                 // Get the saved FEN from the current user's document
                 savedFEN = doc.data().currentFEN;
 
-
-                // Set board to ini
-                resetBoard();
-
-                // Create the board from the saved FEN
-                createBoardFromFEN(savedFEN);
+                if (savedFEN != undefined && savedFEN != "" && savedFEN != null && savedFEN != "XXXXXXXXXXX") {
+                    // Create the board from the saved FEN
+                    createBoardFromFEN(savedFEN);
+                } else {
+                    $("#savedBoardDescription").css("display", "none")
+                    $("#boardInformation").css("display", "none")
+                }
             })
     }
 }
@@ -1114,11 +1114,11 @@ const openSavedBoard = function () {
 // Working (ALL)
 setup = function () {
 
-    // Open the board from the users saved board (if applicable)
-    openSavedBoard();
-
     // Populate the board with the pieces (if applicable)
     resetBoard();
+
+    // Open the board from the users saved board (if applicable)
+    openSavedBoard();
 
     // Update the board and buttons
     updateBoard();
