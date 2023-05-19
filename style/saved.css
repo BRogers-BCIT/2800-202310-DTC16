@@ -6,10 +6,6 @@
         --text-color: black;
     }
 
-    body {
-        background-color: var(--background);
-    }
-
     #savedBoardMenu {
         display: none;
     }
