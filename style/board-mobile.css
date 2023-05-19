@@ -78,6 +78,7 @@
     }
 
     #savedBoardDescriptionText {
+        font-size: 0.725em !important;
         min-height: 93px;
         max-height: 93px;
         margin-left: 5%;
