@@ -11,6 +11,10 @@
         --menuBackground: #C9E7FA;
     }
 
+    body {
+        background-color: var(--background);
+    }
+
     #boardInformation {
         float: left;
         margin-top: 10px;
