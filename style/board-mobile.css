@@ -144,12 +144,26 @@
         display: none;
     }
 
+    .featureButton {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
+    .featureButton h3 {
+        font-size: small;
+        margin: auto;
+    }
 
     #featureLinks {
-        margin-top: 5vh;
         width: 100%;
         height: 6vh;
+    }
+
+    #featureLinks div {
+        height: 100%;
     }
 
     #saveBoard {
