@@ -266,18 +266,36 @@ const openBoardInEditor = function () {
     let boardFEN = null;
     let boardName = null;
     let boardDescription = null;
+    let boardSavedDate = null;
 
     // Get the board's information from the database
     function getCardFEN() {
-        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").where("name", "==", currentBoardCard)
+        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").where("boardName", "==", currentBoardID)
             .get()
             .then((querySnapshot) => {
                 // Get the information from the matching board's document
                 querySnapshot.forEach((doc) => {
-                    boardFEN = doc.data().FEN;
-                    boardName = doc.data().name;
-                    boardDescription = doc.data().description;
+                    boardFEN = doc.data().boardFEN;
+                    boardName = doc.data().boardName;
+                    boardDescription = doc.data().boardDescription;
                     boardSavedDate = doc.data().savedDate;
+                });
+            }).then(function () {
+
+                // Update the board information to the user's document in the database
+                db.collection("users").doc(uUid).update({
+                    currentFEN: boardFEN,
+                    currentBoardName: boardName,
+                    currentBoardDescription: boardDescription,
+                    currentBoardSavedDate: boardSavedDate,
+
+                }).then(function () {
+                    // Call the analysis page
+                    window.location.href = "../pages/openBoard.html";
+
+                }).catch(function (error) {
+                    // Catch any errors
+                    console.error("Error writing document: ", error);
                 });
             })
             .catch((error) => {
@@ -285,28 +303,7 @@ const openBoardInEditor = function () {
                 console.log("Error getting documents: ", error);
             });
     }
-
-    // Call the get information function
     getCardFEN();
-
-    // Call the get information function
-    getCardFEN();
-
-    // Update the board information to the user's document in the database
-    db.collection("users").doc(uUid).update({
-        currentFEN: boardFEN,
-        currentBoardName: boardName,
-        currentBoardDescription: boardDescription,
-        currentBoardSavedDate: boardSavedDate,
-
-    }).then(function () {
-        // Call the analysis page
-        window.location.href = "../pages/savedBoard.html";
-
-    }).catch(function (error) {
-        // Catch any errors
-        console.error("Error writing document: ", error);
-    });
 
 }
 
@@ -318,16 +315,34 @@ const openBoardInAnalyzer = function () {
     let boardName = null;
     let boardDescription = null;
 
+    console.log(currentBoardID);
+
     // Get the board's information from the database
     function getCardFEN() {
-        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").where("name", "==", currentBoardCard)
+        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").where("boardName", "==", currentBoardID)
             .get()
             .then((querySnapshot) => {
                 // Get the information from the matching board's document
                 querySnapshot.forEach((doc) => {
-                    boardFEN = doc.data().FEN;
-                    boardName = doc.data().name;
-                    boardDescription = doc.data().description;
+                    boardFEN = doc.data().boardFEN;
+                    boardName = doc.data().boardName;
+                    boardDescription = doc.data().boardDescription;
+                });
+            }).then(function () {
+
+                // Update the board information to the user's document in the database
+                db.collection("users").doc(uUid).update({
+                    currentFEN: boardFEN,
+                    currentBoardName: boardName,
+                    currentBoardDescription: boardDescription,
+
+                }).then(function () {
+                    // Call the analysis page
+                    window.location.href = "../pages/analysis.html";
+
+                }).catch(function (error) {
+                    // Catch any errors
+                    console.error("Error writing document: ", error);
                 });
             })
             .catch((error) => {
@@ -339,20 +354,6 @@ const openBoardInAnalyzer = function () {
     // Call the get information function
     getCardFEN();
 
-    // Update the board information to the user's document in the database
-    db.collection("users").doc(uUid).update({
-        currentFEN: boardFEN,
-        currentBoardName: boardName,
-        currentBoardDescription: boardDescription
-
-    }).then(function () {
-        // Call the analysis page
-        window.location.href = "../pages/analysis.html";
-
-    }).catch(function (error) {
-        // Catch any errors
-        console.error("Error writing document: ", error);
-    });
 }
 
 
