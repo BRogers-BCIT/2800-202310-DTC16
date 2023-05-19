@@ -15,12 +15,12 @@
         float: left;
         margin-top: 10px;
         margin-bottom: 10px;
-        height: 165px;
-        width: calc(34% - 6px);
+        height: 170px;
+        width: calc(36% - 6px);
         padding-left: 2%;
         padding-right: 2%;
-        margin-left: 6%;
-        margin-right: 6%;
+        margin-left: 5%;
+        margin-right: 5%;
         border: #280BE3 solid 3px;
         border-radius: 5px;
     }
@@ -29,12 +29,12 @@
         float: right;
         margin-top: 10px;
         margin-bottom: 10px;
-        height: 165px;
-        width: calc(34% - 6px);
-        padding-left: 2%;
+        height: 170px;
+        width: calc(36% - 6px);
+        padding-left: 1%;
         padding-right: 2%;
-        margin-left: 6%;
-        margin-right: 6%;
+        margin-left: 5%;
+        margin-right: 5%;
         border: #280BE3 solid 3px;
         border-radius: 5px;
     }
@@ -49,24 +49,42 @@
     }
 
     #savedBoardName {
-        min-height: 115px;
-        max-height: 115px;
+        max-height: 120px;
+        min-height: 120px;
         margin-bottom: 0px;
+        word-wrap: break-word;
         overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     #savedBoardDate {
+        margin-top: 0px;
         margin-bottom: 0px;
     }
 
+
+    h1 {
+        font-family: initial !important;
+        font-size: 2em !important;
+    }
+
+    h2 {
+        font-family: initial !important;
+        font-size: 1.3em !important;
+    }
+
+    h4 {
+        font-family: initial !important;
+        font-size: 1em !important;
+    }
+
     #savedBoardDescriptionText {
+        font-size: 0.725em !important;
         min-height: 93px;
         max-height: 93px;
-        margin-left: 10%;
+        margin-left: 5%;
         margin-bottom: 15px;
-        min-width: 80%;
-        max-width: 80%;
+        min-width: 90%;
+        max-width: 90%;
         overflow-y: scroll;
     }
 

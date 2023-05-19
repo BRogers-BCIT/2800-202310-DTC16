@@ -7,17 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <!--boostrap js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!--boostrap links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
     <!--Firebase and Jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-    <!--Javascript Firebase-->
-    <script src="../scripts/firebaseapi.js"></script>
 
     <!-- Script call-->
+    <script src="../scripts/firebaseapi.js"></script>
+    <script src="../scripts/skeleton.js"></script>
     <script src="../scripts/chess.js"></script>
     <!-- Widescreen CSS Import -->
     <link rel="stylesheet" href="../style/board-mobile.css" media="(min-width: 350px)">
@@ -32,6 +40,10 @@
 </head>
 
 <body>
+
+    <nav id="navbarPlaceholder"></nav>
+
+
     <!-- Div for developer controls -->
     <!-- Hidden by default -->
     <nav id="devPanel" style="display: none;">
@@ -51,6 +63,7 @@
             <h4 id="fenSpace">Generated FEN string goes here</h4>
         </div>
     </nav>
+
     <div id="featureLinks">
         <!-- Div for save board to user account-->
         <div id="saveBoard">
@@ -67,9 +80,10 @@
     </div>
 
 
+
     <div id="savedBoardDescription">
         <h2 id="savedBoardDescriptionTitle">Description: </h2>
-        <textarea id="savedBoardDescriptionText" placeholder="Board Description"></textarea>
+        <textarea id="savedBoardDescriptionText" placeholder="Board Description" disabled></textarea>
     </div>
     <div id="boardInformation">
         <h1 id="savedBoardName"></h1>
@@ -375,6 +389,8 @@
             </div>
         </div>
     </div>
+
+    <nav id="footerPlaceholder"></nav>
 
 </body>
 
