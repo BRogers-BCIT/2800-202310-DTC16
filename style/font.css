@@ -5,4 +5,11 @@
 
 main {
     font-family: useFont;
+    margin-bottom: 60px;
+}
+
+@media screen and (max-width: 590px) {
+    main {
+        margin-bottom: 80px;
+    }
 }
