@@ -10,7 +10,7 @@ function loadSkeleton() {
             // User is at the home page.
             console.log(`User is at home page`)
             console.log($('#navbarPlaceholder').load('../bars/nav_index.html'));
-        } else { 
+        } else {
             // User is at a different page.
             console.log(`User is not at home page`)
             if (user) {
@@ -21,8 +21,16 @@ function loadSkeleton() {
             } else {
                 // No user is signed in.
                 console.log(`Authentication failed or missing`)
-                console.log($('#navbarPlaceholder').load('../bars/nav_b4_login.html'));
-                
+
+                // Check if the user is opening a page they should not see (e.g. analysis, openBoard, profile, saved)
+                let currentPage = window.location.href;
+                if (currentPage.includes("analysis") || currentPage.includes("openBoard") || currentPage.includes("profile") || currentPage.includes("saved")) {
+                    // If the user is not logged in, redirect them to the home page.
+                    window.location.href = "../index.html";
+                } else {
+                    // Otherwise load the navbar for non-logged in users.
+                    console.log($('#navbarPlaceholder').load('../bars/nav_b4_login.html'));
+                }
             }
         }
         console.log($('#footerPlaceholder').load('../bars/footer.html'));
