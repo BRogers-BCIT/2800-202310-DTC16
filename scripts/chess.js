@@ -1092,24 +1092,26 @@ const openSavedBoard = function () {
         db.collection("users").doc(uUid).get()
             .then((doc) => {
                 // Get the saved board name from the current user's document
-                savedName = doc.data().name;
+                savedName = doc.data().currentBoardName;
                 $("#savedBoardName").html(savedName)
 
                 // Get the saved description from the current user's document
-                savedDescription = doc.data().name;
+                savedDescription = doc.data().currentBoardDescription;
                 $("#savedBoardDescriptionText").val(savedDescription)
 
                 // Get the saved date from the current user's document
-                savedDate = doc.data().name
+                savedDate = doc.data().currentBoardSavedDate
                 $("#savedBoardDate").html(`DATE SAVED:  ${savedDate}`)
 
                 // Get the saved FEN from the current user's document
-                savedFEN = doc.data().name;
+                savedFEN = doc.data().currentFEN;
 
 
+                // Set board to ini
                 resetBoard();
+
                 // Create the board from the saved FEN
-                // createBoardFromFEN(savedFEN);
+                createBoardFromFEN(savedFEN);
             })
     }
 }
