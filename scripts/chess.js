@@ -170,11 +170,6 @@ function updateButtons() {
 // Working (Reset)
 function resetBoard() {
 
-    // Check if the user is not opening a saved board
-    let currentPage = window.location.href;
-
-    if (currentPage.includes("openBoard")) {
-
         // Prevents the board from being reset if a menu is open
         if (menuOpen == false) {
 
@@ -223,7 +218,6 @@ function resetBoard() {
             updateBoard();
             updateButtons();
 
-        }
     }
 }
 
