@@ -7,6 +7,9 @@ const boardSize = 8;
 // Define the format for a square with no piece (Const)
 const nonePiece = ["empty.png", "notPiece"];
 
+// User data
+const uUid = localStorage.getItem('userUid')
+const uDisplayName = localStorage.getItem('userDisplayName')
 
 // Create board variable (Board)
 var board;
@@ -28,7 +31,11 @@ var castleBlackKings = "k";
 var castleBlackQueens = "q";
 
 
-
+// Saved board information
+let savedFEN = "";
+let savedName = "";
+let savedDescription = "";
+let savedDate = "";
 
 
 // Array row and column and HTML square of a selected piece (Select / Delete / Move)
@@ -163,54 +170,60 @@ function updateButtons() {
 // Working (Reset)
 function resetBoard() {
 
-    // Prevents the board from being reset if a menu is open
-    if (menuOpen == false) {
+    // Check if the user is not opening a saved board
+    let currentPage = window.location.href;
 
-        // Set all pieces to original states
-        // White pieces
-        whitePieces = [["white", "wrook.png", "R", "on board"], ["white", "wknight.png", "N", "on board"],
-        ["white", "wbishop.png", "B", "on board"], ["white", "wqueen.png", "Q", "on board"],
-        ["white", "wking.png", "K", "on board"], ["white", "wbishop.png", "B", "on board"],
-        ["white", "wknight.png", "N", "on board"], ["white", "wrook.png", "R", "on board"]];
+    if (currentPage.includes("openBoard")) {
 
-        // White pawns
-        whitePawns = [["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
-        ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
-        ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
-        ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"]];
+        // Prevents the board from being reset if a menu is open
+        if (menuOpen == false) {
 
-        // Black pieces
-        blackPieces = [["black", "brook.png", "r", "on board"], ["black", "bknight.png", "n", "on board"],
-        ["black", "bbishop.png", "b", "on board"], ["black", "bqueen.png", "q", "on board"],
-        ["black", "bking.png", "k", "king"], ["black", "bbishop.png", "b", "on board"],
-        ["black", "bknight.png", "n", "on board"], ["black", "brook.png", "r", "on board"]];
+            // Set all pieces to original states
+            // White pieces
+            whitePieces = [["white", "wrook.png", "R", "on board"], ["white", "wknight.png", "N", "on board"],
+            ["white", "wbishop.png", "B", "on board"], ["white", "wqueen.png", "Q", "on board"],
+            ["white", "wking.png", "K", "on board"], ["white", "wbishop.png", "B", "on board"],
+            ["white", "wknight.png", "N", "on board"], ["white", "wrook.png", "R", "on board"]];
 
-        // Black pawns
-        blackPawns = [["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
-        ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
-        ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
-        ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"]];
+            // White pawns
+            whitePawns = [["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+            ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+            ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"],
+            ["white", "wpawn.png", "P", "on board"], ["white", "wpawn.png", "P", "on board"]];
 
-        // Set the chessboard to a starting position
-        board = {
-            1: [whitePieces[0], whitePieces[1], whitePieces[2], whitePieces[3], whitePieces[4], whitePieces[5], whitePieces[6], whitePieces[7]],
-            2: [whitePawns[0], whitePawns[1], whitePawns[2], whitePawns[3], whitePawns[4], whitePawns[5], whitePawns[6], whitePawns[7]],
-            3: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-            4: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-            5: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-            6: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-            7: [blackPawns[0], blackPawns[1], blackPawns[2], blackPawns[3], blackPawns[4], blackPawns[5], blackPawns[6], blackPawns[7]],
-            8: [blackPieces[0], blackPieces[1], blackPieces[2], blackPieces[3], blackPieces[4], blackPieces[5], blackPieces[6], blackPieces[7]]
-        };
+            // Black pieces
+            blackPieces = [["black", "brook.png", "r", "on board"], ["black", "bknight.png", "n", "on board"],
+            ["black", "bbishop.png", "b", "on board"], ["black", "bqueen.png", "q", "on board"],
+            ["black", "bking.png", "k", "king"], ["black", "bbishop.png", "b", "on board"],
+            ["black", "bknight.png", "n", "on board"], ["black", "brook.png", "r", "on board"]];
 
-        // Reset all variables
-        resetVariables();
-        deletedPieces = 0;
+            // Black pawns
+            blackPawns = [["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+            ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+            ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"],
+            ["black", "bpawn.png", "p", "on board"], ["black", "bpawn.png", "p", "on board"]];
 
-        // Update the board and buttons
-        updateBoard();
-        updateButtons();
+            // Set the chessboard to a starting position
+            board = {
+                1: [whitePieces[0], whitePieces[1], whitePieces[2], whitePieces[3], whitePieces[4], whitePieces[5], whitePieces[6], whitePieces[7]],
+                2: [whitePawns[0], whitePawns[1], whitePawns[2], whitePawns[3], whitePawns[4], whitePawns[5], whitePawns[6], whitePawns[7]],
+                3: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+                4: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+                5: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+                6: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+                7: [blackPawns[0], blackPawns[1], blackPawns[2], blackPawns[3], blackPawns[4], blackPawns[5], blackPawns[6], blackPawns[7]],
+                8: [blackPieces[0], blackPieces[1], blackPieces[2], blackPieces[3], blackPieces[4], blackPieces[5], blackPieces[6], blackPieces[7]]
+            };
 
+            // Reset all variables
+            resetVariables();
+            deletedPieces = 0;
+
+            // Update the board and buttons
+            updateBoard();
+            updateButtons();
+
+        }
     }
 }
 
@@ -568,7 +581,7 @@ function addPieceToBoard() {
     // Update the board with the new pieces
     updateBoard();
     updateButtons();
-
+    closeAddPieces();
 }
 
 // Working (Add)
@@ -616,9 +629,9 @@ function createBoardFromFEN(fenString) {
             "Q": [whitePieces[3]],
             "q": [blackPieces[3]]
         };
-        
+
         // Split the FEN string by spaces, grab the board, discard the rest
-        
+
         var fenSplit = fenString.split(" ");
         var fenBoard = fenSplit[0].split("/");  // Split the board into rows
 
@@ -627,7 +640,7 @@ function createBoardFromFEN(fenString) {
             let columnIndex = 0;  // Create the index to actually use for placing pieces
 
             for (let space = 0; space < row.length; ++space) {  // For each space in the row
-                
+
                 if (/^\d+$/.test(row[space])) {  // If the space is a number
 
                     let spacesToSkip = parseInt(row[space]);  // Get the number of spaces to skip
@@ -649,7 +662,7 @@ function createBoardFromFEN(fenString) {
 
                         console.log(`#${index + 1}${columnIndex} | ${piece}`);  // Log the piece
 
-                    } catch(error) { // If there are no more pieces of this type
+                    } catch (error) { // If there are no more pieces of this type
                         console.log(`ERROR: #${index + 1}${columnIndex} | No more pieces of this type, skipping`);
                     }
 
@@ -658,7 +671,7 @@ function createBoardFromFEN(fenString) {
             }
         });
         updateBoard(); // Update the board
-        
+
     } else {
         console.log("Invalid FEN");
         alert("Invalid FEN");
@@ -750,6 +763,7 @@ function saveBoard() {
 
     // Get the board name and description from the input fields
     let boardName = document.getElementById("boardName").value;
+    boardName = boardName.toLowerCase();
     let boardDescription = document.getElementById("boardDescriptionText").value;
 
     // Convert the board to FEN for saving
@@ -760,15 +774,15 @@ function saveBoard() {
     let uDisplayName = localStorage.getItem('userDisplayName')
 
     // Save the board to the database
-    db.collection("users").doc(uUid).collection(uDisplayName + "savedBoards").doc(boardName).set({
+    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
         boardName: boardName,
         boardDescription: boardDescription,
-        boardFEN: FEN
+        boardFEN: FEN,
+        savedDate: new Date().toISOString().split('T')[0],
 
     }).then(function () {
 
-        // Call the analysis page
-        window.location.href = "../pages/saved.html";
+        closeSaveMenu();
 
     }).catch(function (error) {
 
@@ -1037,7 +1051,7 @@ function clearBoard() {
     ["black", "bbishop.png", "b", "taken"], ["black", "bqueen.png", "q", "taken"],
     ["black", "bking.png", "k", "taken"], ["black", "bbishop.png", "b", "taken"],
     ["black", "bknight.png", "n", "taken"], ["black", "brook.png", "r", "taken"]];
-
+  
     // Black pawns
     blackPawns = [["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
     ["black", "bpawn.png", "p", "taken"], ["black", "bpawn.png", "p", "taken"],
@@ -1067,13 +1081,54 @@ function clearBoard() {
     updateButtons();
 }
 
+const openSavedBoard = function () {
 
+    // Check if the user is opening a saved board
+    let currentPage = window.location.href;
+
+    if (currentPage.includes("openBoard")) {
+
+        // Get the user's information
+        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards")
+            .get()
+            .then((doc) => {
+                // Get the saved board name from the current user's document
+                savedName = doc.data().currentBoardName;
+                savedName = "test name"
+                $("#savedBoardName").html(savedName)
+
+                // Get the saved description from the current user's document
+                savedDescription = doc.data().currentBoardDescription;
+                savedDescription = "test description"
+                $("#savedBoardDescriptionText").val(savedDescription)
+
+                // Get the saved date from the current user's document
+                savedDate = doc.data().currentBoardSavedDate
+                savedDate = "test date"
+                $("#savedBoardDate").html(`DATE SAVED:  ${savedDate}`)
+
+                // Get the saved FEN from the current user's document
+                savedFEN = doc.data().currentBoardFEN;
+                savedFEN = "test FEN"
+                console.log(savedFEN)
+
+                resetBoard();
+                // Create the board from the saved FEN
+                // createBoardFromFEN(savedFEN);
+            })
+    }
+}
 
 // Working (ALL)
 setup = function () {
 
-    // Reset the board and populate it
+    // Open the board from the users saved board (if applicable)
+    openSavedBoard();
+
+    // Populate the board with the pieces (if applicable)
     resetBoard();
+
+    // Update the board and buttons
     updateBoard();
 
     // Prevent buttons from being used while menus are open
@@ -1122,12 +1177,12 @@ setup = function () {
         console.log(board);
     });
 
-    $(`#getFEN`).click(function() {
+    $(`#getFEN`).click(function () {
         boardToFEN();
         $(`#fenSpace`).text(FEN);
     });
 
-    $(`#createFromFEN h3`).click(function() {
+    $(`#createFromFEN h3`).click(function () {
         let inputFEN = $(`#fenInput`).val();
         createBoardFromFEN(inputFEN);
     });

@@ -1,0 +1,62 @@
+    :root {
+        --background: #C9E7FA;
+        --border: #329BFA;
+        --contrast: #280BE3;
+        --highlight: #00BCFA;
+        --text-color: black;
+    }
+
+    #savedBoardMenu {
+        display: none;
+    }
+
+    #searchArea {
+        margin-top: 20px;
+        float: left;
+        width: 100%;
+        border-radius: 5px;
+        border: var(--border) solid 5px;
+        background-color: var(--background);
+        margin-bottom: 20px;
+    }
+
+    #searchInput {
+        margin: 5px;
+        float: left;
+        width: calc(100% - 140px);
+        color: var(--contrast);
+        background-color: var(--background);
+        border-color: var(--border);
+        border-radius: 3px;
+    }
+
+
+
+    #searchImage {
+        margin-left: 5px;
+        float: left;
+        font-size: 36px;
+    }
+
+    #searchButton {
+        float: right;
+        padding: 0px;
+        margin: 5px;
+        height: 38px;
+        width: 110px;
+        color: var(--text-color);
+        background-color: var(--background);
+        border-color: var(--border);
+        border-radius: 3px;
+    }
+
+
+    #searchLabel {
+        float: right;
+        margin-right: 10px;
+        margin-top: 3px;
+    }
+
+    #search_image {
+        font-size: 36px;
+    }
