@@ -1,6 +1,6 @@
 let eggStep = 0;
-const boardPage = `../pages/board.html`;
-const eggPage = `../pages/egg.html`;
+const boardPage = `/profile`;
+const eggPage = `/egg`;
 
 function eggFeedback() {
     console.log(eggStep);

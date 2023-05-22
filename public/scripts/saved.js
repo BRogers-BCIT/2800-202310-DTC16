@@ -290,8 +290,8 @@ const openBoardInEditor = function () {
                     currentBoardSavedDate: boardSavedDate,
 
                 }).then(function () {
-                    // Call the analysis page
-                    window.location.href = "../pages/openBoard.html";
+                    // Call the openBoard page
+                    window.location.href = "/openBoard";
 
                 }).catch(function (error) {
                     // Catch any errors
@@ -338,7 +338,8 @@ const openBoardInAnalyzer = function () {
 
                 }).then(function () {
                     // Call the analysis page
-                    window.location.href = "../pages/analysis.html";
+                    // TODO: Send post request to analysis page for AI analysis
+                    window.location.href = "/analysis";
 
                 }).catch(function (error) {
                     // Catch any errors

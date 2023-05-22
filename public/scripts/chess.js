@@ -965,7 +965,8 @@ function SaveFENForAnalysis() {
 
     }).then(function () {
         // Call the analysis page
-        window.location.href = "../pages/analysis.html";
+        // TODO: Send post request to AI to analyze the board
+        window.location.href = "/analysis";
 
     }).catch(function (error) {
         // Catch any errors
