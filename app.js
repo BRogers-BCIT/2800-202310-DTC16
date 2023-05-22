@@ -4,6 +4,7 @@ const app = express();
 app.use(express.static('public')); // static files
 
 app.get('/', (req, res) => {
+    // TODO: Redirect user to /profile if they're already logged in
     res.sendFile(`${__dirname}/public/pages/index.html`);
 });
 
