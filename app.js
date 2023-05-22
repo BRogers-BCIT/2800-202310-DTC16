@@ -1,7 +1,9 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 
 app.use(express.static('public')); // static files
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     // TODO: Redirect user to /profile if they're already logged in
@@ -10,6 +12,12 @@ app.get('/', (req, res) => {
 
 app.get('/analysis', (req, res) => {
     res.sendFile(`${__dirname}/public/pages/analysis.html`);
+});
+
+app.post('/analysis', (req, res) => {
+    console.log(`Got analysis request: ` + req.body.fenInput);
+    res.send(req.body.fenInput);
+    // res.sendFile(`${__dirname}/public/pages/analysis.html`);
 });
 
 app.get('/board', (req, res) => {
