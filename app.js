@@ -16,8 +16,10 @@ app.get('/analysis', (req, res) => {
 
 app.post('/analysis', (req, res) => {
     console.log(`Got analysis request: ` + req.body.fenInput);
-    res.send(req.body.fenInput);
-    // res.sendFile(`${__dirname}/public/pages/analysis.html`);
+    // Arsam, do your thing here
+    // Use req.body.fenInput to get what the user sent
+    // You may wanna protect against SQL attacks
+    res.sendFile(`${__dirname}/public/pages/analysis.html`);
 });
 
 app.get('/board', (req, res) => {
