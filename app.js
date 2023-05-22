@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 
+app.use(express.static('public')); // static files
+
 app.get('/', (req, res) => {
-    // TODO: Send html files
-    //res.sendFile(`${__dirname}/index.html`);
+    res.sendFile(`${__dirname}/public/pages/index.html`);
 });
 
 app.get('*', (req, res) => {
