@@ -51,7 +51,7 @@ app.get('/saved', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.send('404 Not Found');
+    res.sendFile(`${__dirname}/public/pages/404.html`);
 });
 
 module.exports = app;
