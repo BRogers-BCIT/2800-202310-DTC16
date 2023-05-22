@@ -337,9 +337,10 @@ const openBoardInAnalyzer = function () {
                     currentBoardDescription: boardDescription,
 
                 }).then(function () {
-                    // Call the analysis page
-                    // TODO: Send post request to analysis page for AI analysis
-                    window.location.href = "/analysis";
+                    // Set form to board fen
+                    $(`#fenInput`).val(boardFEN);
+                    // Submit form
+                    $(`#fenToAnalysis`).submit();
 
                 }).catch(function (error) {
                     // Catch any errors
