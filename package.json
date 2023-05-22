@@ -1,0 +1,17 @@
+{
+  "name": "2800-202310-dtc16",
+  "version": "1.0.0",
+  "description": "ChessMind AI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
