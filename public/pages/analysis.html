@@ -33,8 +33,18 @@
 
 <body>
     <nav id="navbarPlaceholder"></nav>
-    <main>
-        <h1>test</h1>
+    <main class="container d-flex flex-column text-center">
+        <div class="mb-3">
+            <h3>Analyze a board from a FEN string</h3>
+            <form action="/analysis" method="post" class="input-group">
+                <input type="text" name="fenInput" id="fenInput" class="form-control" placeholder="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1">
+                <input type="submit" value="Submit" class="btn btn-primary"> 
+            </form>
+        </div>
+        <div>
+            <h3>...or analyze a previous board</h3>
+            <a href="/saved"><button class="btn btn-primary">Previous Boards</button></a>
+        </div>
     </main>
     <footer id="footerPlaceholder"></footer>
 </body>
