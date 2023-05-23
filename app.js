@@ -1,28 +1,25 @@
 const express = require('express');
-const readline = require('readline');
-const { OpenAIApi, Configuration } = require('openai');
+const { Configuration, OpenAIApi } = require('openai');
 const bodyParser = require('body-parser');
 const app = express();
 
+// Loading environment variables
+const apiKeyEnv = process.env.API_KEY;
+const openAiInstance = new OpenAIApi(new Configuration({
+    apiKey: apiKeyEnv
+}));
+
 async function askQuestion(question) {
-    const openai =new OpenAIApi (new Configuration({
-        apiKey: process.env.API_KEY
-    }))
-    
-    const userInterface = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    })
-    
-    userInterface.prompt()
-    userInterface.on("line", async input => {
-        const res = await openai.createChatCompletion({
-            model: "gpt-3.5-turbo",
-            messages: [{role: "user", content: currentFEN}]
-        })
-        console.log(res.data.choices[0].message.content)
-        userInterface.prompt()
-    })
+    const completion = await openAiInstance.createCompletion({
+        model: "text-davinci-003",
+        prompt: question,
+        max_tokens: 128
+    });
+    completion.data.choices.forEach((choice) => {
+        console.log(choice.text);
+    });
+    let answer = completion.data.choices[0].text;
+    return answer;
 }
 
 app.use(express.static('public')); // static files
@@ -43,10 +40,9 @@ app.get('/analysis', (req, res) => {
 // Sending FEN to analysis page
 app.post('/analysis', (req, res) => {
     console.log(`Got analysis request: ` + req.body.fenInput);
-    // let gptResponse = askQuestion(`Given a FEN string of "req.body.fenInput", what is the best possible move?`);
-    let gptResponse = `sample text`;
-    // Use req.body.fenInput to get what the user sent
-    res.send(gptResponse);
+    let gptResponse = askQuestion(`Given a FEN string of ${req.body.fenInput}, what is the best possible move?`).then((answer) => {
+        res.send(`answer: ${answer}`);
+    });
     // res.sendFile(`${__dirname}/public/pages/analysis.html`);
 });
 
