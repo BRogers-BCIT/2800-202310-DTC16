@@ -25,20 +25,32 @@ td {
 
 table {
     float: left;
+    margin-left: 5%;
     max-height: 80vh;
     max-width: 80vw;
-    margin-bottom: 85px;
-}
-
-@media screen and (max-width: 590px) {
-    table {
-        margin-bottom: 105px;
-    }
+    margin-bottom: 95px;
+    margin-top: 10px;
 }
 
 #analysisDescription {
     float: right;
+    max-height: 80vh;
+    margin-top: 10px;
+    margin-right: 5%;
+    margin-left: 5%;
+    width: calc(84vw - 80vh - 10px);
+    border: #280BE3 solid 3px;
+    border-radius: 5px;
+
 }
+
+
+@media screen and (max-width: 590px) {
+    table {
+        margin-bottom: 115px;
+    }
+}
+
 
 
 td {
