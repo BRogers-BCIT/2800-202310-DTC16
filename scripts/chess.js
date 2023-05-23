@@ -102,6 +102,9 @@ function updateBoard() {
 // Working (Update)
 function updateButtons() {
 
+    // Make the feature buttons full opacity
+    $(`#featureLinks`).css("opacity", "1");
+
     //Promotion button check
     if (selectedPiece == true && (board[selectedPieceRow][selectedPieceColumn][2] == "p" || board[selectedPieceRow][selectedPieceColumn][2] == "P")) {
         // If there is a selected piece and it is a pawn
