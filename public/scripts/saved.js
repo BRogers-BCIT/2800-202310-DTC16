@@ -315,8 +315,6 @@ const openBoardInAnalyzer = function () {
     let boardName = null;
     let boardDescription = null;
 
-    console.log(currentBoardID);
-
     // Get the board's information from the database
     function getCardFEN() {
         db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").where("boardName", "==", currentBoardID)
