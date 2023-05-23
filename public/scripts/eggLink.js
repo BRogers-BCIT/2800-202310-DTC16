@@ -1,4 +1,4 @@
-let eggStep = 0;
+let eggStep;
 const homePage = `/index`;
 const eggPage = `/egg`;
 

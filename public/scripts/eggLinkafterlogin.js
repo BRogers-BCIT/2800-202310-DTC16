@@ -1,4 +1,4 @@
-let eggStep = 0;
+let eggStep;
 const boardPage = `/profile`;
 const eggPage = `/egg`;
 
