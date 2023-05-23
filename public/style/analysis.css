@@ -91,7 +91,7 @@ img {
     padding-left: 10px;
 }
 
-#savedBoardDescriptionText {
+#gptAnalysisText {
     font-size: 1em !important;
     min-height: 53vh;
     max-height: 53vh;
@@ -128,10 +128,10 @@ img {
         min-height: 0px;
     }
 
-    #savedBoardDescriptionText {
+    #gptAnalysisText {
         font-size: 1em !important;
-        min-height: 20vh;
-        max-height: 20vh;
+        min-height: 15vh;
+        max-height: 15vh;
         margin-bottom: 10px;
         padding-left: 5%;
         min-width: 90%;
