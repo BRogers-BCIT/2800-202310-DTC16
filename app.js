@@ -22,7 +22,8 @@ app.post('/analysis', (req, res) => {
     console.log(`Got analysis request: ` + req.body.fenInput);
     // Arsam, do your thing here
     // Use req.body.fenInput to get what the user sent
-    res.sendFile(`${__dirname}/public/pages/analysis.html`);
+    res.send(`Got analysis request: ` + req.body.fenInput);
+    // res.sendFile(`${__dirname}/public/pages/analysis.html`);
 });
 
 // Loading board editor page normally
