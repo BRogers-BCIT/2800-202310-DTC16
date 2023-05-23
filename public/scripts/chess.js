@@ -415,9 +415,6 @@ function deletePiece() {
             // Add one to the deleted pieces counter
             deletedPieces += 1;
 
-        } else {
-            // If the selected piece is a king then do not delete it
-            console.log("Cannot take king")
         }
 
         // Unselect the piece
@@ -607,7 +604,6 @@ function createBoardFromFEN(fenString) {
 
     // Test if the FEN string is valid
     if (FENRegEx.test(fenString)) {
-        console.log("Valid FEN");
 
         // Clear the board first
         clearBoard();
@@ -657,9 +653,7 @@ function createBoardFromFEN(fenString) {
                         deletedPieces--;  // Decrement the deleted pieces counter
 
                         board[boardSize - index][columnIndex] = piece;  // Add the piece to the board
-
-                        console.log(`#${index + 1}${columnIndex} | ${piece}`);  // Log the piece
-
+                        
                     } catch (error) { // If there are no more pieces of this type
                         console.log(`ERROR: #${index + 1}${columnIndex} | No more pieces of this type, skipping`);
                     }
@@ -670,9 +664,6 @@ function createBoardFromFEN(fenString) {
         });
         updateBoard(); // Update the board
 
-    } else {
-        console.log("Invalid FEN");
-        alert("Invalid FEN");
     }
 }
 
@@ -967,7 +958,6 @@ function SaveFENForAnalysis() {
         currentFEN: FEN
 
     }).then(function () {
-        console.log($(`#fenInput`).val());
         setTimeout(function () {
             // Set form to board fen
             $(`#fenInput`).val(FEN);
@@ -1088,7 +1078,6 @@ const openSavedBoard = function () {
     let currentPage = window.location.href;
 
     if (currentPage.includes("openBoard") || currentPage.includes("analysis")) {
-        console.log("Opening saved board")
 
         // Get the user's information
         db.collection("users").doc(uUid).get()
@@ -1171,11 +1160,6 @@ setup = function () {
 
     // Not Currently used
     $("body").on("click", ".clear", clearBoard);
-
-    // Dev Controls
-    $(`#tempPrint`).click(function () {
-        console.log(board);
-    });
 
     $(`#getFEN`).click(function () {
         boardToFEN();

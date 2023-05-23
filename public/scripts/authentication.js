@@ -16,7 +16,6 @@ var uiConfig = {
       //------------------------------------------------------------------------------------------
       var user = authResult.user; // get the user object from the Firebase authentication database
       if (authResult.additionalUserInfo.isNewUser) {
-        console.log(user)
         //if new user
         db.collection("users")
           .doc(user.uid)
@@ -31,7 +30,6 @@ var uiConfig = {
             currentBoardSavedDate: "XXXXXXXXXXX",
           })
           .then(function () {
-            console.log("New user added to firestore");
             window.location.assign("profile.html"); //re-direct to main.html after signup
           })
           .catch(function (error) {
