@@ -1,7 +1,11 @@
 const express = require('express');
 const { Configuration, OpenAIApi } = require('openai');
+const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const app = express();
+
+// Set render engine
+app.set('view engine', 'ejs');
 
 // Loading environment variables
 const apiKeyEnv = process.env.API_KEY;
@@ -40,10 +44,11 @@ app.post('/analysis', (req, res) => {
     console.log(`Got analysis request: ` + req.body.fenInput);
     let question = `Given a FEN string of ${req.body.fenInput}, what is the best possible move?`;
     console.log(`Asking: ${question}`);
-    let gptResponse = askQuestion(question).then((answer) => {
-        res.send(`answer: ${answer}`);
-    });
-    // res.sendFile(`${__dirname}/public/pages/analysis.html`);
+    // let gptResponse = askQuestion(question).then((answer) => {
+    //     req.body.gptResponse = answer;
+    //     res.render(`analysis.ejs`, { gptResponse: answer })
+    // });
+    res.render(`analysis.ejs`, { gptResponse: "do the mario!" });
 });
 
 // Loading board editor page normally
