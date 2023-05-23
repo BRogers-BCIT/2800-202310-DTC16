@@ -290,8 +290,8 @@ const openBoardInEditor = function () {
                     currentBoardSavedDate: boardSavedDate,
 
                 }).then(function () {
-                    // Call the analysis page
-                    window.location.href = "../pages/openBoard.html";
+                    // Call the openBoard page
+                    window.location.href = "/openBoard";
 
                 }).catch(function (error) {
                     // Catch any errors
@@ -337,8 +337,10 @@ const openBoardInAnalyzer = function () {
                     currentBoardDescription: boardDescription,
 
                 }).then(function () {
-                    // Call the analysis page
-                    window.location.href = "../pages/analysis.html";
+                    // Set form to board fen
+                    $(`#fenInput`).val(boardFEN);
+                    // Submit form
+                    $(`#fenToAnalysis`).submit();
 
                 }).catch(function (error) {
                     // Catch any errors

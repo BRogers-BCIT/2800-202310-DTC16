@@ -951,7 +951,7 @@ function boardToFullFEN() {
     boardToFEN += " - 0 1";
 
     // Set the global FEN to the fen just created
-    FEN = boardToFEN
+    FEN = boardToFEN;
 
 }
 
@@ -967,8 +967,13 @@ function SaveFENForAnalysis() {
         currentFEN: FEN
 
     }).then(function () {
-        // Call the analysis page
-        window.location.href = "../pages/analysis.html";
+        console.log($(`#fenInput`).val());
+        setTimeout(function () {
+            // Set form to board fen
+            $(`#fenInput`).val(FEN);
+            // Submit the form
+            $(`#fenToPass`).submit();
+        }, 1000);
 
     }).catch(function (error) {
         // Catch any errors

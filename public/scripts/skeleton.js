@@ -26,7 +26,7 @@ function loadSkeleton() {
                 let currentPage = window.location.href;
                 if (currentPage.includes("analysis") || currentPage.includes("openBoard") || currentPage.includes("profile") || currentPage.includes("saved")) {
                     // If the user is not logged in, redirect them to the home page.
-                    window.location.href = "../index.html";
+                    window.location.href = "/index";
                 } else {
                     // Otherwise load the navbar for non-logged in users.
                     console.log($('#navbarPlaceholder').load('../bars/nav_b4_login.html'));
