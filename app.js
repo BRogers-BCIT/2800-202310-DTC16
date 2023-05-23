@@ -15,10 +15,8 @@ async function askQuestion(question) {
         prompt: question,
         max_tokens: 128
     });
-    completion.data.choices.forEach((choice) => {
-        console.log(choice.text);
-    });
     let answer = completion.data.choices[0].text;
+    console.log(`Got response: ${answer}`);
     return answer;
 }
 
@@ -40,7 +38,9 @@ app.get('/analysis', (req, res) => {
 // Sending FEN to analysis page
 app.post('/analysis', (req, res) => {
     console.log(`Got analysis request: ` + req.body.fenInput);
-    let gptResponse = askQuestion(`Given a FEN string of ${req.body.fenInput}, what is the best possible move?`).then((answer) => {
+    let question = `Given a FEN string of ${req.body.fenInput}, what is the best possible move?`;
+    console.log(`Asking: ${question}`);
+    let gptResponse = askQuestion(question).then((answer) => {
         res.send(`answer: ${answer}`);
     });
     // res.sendFile(`${__dirname}/public/pages/analysis.html`);
