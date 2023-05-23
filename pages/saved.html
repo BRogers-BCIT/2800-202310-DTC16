@@ -40,9 +40,10 @@
 
 
     <div class="container">
+
         <br>
         <!-- Title -->
-        <h1>Saved Chessboards</h1>
+        <h2 class="text-center">Saved Chessboards</h2>
 
         <!-- Search Bar -->
         <br>
@@ -53,7 +54,7 @@
             <button id="searchButton"><i class="material-icons md-48" id="searchImage">search</i><span
                     id="searchLabel">Search</span></button>
         </div>
-    </div>
+    
 
 
 
@@ -135,7 +136,7 @@
                     <div class="modal-body">
                         <div id="savedBoardMenu">
                             <h4 id="nameLabel">&nbsp;&nbsp;Board Name:</h4>
-                            <input type="text" id="boardName" placeholder="Board Name" disabled></input>
+                            <textarea id="boardName" placeholder="Board Name" disabled></textarea>
                 
                             <div id="boardDescription">
                                 <h4 id="descriptionLabel">&nbsp;&nbsp;Board Description:</h4>
@@ -159,20 +160,20 @@
 
                     
 
-                            <button type="button" class="edit btn btn-secondary" id="editBoardCardButton">Edit</button>
+                            <button  class="edit btn btn-secondary" id="editBoardCardButton">Edit</button>
                 
-                            <button type="button" class="save btn btn-secondary" id="saveBoardCardButton">Save</button>
+                            <button  class="save btn btn-secondary" id="saveBoardCardButton" data-dismiss="modal">Save</button>
             
-                            <button class="delete btn btn-secondary" id="saveBoardCardButton">Delete</button>
-        
-                            
+                            <button class="delete btn btn-secondary" id="saveBoardCardButton" data-dismiss="modal">Delete</button>
+                         </div>
+                            <br>
                             <div>
                         
                                 <!-- <button class="closeCard" id="closeCard">Return to Saved Boards</button> -->
                 
-                                <button class="openEditor" id="openBoardMenuButton">Open Board in Editor</button>
+                                <button class="openEditor btn" id="openBoardMenuButton">Open Board in Editor</button>
                 
-                                <button class="openAnalysis" id="analyzeBoardMenuButton">Open Board in Analysis</button>
+                                <button class="openAnalysis btn" id="analyzeBoardMenuButton">Open Board in Analysis</button>
                             </div>
                         </div>
 
