@@ -16,6 +16,13 @@ main {
     width: 80vw;
 }
 
+.btn {
+    background-color: #C9E7FA;
+    color: black;
+    border: #280BE3 solid 3px;
+    border-radius: 5px;
+}
+
 #title {
     margin-top: 0 !important;
 }
