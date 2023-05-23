@@ -69,12 +69,21 @@ header {
 }
 
 @media screen and (max-width: 990px) {
+    #image {
+        margin-top: 10px;
+    }
+
     .text-link {
         margin-top: 9px;
     }
 }
 
 @media screen and (max-width: 767px) {
+
+    #image {
+        margin-top: 0px;
+    }
+
     .text-link {
         margin-top: 0px;
     }
