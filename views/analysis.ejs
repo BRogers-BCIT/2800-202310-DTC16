@@ -27,6 +27,7 @@
     <script src="../scripts/firebaseapi.js"></script>
     <script src="../scripts/skeleton.js"></script>
     <script src="../scripts/chess.js"></script>
+    <script src="../scripts/analysis.js" defer></script>
 
     <!-- CSS Import -->
     <link rel="stylesheet" href="../style/analysis.css" media="all">
@@ -125,7 +126,7 @@
 
         <div id="analysisDescription">
             <h2 id="savedBoardDescriptionTitle">Recommended Move: </h2>
-            <textarea id="savedBoardDescriptionText" placeholder="Recommended Move" disabled>
+            <textarea id="gptAnalysisText" placeholder="Recommended Move" disabled>
                 <%= gptResponse %>
             </textarea>
         </div>

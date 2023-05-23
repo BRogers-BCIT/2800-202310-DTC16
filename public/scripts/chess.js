@@ -1087,7 +1087,7 @@ const openSavedBoard = function () {
     // Check if the user is opening a saved board
     let currentPage = window.location.href;
 
-    if (currentPage.includes("openBoard")) {
+    if (currentPage.includes("openBoard") || currentPage.includes("analysis")) {
         console.log("Opening saved board")
 
         // Get the user's information
