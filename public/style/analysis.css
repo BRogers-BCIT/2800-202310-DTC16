@@ -1,0 +1,72 @@
+:root {
+    --lightSquare: #C9E7FA;
+    --darkSquare: #329BFA;
+    --selectSquare: #280BE3;
+    --movePiece: #00BCFA;
+
+    --buttonBorder: #329BFA;
+    --buttonBackground: #C9E7FA;
+    --text-color: black;
+
+    --menuBackground: #C9E7FA;
+}
+
+body {
+    margin: 0px;
+}
+
+table,
+td {
+    aspect-ratio: 1/1;
+    border: solid black;
+    border-width: 0.5vh 0.5vh 0.5vh 0.5vh;
+    border-collapse: collapse;
+}
+
+table {
+    float: left;
+    max-height: 80vh;
+    max-width: 80vw;
+    margin-bottom: 85px;
+}
+
+@media screen and (max-width: 590px) {
+    table {
+        margin-bottom: 105px;
+    }
+}
+
+#analysisDescription {
+    float: right;
+}
+
+
+td {
+    height: 10%;
+    width: 10%;
+    padding: 0px;
+    background-color: var(--lightSquare);
+}
+
+
+
+#buttons {
+    width: 100%;
+}
+
+button {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+}
+
+
+img {
+    width: 80%;
+    height: 80%;
+}
+
+.ds {
+    background-color: var(--darkSquare);
+}
