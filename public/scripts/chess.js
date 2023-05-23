@@ -1102,6 +1102,7 @@ const openSavedBoard = function () {
             .then((doc) => {
                 // Get the saved board name from the current user's document
                 savedName = doc.data().currentBoardName;
+                $(document).prop('title', `${savedName} - ChessMind.AI`);
                 $("#savedBoardName").html(savedName)
 
                 // Get the saved description from the current user's document
