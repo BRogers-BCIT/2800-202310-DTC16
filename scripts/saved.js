@@ -33,7 +33,7 @@ const populateBoardCards = function () {
                     $("#chessCardGroup").append(`
 
                         
-                        <div id="${cardNum}" class="card" style="width: 18rem;">
+                        <div id="${cardNum}" class="card" style="width: 17.25rem;">
                         <div class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg"   >
                         <img class="card-img-top" src="../img/bking.png" alt="Card image cap">
                         <div class="card-body">
@@ -94,7 +94,7 @@ const searchBoardCards = function () {
 
                     // populate a chess board to the page
                     $("#chessCardGroup").append(`
-                    <div id="${cardNum}" class="card align-items-center" style="width: 18rem;">
+                    <div id="${cardNum}" class="card" style="width: 17.25rem;">
                     <div class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg"   >
                     <img class="card-img-top" src="../img/bking.png" alt="Card image cap">
                     <div class="card-body">
