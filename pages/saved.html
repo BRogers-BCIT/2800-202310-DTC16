@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Previous Boards</title>
     <!--bootstrap js -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -31,26 +31,6 @@
     <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <style>
-        @media (max-width: 600px) {
-
-            /* Adjust the maximum width to match your desired mobile breakpoint */
-            #searchLabel {
-                display: none;
-            }
-
-            #searchButton{
-                width: 15%;
-
-            }
-
-            #searchInput{
-
-                width: 79%;
-            }
-        }
-    </style>
-
 </head>
 
 <body>
@@ -64,7 +44,6 @@
         <h2 class="text-center">Saved Chessboards</h2>
 
         <!-- Search Bar -->
-        <br>
 
         <div id="searchArea">
             <!-- Location of all the search function -->
@@ -94,7 +73,7 @@
         <!-- Modal -->
         <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">My Saved Boards</h5>
@@ -105,23 +84,35 @@
 
 
                     <div class="modal-body">
-                        <div id="savedBoardMenu">
-                            <h4 id="nameLabel">&nbsp;&nbsp;Board Name:</h4>
-                            <textarea id="boardName" placeholder="Board Name" disabled></textarea>
-
-                            <div id="boardDescription">
-                                <h4 id="descriptionLabel">&nbsp;&nbsp;Board Description:</h4>
-                                <textarea id="boardDescriptionText" placeholder="Board Description" disabled></textarea>
+                        <div>
+                            <div id="savedBoardMenu">
+                                <h5 id="nameLabel">Board Name</h5>
+                                <textarea id="boardName" class="form-control" placeholder="Board Name"
+                                    disabled></textarea>
                             </div>
-
+                            <br>
+                            <div id="boardDescription">
+                                <h5 id="descriptionLabel">Board Description</h5>
+                                <textarea class="form-control" rows="5" id="boardDescriptionText" placeholder="Board Description"
+                                    disabled></textarea>
+                            </div>
+                            <br>
                             <div>
-                                <h4 id="FENLabel">&nbsp;&nbsp;FEN:</h4>
+                                <button type="button" class="edit btn btn-primary"
+                                    id="editBoardCardButton">Edit</button>
+
+                                <button type="button" class="save btn btn-primary"
+                                    id="saveBoardCardButton">Save</button>
+                            </div>
+                            <br>
+                            <div>
+                                <h5 id="FENLabel">FEN</h5>
                                 <p id="boardFEN"></p>
                             </div>
-
+                            <br>
                             <div>
-                                <h4 id="dateSavedLabel">&nbsp;&nbsp;Date Saved:</h4>
-                                <h4 id="dateSaved"></h4>
+                                <h5 id="dateSavedLabel">Date Saved</h5>
+                                <p id="dateSaved"></p>
                             </div>
                             <br>
 
@@ -129,34 +120,19 @@
 
 
 
+                                <button type="button" class="openEditor btn btn-light" id="openBoardMenuButton">Open in
+                                    Editor</button>
 
-
-                                <button class="edit btn btn-secondary" id="editBoardCardButton">Edit</button>
-
-                                <button class="save btn btn-secondary" id="saveBoardCardButton"
-                                    data-dismiss="modal">Save</button>
-
-                                <button class="delete btn btn-secondary" id="saveBoardCardButton"
-                                    data-dismiss="modal">Delete</button>
-                            </div>
-                            <br>
-                            <div>
-
-                                <!-- <button class="closeCard" id="closeCard">Return to Saved Boards</button> -->
-
-                                <button class="openEditor btn" id="openBoardMenuButton">Open Board in Editor</button>
-
-                                <button class="openAnalysis btn" id="analyzeBoardMenuButton">Open Board in
+                                <button class="openAnalysis btn btn-light" id="analyzeBoardMenuButton">Open in
                                     Analysis</button>
+
+                                <button type="button" class="delete btn btn-danger" id="saveBoardCardButton"
+                                    data-dismiss="modal">Delete</button>
+
                             </div>
                         </div>
 
                     </div>
-                </div>
-                <div class="modal-footer" id="endButtons">
-
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
                 </div>
             </div>
         </div>

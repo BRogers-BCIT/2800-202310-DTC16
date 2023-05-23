@@ -60,3 +60,35 @@
     #search_image {
         font-size: 36px;
     }
+
+
+    @media (max-width: 600px) {
+
+        /* Adjust the maximum width to match your desired mobile breakpoint */
+        #searchLabel {
+            display: none;
+        }
+
+        #searchButton{
+            width: 15%;
+
+        }
+
+        #searchInput{
+
+            width: 79%;
+        }
+
+        .card {
+            margin: 0 auto;
+            float: none;
+            margin-bottom: 15px;
+        }
+    }
+
+
+
+
+.modal-body p {
+    word-wrap: break-word;
+}

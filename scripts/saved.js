@@ -40,8 +40,9 @@ const populateBoardCards = function () {
 
                         <h5 class="boardTitle" id="title">${doc.data().boardName}</h5>
                         
-                            <p class="FEN">FEN: ${doc.data().boardFEN}</p>
+                            
                             <p class="description">Description: ${doc.data().boardDescription}</p>
+                            <p class="FEN">FEN: ${doc.data().boardFEN}</p>
                             <p class="dateSaved">Date Saved: ${doc.data().savedDate}</p>
                         
                         <div class="openCard">
