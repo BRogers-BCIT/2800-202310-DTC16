@@ -1,6 +1,29 @@
 const express = require('express');
+const readline = require('readline');
+const { OpenAIApi, Configuration } = require('openai');
 const bodyParser = require('body-parser');
 const app = express();
+
+async function askQuestion(question) {
+    const openai =new OpenAIApi (new Configuration({
+        apiKey: process.env.API_KEY
+    }))
+    
+    const userInterface = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    })
+    
+    userInterface.prompt()
+    userInterface.on("line", async input => {
+        const res = await openai.createChatCompletion({
+            model: "gpt-3.5-turbo",
+            messages: [{role: "user", content: currentFEN}]
+        })
+        console.log(res.data.choices[0].message.content)
+        userInterface.prompt()
+    })
+}
 
 app.use(express.static('public')); // static files
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,9 +43,10 @@ app.get('/analysis', (req, res) => {
 // Sending FEN to analysis page
 app.post('/analysis', (req, res) => {
     console.log(`Got analysis request: ` + req.body.fenInput);
-    // Arsam, do your thing here
+    // let gptResponse = askQuestion(`Given a FEN string of "req.body.fenInput", what is the best possible move?`);
+    let gptResponse = `sample text`;
     // Use req.body.fenInput to get what the user sent
-    res.send(`Got analysis request: ` + req.body.fenInput);
+    res.send(gptResponse);
     // res.sendFile(`${__dirname}/public/pages/analysis.html`);
 });
 

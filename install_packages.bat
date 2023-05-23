@@ -1,1 +1,1 @@
-npm i express nodemon body-parser dotenv
+npm i express nodemon body-parser dotenv axios openai readline
