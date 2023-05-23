@@ -31,22 +31,27 @@ const populateBoardCards = function () {
 
                     // populate a chess board to the page
                     $("#chessCardGroup").append(`
-                        <div id="${cardNum}" class="card" style="width: 20rem;">
-                        <button class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg">
+
+                        
+                        <div id="${cardNum}" class="card" style="width: 18rem;">
+                        <div class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg"   >
+                        <img class="card-img-top" src="../img/bking.png" alt="Card image cap">
                         <div class="card-body">
-                            
-                                
-                                        <h5 class="boardTitle" id="title">${doc.data().boardName}</h5>
-                                    <ul>
-                                        <li class="FEN">FEN: ${doc.data().boardFEN}</li>
-                                        <li class="description">Description: ${doc.data().boardDescription}</li>
-                                        <li class="dateSaved">Date Saved: ${doc.data().savedDate}</li>
-                                    </ul>
 
+                        <h5 class="boardTitle" id="title">${doc.data().boardName}</h5>
+                        
+                            <p class="FEN">FEN: ${doc.data().boardFEN}</p>
+                            <p class="description">Description: ${doc.data().boardDescription}</p>
+                            <p class="dateSaved">Date Saved: ${doc.data().savedDate}</p>
+                        
+                        <div class="openCard">
+                        
+                          </div>
+                        </div>
+                      </div>
 
-                            </div>
-                            </button>
-                        </div>`
+         
+                        `
                     )
                 });
             })
@@ -89,18 +94,25 @@ const searchBoardCards = function () {
 
                     // populate a chess board to the page
                     $("#chessCardGroup").append(`
-                        <div id="${cardNum}" class="card" style="width: 20rem;">
-                            <button class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg" >
-                                <div class="card-body">
-                                        <h5 class="boardTitle" id="title">Board Name: ${doc.data().boardName}</h5>
-                                    <ul>
-                                        <li class="FEN">FEN: ${doc.data().boardFEN}</li>
-                                        <li class="description">Description: ${doc.data().boardDescription}</li>
-                                        <li class="dateSaved">Date Saved: ${doc.data().savedDate}</li>
-                                    </ul>
-                                </div>
-                            </button>
-                        </div>`
+                    <div id="${cardNum}" class="card" style="width: 18rem;">
+                    <div class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg"   >
+                    <img class="card-img-top" src="../img/bking.png" alt="Card image cap">
+                    <div class="card-body">
+
+                    <h5 class="boardTitle" id="title">${doc.data().boardName}</h5>
+                    <ul>
+                        <li class="FEN">FEN: ${doc.data().boardFEN}</li>
+                        <li class="description">Description: ${doc.data().boardDescription}</li>
+                        <li class="dateSaved">Date Saved: ${doc.data().savedDate}</li>
+                    </ul>
+                    <div class="openCard">
+                    
+                      </div>
+                    </div>
+                  </div>
+
+                        
+                        `
                     )
                 });
             })
@@ -122,7 +134,6 @@ const searchBoardCards = function () {
 const openBoardMenu = function () {
 
     // Prevent a menu from being opened if one is already open
-    if (menuOpen == false) {
 
         // Board information variables
         let boardName = null;
@@ -169,7 +180,7 @@ const openBoardMenu = function () {
 
     }
 
-}
+
 
 // TODO: Test (Menu Functions)
 const closeBoardMenu = function () {
