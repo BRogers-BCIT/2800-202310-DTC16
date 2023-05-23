@@ -3,7 +3,7 @@ const boardPage = `/profile`;
 const eggPage = `/egg`;
 
 function eggFeedback() {
-    console.log(eggStep);
+
     if (eggStep >= 1) {
         $(`#firstStep img`).addClass(`logoInvert`);
     } else {
