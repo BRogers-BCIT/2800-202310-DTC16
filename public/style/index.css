@@ -1,0 +1,43 @@
+body {
+    height: 100vh;
+}
+
+main {
+    height: calc(100vh - 220px);
+    overflow: auto;
+}
+
+#indexElements {
+    margin-top: calc((100vh - 550px) / 2);
+}
+
+#continueButton,
+#logInButton {
+    width: 80vw;
+}
+
+#title {
+    margin-top: 0 !important;
+}
+
+@media screen and (max-height: 550px) {
+    #indexElements {
+        margin-top: 0px
+    }
+
+    #title {
+        padding-bottom: 20px !important;
+        padding-top: 20px !important;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    #indexElements {
+        margin-top: 0px
+    }
+
+    #title {
+        padding-bottom: 0px !important;
+        padding-top: 10px !important;
+    }
+}
