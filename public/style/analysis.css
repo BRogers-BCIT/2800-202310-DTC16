@@ -32,24 +32,8 @@ table {
     margin-top: 10px;
 }
 
-#analysisDescription {
-    float: right;
-    max-height: 80vh;
-    margin-top: 10px;
-    margin-right: 5%;
-    margin-left: 5%;
-    width: calc(84vw - 80vh - 10px);
-    border: #280BE3 solid 3px;
-    border-radius: 5px;
-
-}
 
 
-@media screen and (max-width: 590px) {
-    table {
-        margin-bottom: 115px;
-    }
-}
 
 
 
@@ -81,4 +65,85 @@ img {
 
 .ds {
     background-color: var(--darkSquare);
+}
+
+
+#analysisDescription {
+    float: right;
+    max-height: 80vh;
+    margin-top: 8vh;
+    margin-right: 5%;
+    margin-left: 5%;
+    width: calc(84vw - 80vh - 10px);
+    min-width: 235px;
+    border: #280BE3 solid 3px;
+    border-radius: 5px;
+}
+
+#savedBoardDescriptionTitle {
+    overflow-wrap: break-word;
+    min-height: 80px;
+    float: left;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+#savedBoardDescriptionText {
+    font-size: 1em !important;
+    min-height: 53vh;
+    max-height: 53vh;
+    margin-bottom: 20px;
+    margin-left: 5%;
+    min-width: 90%;
+    max-width: 90%;
+    overflow-y: scroll;
+}
+
+
+@media screen and (max-width: calc(80vh + 15vw + 235px)) {
+
+    table {
+        float: left;
+        margin-left: calc((100vw - 80vh) / 2);
+        max-height: 80vh;
+        max-width: 80vw;
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+
+    #analysisDescription {
+        width: 70vw;
+        max-height: 30vh;
+        margin-bottom: 95px;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    #savedBoardDescriptionText {
+        font-size: 1em !important;
+        min-height: 20vh;
+        max-height: 20vh;
+        margin-bottom: 10px;
+        margin-left: 5%;
+        min-width: 90%;
+        max-width: 90%;
+        overflow-y: scroll;
+    }
+
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    table {
+        margin-left: 10%;
+    }
+
+}
+
+@media screen and (max-width: 590px) {
+    #analysisDescription {
+        margin-bottom: 115px;
+    }
 }
