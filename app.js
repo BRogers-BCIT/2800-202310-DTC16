@@ -1,6 +1,28 @@
 const express = require('express');
+const { Configuration, OpenAIApi } = require('openai');
+const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const app = express();
+
+// Set render engine
+app.set('view engine', 'ejs');
+
+// Loading environment variables
+const apiKeyEnv = process.env.API_KEY;
+const openAiInstance = new OpenAIApi(new Configuration({
+    apiKey: apiKeyEnv
+}));
+
+async function askQuestion(question) {
+    const completion = await openAiInstance.createCompletion({
+        model: "text-davinci-003",
+        prompt: question,
+        max_tokens: 128
+    });
+    let answer = completion.data.choices[0].text;
+    console.log(`Got response: ${answer}`);
+    return answer;
+}
 
 app.use(express.static('public')); // static files
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,10 +42,13 @@ app.get('/analysis', (req, res) => {
 // Sending FEN to analysis page
 app.post('/analysis', (req, res) => {
     console.log(`Got analysis request: ` + req.body.fenInput);
-    // Arsam, do your thing here
-    // Use req.body.fenInput to get what the user sent
-    res.send(`Got analysis request: ` + req.body.fenInput);
-    // res.sendFile(`${__dirname}/public/pages/analysis.html`);
+    let question = `Given a FEN string of ${req.body.fenInput}, what is the best possible move?`;
+    console.log(`Asking: ${question}`);
+    let gptResponse = askQuestion(question).then((answer) => {
+        req.body.gptResponse = answer;
+        res.render(`analysis.ejs`, { gptResponse: answer })
+    });
+    // res.render(`analysis.ejs`, { gptResponse: "do the mario!" });
 });
 
 // Loading board editor page normally

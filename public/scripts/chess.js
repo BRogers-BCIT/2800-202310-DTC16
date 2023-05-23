@@ -415,9 +415,6 @@ function deletePiece() {
             // Add one to the deleted pieces counter
             deletedPieces += 1;
 
-        } else {
-            // If the selected piece is a king then do not delete it
-            console.log("Cannot take king")
         }
 
         // Unselect the piece
@@ -607,7 +604,6 @@ function createBoardFromFEN(fenString) {
 
     // Test if the FEN string is valid
     if (FENRegEx.test(fenString)) {
-        console.log("Valid FEN");
 
         // Clear the board first
         clearBoard();
@@ -657,9 +653,7 @@ function createBoardFromFEN(fenString) {
                         deletedPieces--;  // Decrement the deleted pieces counter
 
                         board[boardSize - index][columnIndex] = piece;  // Add the piece to the board
-
-                        console.log(`#${index + 1}${columnIndex} | ${piece}`);  // Log the piece
-
+                        
                     } catch (error) { // If there are no more pieces of this type
                         console.log(`ERROR: #${index + 1}${columnIndex} | No more pieces of this type, skipping`);
                     }
@@ -670,17 +664,16 @@ function createBoardFromFEN(fenString) {
         });
         updateBoard(); // Update the board
 
-    } else {
-        console.log("Invalid FEN");
-        alert("Invalid FEN");
     }
 }
 
 
 // Working (Save)
 function openSaveMenu() {
-
-    // If no menu is already open
+    if (uUid === null) {
+        window.alert("You must be logged in to save a board");
+    } else {
+        // If no menu is already open
     if (menuOpen == false) {
 
         // Set the save board menu to visible and the board to half transparency
@@ -692,6 +685,7 @@ function openSaveMenu() {
 
         // Set open menu to true to indicate a menu is open
         menuOpen = true;
+    }
     }
 }
 
@@ -809,8 +803,11 @@ function closeSaveMenu() {
 // Working (Analyze)
 function openAnalyzeMenu() {
 
-    // If a menu is not already open
-    if (menuOpen == false) {
+    if (uUid === null) {
+        window.alert("You must be logged in to analyze a board");
+    } else {
+        // If a menu is not already open
+        if (menuOpen == false) {
 
         // Set the analyze board menu to visible and the board to half transparency
         $(`#analyzeBoardMenu`).css("display", "block");
@@ -821,6 +818,7 @@ function openAnalyzeMenu() {
 
         // Set open menu to true to indicate a menus is open
         menuOpen = true;
+    }
     }
 
 }
@@ -967,7 +965,6 @@ function SaveFENForAnalysis() {
         currentFEN: FEN
 
     }).then(function () {
-        console.log($(`#fenInput`).val());
         setTimeout(function () {
             // Set form to board fen
             $(`#fenInput`).val(FEN);
@@ -1087,14 +1084,14 @@ const openSavedBoard = function () {
     // Check if the user is opening a saved board
     let currentPage = window.location.href;
 
-    if (currentPage.includes("openBoard")) {
-        console.log("Opening saved board")
+    if (currentPage.includes("openBoard") || currentPage.includes("analysis")) {
 
         // Get the user's information
         db.collection("users").doc(uUid).get()
             .then((doc) => {
                 // Get the saved board name from the current user's document
                 savedName = doc.data().currentBoardName;
+                $(document).prop('title', `${savedName} - ChessMind.AI`);
                 $("#savedBoardName").html(savedName)
 
                 // Get the saved description from the current user's document
@@ -1171,11 +1168,6 @@ setup = function () {
 
     // Not Currently used
     $("body").on("click", ".clear", clearBoard);
-
-    // Dev Controls
-    $(`#tempPrint`).click(function () {
-        console.log(board);
-    });
 
     $(`#getFEN`).click(function () {
         boardToFEN();
