@@ -670,8 +670,10 @@ function createBoardFromFEN(fenString) {
 
 // Working (Save)
 function openSaveMenu() {
-
-    // If no menu is already open
+    if (uUid === null) {
+        window.alert("You must be logged in to save a board");
+    } else {
+        // If no menu is already open
     if (menuOpen == false) {
 
         // Set the save board menu to visible and the board to half transparency
@@ -683,6 +685,7 @@ function openSaveMenu() {
 
         // Set open menu to true to indicate a menu is open
         menuOpen = true;
+    }
     }
 }
 
@@ -800,8 +803,11 @@ function closeSaveMenu() {
 // Working (Analyze)
 function openAnalyzeMenu() {
 
-    // If a menu is not already open
-    if (menuOpen == false) {
+    if (uUid === null) {
+        window.alert("You must be logged in to analyze a board");
+    } else {
+        // If a menu is not already open
+        if (menuOpen == false) {
 
         // Set the analyze board menu to visible and the board to half transparency
         $(`#analyzeBoardMenu`).css("display", "block");
@@ -812,6 +818,7 @@ function openAnalyzeMenu() {
 
         // Set open menu to true to indicate a menus is open
         menuOpen = true;
+    }
     }
 
 }
@@ -1084,6 +1091,7 @@ const openSavedBoard = function () {
             .then((doc) => {
                 // Get the saved board name from the current user's document
                 savedName = doc.data().currentBoardName;
+                $(document).prop('title', `${savedName} - ChessMind.AI`);
                 $("#savedBoardName").html(savedName)
 
                 // Get the saved description from the current user's document
