@@ -942,6 +942,8 @@ function boardToFullFEN() {
     // Put a space between the moving color and the available castles (if there are any)
     if (castleWhiteKings != "" || castleWhiteQueens != "" || castleBlackKings != "" || castleBlackQueens != "") {
         boardToFEN += " ";
+    } else {
+        boardToFEN += "";
     }
 
     // Record castling availability
