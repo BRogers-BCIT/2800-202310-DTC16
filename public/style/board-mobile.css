@@ -199,12 +199,30 @@
         margin-right: 5vw;
     }
 
+    .modButton,
+    .promote,
+    .featureButton,
+    .menuButton {
+        transition-property: background-color color border-radius;
+        transition-duration: 0.2s;
+        transition-timing-function: ease;
+    }
+
     .modButton:hover,
     .promote:hover,
     .featureButton:hover,
     .menuButton:hover {
         cursor: pointer;
+        background-color: var(--buttonBorder);
+        color: white;
     }
+
+    .modButton:hover,
+    .promote:hover,
+    .menuButton:hover {
+        border-radius: 1em;
+    }
+
 
 
 
