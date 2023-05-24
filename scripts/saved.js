@@ -35,7 +35,6 @@ const populateBoardCards = function () {
                         
                         <div id="${cardNum}" class="card" style="width: 17.25rem;">
                         <div class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg"   >
-                        <img class="card-img-top" src="../img/bking.png" alt="Card image cap">
                         <div class="card-body">
 
                         <h5 class="boardTitle" id="title">${doc.data().boardName}</h5>
@@ -96,8 +95,7 @@ const searchBoardCards = function () {
                     // populate a chess board to the page
                     $("#chessCardGroup").append(`
                     <div id="${cardNum}" class="card" style="width: 17.25rem;">
-                    <div class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg"   >
-                    <img class="card-img-top" src="../img/bking.png" alt="Card image cap">
+                    <div class="openCard" id="${doc.id}" data-toggle="modal" data-target=".bd-example-modal-lg">
                     <div class="card-body">
 
                     <h5 class="boardTitle" id="title">${doc.data().boardName}</h5>
