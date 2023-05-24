@@ -28,6 +28,7 @@
     <script src="../scripts/skeleton.js"></script>
     <script src="../scripts/logout.js"></script>
     <link rel="stylesheet" href="../style/font.css">
+    <link rel="stylesheet" href="../style/index.css">
     <script>
         logout();       //make sure user is logged out
     </script>
@@ -40,38 +41,35 @@
     -->
 
     <nav id="navbarPlaceholder"></nav>
-    <!-- <header class="bg-secondary py-3">
-        <div class="container">
-            <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="#">ChessMind.AI</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </nav>
-        </div>
-    </header> -->
+
 
     <main>
-        <div class="px-4 py-5 my-5 text-center">
-            <h2 class="display-5 fw-bold">Improve your chess game with ChessMind.AI</h2>
-        </div>
+
+        <div id="indexElements">
+            <div class="px-4 py-5 my-5 text-center" id="title">
+                <h2 class="display-5 fw-bold">Improve your chess game with ChessMind.AI</h2>
+            </div>
 
 
 
-        <div class="container">
-            <div class="row justify-content-center mt-5">
-                <div class="col-md-4">
+            <div class="container">
+                <div class="row justify-content-center mt-5">
+
                     <!-- Log In Button -->
-                    <a href="/login" class="btn btn-secondary btn-block px-4 py-3 mb-3">Log In / Sign Up</a>
+                    <a href="/login" class="btn btn-secondary btn-block px-4 py-3 mb-3" id="logInButton">Log In / Sign
+                        Up</a>
 
                     <!-- Sign Up Button -->
                     <!-- <a href="login.html" class="btn btn-secondary btn-block px-4 py-3 mb-3">Sign Up</a> -->
 
                     <!-- Continue Without Logging In Button -->
-                    <a href="/board" class="btn btn-secondary btn-block px-4 py-3 ">Continue Without Logging
+                    <a href="/board" class="btn btn-secondary btn-block px-4 py-3 " id="continueButton">Continue Without
+                        Logging
                         In</a>
+
                 </div>
             </div>
+
         </div>
 
     </main>
