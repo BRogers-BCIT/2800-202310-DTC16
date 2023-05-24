@@ -127,3 +127,12 @@ ChessMind.AI is a chess analysis tool to help players improve their board analys
 ## Usage
 
 (WIP)
+
+## 8. Use of AI in product
+
+We use OpenAI API to enable having ChatGPT as a feature for users to ask ChatGPT to recommend the best possible move to make. 
+We used Github Co-pilot and ChatGPT to help code the board editor, board analysis, and saved board pages.
+
+
+## Contact Information
+n/a
