@@ -7,12 +7,12 @@
     }
 
     main {
-        margin-bottom: 60px;
+        margin-bottom: 80px;
     }
 
     @media screen and (max-width: 590px) {
         main {
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
     }
 
@@ -116,6 +116,30 @@
         overflow-y: hidden;
     }
 
+    #deleteBoardCardButton {
+        margin-left: calc(50% - 51px);
+    }
+
+    #saveBoardCardButton {
+        margin-right: calc((90% - 142px) / 2);
+        margin-left: 5%;
+    }
+
+    #editBoardCardButton {
+        margin-right: 5%;
+        margin-left: calc((90% - 142px) / 2);
+    }
+
+    #openBoardMenuButton {
+        margin-left: calc((95% - 288px) / 2);
+        margin-right: 2.5%;
+    }
+
+    #analyzeBoardMenuButton {
+        margin-right: calc((95% - 288px) / 2);
+        margin-left: 2.5%;
+    }
+
     @media (max-width: 600px) {
 
         /* Adjust the maximum width to match your desired mobile breakpoint */
@@ -123,12 +147,12 @@
             display: none;
         }
 
-        #searchButton{
+        #searchButton {
             width: 15%;
 
         }
 
-        #searchInput{
+        #searchInput {
 
             width: 75%;
         }
@@ -143,6 +167,6 @@
 
 
 
-.modal-body p {
-    word-wrap: break-word;
-}
+    .modal-body p {
+        word-wrap: break-word;
+    }
