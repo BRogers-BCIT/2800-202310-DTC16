@@ -1,32 +1,34 @@
-# 2800-202310-DTC16
+# 1. 2800-202310-DTC16
 DTC-16 Team Project Repository - ChessMind.AI
 
 
-## Project Description
+## 2. Project Description
 ChessMind.AI is a chess analysis tool to help players improve their board analysis skills using AI to recommend and explain the best possible moves.
 
-## Technologies Used
+## 3. Technologies Used
 ### Frontend
-
+- EJS
 - JQuery
 - Bootstrap
+- HTML
+- CSS
 
 ### Backend
 - Node.JS
+- Firebase
 
-(TODO: Add links to all Node modules)
-- OpenAI API
-- express
-- nodemon
-- body-parser 
-- dotenv
-- ejs
+(TODO: Add links to all Node modules) (links found online)
+- OpenAI API: https://platform.openai.com/docs/introduction/key-concepts
+- express: https://expressjs.com/
+- nodemon: https://www.npmjs.com/package/nodemon
+- body-parser: https://www.npmjs.com/package/body-parser
+- dotenv: https://www.npmjs.com/package/dotenv
+- ejs: https://ejs.co/
 
-### Others
 
 - 
 
-## File Contents
+## 4. File Contents
 ```
 ª   app.js                          // All middleware
 ª   install_packages.bat            // Install all packages
@@ -120,19 +122,45 @@ ChessMind.AI is a chess analysis tool to help players improve their board analys
         analysis.ejs                // Used to send user OpenAI responses
 ```
 
-## Installation
+## 5. Installation
 
 (WIP)
 
-## Usage
+## 6. Usage
 
-(WIP)
+Our web application has five pages: index, profile, board editor, previous boards, and board analysis.
+
+On the index page, users are able to sign up, log in, or they can choose to continue without logging in and head straight to the board editor.
+
+On the profile page, users can view their profile, as well as edit and update the profile fields. If needed, they are able to reset the password aswell. 
+
+Users can use the chessboard in the board editor page to configure the pieces on the chessboard. Pieces can be moved, deleted, or added to the board. Pawns have the ability to be promoted to their respective legal promotions; queen, rook, bishop, knight. The knight is the only piece that is unable to be deleted from the board. The board is also able to reset to the board's starting positions.
+
+Any board configuration that a user creates can be saved or analyzed using the buttons above the chessboard. 
+
+Previous board states can be found on the previous boards page. Each board a user has saved displays as a card that the user can click on. Users can edit and update the board name and description, or they can choose to open this saved board card into the board editor or board analysis page. Finally, users can delete the board if they no longer need it saved. Users can also use the search bar to find previous boards they have saved.
+
+
+
+
+
+
+## 7. Credits, References, Licenses
+N/A
+
 
 ## 8. Use of AI in product
 
 We use OpenAI API to enable having ChatGPT as a feature for users to ask ChatGPT to recommend the best possible move to make. 
 We used Github Co-pilot and ChatGPT to help code the board editor, board analysis, and saved board pages.
 
+We did not use AI to create/clean data sets, nor did we encounter any limitations using AI.
 
-## Contact Information
-n/a
+
+## 9. Contact Information
+DTC-16 developers can be contacted via their emails:
+
+Gurjeet Bhangoo: gurjeetbhangoo@yahoo.com
+Braden Rogers: brogers42@my.bcit.ca
+Arsam Aminzadeh: aaminzadeh@my.bcit.ca
+Sarah Ortega: lsortega551@gmail.com
