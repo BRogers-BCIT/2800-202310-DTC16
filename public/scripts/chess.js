@@ -758,12 +758,15 @@ function saveBoard() {
     // Get the board name and description from the input fields
     let boardName = document.getElementById("boardName").value;
     boardName = boardName.toLowerCase();
+    boardName = boardName.trim();
     if (boardName == "") {
         $(`#boardName`).css("background-color", "yellow");
         window.alert("You must enter a name for the board");
+        window.alert("You must enter a name for the board.");
         return;
     }
     let boardDescription = document.getElementById("boardDescriptionText").value;
+    boardDescription = boardDescription.trim();
 
 
 
