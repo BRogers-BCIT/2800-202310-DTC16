@@ -77,6 +77,12 @@
         font-size: 36px;
     }
 
+    #title {
+        min-height: 26px;
+        max-height: 52px;
+        overflow-y: hidden;
+    }
+
     .card {
         width: 44%;
         height: 234.25px;
@@ -87,7 +93,7 @@
 
     .openCard {
         width: 100%;
-        height: 234.25px;
+        height: 251px;
         color: var(--text-color);
         background-color: var(--background);
         border-color: var(--border);
@@ -157,7 +163,8 @@
             width: 75%;
         }
 
-        li.FEN, li.dateSaved {
+        li.FEN,
+        li.dateSaved {
             display: none;
         }
 
@@ -166,10 +173,9 @@
 
     #chessCardGroup {
         padding: 1em;
-      }
+    }
 
 
     .modal-body p {
         word-wrap: break-word;
     }
-
