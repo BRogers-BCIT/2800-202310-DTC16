@@ -2,7 +2,7 @@
 DTC-16 Team Project Repository - ChessMind.AI
 
 
-## 1.  Project Description
+## Project Description
 ChessMind.AI is a chess analysis tool to help players improve their board analysis skills using AI to recommend and explain the best possible moves.
 
 ## Technologies Used
@@ -10,12 +10,9 @@ ChessMind.AI is a chess analysis tool to help players improve their board analys
 
 - JQuery
 - Bootstrap
-- HTML
-- CSS
 
 ### Backend
 - Node.JS
-- Firebase/Firestore
 
 (TODO: Add links to all Node modules)
 - OpenAI API
@@ -130,10 +127,6 @@ ChessMind.AI is a chess analysis tool to help players improve their board analys
 ## Usage
 
 (WIP)
-
-
-
-
 
 ## 8. Use of AI in product
 
