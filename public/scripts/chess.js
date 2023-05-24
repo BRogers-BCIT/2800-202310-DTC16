@@ -475,7 +475,7 @@ function openAddPieces() {
 
             // If no black pieces have been taken then display none
             if (takenBlackPieces == 0) {
-                $(`#blackPieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
+                $(`#blackPieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>`);
             }
 
             // For each white piece
@@ -492,7 +492,7 @@ function openAddPieces() {
 
             // If no white pieces have been taken then display none
             if (takenWhitePieces == 0) {
-                $(`#whitePieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
+                $(`#whitePieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>`);
             }
 
             // For each black pawn
@@ -509,7 +509,7 @@ function openAddPieces() {
 
             // If no black pawns have been taken then display none
             if (takenBlackPawns == 0) {
-                $(`#blackPawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
+                $(`#blackPawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>`);
             }
 
             // For each white pawn 
@@ -526,7 +526,7 @@ function openAddPieces() {
 
             // If no white pawns have been taken then display none
             if (takenWhitePawns == 0) {
-                $(`#whitePawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
+                $(`#whitePawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>`);
             }
 
         }
