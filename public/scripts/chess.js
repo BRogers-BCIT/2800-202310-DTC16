@@ -775,24 +775,25 @@ function saveBoard() {
     let uUid = localStorage.getItem('userUid')
     let uDisplayName = localStorage.getItem('userDisplayName')
 
-    // Save the board to the database
-    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
-        boardName: boardName,
-        boardDescription: boardDescription,
-        boardFEN: FEN,
-        savedDate: new Date().toISOString().split('T')[0],
+    if (boardName != "") {
+        // Save the board to the database
+        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
+            boardName: boardName,
+            boardDescription: boardDescription,
+            boardFEN: FEN,
+            savedDate: new Date().toISOString().split('T')[0],
 
-    }).then(function () {
+        }).then(function () {
 
-        closeSaveMenu();
+            closeSaveMenu();
 
-    }).catch(function (error) {
+        }).catch(function (error) {
 
-        // Catch any errors
-        console.error("Error writing document: ", error);
+            // Catch any errors
+            console.error("Error writing document: ", error);
 
-    });
-
+        });
+    }
 }
 
 // Working (Save)

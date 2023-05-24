@@ -4,7 +4,7 @@ var currentBoardID = null;
 const uUid = localStorage.getItem('userUid')
 const uDisplayName = localStorage.getItem('userDisplayName')
 let currentCardFen = null;
-
+let deleteConfirm = false;
 
 // TODO: Test (Boards Functions)
 const populateBoardCards = function () {
@@ -130,6 +130,12 @@ const openBoardMenu = function () {
     let boardFEN = null;
     let boardDate = null;
 
+    // Reset the delete confirm button
+    deleteConfirm = false;
+    $("#deleteBoardCardButton").html("Delete");
+    $("#deleteBoardCardButton").css("margin-left", "calc(50% - 50px)");
+    $("#deleteBoardCardButton").attr("data-dismiss", "");
+
 
     // Set the save board menu to visible and the background to half transparency
     $(`#savedBoardMenu`).css("display", "block");
@@ -217,8 +223,7 @@ const saveBoardCard = function () {
 const deleteBoardCard = function () {
 
     // Only delete a board if one is selected
-    if (currentBoardID != null) {
-
+    if (currentBoardID != null && deleteConfirm == true) {
         // Delete the board from the database
         db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID)
             .delete()
@@ -230,7 +235,13 @@ const deleteBoardCard = function () {
                 console.error("Error removing document: ", error);
             });
     }
-    populateBoardCards();
+
+    if (deleteConfirm == false) {
+        deleteConfirm = true;
+        $("#deleteBoardCardButton").html("Confirm Delete");
+        $("#deleteBoardCardButton").css("margin-left", "calc(50% - 80px)");
+        $("#deleteBoardCardButton").attr("data-dismiss", "modal");
+    }
 }
 
 

@@ -28,7 +28,7 @@ function populateUserInfo() {
                     }
                 })
         } else {
-            
+
         }
     });
 }
@@ -36,6 +36,9 @@ function populateUserInfo() {
 function editUserInfo() {
     //Enable the form fields
     document.getElementById('personalInfoFields').disabled = false;
+    $("#nameInput").css("color", "black");
+    $("#emailInput").css("color", "black");
+    $("#ratingInput").css("color", "black");
 }
 
 function saveUserInfo() {
@@ -59,6 +62,9 @@ function saveUserInfo() {
         });
     // c) disable the form fields
     document.getElementById('personalInfoFields').disabled = true;
+    $("#nameInput").css("color", "gray");
+    $("#emailInput").css("color", "gray");
+    $("#ratingInput").css("color", "gray");
 }
 
 function sendPasswordReset() {
