@@ -446,7 +446,7 @@ function deletePieceMove() {
 function openAddPieces() {
 
     // Checks there are no menus open
-    if (menuOpen == false) {
+    if (menuOpen == false && deletedPieces > 0) {
 
         // Set open menu to true ro prevent other menus from opening
         menuOpen = true;
@@ -539,6 +539,8 @@ function addPieceToBoard() {
     // Checks if the selected piece is not a king
     if (board[selectedPieceRow][selectedPieceColumn][3] != 'king') {
 
+        closeAddPieces();
+
         // Get the piece type from button class and index from button id
         var pieceType = jQuery(this).attr('class');
         var pieceIndex = jQuery(this).attr('id');
@@ -576,7 +578,7 @@ function addPieceToBoard() {
     // Update the board with the new pieces
     updateBoard();
     updateButtons();
-    closeAddPieces();
+
 }
 
 // Working (Add)
