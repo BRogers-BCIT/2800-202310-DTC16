@@ -199,7 +199,12 @@
         margin-right: 5vw;
     }
 
-
+    .modButton:hover,
+    .promote:hover,
+    .featureButton:hover,
+    .menuButton:hover {
+        cursor: pointer;
+    }
 
 
 

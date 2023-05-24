@@ -760,6 +760,8 @@ function saveBoard() {
     boardName = boardName.toLowerCase();
     boardName = boardName.trim();
     if (boardName == "") {
+        $(`#boardName`).css("background-color", "yellow");
+        window.alert("You must enter a name for the board");
         window.alert("You must enter a name for the board.");
         return;
     }
@@ -807,6 +809,7 @@ function closeSaveMenu() {
     $(`#blackBoard`).css("opacity", "1");
     $(`#buttons`).css("opacity", "1");
     $(`#featureLinks`).css("opacity", "1");
+    $(`#boardName`).css("background-color", "white");
 
     // Set open menu to false to indicate all menus are closed
     menuOpen = false;
