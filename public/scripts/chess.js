@@ -180,7 +180,7 @@ function resetBoard() {
         // White pieces
         whitePieces = [["white", "wrook.png", "R", "on board"], ["white", "wknight.png", "N", "on board"],
         ["white", "wbishop.png", "B", "on board"], ["white", "wqueen.png", "Q", "on board"],
-        ["white", "wking.png", "K", "on board"], ["white", "wbishop.png", "B", "on board"],
+        ["white", "wking.png", "K", "king"], ["white", "wbishop.png", "B", "on board"],
         ["white", "wknight.png", "N", "on board"], ["white", "wrook.png", "R", "on board"]];
 
         // White pawns
@@ -1035,7 +1035,7 @@ function clearBoard() {
     // White pieces
     whitePieces = [["white", "wrook.png", "R", "taken"], ["white", "wknight.png", "N", "taken"],
     ["white", "wbishop.png", "B", "taken"], ["white", "wqueen.png", "Q", "taken"],
-    ["white", "wking.png", "K", "taken"], ["white", "wbishop.png", "B", "taken"],
+    ["white", "wking.png", "K", "king"], ["white", "wbishop.png", "B", "taken"],
     ["white", "wknight.png", "N", "taken"], ["white", "wrook.png", "R", "taken"]];
 
     // White pawns
@@ -1047,7 +1047,7 @@ function clearBoard() {
     // Black pieces
     blackPieces = [["black", "brook.png", "r", "taken"], ["black", "bknight.png", "n", "taken"],
     ["black", "bbishop.png", "b", "taken"], ["black", "bqueen.png", "q", "taken"],
-    ["black", "bking.png", "k", "taken"], ["black", "bbishop.png", "b", "taken"],
+    ["black", "bking.png", "k", "king"], ["black", "bbishop.png", "b", "taken"],
     ["black", "bknight.png", "n", "taken"], ["black", "brook.png", "r", "taken"]];
 
     // Black pawns
@@ -1060,14 +1060,14 @@ function clearBoard() {
     // Set the chessboard to a cleared position
     // All pieces are taken except for the kings
     board = {
-        1: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        1: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], blackPieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         2: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         3: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         4: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         5: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         6: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         7: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-        8: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        8: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], whitePieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
     };
 
     // Reset all variables then set taken pieces to 30 (all but kings)
