@@ -129,7 +129,7 @@ img {
     display: none;
     position: absolute;
     width: 90%;
-    height: 70%;
+    height: 65%;
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 5vh;
@@ -154,7 +154,6 @@ img {
 .whitePiece {
     width: 20%;
     height: 20%;
-    margin-left: 5%;
     margin-bottom: 10px;
 }
 
@@ -162,7 +161,6 @@ img {
     width: 60%;
     padding-top: 5%;
     padding-bottom: 5%;
-    margin-left: 20%;
     background-color: var(--buttonBackground);
     border: 3px solid var(--buttonBorder);
     border-radius: 2px;
