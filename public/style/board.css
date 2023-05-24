@@ -11,6 +11,10 @@ td {
     border-collapse: collapse;
 }
 
+label {
+    font-size: x-large;
+}
+
 table {
     float: left;
     max-height: 80vh;
@@ -184,6 +188,7 @@ img {
 
 .closeSave,
 .saveToUser {
+    font-size: x-large;
     float: left;
     width: 40%;
     margin-top: 5%;
@@ -229,6 +234,7 @@ img {
 
 .closeAnalyze,
 .goToAnalyze {
+    font-size: x-large;
     float: left;
     width: 40%;
     margin-top: 5%;
@@ -242,11 +248,9 @@ img {
     border-radius: 2px;
 }
 
-.castles {
-    margin-left: 5%;
-}
 
 #swapColorButton {
+    font-size: x-large;
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;

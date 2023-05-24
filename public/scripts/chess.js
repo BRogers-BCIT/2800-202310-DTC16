@@ -446,7 +446,7 @@ function deletePieceMove() {
 function openAddPieces() {
 
     // Checks there are no menus open
-    if (menuOpen == false) {
+    if (menuOpen == false && deletedPieces > 0) {
 
         // Set open menu to true ro prevent other menus from opening
         menuOpen = true;
@@ -539,6 +539,8 @@ function addPieceToBoard() {
     // Checks if the selected piece is not a king
     if (board[selectedPieceRow][selectedPieceColumn][3] != 'king') {
 
+        closeAddPieces();
+
         // Get the piece type from button class and index from button id
         var pieceType = jQuery(this).attr('class');
         var pieceIndex = jQuery(this).attr('id');
@@ -576,7 +578,7 @@ function addPieceToBoard() {
     // Update the board with the new pieces
     updateBoard();
     updateButtons();
-    closeAddPieces();
+
 }
 
 // Working (Add)
@@ -756,7 +758,15 @@ function saveBoard() {
     // Get the board name and description from the input fields
     let boardName = document.getElementById("boardName").value;
     boardName = boardName.toLowerCase();
+    if (boardName == "") {
+        window.alert("You must enter a name for the board");
+        return;
+    }
     let boardDescription = document.getElementById("boardDescriptionText").value;
+
+
+
+
 
     // Convert the board to FEN for saving
     boardToFEN();
@@ -765,24 +775,25 @@ function saveBoard() {
     let uUid = localStorage.getItem('userUid')
     let uDisplayName = localStorage.getItem('userDisplayName')
 
-    // Save the board to the database
-    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
-        boardName: boardName,
-        boardDescription: boardDescription,
-        boardFEN: FEN,
-        savedDate: new Date().toISOString().split('T')[0],
+    if (boardName != "") {
+        // Save the board to the database
+        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
+            boardName: boardName,
+            boardDescription: boardDescription,
+            boardFEN: FEN,
+            savedDate: new Date().toISOString().split('T')[0],
 
-    }).then(function () {
+        }).then(function () {
 
-        closeSaveMenu();
+            closeSaveMenu();
 
-    }).catch(function (error) {
+        }).catch(function (error) {
 
-        // Catch any errors
-        console.error("Error writing document: ", error);
+            // Catch any errors
+            console.error("Error writing document: ", error);
 
-    });
-
+        });
+    }
 }
 
 // Working (Save)
@@ -940,6 +951,8 @@ function boardToFullFEN() {
     // Put a space between the moving color and the available castles (if there are any)
     if (castleWhiteKings != "" || castleWhiteQueens != "" || castleBlackKings != "" || castleBlackQueens != "") {
         boardToFEN += " ";
+    } else {
+        boardToFEN += "";
     }
 
     // Record castling availability
@@ -1072,7 +1085,7 @@ function clearBoard() {
 
     // Reset all variables then set taken pieces to 30 (all but kings)
     resetVariables();
-    deletedPieces = 32;
+    deletedPieces = 30;
 
     // Update the board and buttons
     updateBoard();

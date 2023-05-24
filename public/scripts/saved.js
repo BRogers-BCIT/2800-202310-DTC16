@@ -3,7 +3,8 @@ var menuOpen = false;
 var currentBoardID = null;
 const uUid = localStorage.getItem('userUid')
 const uDisplayName = localStorage.getItem('userDisplayName')
-
+let currentCardFen = null;
+let deleteConfirm = false;
 
 // TODO: Test (Boards Functions)
 const populateBoardCards = function () {
@@ -121,81 +122,55 @@ const searchBoardCards = function () {
 // TODO: Test (Menu Functions)
 const openBoardMenu = function () {
 
-    // Prevent a menu from being opened if one is already open
-    if (menuOpen == false) {
 
-        // Board information variables
-        let boardName = null;
-        let boardDescription = null;
-        let boardFEN = null;
-        let boardDate = null;
 
-        // Get the id of the clicked board
-        currentBoardID = $(this).attr("id");
+    // Board information variables
+    let boardName = null;
+    let boardDescription = null;
+    let boardFEN = null;
+    let boardDate = null;
 
-        // Set the save board menu to visible and the background to half transparency
-        $(`#savedBoardMenu`).css("display", "block");
-        $(`#titleArea`).css("opacity", "0.5");
-        $(`#searchArea`).css("opacity", "0.5");
-        $(`#boardCards`).css("opacity", "0.5");
+    // Reset the delete confirm button
+    deleteConfirm = false;
+    $("#deleteBoardCardButton").html("Delete");
+    $("#deleteBoardCardButton").css("margin-left", "calc(50% - 50px)");
+    $("#deleteBoardCardButton").attr("data-dismiss", "");
 
-        // Save the name of the clicked board to a global variable
-        currentBoard = $(this).attr("id");
 
-        // Get the document from the user's collection with the same id as the clicked board
-        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID).get().then(function (doc) {
-            // Set the values of the board information variables to the values from the database
-            boardName = doc.data().boardName;
-            boardDescription = doc.data().boardDescription;
-            boardFEN = doc.data().boardFEN;
-            boardDate = doc.data().savedDate;
+    // Set the save board menu to visible and the background to half transparency
+    $(`#savedBoardMenu`).css("display", "block");
+    $(`#titleArea`).css("opacity", "0.5");
+    $(`#searchArea`).css("opacity", "0.5");
+    $(`#boardCards`).css("opacity", "0.5");
+
+    // Save the name of the clicked board to a global variable
+    currentBoardID = $(this).attr("id");
+    console.log(currentBoardID);
+
+    // Get the document from the user's collection with the same id as the clicked board
+    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID).get().then(function (doc) {
+        // Set the values of the board information variables to the values from the database
+        boardName = doc.data().boardName;
+        boardDescription = doc.data().boardDescription;
+        boardFEN = doc.data().boardFEN;
+        currentCardFen = doc.data().boardFEN;
+        boardDate = doc.data().savedDate;
+    })
+
+        .then(function () {
+            // Populate the menu with the board's information
+            $(`#boardName`).val(boardName);
+            $(`#boardDescriptionText`).val(boardDescription);
+            $(`#boardFEN`).html(boardFEN);
+            $(`#dateSaved`).html(boardDate);
         })
 
-            .then(function () {
-                // Populate the menu with the board's information
-                $(`#boardName`).val(boardName);
-                $(`#boardDescriptionText`).val(boardDescription);
-                $(`#boardFEN`).html(boardFEN);
-                $(`#dateSaved`).html(boardDate);
-            })
-
-            .catch(function (error) {
-                // Catch errors
-                console.log("Error getting document:", error);
-            });
-
-        // Set open menu to true prevent another menu from being opened
-        menuOpen = true;
-
-    }
+        .catch(function (error) {
+            // Catch errors
+            console.log("Error getting document:", error);
+        });
 
 }
-
-// TODO: Test (Menu Functions)
-const closeBoardMenu = function () {
-
-    // Only close a menu if one is open
-    if (menuOpen == true) {
-
-        // Set the save board menu to visible and the background to half transparency
-        $(`#savedBoardMenu`).css("display", "block");
-        $(`#titleArea`).css("opacity", "1");
-        $(`#searchArea`).css("opacity", "1");
-        $(`#boardCards`).css("opacity", "1");
-
-        // Disable editing the board name and description text boxes
-        $(`#boardName`).prop("disabled", true);
-        $(`#boardDescriptionText`).prop("disabled", true);
-
-        // Forget the name of the clicked board
-        currentBoardCard = null;
-
-        // Set open menu to true to indicate a menu is open
-        menuOpen = false;
-    }
-
-}
-
 
 
 // TODO: Test (Card Functions)
@@ -214,17 +189,26 @@ const saveBoardCard = function () {
     let boardName = $(`#boardName`).val();
     let boardDescription = $(`#boardDescriptionText`).val();
 
+    // Delete the board from the database
+    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID)
+        .delete()
+        .catch(function (error) {
+            // Catch any errors
+            console.error("Error removing document: ", error);
+        });
+
+
     // Save the boards name and description to the database with an updated date
-    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID).update({
+    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
         boardName: boardName,
         boardDescription: boardDescription,
         savedDate: new Date().toISOString().split('T')[0],
+        boardFEN: currentCardFen
 
     }).then(function () {
         // Disable editing the board name and description text boxes
         $(`#boardName`).prop("disabled", true);
         $(`#boardDescriptionText`).prop("disabled", true);
-
 
     }).catch(function (error) {
         // Catch any errors
@@ -232,7 +216,6 @@ const saveBoardCard = function () {
     });
 
     // Close the menu and refresh the board cards
-    closeBoardMenu();
     populateBoardCards();
 
 }
@@ -240,14 +223,11 @@ const saveBoardCard = function () {
 const deleteBoardCard = function () {
 
     // Only delete a board if one is selected
-    if (currentBoardID != null) {
-
+    if (currentBoardID != null && deleteConfirm == true) {
         // Delete the board from the database
         db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID)
             .delete()
             .then(function () {
-                // Close the menu
-                closeBoardMenu();
                 // Refresh the board cards
                 populateBoardCards();
             }).catch(function (error) {
@@ -256,6 +236,12 @@ const deleteBoardCard = function () {
             });
     }
 
+    if (deleteConfirm == false) {
+        deleteConfirm = true;
+        $("#deleteBoardCardButton").html("Confirm Delete");
+        $("#deleteBoardCardButton").css("margin-left", "calc(50% - 80px)");
+        $("#deleteBoardCardButton").attr("data-dismiss", "modal");
+    }
 }
 
 
@@ -372,7 +358,6 @@ setup = function () {
 
     // Menu Functions
     $("body").on("click", ".openCard", openBoardMenu);
-    $("body").on("click", ".closeCard", closeBoardMenu);
 
     // Card Functions
     $("body").on("click", ".edit", editBoardCard);
