@@ -359,15 +359,8 @@
 
     #whiteKings,
     #blackKings {
-        margin-left: 10%;
         margin-bottom: 2%;
     }
-
-    #whiteQueens,
-    #blackQueens {
-        margin-left: 10%;
-    }
-
 
     #swapColorButton {
         float: right;
@@ -382,9 +375,6 @@
         margin-bottom: 15.72px;
     }
 
-    label {
-        margin-right: calc(80% - 150px);
-    }
 
     #blackCastles,
     #whiteCastles {
