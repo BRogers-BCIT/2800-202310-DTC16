@@ -144,6 +144,10 @@ img {
     text-align: center;
 }
 
+#title {
+    font-size: 3rem;
+}
+
 .whitePawn,
 .blackPawn,
 .blackPiece,
@@ -170,7 +174,7 @@ img {
     display: none;
     position: absolute;
     width: 90%;
-    height: 60%;
+    height: 65%;
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 5vh;
@@ -215,7 +219,7 @@ img {
     display: none;
     position: absolute;
     width: 90%;
-    height: 50%;
+    height: 65%;
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 5vh;
@@ -229,7 +233,7 @@ img {
 .goToAnalyze {
     float: left;
     width: 40%;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-bottom: 15px;
     margin-left: 5%;
     margin-right: 5%;
