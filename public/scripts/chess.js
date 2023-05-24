@@ -1076,7 +1076,7 @@ function clearBoard() {
 
     // Reset all variables then set taken pieces to 30 (all but kings)
     resetVariables();
-    deletedPieces = 32;
+    deletedPieces = 30;
 
     // Update the board and buttons
     updateBoard();
