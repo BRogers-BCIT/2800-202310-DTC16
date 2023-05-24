@@ -1,0 +1,14 @@
+@font-face {
+    font-family: useFont;
+    src: url(Urbanist-VariableFont_wght.ttf);
+}
+
+main {
+    margin-bottom: 85px;
+}
+
+@media screen and (max-width: 590px) {
+    main {
+        margin-bottom: 105px;
+    }
+}

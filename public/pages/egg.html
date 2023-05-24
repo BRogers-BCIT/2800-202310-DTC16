@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessMind.IBM</title>
+    <style>
+        body {
+            margin: 0px;
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            backdrop-filter: saturate(0.5);
+            animation-name: backdrop;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes backdrop {
+            0% {
+                background-color: tomato;
+            }
+
+            20% {
+                background-color: orange;
+            }
+
+            40% {
+                background-color: yellow;
+            }
+
+            60% {
+                background-color: greenyellow;
+            }
+
+            80% {
+                background-color: lime;
+            }
+
+            100% {
+                background-color: tomato;
+            }
+        }
+
+        #board {
+            aspect-ratio: 1/1;
+            margin: auto;
+            max-width: 50vw;
+            max-height: 50vh;
+        }
+
+
+        #logo1,
+        #logo2,
+        #logo3,
+        #logo4 {
+            margin-left: calc(((50vw - 50vh) / 4));
+            margin-right: calc(((50vw - 50vh) / 4));
+            position: absolute;
+            max-width: 25vw;
+            min-width: 25vw;
+            min-height: 24vh;
+            max-height: 24vh;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+        }
+
+
+
+        #logo1 {
+            top: 1vh;
+            animation-name: logo1;
+        }
+
+        #logo2 {
+            top: 1vh;
+            right: 0px;
+            animation-name: logo2;
+        }
+
+        #logo3 {
+            bottom: 1vh;
+            right: 0px;
+            animation-name: logo3;
+        }
+
+        #logo4 {
+            bottom: 1vh;
+            animation-name: logo4;
+        }
+
+        @keyframes logo1 {
+            0% {
+                filter: hue-rotate(0);
+                transform: translate(0, 0);
+            }
+
+            12.5% {
+                filter: hue-rotate(360deg);
+                transform: translate(calc(37.5vw - ((50vw - 50vh) / 2)), 0);
+            }
+
+            25% {
+                filter: hue-rotate(0);
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), 0);
+            }
+
+            37.5% {
+                filter: hue-rotate(360deg);
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), 37vh);
+            }
+
+            50% {
+                filter: hue-rotate(0);
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), 74vh);
+            }
+
+            62.5% {
+                filter: hue-rotate(360deg);
+                transform: translate(calc(37.5vw - ((50vw - 50vh) / 2)), 74vh);
+            }
+
+            75% {
+                filter: hue-rotate(0);
+                transform: translate(0, 74vh);
+            }
+
+            87.5% {
+                filter: hue-rotate(360deg);
+                transform: translate(0, 37vh);
+            }
+
+            100% {
+                filter: hue-rotate(0);
+                transform: translate(0, 0);
+            }
+        }
+
+        @keyframes logo2 {
+            0% {
+                opacity: 1;
+                filter: brightness(1);
+                transform: translate(0, 0);
+            }
+
+            12.5% {
+                filter: brightness(0.1);
+                opacity: 0.1;
+                transform: translate(0, 37vh);
+            }
+
+            25% {
+                opacity: 1;
+                filter: brightness(1);
+                transform: translate(0, 74vh);
+
+            }
+
+            37.5% {
+                filter: brightness(0.1);
+                opacity: 0.1;
+                transform: translate(calc(-37.5vw + ((50vw - 50vh) / 2)), 74vh);
+            }
+
+            50% {
+                opacity: 1;
+                filter: brightness(1);
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 74vh);
+            }
+
+            62.5% {
+                filter: brightness(0.1);
+                opacity: 0.1;
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 37vh);
+            }
+
+            75% {
+                opacity: 1;
+                filter: brightness(1);
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 0);
+            }
+
+            87.5% {
+                filter: brightness(0.1);
+                opacity: 0.1;
+                transform: translate(calc(-37.5vw + ((50vw - 50vh) / 2)), 0);
+            }
+
+            100% {
+                opacity: 1;
+                filter: brightness(1);
+                transform: translate(0, 0);
+            }
+        }
+
+        @keyframes logo3 {
+            0% {
+
+                transform: translate(0, 0) scale(1, 1);
+            }
+
+            12.5% {
+                transform: translate(calc(-37.5vw + ((50vw - 50vh) / 2)), 0) scale(0.5, 0.5);
+            }
+
+            25% {
+
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), 0) scale(1, 1);
+            }
+
+            37.5% {
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), -37vh) scale(0.5, 0.5);
+            }
+
+            50% {
+
+                transform: translate(calc(-75vw + ((50vw - 50vh) / 2)), -74vh) scale(1, 1);
+            }
+
+            62.5% {
+                transform: translate(calc(-37.5vw + ((50vw - 50vh) / 2)), -74vh) scale(0.5, 0.5);
+            }
+
+            75% {
+
+                transform: translate(0, -74vh) scale(1, 1);
+            }
+
+            87.5% {
+                transform: translate(0, -37vh) scale(0.5, 0.5);
+            }
+
+            100% {
+
+                transform: translate(0, 0) scale(1, 1);
+            }
+        }
+
+        @keyframes logo4 {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            12.5% {
+                transform: translate(0, -37vh) rotate(180deg);
+            }
+
+            25% {
+                transform: translate(0, -74vh) rotate(360deg);
+            }
+
+            37.5% {
+                transform: translate(calc(37.5vw - ((50vw - 50vh) / 2)), -74vh) rotate(180deg);
+            }
+
+            50% {
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), -74vh);
+            }
+
+            62.5% {
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), -37vh) rotate(180deg);
+            }
+
+            75% {
+                transform: translate(calc(75vw - ((50vw - 50vh) / 2)), 0) rotate(360deg);
+            }
+
+            87.5% {
+                transform: translate(calc(37.5vw - ((50vw - 50vh) / 2)), 0) rotate(180deg);
+            }
+
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+
+        @media screen and (max-width: 650px) {
+
+            #logo1,
+            #logo2,
+            #logo3,
+            #logo4 {
+                margin-left: 0.5vw;
+                margin-right: 0.5vw;
+                padding-top: 10vh;
+                padding-bottom: 10vh;
+                max-width: 24vw;
+                min-width: 24vw;
+                min-height: calc(40vh - (50vw / 2));
+                max-height: calc(40vh - (50vw / 2));
+            }
+
+            @keyframes logo1 {
+                0% {
+                    filter: hue-rotate(0);
+                    transform: translate(0, 0);
+                }
+
+                12.5% {
+                    filter: hue-rotate(360deg);
+                    transform: translate(calc(31.5vw - ((40vw - 50vh) / 2)), 0);
+                }
+
+                25% {
+                    filter: hue-rotate(0);
+                    transform: translate(calc(63vw - ((40vw - 50vh) / 2)), 0);
+                }
+
+                37.5% {
+                    filter: hue-rotate(360deg);
+                    transform: translate(calc(63vw - ((40vw - 50vh) / 2)), calc(39vh - (40vh - (50vw / 2))));
+                }
+
+                50% {
+                    filter: hue-rotate(0);
+                    transform: translate(calc(63vw - ((40vw - 50vh) / 2)), calc(78vh - (40vh - (50vw / 2))));
+                }
+
+                62.5% {
+                    filter: hue-rotate(360deg);
+                    transform: translate(calc(31.5vw - ((40vw - 50vh) / 2)), calc(78vh - (40vh - (50vw / 2))));
+                }
+
+                75% {
+                    filter: hue-rotate(0);
+                    transform: translate(0, calc(78vh - (40vh - (50vw / 2))));
+                }
+
+                87.5% {
+                    filter: hue-rotate(360deg);
+                    transform: translate(0, calc(39vh - (40vh - (50vw / 2))));
+                }
+
+                100% {
+                    filter: hue-rotate(0);
+                    transform: translate(0, 0);
+                }
+            }
+
+            @keyframes logo2 {
+                0% {
+                    opacity: 1;
+                    filter: brightness(1);
+                    transform: translate(0, 0);
+                }
+
+                12.5% {
+                    filter: brightness(0.1);
+                    opacity: 0.1;
+                    transform: translate(0, calc(39vh - (40vh - (50vw / 2))));
+                }
+
+                25% {
+                    opacity: 1;
+                    filter: brightness(1);
+                    transform: translate(0, calc(78vh - (40vh - (50vw / 2))));
+
+                }
+
+                37.5% {
+                    filter: brightness(0.1);
+                    opacity: 0.1;
+                    transform: translate(calc(-31.5vw + ((40vw - 50vh) / 2)), calc(78vh - (40vh - (50vw / 2))));
+                }
+
+                50% {
+                    opacity: 1;
+                    filter: brightness(1);
+                    transform: translate(calc(-63vw + ((40vw - 50vh) / 2)), calc(78vh - (40vh - (50vw / 2))));
+                }
+
+                62.5% {
+                    filter: brightness(0.1);
+                    opacity: 0.1;
+                    transform: translate(calc(-63vw + ((40vw - 50vh) / 2)), calc(39vh - (40vh - (50vw / 2))));
+                }
+
+                75% {
+                    opacity: 1;
+                    filter: brightness(1);
+                    transform: translate(calc(-63vw + ((40vw - 50vh) / 2)), 0);
+                }
+
+                87.5% {
+                    filter: brightness(0.1);
+                    opacity: 0.1;
+                    transform: translate(calc(-31.5vw + ((40vw - 50vh) / 2)), 0);
+                }
+
+                100% {
+                    opacity: 1;
+                    filter: brightness(1);
+                    transform: translate(0, 0);
+                }
+            }
+
+            @keyframes logo3 {
+                0% {
+
+                    transform: translate(0, 0) scale(1, 1);
+                }
+
+                12.5% {
+                    transform: translate(calc(-31.5vw + ((40vw - 50vh) / 2)), 0) scale(0.5, 0.5);
+                }
+
+                25% {
+
+                    transform: translate(calc(-63vw + ((40vw - 50vh) / 2)), 0) scale(1, 1);
+                }
+
+                37.5% {
+                    transform: translate(calc(-63vw + ((40vw - 50vh) / 2)), calc(-39vh + (40vh - (50vw / 2)))) scale(0.5, 0.5);
+                }
+
+                50% {
+
+                    transform: translate(calc(-63vw + ((40vw - 50vh) / 2)), calc(-78vh + (40vh - (50vw / 2)))) scale(1, 1);
+                }
+
+                62.5% {
+                    transform: translate(calc(-31.5vw + ((40vw - 50vh) / 2)), calc(-78vh + (40vh - (50vw / 2)))) scale(0.5, 0.5);
+                }
+
+                75% {
+
+                    transform: translate(0, calc(-78vh + (40vh - (50vw / 2)))) scale(1, 1);
+                }
+
+                87.5% {
+                    transform: translate(0, calc(-39vh + (40vh - (50vw / 2)))) scale(0.5, 0.5);
+                }
+
+                100% {
+
+                    transform: translate(0, 0) scale(1, 1);
+                }
+            }
+
+            @keyframes logo4 {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                12.5% {
+                    transform: translate(0, calc(-39vh + (40vh - (50vw / 2)))) rotate(180deg);
+                }
+
+                25% {
+                    transform: translate(0, calc(-78vh + (40vh - (50vw / 2)))) rotate(360deg);
+                }
+
+                37.5% {
+                    transform: translate(calc(31.5vw - ((40vw - 50vh) / 2)), calc(-78vh + (40vh - (50vw / 2)))) rotate(180deg);
+                }
+
+                50% {
+                    transform: translate(calc(63vw - ((40vw - 50vh) / 2)), calc(-78vh + (40vh - (50vw / 2))));
+                }
+
+                62.5% {
+                    transform: translate(calc(63vw - ((40vw - 50vh) / 2)), calc(-39vh + (40vh - (50vw / 2)))) rotate(180deg);
+                }
+
+                75% {
+                    transform: translate(calc(63vw - ((40vw - 50vh) / 2)), 0) rotate(360deg);
+                }
+
+                87.5% {
+                    transform: translate(calc(31.5vw - ((40vw - 50vh) / 2)), 0) rotate(180deg);
+                }
+
+
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+
+            #logo1,
+            #logo2,
+            #logo3,
+            #logo4 {
+                margin-left: 0.5vw;
+                margin-right: 0.5vw;
+                padding-top: 10vh;
+                padding-bottom: 10vh;
+                max-width: 24vw;
+                min-width: 24vw;
+                min-height: calc(32vh - (50vw / 2));
+                max-height: calc(32vh - (50vw / 2));
+            }
+
+
+
+            @keyframes logo1 {
+                0% {
+                    filter: hue-rotate(0);
+                    transform: translate(0, 0);
+                }
+
+                12.5% {
+                    filter: hue-rotate(360deg);
+                    transform: translate(37.5vw, 0);
+                }
+
+                25% {
+                    filter: hue-rotate(0);
+                    transform: translate(75vw, 0);
+                }
+
+                37.5% {
+                    filter: hue-rotate(360deg);
+                    transform: translate(75vw, calc(39vh - (32vh - (50vw))));
+                }
+
+                50% {
+                    filter: hue-rotate(0);
+                    transform: translate(75vw, calc(78vh - (32vh - (50vw / 2))));
+                }
+
+                62.5% {
+                    filter: hue-rotate(360deg);
+                    transform: translate(37.5vw, calc(78vh - (32vh - (50vw / 2))));
+                }
+
+                75% {
+                    filter: hue-rotate(0);
+                    transform: translate(0, calc(78vh - (32vh - (50vw / 2))));
+                }
+
+                87.5% {
+                    filter: hue-rotate(360deg);
+                    transform: translate(0, calc(39vh - (32vh - (50vw))));
+                }
+
+                100% {
+                    filter: hue-rotate(0);
+                    transform: translate(0, 0);
+                }
+            }
+
+            @keyframes logo2 {
+                0% {
+                    opacity: 1;
+                    filter: brightness(1);
+                    transform: translate(0, 0);
+                }
+
+                12.5% {
+                    filter: brightness(0.1);
+                    opacity: 0.1;
+                    transform: translate(0, calc(39vh - (32vh - (50vw))));
+                }
+
+                25% {
+                    opacity: 1;
+                    filter: brightness(1);
+                    transform: translate(0, calc(78vh - (32vh - (50vw / 2))));
+
+                }
+
+                37.5% {
+                    filter: brightness(0.1);
+                    opacity: 0.1;
+                    transform: translate(-37.5vw, calc(78vh - (32vh - (50vw / 2))));
+                }
+
+                50% {
+                    opacity: 1;
+                    filter: brightness(1);
+                    transform: translate(-75vw, calc(78vh - (32vh - (50vw / 2))));
+                }
+
+                62.5% {
+                    filter: brightness(0.1);
+                    opacity: 0.1;
+                    transform: translate(-75vw, calc(39vh - (32vh - (50vw))));
+                }
+
+                75% {
+                    opacity: 1;
+                    filter: brightness(1);
+                    transform: translate(-75vw, 0);
+                }
+
+                87.5% {
+                    filter: brightness(0.1);
+                    opacity: 0.1;
+                    transform: translate(-37.5, 0);
+                }
+
+                100% {
+                    opacity: 1;
+                    filter: brightness(1);
+                    transform: translate(0, 0);
+                }
+            }
+
+            @keyframes logo3 {
+                0% {
+
+                    transform: translate(0, 0) scale(1, 1);
+                }
+
+                12.5% {
+                    transform: translate(-37.5vw, 0) scale(0.5, 0.5);
+                }
+
+                25% {
+
+                    transform: translate(-75vw, 0) scale(1, 1);
+                }
+
+                37.5% {
+                    transform: translate(-75vw, calc(-39vh + (32vh - 50vw))) scale(0.5, 0.5);
+                }
+
+                50% {
+
+                    transform: translate(-75vw, calc(-78vh + (32vh - (50vw / 2)))) scale(1, 1);
+                }
+
+                62.5% {
+                    transform: translate(-37.5vw, calc(-78vh + (32vh - (50vw / 2)))) scale(0.5, 0.5);
+                }
+
+                75% {
+
+                    transform: translate(0, calc(-78vh + (32vh - (50vw / 2)))) scale(1, 1);
+                }
+
+                87.5% {
+                    transform: translate(0, calc(-39vh + (32vh - (50vw)))) scale(0.5, 0.5);
+                }
+
+                100% {
+
+                    transform: translate(0, 0) scale(1, 1);
+                }
+            }
+
+            @keyframes logo4 {
+                0% {
+                    transform: translate(0, 0);
+                }
+
+                12.5% {
+                    transform: translate(0, calc(-39vh + (32vh - (50vw)))) rotate(180deg);
+                }
+
+                25% {
+                    transform: translate(0, calc(-78vh + (32vh - (50vw / 2)))) rotate(360deg);
+                }
+
+                37.5% {
+                    transform: translate(37.5vw, calc(-78vh + (32vh - (50vw / 2)))) rotate(180deg);
+                }
+
+                50% {
+                    transform: translate(75vw, calc(-78vh + (32vh - (50vw / 2))));
+                }
+
+                62.5% {
+                    transform: translate(75vw, calc(-39vh + (32vh - (50vw)))) rotate(180deg);
+                }
+
+                75% {
+                    transform: translate(75vw, 0) rotate(360deg);
+                }
+
+                87.5% {
+                    transform: translate(31.5vw, 0) rotate(180deg);
+                }
+
+
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Surprise Task Complete -->
+    <img id="logo1" src="../img/eggLogo.png" alt="">
+    <img id="logo2" src="../img/eggLogo.png" alt="">
+    <img id="logo3" src="../img/eggLogo.png" alt="">
+    <img id="logo4" src="../img/eggLogo.png" alt="">
+    <img id="board" src="../img/egg.png" alt="">
+</body>
+
+</html>

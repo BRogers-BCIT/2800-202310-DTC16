@@ -1,0 +1,90 @@
+#firstStep img {
+    transition-property: filter;
+    transition-duration: 0.5s;
+}
+
+header {
+    background-color: #C9E7FA;
+}
+
+#break {
+    height: 1rem;
+    background-color: white;
+}
+
+
+.logoInvert {
+    filter: invert(1);
+}
+
+#secondStep.deepBlue a {
+    color: #0d6efd;
+    text-shadow: 1px 1px 0px darkblue,
+        -1px -1px 0px darkblue,
+        1px -1px 0px darkblue,
+        -1px 1px 0px darkblue;
+}
+
+#firstStep,
+#secondStep,
+#thirdStep,
+#notAStep {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0px;
+}
+
+#thirdStep {
+    margin-right: 1rem;
+}
+
+#chessMindLogo {
+    display: flex;
+    flex-direction: row;
+}
+
+#firstStep img {
+    width: 64px;
+    height: 64px;
+}
+
+#chessMindLogo button a {
+    font-weight: bold;
+    font-size: large;
+    transition-property: text-shadow, color;
+    transition-duration: 1s;
+}
+
+.nav-link {
+    font-weight: bold;
+}
+
+.navbar-brand {
+    margin-right: 0px;
+}
+
+.material-icons {
+    font-size: 2em;
+}
+
+@media screen and (max-width: 990px) {
+    #image {
+        margin-top: 10px;
+    }
+
+    .text-link {
+        margin-top: 9px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    #image {
+        margin-top: 0px;
+    }
+
+    .text-link {
+        margin-top: 0px;
+    }
+}

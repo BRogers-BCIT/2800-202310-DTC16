@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Editor - ChessMind.AI</title>
+
+    <!--Bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!--Bootstrap links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!--Firebase and Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+
+    <!-- Script call-->
+    <script src="../scripts/firebaseapi.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/chess.js"></script>
+    <!-- Widescreen CSS Import -->
+    <link rel="stylesheet" href="../style/board-mobile.css" media="(min-width: 350px)">
+    <!-- CSS Import -->
+    <link rel="stylesheet" href="../style/board.css" media="all">
+    <!-- Medium-Size CSS Import -->
+    <link rel="stylesheet" href="../style/board-medium.css" media="(min-width: 415px)">
+    <!-- Widescreen CSS Import -->
+    <link rel="stylesheet" href="../style/board-wide.css" media="(min-width: 700px)">
+    <!-- Ultra-Widescreen CSS Import -->
+    <link rel="stylesheet" href="../style/board-ultrawide.css" media="(min-width: 900px)">
+    <!-- Dev Controls CSS Import -->
+    <link rel="stylesheet" href="../style/board-dev-controls.css">
+
+    <link rel="stylesheet" href="../style/font.css">
+
+</head>
+
+<body>
+
+    <nav id="navbarPlaceholder"></nav>
+
+    <main>
+        <form action="/analysis" method="post" id="fenToPass" class="d-none">
+            <input type="text" name="fenInput" id="fenInput">
+        </form>
+        <div id="featureLinks">
+            <!-- Div for save board to user account-->
+            <div id="saveBoard">
+                <button class="saveBoard featureButton" title="Save Board">
+                    <H3>Save Board</H3>
+                </button>
+            </div>
+            <!-- Div to get analysis of current board -->
+            <div id="analyzeBoard">
+                <button class="analyzeBoard featureButton" title="Analyze Board">
+                    <H3>Analyze Board</H3>
+                </button>
+            </div>
+        </div>
+        <!-- Container to make controls fit on widescreens -->
+        <div id="mainControls">
+            <!-- Board form white position view -->
+            <div id="whiteBoard" class="boardDisplay">
+                <table>
+
+                    <tr id="8">
+                        <td id="a8"></td>
+                        <td id="b8" class="ds"></td>
+                        <td id="c8"></td>
+                        <td id="d8" class="ds"></td>
+                        <td id="e8"></td>
+                        <td id="f8" class="ds"></td>
+                        <td id="g8"></td>
+                        <td id="h8" class="ds"></td>
+                    </tr>
+                    <tr id="7">
+                        <td id="a7" class="ds"></td>
+                        <td id="b7"></td>
+                        <td id="c7" class="ds"></td>
+                        <td id="d7"></td>
+                        <td id="e7" class="ds"></td>
+                        <td id="f7"></td>
+                        <td id="g7" class="ds"></td>
+                        <td id="h7"></td>
+                    </tr>
+                    <tr id="6">
+                        <td id="a6"></td>
+                        <td id="b6" class="ds"></td>
+                        <td id="c6"></td>
+                        <td id="d6" class="ds"></td>
+                        <td id="e6"></td>
+                        <td id="f6" class="ds"></td>
+                        <td id="g6"></td>
+                        <td id="h6" class="ds"></td>
+                    </tr>
+                    <tr id="5">
+                        <td id="a5" class="ds"></td>
+                        <td id="b5"></td>
+                        <td id="c5" class="ds"></td>
+                        <td id="d5"></td>
+                        <td id="e5" class="ds"></td>
+                        <td id="f5"></td>
+                        <td id="g5" class="ds"></td>
+                        <td id="h5"></td>
+                    </tr>
+                    <tr id="4">
+                        <td id="a4"></td>
+                        <td id="b4" class="ds"></td>
+                        <td id="c4"></td>
+                        <td id="d4" class="ds"></td>
+                        <td id="e4"></td>
+                        <td id="f4" class="ds"></td>
+                        <td id="g4"></td>
+                        <td id="h4" class="ds"></td>
+                    </tr>
+                    <tr id="3">
+                        <td id="a3" class="ds"></td>
+                        <td id="b3"></td>
+                        <td id="c3" class="ds"></td>
+                        <td id="d3"></td>
+                        <td id="e3" class="ds"></td>
+                        <td id="f3"></td>
+                        <td id="g3" class="ds"></td>
+                        <td id="h3"></td>
+                    </tr>
+                    <tr id="2">
+                        <td id="a2"></td>
+                        <td id="b2" class="ds"></td>
+                        <td id="c2"></td>
+                        <td id="d2" class="ds"></td>
+                        <td id="e2"></td>
+                        <td id="f2" class="ds"></td>
+                        <td id="g2"></td>
+                        <td id="h2" class="ds"></td>
+                    </tr>
+                    <tr id="1">
+                        <td id="a1" class="ds"></td>
+                        <td id="b1"></td>
+                        <td id="c1" class="ds"></td>
+                        <td id="d1"></td>
+                        <td id="e1" class="ds"></td>
+                        <td id="f1"></td>
+                        <td id="g1" class="ds"></td>
+                        <td id="h1"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="promote">
+                <button class="promote" id="queen" title="Promote to Queen"><img src="../img/bqueen.png" alt="queen"></button>
+                <button class="promote" id="rook" title="Promote to Rook"><img src="../img/brook.png" alt="rook"></button>
+                <button class="promote" id="bishop" title="Promote to Bishop"><img src="../img/bbishop.png" alt="bishop"></button>
+                <button class="promote" id="knight" title="Promote to Knight"><img src="../img/bknight.png" alt="knight"></button>
+                <button class="promote" id="pawn" title="Demote to Pawn"><img src="../img/bpawn.png" alt="pawn"></button>
+            </div>
+
+            <!-- User selection buttons-->
+            <div id="buttons">
+                <button class="move modButton" id="move" title="Move Piece"><img src="../img/move.png" alt="move piece"></button>
+                <button class="delete modButton" id="delete" title="Delete Piece"><img src="../img/delete.png" alt="delete piece"></button>
+                <button class="add modButton" id="add" title="Add Taken Piece"><img src="../img/add.png" alt="add piece"></button>
+                <button class="reset modButton" id="reset" title="Reset to Starting Position"><img src="../img/reset.png" alt="reset board"></button>
+            </div>
+        </div>
+
+
+        <!-- Population div for add piece menu -->
+        <div id="addPieceMenu">
+            <h3 id="title">Add Pieces</h3>
+            <div id="blackPieces">
+                <h3>Black Pieces</h3>
+            </div>
+            <br>
+            <div id="blackPawns">
+                <h3>Black Pawns</h3>
+            </div>
+            <br>
+            <div id="whitePieces">
+                <h3>White Pieces</h3>
+            </div>
+            <br>
+            <div id="whitePawns">
+                <h3>White Pawns</h3>
+            </div>
+            <br>
+            <button class="closeAdd">Close</button>
+            <br>
+        </div>
+
+
+        <div id="analyzeBoardMenu">
+            <h3 id="title">Analyze Board</h3>
+            <div id="castles">
+                <div id="whiteCastles">
+                    <h3>&nbsp;&nbsp;White Available Castles</h3>
+                    <div>
+                        <input type="checkbox" id="whiteKings" class="castles"> <label for="whiteKings">Kings Side
+                            (O-O)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="whiteQueens" class="castles"> <label for="whiteQueens"> Queens Side
+                            (O-O-O)</label>
+                    </div>
+                </div>
+                <div id="blackCastles">
+                    <h3>&nbsp;&nbsp;Black Available Castles</h3>
+                    <div>
+                        <input type="checkbox" id="blackKings" class="castles"> <label for="blackKings">Kings Side
+                            (O-O)</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="blackQueens" class="castles"> <label for="blackQueens">Queens Side
+                            (O-O-O)</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div id="movingColor">
+                <div id="currentColor">
+                    <h3 id="currentColorText">&nbsp;&nbsp;&nbsp;&nbsp;Moving: White</h3>
+                </div>
+                <div id="swapColor">
+                    <button class="swapColor menuButton" id="swapColorButton" title="Change which color is to move next">Swap Moving Color</button>
+                </div>
+            </div>
+            <br>
+            <div id="endButtons">
+                <div id="close">
+                    <button class="closeAnalyze menuButton" id="closeAnalyzeButton" title="Close Menu">Close</button>
+                </div>
+                <div id="analyze">
+                    <button class="goToAnalyze menuButton" id="goToAnalyzeButton" title="Analyze the state of the current board">Analyze</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="saveBoardMenu">
+            <h3 id="title">Save Board</h3>
+
+            <div id="saveName">
+                <h3>&nbsp;&nbsp;Board Name</h3>
+                <input type="text" id="boardName" placeholder="Board Name">
+            </div>
+            <br>
+            <div id="boardDescription">
+                <h3>&nbsp;&nbsp;Board Description</h3>
+                <textarea id="boardDescriptionText" placeholder="Board Description"></textarea>
+            </div>
+            <br>
+            <div id="endButtons">
+                <div id="close">
+                    <button class="closeSave menuButton" id="closeSaveButton" title="Close Menu">Close</button>
+                </div>
+                <div id="analyze">
+                    <button class="saveToUser menuButton" id="saveToUserButton" title="Save the current board state">Save</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <nav id="footerPlaceholder"></nav>
+</body>
+
+</html>

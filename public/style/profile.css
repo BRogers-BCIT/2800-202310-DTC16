@@ -1,0 +1,46 @@
+#form {
+    padding-top: calc((100vh - 720px) / 2);
+}
+
+#resetButton {
+    margin-top: 10px !important;
+}
+
+#resetArea {
+    margin-top: 20px !important;
+}
+
+#editButtons {
+    margin-top: 0px !important;
+    margin-bottom: 20px !important;
+}
+
+#title {
+    margin-bottom: 30px;
+}
+
+#field1,
+#field2,
+#field3 {
+    margin-bottom: 20px;
+}
+
+#nameInput,
+#emailInput,
+#ratingInput {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #C9E7FA;
+    border: #280BE3 solid 3px;
+    border-radius: 5px;
+}
+
+main {
+    margin-bottom: 95px;
+}
+
+@media screen and (max-width: 590px) {
+    main {
+        margin-bottom: 115px;
+    }
+}

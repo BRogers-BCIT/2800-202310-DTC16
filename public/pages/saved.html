@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previous Boards - ChessMind.AI</title>
+    <!--bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <!--bootstrap links -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!--Firebase and Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+
+    <!-- Script call-->
+    <script src="../scripts/firebaseapi.js"></script>
+    <script src="../scripts/skeleton.js"></script>
+    <script src="../scripts/saved.js"></script>
+    <!-- CSS Import -->
+    <link rel="stylesheet" href="../style/saved.css">
+    <link rel="stylesheet" href="../style/font.css">
+    <!-- Google Icons (Material Design)-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+    <main>
+        <nav id="navbarPlaceholder"></nav>
+
+        <main>
+            <div class="container">
+
+                <form action="/analysis" method="post" id="fenToAnalysis" class="d-none">
+                    <input type="text" name="fenInput" id="fenInput">
+                </form>
+
+
+                <br>
+                <!-- Title -->
+                <h2 class="text-center">Saved Chessboards</h2>
+
+                <!-- Search Bar -->
+
+                <div id="searchArea">
+                    <!-- Location of all the search function -->
+                    <input type="text" class="form-control" id="searchInput"
+                        placeholder="Search For a Previous Game"></input>
+                    <button id="searchButton"><i class="material-icons md-48" id="searchImage">search</i>
+                        <span id="searchLabel">Search</span></button>
+                </div>
+
+
+
+
+
+                <!-- Cards Container  -->
+                <div class="container">
+                    <div id="chessCardGroup" class="row row-cols">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container">
+
+                <!-- Modal -->
+                <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">My Saved Boards</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+
+                            <div class="modal-body">
+                                <div>
+                                    <div id="savedBoardMenu">
+                                        <h5 id="nameLabel">Board Name</h5>
+                                        <textarea id="boardName" class="form-control"
+                                            placeholder="Board Name (Required)" disabled></textarea>
+                                    </div>
+                                    <br>
+                                    <div id="boardDescription">
+                                        <h5 id="descriptionLabel">Board Description</h5>
+                                        <textarea class="form-control" rows="5" id="boardDescriptionText"
+                                            placeholder="Board Description" disabled></textarea>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <button type="button" class="edit btn btn-primary border"
+                                            id="editBoardCardButton">Edit</button>
+
+                                        <button type="button" class="save btn btn-primary border"
+                                            id="saveBoardCardButton">Save</button>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <h5 id="FENLabel">FEN</h5>
+                                        <p id="boardFEN"></p>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <h5 id="dateSavedLabel">Date Saved</h5>
+                                        <p id="dateSaved"></p>
+                                    </div>
+                                    <br>
+
+                                    <div id="endButtons">
+
+
+
+                                        <button type="button" class="openEditor btn btn-light border"
+                                            id="openBoardMenuButton">Open in
+                                            Editor</button>
+
+                                        <button class="openAnalysis btn btn-light border"
+                                            id="analyzeBoardMenuButton">Open
+                                            in
+                                            Analysis</button>
+                                    </div>
+                                    <br>
+                                    <div>
+
+                                        <button type="button" class="delete btn btn-danger border"
+                                            id="deleteBoardCardButton" data-dismiss="">Delete</button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+        <nav id="footerPlaceholder"></nav>
+
+
+    </main>
+
+</body>
+
+</html>
