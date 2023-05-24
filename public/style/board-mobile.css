@@ -201,7 +201,8 @@
 
     .modButton:hover,
     .promote:hover,
-    .featureButton:hover {
+    .featureButton:hover,
+    .menuButton:hover {
         cursor: pointer;
     }
 
