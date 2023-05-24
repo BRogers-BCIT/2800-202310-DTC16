@@ -653,7 +653,7 @@ function createBoardFromFEN(fenString) {
                         deletedPieces--;  // Decrement the deleted pieces counter
 
                         board[boardSize - index][columnIndex] = piece;  // Add the piece to the board
-                        
+
                     } catch (error) { // If there are no more pieces of this type
                         console.log(`ERROR: #${index + 1}${columnIndex} | No more pieces of this type, skipping`);
                     }
@@ -674,18 +674,18 @@ function openSaveMenu() {
         window.alert("You must be logged in to save a board");
     } else {
         // If no menu is already open
-    if (menuOpen == false) {
+        if (menuOpen == false) {
 
-        // Set the save board menu to visible and the board to half transparency
-        $(`#saveBoardMenu`).css("display", "block");
-        $(`#whiteBoard`).css("opacity", "0.5");
-        $(`#blackBoard`).css("opacity", "0.5");
-        $(`#buttons`).css("opacity", "0.5");
-        $(`#featureLinks`).css("opacity", "0.5");
+            // Set the save board menu to visible and the board to half transparency
+            $(`#saveBoardMenu`).css("display", "block");
+            $(`#whiteBoard`).css("opacity", "0.5");
+            $(`#blackBoard`).css("opacity", "0.5");
+            $(`#buttons`).css("opacity", "0.5");
+            $(`#featureLinks`).css("opacity", "0.5");
 
-        // Set open menu to true to indicate a menu is open
-        menuOpen = true;
-    }
+            // Set open menu to true to indicate a menu is open
+            menuOpen = true;
+        }
     }
 }
 
@@ -809,16 +809,16 @@ function openAnalyzeMenu() {
         // If a menu is not already open
         if (menuOpen == false) {
 
-        // Set the analyze board menu to visible and the board to half transparency
-        $(`#analyzeBoardMenu`).css("display", "block");
-        $(`#whiteBoard`).css("opacity", "0.5");
-        $(`#blackBoard`).css("opacity", "0.5");
-        $(`#buttons`).css("opacity", "0.5");
-        $(`#featureLinks`).css("opacity", "0.5");
+            // Set the analyze board menu to visible and the board to half transparency
+            $(`#analyzeBoardMenu`).css("display", "block");
+            $(`#whiteBoard`).css("opacity", "0.5");
+            $(`#blackBoard`).css("opacity", "0.5");
+            $(`#buttons`).css("opacity", "0.5");
+            $(`#featureLinks`).css("opacity", "0.5");
 
-        // Set open menu to true to indicate a menus is open
-        menuOpen = true;
-    }
+            // Set open menu to true to indicate a menus is open
+            menuOpen = true;
+        }
     }
 
 }
@@ -1079,6 +1079,15 @@ function clearBoard() {
     updateButtons();
 }
 
+// Nav Bar Functions
+const closeAllMenus = function () {
+
+    // Close all menus
+    closeAddPieces();
+    closeSaveMenu();
+    closeAnalyzeMenu();
+}
+
 const openSavedBoard = function () {
 
     // Check if the user is opening a saved board
@@ -1169,15 +1178,9 @@ setup = function () {
     // Not Currently used
     $("body").on("click", ".clear", clearBoard);
 
-    $(`#getFEN`).click(function () {
-        boardToFEN();
-        $(`#fenSpace`).text(FEN);
-    });
+    // Close all menus if the user clicks on the navbar
+    $("body").on("click", ".navbar-toggler", closeAllMenus);
 
-    $(`#createFromFEN h3`).click(function () {
-        let inputFEN = $(`#fenInput`).val();
-        createBoardFromFEN(inputFEN);
-    });
 
 }
 $(document).ready(setup)
