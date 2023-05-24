@@ -35,118 +35,119 @@
 
 <body>
     <nav id="navbarPlaceholder"></nav>
+
+    <main>
+        <div class="container">
+          
     <form action="/analysis" method="post" id="fenToAnalysis" class="d-none">
         <input type="text" name="fenInput" id="fenInput">
     </form>
 
-    <div class="container">
 
-        <br>
-        <!-- Title -->
-        <h2 class="text-center">Saved Chessboards</h2>
+            <br>
+            <!-- Title -->
+            <h2 class="text-center">Saved Chessboards</h2>
 
-        <!-- Search Bar -->
+            <!-- Search Bar -->
 
-        <div id="searchArea">
-            <!-- Location of all the search function -->
-            <input type="text" class="form-control" id="searchInput" placeholder="Search For a Previous Game"></input>
-            <button id="searchButton"><i class="material-icons md-48" id="searchImage">search</i>
-                <span id="searchLabel">Search</span></button>
-        </div>
-
-
+            <div id="searchArea">
+                <!-- Location of all the search function -->
+                <input type="text" class="form-control" id="searchInput"
+                    placeholder="Search For a Previous Game"></input>
+                <button id="searchButton"><i class="material-icons md-48" id="searchImage">search</i>
+                    <span id="searchLabel">Search</span></button>
+            </div>
 
 
 
-        <!-- Cards Container  -->
-        <div class="container">
-            <div id="chessCardGroup" class="row row-cols">
 
+
+            <!-- Cards Container  -->
+            <div class="container">
+                <div id="chessCardGroup" class="row row-cols">
+
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="container">
+        <div class="container">
 
-
-        <!-- Modal -->
-        <!-- Modal -->
-        <!-- Modal -->
-        <!-- Modal -->
-        <!-- Modal -->
-        <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">My Saved Boards</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-
-                    <div class="modal-body">
-                        <div>
-                            <div id="savedBoardMenu">
-                                <h5 id="nameLabel">Board Name</h5>
-                                <textarea id="boardName" class="form-control" placeholder="Board Name"
-                                    disabled></textarea>
-                            </div>
-                            <br>
-                            <div id="boardDescription">
-                                <h5 id="descriptionLabel">Board Description</h5>
-                                <textarea class="form-control" rows="5" id="boardDescriptionText" placeholder="Board Description"
-                                    disabled></textarea>
-                            </div>
-                            <br>
-                            <div>
-                                <button type="button" class="edit btn btn-primary border"
-                                    id="editBoardCardButton">Edit</button>
-
-                                <button type="button" class="save btn btn-primary border"
-                                    id="saveBoardCardButton">Save</button>
-                            </div>
-                            <br>
-                            <div>
-                                <h5 id="FENLabel">FEN</h5>
-                                <p id="boardFEN"></p>
-                            </div>
-                            <br>
-                            <div>
-                                <h5 id="dateSavedLabel">Date Saved</h5>
-                                <p id="dateSaved"></p>
-                            </div>
-                            <br>
-
-                            <div id="endButtons">
-
-
-
-                                <button type="button" class="openEditor btn btn-light border" id="openBoardMenuButton">Open in
-                                    Editor</button>
-
-                                <button class="openAnalysis btn btn-light border" id="analyzeBoardMenuButton">Open in
-                                    Analysis</button>
-                            </div>
-                            <br>
-                            <div>
-
-                                <button type="button" class="delete btn btn-danger border" id="saveBoardCardButton"
-                                    data-dismiss="modal">Delete</button>
-
-                            </div>
+            <!-- Modal -->
+            <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">My Saved Boards</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
 
+
+                        <div class="modal-body">
+                            <div>
+                                <div id="savedBoardMenu">
+                                    <h5 id="nameLabel">Board Name</h5>
+                                    <textarea id="boardName" class="form-control" placeholder="Board Name"
+                                        disabled></textarea>
+                                </div>
+                                <br>
+                                <div id="boardDescription">
+                                    <h5 id="descriptionLabel">Board Description</h5>
+                                    <textarea class="form-control" rows="5" id="boardDescriptionText"
+                                        placeholder="Board Description" disabled></textarea>
+                                </div>
+                                <br>
+                                <div>
+                                    <button type="button" class="edit btn btn-primary border"
+                                        id="editBoardCardButton">Edit</button>
+
+                                    <button type="button" class="save btn btn-primary border"
+                                        id="saveBoardCardButton">Save</button>
+                                </div>
+                                <br>
+                                <div>
+                                    <h5 id="FENLabel">FEN</h5>
+                                    <p id="boardFEN"></p>
+                                </div>
+                                <br>
+                                <div>
+                                    <h5 id="dateSavedLabel">Date Saved</h5>
+                                    <p id="dateSaved"></p>
+                                </div>
+                                <br>
+
+                                <div id="endButtons">
+
+
+
+                                    <button type="button" class="openEditor btn btn-light border"
+                                        id="openBoardMenuButton">Open in
+                                        Editor</button>
+
+                                    <button class="openAnalysis btn btn-light border" id="analyzeBoardMenuButton">Open
+                                        in
+                                        Analysis</button>
+                                </div>
+                                <br>
+                                <div>
+
+                                    <button type="button" class="delete btn btn-danger border" id="deleteBoardCardButton"
+                                        data-dismiss="modal">Delete</button>
+
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    
 
+    </main>
     <nav id="footerPlaceholder"></nav>
 
 
