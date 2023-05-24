@@ -5,6 +5,7 @@ const uUid = localStorage.getItem('userUid')
 const uDisplayName = localStorage.getItem('userDisplayName')
 let currentCardFen = null;
 let deleteConfirm = false;
+let saveConfirm = false;
 
 // TODO: Test (Boards Functions)
 const populateBoardCards = function () {
@@ -131,11 +132,17 @@ const openBoardMenu = function () {
     let boardDate = null;
 
     // Reset the delete confirm button
+    saveConfirm = false;
+    $("#saveBoardCardButton").html("Save");
+    $("#saveBoardCardButton").css("margin-right", "calc((90% - 142px) / 2);");
+    $("#editBoardCardButton").css("margin-left", "calc((90% - 142px) / 2)");
+    $("#saveBoardCardButton").attr("data-dismiss", "");
+
+    // Reset the save confirm button
     deleteConfirm = false;
     $("#deleteBoardCardButton").html("Delete");
     $("#deleteBoardCardButton").css("margin-left", "calc(50% - 50px)");
     $("#deleteBoardCardButton").attr("data-dismiss", "");
-
 
     // Set the save board menu to visible and the background to half transparency
     $(`#savedBoardMenu`).css("display", "block");
@@ -185,39 +192,46 @@ const editBoardCard = function () {
 // TODO: Test (Card Functions)
 const saveBoardCard = function () {
 
-    // Get the boards name and description from the text boxes
-    let boardName = $(`#boardName`).val();
-    let boardDescription = $(`#boardDescriptionText`).val();
+    if (saveConfirm != true) {
+        saveConfirm = true;
+        $("#saveBoardCardButton").html("Confirm Save");
+        $("#saveBoardCardButton").css("margin-right", "calc((90% - 200px) / 2)");
+        $("#editBoardCardButton").css("margin-left", "calc((90% - 200px) / 2)");
+        $("#saveBoardCardButton").attr("data-dismiss", "modal");
+    } else {
+        // Get the boards name and description from the text boxes
+        let boardName = $(`#boardName`).val();
+        let boardDescription = $(`#boardDescriptionText`).val();
 
-    // Delete the board from the database
-    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID)
-        .delete()
-        .catch(function (error) {
+        // Delete the board from the database
+        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID)
+            .delete()
+            .catch(function (error) {
+                // Catch any errors
+                console.error("Error removing document: ", error);
+            });
+
+
+        // Save the boards name and description to the database with an updated date
+        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
+            boardName: boardName,
+            boardDescription: boardDescription,
+            savedDate: new Date().toISOString().split('T')[0],
+            boardFEN: currentCardFen
+
+        }).then(function () {
+            // Disable editing the board name and description text boxes
+            $(`#boardName`).prop("disabled", true);
+            $(`#boardDescriptionText`).prop("disabled", true);
+
+        }).catch(function (error) {
             // Catch any errors
-            console.error("Error removing document: ", error);
+            console.error("Error writing document: ", error);
         });
-
-
-    // Save the boards name and description to the database with an updated date
-    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
-        boardName: boardName,
-        boardDescription: boardDescription,
-        savedDate: new Date().toISOString().split('T')[0],
-        boardFEN: currentCardFen
-
-    }).then(function () {
-        // Disable editing the board name and description text boxes
-        $(`#boardName`).prop("disabled", true);
-        $(`#boardDescriptionText`).prop("disabled", true);
-
-    }).catch(function (error) {
-        // Catch any errors
-        console.error("Error writing document: ", error);
-    });
-
-    // Close the menu and refresh the board cards
-    populateBoardCards();
-
+        saveConfirm = false;
+        // Close the menu and refresh the board cards
+        populateBoardCards();
+    }
 }
 
 const deleteBoardCard = function () {
