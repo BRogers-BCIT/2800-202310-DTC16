@@ -180,7 +180,7 @@ function resetBoard() {
         // White pieces
         whitePieces = [["white", "wrook.png", "R", "on board"], ["white", "wknight.png", "N", "on board"],
         ["white", "wbishop.png", "B", "on board"], ["white", "wqueen.png", "Q", "on board"],
-        ["white", "wking.png", "K", "on board"], ["white", "wbishop.png", "B", "on board"],
+        ["white", "wking.png", "K", "king"], ["white", "wbishop.png", "B", "on board"],
         ["white", "wknight.png", "N", "on board"], ["white", "wrook.png", "R", "on board"]];
 
         // White pawns
@@ -446,7 +446,7 @@ function deletePieceMove() {
 function openAddPieces() {
 
     // Checks there are no menus open
-    if (menuOpen == false) {
+    if (menuOpen == false && deletedPieces > 0) {
 
         // Set open menu to true ro prevent other menus from opening
         menuOpen = true;
@@ -475,7 +475,7 @@ function openAddPieces() {
 
             // If no black pieces have been taken then display none
             if (takenBlackPieces == 0) {
-                $(`#blackPieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
+                $(`#blackPieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>`);
             }
 
             // For each white piece
@@ -492,7 +492,7 @@ function openAddPieces() {
 
             // If no white pieces have been taken then display none
             if (takenWhitePieces == 0) {
-                $(`#whitePieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
+                $(`#whitePieces`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>`);
             }
 
             // For each black pawn
@@ -509,7 +509,7 @@ function openAddPieces() {
 
             // If no black pawns have been taken then display none
             if (takenBlackPawns == 0) {
-                $(`#blackPawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
+                $(`#blackPawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>`);
             }
 
             // For each white pawn 
@@ -526,7 +526,7 @@ function openAddPieces() {
 
             // If no white pawns have been taken then display none
             if (takenWhitePawns == 0) {
-                $(`#whitePawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;None</h3>`);
+                $(`#whitePawns`).append(`<h3>&nbsp;&nbsp;&nbsp;&nbsp;</h3>`);
             }
 
         }
@@ -538,6 +538,8 @@ function addPieceToBoard() {
 
     // Checks if the selected piece is not a king
     if (board[selectedPieceRow][selectedPieceColumn][3] != 'king') {
+
+        closeAddPieces();
 
         // Get the piece type from button class and index from button id
         var pieceType = jQuery(this).attr('class');
@@ -576,7 +578,7 @@ function addPieceToBoard() {
     // Update the board with the new pieces
     updateBoard();
     updateButtons();
-    closeAddPieces();
+
 }
 
 // Working (Add)
@@ -756,7 +758,19 @@ function saveBoard() {
     // Get the board name and description from the input fields
     let boardName = document.getElementById("boardName").value;
     boardName = boardName.toLowerCase();
+    boardName = boardName.trim();
+    if (boardName == "") {
+        $(`#boardName`).css("background-color", "yellow");
+        window.alert("You must enter a name for the board");
+        window.alert("You must enter a name for the board.");
+        return;
+    }
     let boardDescription = document.getElementById("boardDescriptionText").value;
+    boardDescription = boardDescription.trim();
+
+
+
+
 
     // Convert the board to FEN for saving
     boardToFEN();
@@ -765,24 +779,25 @@ function saveBoard() {
     let uUid = localStorage.getItem('userUid')
     let uDisplayName = localStorage.getItem('userDisplayName')
 
-    // Save the board to the database
-    db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
-        boardName: boardName,
-        boardDescription: boardDescription,
-        boardFEN: FEN,
-        savedDate: new Date().toISOString().split('T')[0],
+    if (boardName != "") {
+        // Save the board to the database
+        db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(boardName).set({
+            boardName: boardName,
+            boardDescription: boardDescription,
+            boardFEN: FEN,
+            savedDate: new Date().toISOString().split('T')[0],
 
-    }).then(function () {
+        }).then(function () {
 
-        closeSaveMenu();
+            closeSaveMenu();
 
-    }).catch(function (error) {
+        }).catch(function (error) {
 
-        // Catch any errors
-        console.error("Error writing document: ", error);
+            // Catch any errors
+            console.error("Error writing document: ", error);
 
-    });
-
+        });
+    }
 }
 
 // Working (Save)
@@ -794,6 +809,7 @@ function closeSaveMenu() {
     $(`#blackBoard`).css("opacity", "1");
     $(`#buttons`).css("opacity", "1");
     $(`#featureLinks`).css("opacity", "1");
+    $(`#boardName`).css("background-color", "white");
 
     // Set open menu to false to indicate all menus are closed
     menuOpen = false;
@@ -940,6 +956,8 @@ function boardToFullFEN() {
     // Put a space between the moving color and the available castles (if there are any)
     if (castleWhiteKings != "" || castleWhiteQueens != "" || castleBlackKings != "" || castleBlackQueens != "") {
         boardToFEN += " ";
+    } else {
+        boardToFEN += "";
     }
 
     // Record castling availability
@@ -1035,7 +1053,7 @@ function clearBoard() {
     // White pieces
     whitePieces = [["white", "wrook.png", "R", "taken"], ["white", "wknight.png", "N", "taken"],
     ["white", "wbishop.png", "B", "taken"], ["white", "wqueen.png", "Q", "taken"],
-    ["white", "wking.png", "K", "taken"], ["white", "wbishop.png", "B", "taken"],
+    ["white", "wking.png", "K", "king"], ["white", "wbishop.png", "B", "taken"],
     ["white", "wknight.png", "N", "taken"], ["white", "wrook.png", "R", "taken"]];
 
     // White pawns
@@ -1047,7 +1065,7 @@ function clearBoard() {
     // Black pieces
     blackPieces = [["black", "brook.png", "r", "taken"], ["black", "bknight.png", "n", "taken"],
     ["black", "bbishop.png", "b", "taken"], ["black", "bqueen.png", "q", "taken"],
-    ["black", "bking.png", "k", "taken"], ["black", "bbishop.png", "b", "taken"],
+    ["black", "bking.png", "k", "king"], ["black", "bbishop.png", "b", "taken"],
     ["black", "bknight.png", "n", "taken"], ["black", "brook.png", "r", "taken"]];
 
     // Black pawns
@@ -1060,19 +1078,19 @@ function clearBoard() {
     // Set the chessboard to a cleared position
     // All pieces are taken except for the kings
     board = {
-        1: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        1: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], blackPieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         2: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         3: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         4: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         5: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         6: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
         7: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
-        8: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
+        8: [['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], whitePieces[4], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece'], ['', 'empty.png', 'notPiece']],
     };
 
     // Reset all variables then set taken pieces to 30 (all but kings)
     resetVariables();
-    deletedPieces = 32;
+    deletedPieces = 30;
 
     // Update the board and buttons
     updateBoard();

@@ -11,6 +11,10 @@ td {
     border-collapse: collapse;
 }
 
+label {
+    font-size: x-large;
+}
+
 table {
     float: left;
     max-height: 80vh;
@@ -129,7 +133,7 @@ img {
     display: none;
     position: absolute;
     width: 90%;
-    height: 70%;
+    height: 65%;
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 5vh;
@@ -154,7 +158,6 @@ img {
 .whitePiece {
     width: 20%;
     height: 20%;
-    margin-left: 5%;
     margin-bottom: 10px;
 }
 
@@ -162,7 +165,6 @@ img {
     width: 60%;
     padding-top: 5%;
     padding-bottom: 5%;
-    margin-left: 20%;
     background-color: var(--buttonBackground);
     border: 3px solid var(--buttonBorder);
     border-radius: 2px;
@@ -186,6 +188,7 @@ img {
 
 .closeSave,
 .saveToUser {
+    font-size: x-large;
     float: left;
     width: 40%;
     margin-top: 5%;
@@ -231,6 +234,7 @@ img {
 
 .closeAnalyze,
 .goToAnalyze {
+    font-size: x-large;
     float: left;
     width: 40%;
     margin-top: 5%;
@@ -244,11 +248,9 @@ img {
     border-radius: 2px;
 }
 
-.castles {
-    margin-left: 5%;
-}
 
 #swapColorButton {
+    font-size: x-large;
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;

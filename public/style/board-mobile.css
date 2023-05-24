@@ -199,7 +199,12 @@
         margin-right: 5vw;
     }
 
-
+    .modButton:hover,
+    .promote:hover,
+    .featureButton:hover,
+    .menuButton:hover {
+        cursor: pointer;
+    }
 
 
 
@@ -256,7 +261,6 @@
     .whitePiece {
         width: 20%;
         height: 20%;
-        margin-left: 5%;
         margin-bottom: 10px;
     }
 
@@ -264,7 +268,6 @@
         width: 60%;
         padding-top: 5%;
         padding-bottom: 5%;
-        margin-left: 20%;
         background-color: var(--buttonBackground);
         border: 3px solid var(--buttonBorder);
         border-radius: 2px;
@@ -361,15 +364,8 @@
 
     #whiteKings,
     #blackKings {
-        margin-left: 10%;
         margin-bottom: 2%;
     }
-
-    #whiteQueens,
-    #blackQueens {
-        margin-left: 10%;
-    }
-
 
     #swapColorButton {
         float: right;
@@ -384,9 +380,6 @@
         margin-bottom: 15.72px;
     }
 
-    label {
-        margin-right: calc(80% - 150px);
-    }
 
     #blackCastles,
     #whiteCastles {

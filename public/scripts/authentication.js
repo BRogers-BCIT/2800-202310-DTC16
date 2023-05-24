@@ -30,7 +30,7 @@ var uiConfig = {
             currentBoardSavedDate: "XXXXXXXXXXX",
           })
           .then(function () {
-            window.location.assign("/profile"); //re-direct to main.html after signup
+            window.location.assign("/board"); //re-direct to main.html after signup
           })
           .catch(function (error) {
             console.log("Error adding new user: " + error);
@@ -64,7 +64,7 @@ var uiConfig = {
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
 
   signInFlow: "popup",
-  signInSuccessUrl: "/profile",
+  signInSuccessUrl: "/board",
 
   signInOptions: [
 

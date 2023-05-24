@@ -77,6 +77,12 @@
         font-size: 36px;
     }
 
+    #title {
+        min-height: 26px;
+        max-height: 52px;
+        overflow-y: hidden;
+    }
+
     .card {
         width: 44%;
         height: 234.25px;
@@ -87,16 +93,16 @@
 
     .openCard {
         width: 100%;
-        height: 234.25px;
+        height: 251px;
         color: var(--text-color);
         background-color: var(--background);
         border-color: var(--border);
         border-radius: 3px;
     }
 
-    .card-body {
+    /* .card-body {
         margin: auto;
-    }
+    } */
 
     ul {
         text-align: left;
@@ -154,17 +160,20 @@
 
         #searchInput {
 
-            width: 79%;
+            width: 75%;
         }
 
-        .card {
-            margin: 0 auto;
-            float: none;
-            margin-bottom: 15px;
+        li.FEN,
+        li.dateSaved {
+            display: none;
         }
+
+
     }
 
-
+    #chessCardGroup {
+        padding: 1em;
+    }
 
 
     .modal-body p {
