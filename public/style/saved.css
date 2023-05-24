@@ -157,16 +157,19 @@
             width: 75%;
         }
 
-        /* .card {
-            margin: 0 auto;
-            float: none;
-            margin-bottom: 15px;
-        } */
+        li.FEN, li.dateSaved {
+            display: none;
+        }
+
+
     }
 
-
+    #chessCardGroup {
+        padding: 1em;
+      }
 
 
     .modal-body p {
         word-wrap: break-word;
     }
+
