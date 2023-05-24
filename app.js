@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 
 // Loading analysis page normally
 app.get('/analysis', (req, res) => {
-    res.sendFile(`${__dirname}/public/pages/analysis.html`);
+    res.sendFile(`${__dirname}/public/pages/enterFenString.html`);
 });
 
 // Sending FEN to analysis page
