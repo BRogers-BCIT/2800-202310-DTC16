@@ -8,23 +8,29 @@ ChessMind.AI is a chess analysis tool to help players improve their board analys
 ## Technologies Used
 ### Frontend
 
-- JQuery
-- Bootstrap
+- [JQuery](https://jquery.com/)
+- [Bootstrap](https://getbootstrap.com/)
 
 ### Backend
-- Node.JS
+- [Node.JS](https://nodejs.org/en)
+- [Firebase](https://firebase.google.com/)
+
+### Node.JS Modules
 
 (TODO: Add links to all Node modules)
-- OpenAI API
-- express
-- nodemon
-- body-parser 
-- dotenv
-- ejs
+- [OpenAI API](https://platform.openai.com/overview) ([NPM Module](https://www.npmjs.com/package/openai))
+- [Express](https://expressjs.com/) ([NPM Module](https://www.npmjs.com/package/express))
+- [Nodemon](https://www.npmjs.com/package/nodemon)
+- [body-parser](https://www.npmjs.com/package/body-parser) 
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [ejs](https://ejs.co/) ([NPM Module](https://www.npmjs.com/package/ejs))
 
-### Others
+### Server Hosts
 
-- 
+- [Cyclic](https://www.cyclic.sh/)
+- [Netlify](https://www.netlify.com/) (Testing)
+
+Development was done using [Visual Studio Code](https://code.visualstudio.com/), but should work across all IDEs.
 
 ## File Contents
 ```
@@ -124,7 +130,7 @@ ChessMind.AI is a chess analysis tool to help players improve their board analys
 
 (WIP)
 
-1. Ensure NPM is installed and on your system's PATH.
+1. Ensure [Node.JS](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) are installed and on your system's PATH.
 
 2. Inside of the repository, run `install_packages.bat` to install all necessary node modules.
 
@@ -156,7 +162,7 @@ ChessMind.AI is a chess analysis tool to help players improve their board analys
 
 (WIP)
 
-## 8. Use of AI in product
+## Use of AI in product
 
 We use OpenAI API to enable having ChatGPT as a feature for users to ask ChatGPT to recommend the best possible move to make. 
 We used Github Co-pilot and ChatGPT to help code the board editor, board analysis, and saved board pages.
