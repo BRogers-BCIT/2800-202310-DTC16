@@ -759,7 +759,7 @@ function saveBoard() {
     let boardName = document.getElementById("boardName").value;
     boardName = boardName.toLowerCase();
     if (boardName == "") {
-        window.alert("You must enter a name for the board");
+        window.alert("You must enter a name for the board.");
         return;
     }
     let boardDescription = document.getElementById("boardDescriptionText").value;
