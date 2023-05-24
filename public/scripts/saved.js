@@ -77,7 +77,7 @@ const searchBoardCards = function () {
         let cardNum = 0
 
         // Get the search term
-        let nameSearch = $("#searchInput").val();
+        let nameSearch = $("#searchInput").val().trim();
 
         // Get all the saved boards from the users collection
         db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").where("boardName", "==", nameSearch)
@@ -150,8 +150,8 @@ const openBoardMenu = function () {
     // Get the document from the user's collection with the same id as the clicked board
     db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID).get().then(function (doc) {
         // Set the values of the board information variables to the values from the database
-        boardName = doc.data().boardName;
-        boardDescription = doc.data().boardDescription;
+        boardName = doc.data().boardName.trim();
+        boardDescription = doc.data().boardDescription.trim();
         boardFEN = doc.data().boardFEN;
         currentCardFen = doc.data().boardFEN;
         boardDate = doc.data().savedDate;
