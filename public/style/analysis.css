@@ -20,6 +20,9 @@
 
 /**/
 
+
+
+/* Layout CSS */
 body {
     margin: 0px;
 }
@@ -41,19 +44,17 @@ table {
     margin-top: 10px;
 }
 
+/**/
 
 
 
-
-
+/* Board CSS */
 td {
     height: 10%;
     width: 10%;
     padding: 0px;
     background-color: var(--lightSquare);
 }
-
-
 
 #buttons {
     width: 100%;
@@ -66,7 +67,6 @@ button {
     background-color: transparent;
 }
 
-
 img {
     width: 80%;
     height: 80%;
@@ -76,7 +76,11 @@ img {
     background-color: var(--darkSquare);
 }
 
+/**/
 
+
+
+/* Analysis Description CSS */
 #analysisDescription {
     float: right;
     max-height: 80vh;
@@ -113,9 +117,12 @@ img {
     resize: none;
 }
 
+/**/
 
+/* Medium Screen CSS */
 @media screen and (max-width: calc(80vh + 15vw + 235px)) {
 
+    /* Main Layout */
     table {
         float: left;
         margin-left: calc((100vw - 80vh) / 2);
@@ -125,11 +132,12 @@ img {
         margin-top: 10px;
     }
 
+
+    /* Analysis Description CSS */
     #analysisDescription {
         width: 70vw;
         margin-top: 0px;
         max-height: 30vh;
-        margin-bottom: 95px;
         margin-left: 15%;
         margin-right: 15%;
     }
@@ -137,6 +145,7 @@ img {
     #savedBoardDescriptionTitle {
         min-height: 0px;
     }
+
 
     #gptAnalysisText {
         font-size: 1em !important;
@@ -150,17 +159,19 @@ img {
         resize: none;
     }
 
+    /**/
+
 }
 
+/**/
+
+
+
+/* Small Screen CSS */
 @media screen and (max-aspect-ratio: 1/1) {
     table {
         margin-left: 10%;
     }
-
 }
 
-@media screen and (max-width: 590px) {
-    #analysisDescription {
-        margin-bottom: 115px;
-    }
-}
+/**/

@@ -20,6 +20,10 @@
 
    /**/
 
+
+
+
+   /* Layout CSS */
    body {
        height: 100vh;
    }
@@ -41,10 +45,17 @@
        max-height: (100vh - 220px);
    }
 
+
    form {
        margin: auto;
    }
 
+   /**/
+
+
+
+
+   /* Small Screen CSS */
    @media screen and (max-height: 600px) {
        #firebaseui-auth-container {
            margin-top: 10px;

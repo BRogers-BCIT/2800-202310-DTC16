@@ -20,6 +20,9 @@
 
 /**/
 
+
+
+/* Layout CSS */
 body {
     height: 100vh;
 }
@@ -29,6 +32,15 @@ main {
     overflow: auto;
 }
 
+#title {
+    margin-top: 0 !important;
+}
+
+/**/
+
+
+
+/* Buttons CSS */
 #indexElements {
     margin-top: calc((100vh - 550px) / 2);
 }
@@ -45,10 +57,10 @@ main {
     border-radius: 5px;
 }
 
-#title {
-    margin-top: 0 !important;
-}
+/**/
 
+
+/* Small Screen CSS */
 @media screen and (max-height: 550px) {
     #indexElements {
         margin-top: 0px
@@ -70,3 +82,5 @@ main {
         padding-top: 10px !important;
     }
 }
+
+/**/
