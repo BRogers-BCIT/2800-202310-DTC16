@@ -1,3 +1,4 @@
+    /* Color Palate */
     :root {
         --background: #C9E7FA;
         --border: #329BFA;
@@ -5,7 +6,11 @@
         --highlight: #00BCFA;
         --text-color: black;
     }
+    /**/
 
+
+
+    /* Margins for footer */
     main {
         margin-bottom: 80px;
     }
@@ -15,7 +20,11 @@
             margin-bottom: 100px;
         }
     }
+    /**/
 
+
+
+    /* Page Formatting */
     .container {
         padding: 0px;
     }
@@ -24,7 +33,11 @@
         display: flex;
         justify-content: center;
     }
+    /**/
 
+
+
+    /* Search Bar */
     #savedBoardMenu {
         display: none;
     }
@@ -76,13 +89,21 @@
     #search_image {
         font-size: 36px;
     }
+    /**/
 
+
+
+    /* Page Title CSS */
     #title {
         min-height: 26px;
         max-height: 52px;
         overflow-y: hidden;
     }
+    /**/
 
+
+
+    /* Saved Boards Cards CSS */
     .card {
         width: 44%;
         height: 234.25px;
@@ -100,10 +121,6 @@
         border-radius: 3px;
     }
 
-    /* .card-body {
-        margin: auto;
-    } */
-
     ul {
         text-align: left;
         list-style-type: none;
@@ -117,11 +134,29 @@
         overflow-y: hidden;
     }
 
+    #chessCardGroup {
+        padding: 1em;
+    }
+    /**/
+
+
+
+
+    /* Saved Board Menu CSS */
     .description {
         max-height: 72.75px;
         overflow-y: hidden;
     }
 
+    .modal-body p {
+        word-wrap: break-word;
+    }
+    /**/
+
+
+
+
+    /* Saved Board Menu Buttons */
     #deleteBoardCardButton {
         margin-left: calc(50% - 51px);
     }
@@ -145,37 +180,36 @@
         margin-right: calc((95% - 288px) / 2);
         margin-left: 2.5%;
     }
+    /**/
 
+
+
+    /* Smaller Page CSS */
     @media (max-width: 600px) {
 
-        /* Adjust the maximum width to match your desired mobile breakpoint */
+        /* Search CSS */
         #searchLabel {
             display: none;
         }
 
         #searchButton {
             width: 15%;
-
         }
 
         #searchInput {
-
             width: 75%;
         }
+        /**/
 
+
+
+        /* Cards CSS */
         li.FEN,
         li.dateSaved {
             display: none;
         }
-
+        /**/
 
     }
 
-    #chessCardGroup {
-        padding: 1em;
-    }
-
-
-    .modal-body p {
-        word-wrap: break-word;
-    }
+    /**/
