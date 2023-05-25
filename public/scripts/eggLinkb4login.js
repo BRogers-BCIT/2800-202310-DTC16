@@ -63,4 +63,4 @@ let setup = function () {
         eggFeedback();
     });
 };
-$(document).ready(setup);
+$(document).ready(setup); // when document is ready, run setup function
