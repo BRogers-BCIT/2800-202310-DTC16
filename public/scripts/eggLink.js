@@ -10,13 +10,21 @@ function eggFeedback() {
 
     if (eggStep >= 1) {
         $(`#firstStep img`).addClass(`logoInvert`);
+        // turns the logo orange when first step is only clicked
     } else {
         $(`#firstStep img`).removeClass(`logoInvert`);
+        // removes the orange color from the logo when
+        // page gets refreshed
     }
     if (eggStep >= 2) {
         $(`#secondStep`).addClass(`deepBlue`);
+        // turns "Mind" into blue when second step is clicked
+        // after first step
     } else {
         $(`#secondStep`).removeClass(`deepBlue`);
+        // removes the blue color from "Mind" when
+        // if first step is clicked after first and second step
+        // have been clicked
     }
 }
 
@@ -30,6 +38,7 @@ let setup = function () {
     $("#firstStep").click(function () {
         eggStep = 1;
         $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${homePage}">.AI</a>`);
+        // ensures "AI" still redirects to home page when first step is clicked
         eggFeedback();
     });
     $("#secondStep").click(function (event) {
@@ -37,9 +46,13 @@ let setup = function () {
             event.preventDefault();
             eggStep = 2;
             $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${eggPage}">.AI</a>`);
+            // ensures "AI" redirects to easter egg page
+            // when first and second step are clicked in order
         } else {
             eggStep = 0;
             $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${homePage}">.AI</a>`);
+            // ensures "AI" redirects to home page when step two is clicked
+            // before step one
         }
         eggFeedback();
     });
@@ -47,8 +60,10 @@ let setup = function () {
         if (eggStep !== 2) {
             eggStep = 0;
             $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${homePage}">.AI</a>`);
+            // ensures "AI" redirects to home page when step three is clicked
+            // before step two and step one
         }
         eggFeedback();
     });
 };
-$(document).ready(setup);
+$(document).ready(setup); // when document is ready, run setup function

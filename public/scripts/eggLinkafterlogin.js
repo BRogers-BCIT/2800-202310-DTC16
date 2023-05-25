@@ -23,7 +23,8 @@ function eggFeedback() {
     } else {
         $(`#secondStep`).removeClass(`deepBlue`);
         // removes the blue color from "Mind" when
-        // if first step is clicked after second step
+        // if first step is clicked after first and second step
+        // have been clicked
     }
 }
 
