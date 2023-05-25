@@ -1,8 +1,14 @@
+/* Font CSS */
 @font-face {
     font-family: useFont;
     src: url(Urbanist-VariableFont_wght.ttf);
 }
 
+/**/
+
+
+
+/* Footer Margins CSS */
 main {
     margin-bottom: 85px;
 }
@@ -12,3 +18,5 @@ main {
         margin-bottom: 105px;
     }
 }
+
+/**/

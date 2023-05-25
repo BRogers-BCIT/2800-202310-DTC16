@@ -7,7 +7,7 @@ let currentCardFen = null;
 let deleteConfirm = false;
 let saveConfirm = false;
 
-// TODO: Test (Boards Functions)
+
 const populateBoardCards = function () {
 
     // Clear the search term
@@ -53,7 +53,8 @@ const populateBoardCards = function () {
                 });
             })
 
-            .catch((error) => { // catch errors
+            .catch((error) => { 
+                // catch errors
                 console.log("Error getting documents: ", error);
             });
 
@@ -107,7 +108,8 @@ const searchBoardCards = function () {
                 });
             })
 
-            .catch((error) => { // catch errors
+            .catch((error) => { 
+                // catch errors
                 console.log("Error getting documents: ", error);
             });
 
@@ -119,8 +121,6 @@ const searchBoardCards = function () {
 }
 
 
-
-// TODO: Test (Menu Functions)
 const openBoardMenu = function () {
 
 
@@ -152,7 +152,6 @@ const openBoardMenu = function () {
 
     // Save the name of the clicked board to a global variable
     currentBoardID = $(this).attr("id");
-    console.log(currentBoardID);
 
     // Get the document from the user's collection with the same id as the clicked board
     db.collection("users").doc(uUid).collection(uDisplayName + " savedBoards").doc(currentBoardID).get().then(function (doc) {
@@ -180,7 +179,7 @@ const openBoardMenu = function () {
 }
 
 
-// TODO: Test (Card Functions)
+
 const editBoardCard = function () {
 
     // Enable the board name and description text boxes to be edited
@@ -189,7 +188,7 @@ const editBoardCard = function () {
 
 }
 
-// TODO: Test (Card Functions)
+
 const saveBoardCard = function () {
 
     if (saveConfirm != true) {
@@ -259,7 +258,6 @@ const deleteBoardCard = function () {
 }
 
 
-// TODO: Test (Call Functions)
 const openBoardInEditor = function () {
 
     // Board information variables
@@ -307,7 +305,6 @@ const openBoardInEditor = function () {
 
 }
 
-// TODO: Test (Call Functions)
 const openBoardInAnalyzer = function () {
 
     // Board information variables
@@ -357,7 +354,6 @@ const openBoardInAnalyzer = function () {
 }
 
 
-// TODO: Test (Setup)
 setup = function () {
 
     // Boards Functions
@@ -383,4 +379,4 @@ setup = function () {
     $("body").on("click", ".openAnalysis", openBoardInAnalyzer);
 
 }
-$(document).ready(setup)
+$(document).ready(setup) // Call setup when document is ready

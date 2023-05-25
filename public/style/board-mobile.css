@@ -1,405 +1,427 @@
-    :root {
-        --lightSquare: #C9E7FA;
-        --darkSquare: #329BFA;
-        --selectSquare: #280BE3;
-        --movePiece: #00BCFA;
-
-        --buttonBorder: #329BFA;
-        --buttonBackground: #C9E7FA;
-        --text-color: black;
-
-        --menuBackground: #C9E7FA;
-    }
-
-    #boardInformation {
-        float: left;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        height: 170px;
-        width: calc(41% - 6px);
-        padding-left: 2%;
-        padding-right: 2%;
-        margin-left: 5%;
-        margin-right: 0%;
-        border: #280BE3 solid 3px;
-        border-radius: 5px;
-    }
-
-    #savedBoardDescription {
-        float: right;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        height: 170px;
-        width: calc(41% - 6px);
-        padding-left: 1%;
-        padding-right: 2%;
-        margin-left: 0%;
-        margin-right: 5%;
-        border: #280BE3 solid 3px;
-        border-radius: 5px;
-    }
-
-    #savedBoardName,
-    #savedBoardDate,
-    #savedBoardDescriptionTitle {
-        float: left;
-        width: 100%;
-        margin-top: 5px;
-        margin-bottom: 15px;
-    }
-
-    #savedBoardName {
-        max-height: 120px;
-        min-height: 120px;
-        margin-bottom: 0px;
-        word-wrap: break-word;
-        overflow: hidden;
-    }
-
-    #savedBoardDate {
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
-
-
-    h1 {
-        font-family: initial !important;
-        font-size: 2em !important;
-    }
-
-    h2 {
-        font-family: initial !important;
-        font-size: 1.3em !important;
-    }
-
-    h4 {
-        font-family: initial !important;
-        font-size: 1em !important;
-    }
-
-    #savedBoardDescriptionText {
-        font-size: 0.725em !important;
-        min-height: 93px;
-        max-height: 93px;
-        margin-left: 5%;
-        margin-bottom: 15px;
-        min-width: 90%;
-        max-width: 90%;
-        overflow-y: scroll;
-    }
-
-    body {
-        margin: 0px;
-    }
-
-    table,
-    td {
-        aspect-ratio: 1/1;
-        border: solid black;
-        border-width: 0.5vh 0.5vh 0.5vh 0.5vh;
-        border-collapse: collapse;
-    }
-
-    table {
-        float: left;
-        max-height: 80vh;
-        max-width: 80vw;
-        margin-top: 2vh;
-        margin-left: 10vw;
-        margin-right: 10vw;
-    }
-
-
-    td {
-        height: 10%;
-        width: 10%;
-        padding: 0px;
-        background-color: var(--lightSquare);
-    }
-
-
-
-    #buttons {
-        width: 100%;
-    }
-
-    button {
-        border: 0px;
-        margin: 0px;
-        padding: 0px;
-        background-color: transparent;
-    }
-
-
-    img {
-        width: 80%;
-        height: 80%;
-    }
-
-    .ds {
-        background-color: var(--darkSquare);
-    }
-
-    #blackBoard {
-        display: none;
-    }
-
-    .featureButton {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .featureButton h3 {
-        font-size: small;
-        margin: auto;
-    }
-
-    #featureLinks {
-        width: 100%;
-        height: 6vh;
-    }
-
-    #featureLinks div {
-        height: 100%;
-    }
-
-    #saveBoard {
-        text-align: center;
-        float: left;
-        width: calc(35vw);
-        background-color: var(--buttonBackground);
-        border: 3px solid var(--buttonBorder);
-        border-radius: 2px;
-        margin-left: 5vw;
-    }
-
-    #analyzeBoard {
-        text-align: center;
-        float: right;
-        width: calc(35vw);
-        background-color: var(--buttonBackground);
-        border: 3px solid var(--buttonBorder);
-        border-radius: 2px;
-        margin-right: 5vw;
-    }
-
-    .promote {
-        opacity: 0.5;
-        margin-top: 2vh;
-        text-align: center;
-        float: left;
-        width: 10vw;
-        background-color: var(--buttonBackground);
-        border: 3px solid var(--buttonBorder);
-        border-radius: 2px;
-        margin-left: 5vw;
-        margin-right: 5vw;
-    }
-
-    .modButton,
-    .promote,
-    .featureButton,
-    .menuButton {
-        transition-property: background-color color border-radius;
-        transition-duration: 0.2s;
-        transition-timing-function: ease;
-    }
-
-    .modButton:hover,
-    .promote:hover,
-    .featureButton:hover,
-    .menuButton:hover {
-        cursor: pointer;
-        background-color: var(--buttonBorder);
-        color: white;
-    }
-
-    .modButton:hover,
-    .promote:hover,
-    .menuButton:hover {
-        border-radius: 1em;
-    }
-
-
-
-
-    .move,
-    .add,
-    .delete,
-    .reset {
-        float: left;
-        background-color: var(--buttonBackground);
-        border: 3px solid var(--buttonBorder);
-        border-radius: 2px;
-        width: 35%;
-        margin-top: 2vh;
-        margin-left: calc((30%)/4);
-        margin-right: calc((30%)/4);
-    }
-
-
-
-    #fenInputs {
-        display: none;
-        width: 20vw;
-        margin-top: 10vh;
-        margin-left: 2vw;
-        margin-right: 2vw;
-        float: right;
-    }
-
-
-
-    #addPieceMenu {
-        display: none;
-        position: absolute;
-        width: 90%;
-        height: 70%;
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 5vh;
-        overflow-y: scroll;
-        background-color: var(--menuBackground);
-        margin-bottom: 5vh;
-
-    }
-
-    #title {
-        text-align: center;
-        margin-bottom: 20px;
-        margin-top: 20px;
-    }
-
-    .whitePawn,
-    .blackPawn,
-    .blackPiece,
-    .whitePiece {
-        width: 20%;
-        height: 20%;
-        margin-bottom: 10px;
-    }
-
-    .closeAdd {
-        width: 60%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-        background-color: var(--buttonBackground);
-        border: 3px solid var(--buttonBorder);
-        border-radius: 2px;
-        margin-bottom: 15px;
-    }
-
-
-    #saveBoardMenu {
-        display: none;
-        position: absolute;
-        width: 90%;
-        height: 60%;
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 5vh;
-        overflow-y: scroll;
-        background-color: var(--menuBackground);
-        margin-bottom: 5vh;
-
-    }
-
-    .closeSave,
-    .saveToUser {
-        float: left;
-        width: 40%;
-        margin-top: 5%;
-        margin-bottom: 15px;
-        margin-left: 5%;
-        margin-right: 5%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-        background-color: var(--buttonBackground);
-        border: 3px solid var(--buttonBorder);
-        border-radius: 2px;
-    }
-
-    #boardName,
-    #boardDescriptionText {
-        margin-left: 10%;
-        width: 80%;
-    }
-
-    #boardDescriptionText {
-        min-width: 80%;
-        max-width: 80%;
-        height: 15vh;
-        min-height: 15vh;
-        max-height: 15vh;
-        overflow-y: scroll;
-    }
-
-
-    #analyzeBoardMenu {
-        display: none;
-        position: absolute;
-        width: 90%;
-        height: 55%;
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 5vh;
-        overflow-y: scroll;
-        background-color: var(--menuBackground);
-        margin-bottom: 5vh;
-
-    }
-
-    .closeAnalyze {
-        float: left;
-        width: 40%;
-        margin-top: 5%;
-        margin-bottom: 15px;
-        margin-left: 5%;
-        margin-right: 5%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-        background-color: var(--buttonBackground);
-        border: 3px solid var(--buttonBorder);
-        border-radius: 2px;
-    }
-
-    .goToAnalyze {
-        float: right;
-        width: 40%;
-        margin-top: 5%;
-        margin-bottom: 15px;
-        margin-left: 5%;
-        margin-right: 5%;
-        padding-top: 5%;
-        padding-bottom: 5%;
-        background-color: var(--buttonBackground);
-        border: 3px solid var(--buttonBorder);
-        border-radius: 2px;
-    }
-
-    #whiteKings,
-    #blackKings {
-        margin-bottom: 2%;
-    }
-
-    #swapColorButton {
-        float: right;
-        width: 40%;
-        margin-top: 10px;
-        margin-right: 12%;
-        padding-top: 3%;
-        padding-bottom: 3%;
-        background-color: var(--buttonBackground);
-        border: 3px solid var(--buttonBorder);
-        border-radius: 2px;
-        margin-bottom: 15.72px;
-    }
-
-
-    #blackCastles,
-    #whiteCastles {
-        margin-top: 5%;
-    }
+/* Color Palate */
+:root {
+    --lightSquare: #C9E7FA;
+    --buttonBackground: #C9E7FA;
+    --menuBackground: #C9E7FA;
+    --background: #C9E7FA;
+
+    --darkSquare: #329BFA;
+    --buttonBorder: #329BFA;
+    --border: #329BFA;
+
+    --selectSquare: #280BE3;
+    --contrast: #280BE3;
+
+    --movePiece: #00BCFA;
+    --highlight: #00BCFA;
+
+    --text-color: black;
+}
+
+/**/
+
+/* Saved Board Information CSS  */
+
+#boardInformation {
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 170px;
+    width: calc(41% - 6px);
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-left: 5%;
+    margin-right: 0%;
+    border: #280BE3 solid 3px;
+    border-radius: 5px;
+}
+
+#savedBoardDescription {
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 170px;
+    width: calc(41% - 6px);
+    padding-left: 1%;
+    padding-right: 2%;
+    margin-left: 0%;
+    margin-right: 5%;
+    border: #280BE3 solid 3px;
+    border-radius: 5px;
+}
+
+#savedBoardName,
+#savedBoardDate,
+#savedBoardDescriptionTitle {
+    float: left;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+#savedBoardName {
+    max-height: 120px;
+    min-height: 120px;
+    margin-bottom: 0px;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+#savedBoardDate {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h1 {
+    font-family: initial !important;
+    font-size: 2em !important;
+}
+
+h2 {
+    font-family: initial !important;
+    font-size: 1.3em !important;
+}
+
+h4 {
+    font-family: initial !important;
+    font-size: 1em !important;
+}
+
+#savedBoardDescriptionText {
+    font-size: 0.725em !important;
+    min-height: 93px;
+    max-height: 93px;
+    margin-left: 5%;
+    margin-bottom: 15px;
+    min-width: 90%;
+    max-width: 90%;
+    overflow-y: scroll;
+}
+
+/**/
+
+
+/* Layout CSS */
+body {
+    margin: 0px;
+}
+
+#mainControls {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: start;
+}
+
+table,
+td {
+    aspect-ratio: 1/1;
+    border: solid black;
+    border-width: 0.5vh 0.5vh 0.5vh 0.5vh;
+    border-collapse: collapse;
+}
+
+table {
+    float: left;
+    max-height: 80vh;
+    max-width: 80vw;
+    margin-top: 2vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+/**/
+
+
+/* Board CSS */
+td {
+    height: 10%;
+    width: 10%;
+    padding: 0px;
+    background-color: var(--lightSquare);
+}
+
+img {
+    width: 80%;
+    height: 80%;
+}
+
+.ds {
+    background-color: var(--darkSquare);
+}
+
+/**/
+
+
+/* Board Button CSS */
+
+#buttons {
+    width: 100%;
+}
+
+button {
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+}
+
+.featureButton {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featureButton h3 {
+    font-size: small;
+    margin: auto;
+}
+
+#featureLinks {
+    width: 100%;
+    height: 6vh;
+}
+
+#featureLinks div {
+    height: 100%;
+}
+
+#saveBoard {
+    text-align: center;
+    float: left;
+    width: calc(35vw);
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
+    border-radius: 2px;
+    margin-left: 5vw;
+}
+
+#analyzeBoard {
+    text-align: center;
+    float: right;
+    width: calc(35vw);
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
+    border-radius: 2px;
+    margin-right: 5vw;
+}
+
+.promote {
+    opacity: 0.5;
+    margin-top: 2vh;
+    text-align: center;
+    float: left;
+    width: 10vw;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
+    border-radius: 2px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.modButton,
+.promote,
+.featureButton,
+.menuButton {
+    transition-property: background-color color border-radius;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+}
+
+.modButton:hover,
+.promote:hover,
+.featureButton:hover,
+.menuButton:hover {
+    cursor: pointer;
+    background-color: var(--buttonBorder);
+    color: white;
+}
+
+.modButton:hover,
+.promote:hover,
+.menuButton:hover {
+    border-radius: 1em;
+}
+
+
+.move,
+.add,
+.delete,
+.reset {
+    float: left;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
+    border-radius: 2px;
+    width: 35%;
+    margin-top: 2vh;
+    margin-left: calc((30%)/4);
+    margin-right: calc((30%)/4);
+}
+
+/**/
+
+
+
+/* Add Piece Menu CSS */
+
+#addPieceMenu {
+    display: none;
+    position: absolute;
+    width: 90%;
+    height: 70%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5vh;
+    overflow-y: scroll;
+    background-color: var(--menuBackground);
+    margin-bottom: 5vh;
+
+}
+
+#title {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.whitePawn,
+.blackPawn,
+.blackPiece,
+.whitePiece {
+    width: 20%;
+    height: 20%;
+    margin-bottom: 10px;
+}
+
+.closeAdd {
+    width: 60%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+/**/
+
+
+
+/* Save Board Menu CSS */
+#saveBoardMenu {
+    display: none;
+    position: absolute;
+    width: 90%;
+    height: 60%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5vh;
+    overflow-y: scroll;
+    background-color: var(--menuBackground);
+    margin-bottom: 5vh;
+
+}
+
+.closeSave,
+.saveToUser {
+    float: left;
+    width: 40%;
+    margin-top: 5%;
+    margin-bottom: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
+    border-radius: 2px;
+}
+
+#boardName,
+#boardDescriptionText {
+    margin-left: 10%;
+    width: 80%;
+}
+
+#boardDescriptionText {
+    min-width: 80%;
+    max-width: 80%;
+    height: 15vh;
+    min-height: 15vh;
+    max-height: 15vh;
+    overflow-y: scroll;
+}
+
+/**/
+
+
+/* Analyze Board Menu CSS */
+#analyzeBoardMenu {
+    display: none;
+    position: absolute;
+    width: 90%;
+    height: 55%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5vh;
+    overflow-y: scroll;
+    background-color: var(--menuBackground);
+    margin-bottom: 5vh;
+
+}
+
+.closeAnalyze {
+    float: left;
+    width: 40%;
+    margin-top: 5%;
+    margin-bottom: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
+    border-radius: 2px;
+}
+
+.goToAnalyze {
+    float: right;
+    width: 40%;
+    margin-top: 5%;
+    margin-bottom: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
+    border-radius: 2px;
+}
+
+#whiteKings,
+#blackKings {
+    margin-bottom: 2%;
+}
+
+#swapColorButton {
+    float: right;
+    width: 40%;
+    margin-top: 10px;
+    margin-right: 12%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-color: var(--buttonBackground);
+    border: 3px solid var(--buttonBorder);
+    border-radius: 2px;
+    margin-bottom: 15.72px;
+}
+
+
+#blackCastles,
+#whiteCastles {
+    margin-top: 5%;
+}
+
+/**/

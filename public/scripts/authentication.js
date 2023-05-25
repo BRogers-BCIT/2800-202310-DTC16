@@ -1,3 +1,8 @@
+// Purpose: This file is used to authenticate users using Firebase Authentication.
+//          It also creates a new user in the database if the user is new.
+//          It creates a default chess board state for users who are new stored in firestore.
+
+
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 var uiConfig = {
@@ -23,14 +28,14 @@ var uiConfig = {
             //write to firestore. We are using the UID for the ID in users collection
             name: user.displayName, //"users" collection
             email: user.email, //with authenticated user's ID (user.uid)
-            rating: "0000",
-            currentFEN: "XXXXXXXXXXX",
-            currentBoardName: "XXXXXXXXXXX",
-            currentBoardDescription: "XXXXXXXXXXX",
-            currentBoardSavedDate: "XXXXXXXXXXX",
+            rating: "0000", // default rating that will appear in user's profile
+            currentFEN: "XXXXXXXXXXX", // the current FEN of the board the user is on
+            currentBoardName: "XXXXXXXXXXX", // the current board name the user is on
+            currentBoardDescription: "XXXXXXXXXXX", // the current board description the user is on
+            currentBoardSavedDate: "XXXXXXXXXXX", // the current board saved date the user is on
           })
           .then(function () {
-            window.location.assign("/board"); //re-direct to main.html after signup
+            window.location.assign("/board"); //re-direct to /board after signup
           })
           .catch(function (error) {
             console.log("Error adding new user: " + error);
@@ -41,7 +46,7 @@ var uiConfig = {
         return true;
       }
       db.collection("users").doc(user.uid).collection(user.displayName + " savedBoards").doc("Starting Board").set({
-        //create placeholder recipe
+        //create placeholder starting board
         boardName: "Starting Board",
         boardDescription: "This is the starting board",
         boardFEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",

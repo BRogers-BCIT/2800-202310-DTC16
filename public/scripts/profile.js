@@ -54,9 +54,6 @@ function saveUserInfo() {
         email: userEmail,
         rating: userRating,
     })
-        .then(() => {
-            console.log("Document successfully updated!");
-        })
         .catch((error) => {
             console.error("Error updating document: ", error);
         });

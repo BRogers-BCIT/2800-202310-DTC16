@@ -1,3 +1,28 @@
+/* Color Palate */
+:root {
+    --lightSquare: #C9E7FA;
+    --buttonBackground: #C9E7FA;
+    --menuBackground: #C9E7FA;
+    --background: #C9E7FA;
+
+    --darkSquare: #329BFA;
+    --buttonBorder: #329BFA;
+    --border: #329BFA;
+
+    --selectSquare: #280BE3;
+    --contrast: #280BE3;
+
+    --movePiece: #00BCFA;
+    --highlight: #00BCFA;
+
+    --text-color: black;
+}
+
+/**/
+
+
+
+/* Layout CSS */
 body {
     height: 100vh;
 }
@@ -7,6 +32,15 @@ main {
     overflow: auto;
 }
 
+#title {
+    margin-top: 0 !important;
+}
+
+/**/
+
+
+
+/* Buttons CSS */
 #indexElements {
     margin-top: calc((100vh - 550px) / 2);
 }
@@ -23,10 +57,10 @@ main {
     border-radius: 5px;
 }
 
-#title {
-    margin-top: 0 !important;
-}
+/**/
 
+
+/* Small Screen CSS */
 @media screen and (max-height: 550px) {
     #indexElements {
         margin-top: 0px
@@ -48,3 +82,5 @@ main {
         padding-top: 10px !important;
     }
 }
+
+/**/

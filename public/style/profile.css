@@ -1,7 +1,41 @@
+/* Color Palate */
+:root {
+    --lightSquare: #C9E7FA;
+    --buttonBackground: #C9E7FA;
+    --menuBackground: #C9E7FA;
+    --background: #C9E7FA;
+
+    --darkSquare: #329BFA;
+    --buttonBorder: #329BFA;
+    --border: #329BFA;
+
+    --selectSquare: #280BE3;
+    --contrast: #280BE3;
+
+    --movePiece: #00BCFA;
+    --highlight: #00BCFA;
+
+    --text-color: black;
+}
+
+/**/
+
+
+
+/* Page Formatting */
 #form {
     padding-top: calc((100vh - 720px) / 2);
 }
 
+#title {
+    margin-bottom: 30px;
+}
+
+/**/
+
+
+
+/** Form Buttons */
 #resetButton {
     margin-top: 10px !important;
 }
@@ -15,10 +49,11 @@
     margin-bottom: 20px !important;
 }
 
-#title {
-    margin-bottom: 30px;
-}
+/**/
 
+
+
+/* User Field CSS */
 #field1,
 #field2,
 #field3 {
@@ -35,12 +70,4 @@
     border-radius: 5px;
 }
 
-main {
-    margin-bottom: 95px;
-}
-
-@media screen and (max-width: 590px) {
-    main {
-        margin-bottom: 115px;
-    }
-}
+/**/

@@ -1,3 +1,26 @@
+/* Color Palate */
+:root {
+    --lightSquare: #C9E7FA;
+    --buttonBackground: #C9E7FA;
+    --menuBackground: #C9E7FA;
+    --background: #C9E7FA;
+
+    --darkSquare: #329BFA;
+    --buttonBorder: #329BFA;
+    --border: #329BFA;
+
+    --selectSquare: #280BE3;
+    --contrast: #280BE3;
+
+    --movePiece: #00BCFA;
+    --highlight: #00BCFA;
+
+    --text-color: black;
+}
+
+/**/
+
+/* Layout CSS */
 table {
     max-width: 100%;
     max-height: none;
@@ -16,6 +39,8 @@ table {
     margin: auto;
 }
 
+
+/* Buttons CSS */
 .promote {
     width: 70%;
     margin: 0.2em auto;
@@ -38,3 +63,5 @@ table {
     max-width: 24%;
     margin-left: 0;
 }
+
+/**/

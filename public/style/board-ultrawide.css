@@ -1,3 +1,26 @@
+/* Color Palate */
+:root {
+    --lightSquare: #C9E7FA;
+    --buttonBackground: #C9E7FA;
+    --menuBackground: #C9E7FA;
+    --background: #C9E7FA;
+
+    --darkSquare: #329BFA;
+    --buttonBorder: #329BFA;
+    --border: #329BFA;
+
+    --selectSquare: #280BE3;
+    --contrast: #280BE3;
+
+    --movePiece: #00BCFA;
+    --highlight: #00BCFA;
+
+    --text-color: black;
+}
+
+/**/
+
+/* Ultra Wide CSS */
 #mainControls {
     min-width: 550px;
     max-width: 90vh;
