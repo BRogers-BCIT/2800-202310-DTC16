@@ -1,12 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+    <!-- Html Formatting-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page Title -->
     <title>ChessMind.IBM</title>
+
+    <!-- Easter Egg Animations and Formatting -->
     <style>
+
+        /* Background Formatting */
         body {
             margin: 0px;
             display: flex;
@@ -18,6 +26,7 @@
             animation-iteration-count: infinite;
         }
 
+        /* Background Animation */
         @keyframes backdrop {
             0% {
                 background-color: tomato;
@@ -44,6 +53,7 @@
             }
         }
 
+        /* Board Image Formatting And Spacing */
         #board {
             aspect-ratio: 1/1;
             margin: auto;
@@ -51,7 +61,7 @@
             max-height: 50vh;
         }
 
-
+        /* Images Formatting And Spacing */
         #logo1,
         #logo2,
         #logo3,
@@ -68,29 +78,33 @@
         }
 
 
-
+        /* Image 1 Animation Assignment and Margins */
         #logo1 {
             top: 1vh;
             animation-name: logo1;
         }
 
+        /* Image 2 Animation Assignment and Margins */
         #logo2 {
             top: 1vh;
             right: 0px;
             animation-name: logo2;
         }
 
+        /* Image 3 Animation Assignment and Margins */
         #logo3 {
             bottom: 1vh;
             right: 0px;
             animation-name: logo3;
         }
 
+        /* Image 4 Animation Assignment and Margins */
         #logo4 {
             bottom: 1vh;
             animation-name: logo4;
         }
 
+        /* Image 1 Animation */
         @keyframes logo1 {
             0% {
                 filter: hue-rotate(0);
@@ -138,6 +152,7 @@
             }
         }
 
+        /* Image 2 Animation */
         @keyframes logo2 {
             0% {
                 opacity: 1;
@@ -195,6 +210,7 @@
             }
         }
 
+        /* Image 3 Animation */
         @keyframes logo3 {
             0% {
 
@@ -238,6 +254,7 @@
             }
         }
 
+        /* Image 4 Animation */
         @keyframes logo4 {
             0% {
                 transform: translate(0, 0);
@@ -277,9 +294,10 @@
             }
         }
 
-
+        /* Medium Page Formatting */
         @media screen and (max-width: 650px) {
 
+            /* Images Formatting And Spacing */
             #logo1,
             #logo2,
             #logo3,
@@ -294,6 +312,7 @@
                 max-height: calc(40vh - (50vw / 2));
             }
 
+            /* Medium Image 1 Animation */
             @keyframes logo1 {
                 0% {
                     filter: hue-rotate(0);
@@ -341,6 +360,7 @@
                 }
             }
 
+            /* Medium Image 2 Animation */
             @keyframes logo2 {
                 0% {
                     opacity: 1;
@@ -398,6 +418,7 @@
                 }
             }
 
+            /* Medium Image 3 Animation */
             @keyframes logo3 {
                 0% {
 
@@ -441,6 +462,7 @@
                 }
             }
 
+            /* Medium Image 4 Animation */
             @keyframes logo4 {
                 0% {
                     transform: translate(0, 0);
@@ -479,10 +501,13 @@
                     transform: translate(0, 0);
                 }
             }
+
         }
 
+        /* Small Page Formatting */
         @media screen and (max-width: 450px) {
 
+            /* Images Formatting And Spacing */
             #logo1,
             #logo2,
             #logo3,
@@ -497,8 +522,7 @@
                 max-height: calc(32vh - (50vw / 2));
             }
 
-
-
+            /* Small Image 1 Animation */
             @keyframes logo1 {
                 0% {
                     filter: hue-rotate(0);
@@ -546,6 +570,7 @@
                 }
             }
 
+            /* Small Image 2 Animation */
             @keyframes logo2 {
                 0% {
                     opacity: 1;
@@ -603,6 +628,7 @@
                 }
             }
 
+            /* Small Image 3 Animation */
             @keyframes logo3 {
                 0% {
 
@@ -646,6 +672,8 @@
                 }
             }
 
+
+            /* Small Image 4 Animation */
             @keyframes logo4 {
                 0% {
                     transform: translate(0, 0);
@@ -684,17 +712,20 @@
                     transform: translate(0, 0);
                 }
             }
+
         }
     </style>
 </head>
 
 <body>
-    <!-- Surprise Task Complete -->
+
+    <!-- Images For Animation -->
     <img id="logo1" src="../img/eggLogo.png" alt="">
     <img id="logo2" src="../img/eggLogo.png" alt="">
     <img id="logo3" src="../img/eggLogo.png" alt="">
     <img id="logo4" src="../img/eggLogo.png" alt="">
     <img id="board" src="../img/egg.png" alt="">
+
 </body>
 
 </html>
