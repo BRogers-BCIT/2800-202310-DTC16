@@ -178,12 +178,12 @@ Any board configuration that a user creates can be saved or analyzed using the b
 
 Previous board states saved by users can be found on the previous boards page. Saved boards are displayed as a card that the user can click on. Users can edit and update the board name and description, or they can choose to open this saved board card into the board editor or board analysis page. Finally, users can delete the board if they no longer need it saved. Users can also use the search bar to find previous boards they have saved.
 
+By default, the board analysis page prompts the user to choose a board to analyze. Once a board is chosen from either the board editor or previous boards page, the website will ask GPT for the best possible move on a board and post its response on a newly-updated board analysis page.
 
 
 
 
-
-## 7. Credits, References, Licenses
+## Credits, References, Licenses
 N/A
 
 
@@ -195,7 +195,7 @@ We used Github Co-pilot and ChatGPT to help code the board editor, board analysi
 We did not use AI to create/clean data sets, nor did we encounter any limitations using AI.
 
 
-## 9. Contact Information
+## Contact Information
 DTC-16 developers can be contacted via their emails:
 
 Gurjeet Bhangoo: gurjeetbhangoo@yahoo.com
