@@ -7,13 +7,19 @@ ChessMind.AI is a chess analysis tool to help players improve their board analys
 
 ## 3. Technologies Used
 ### Frontend
-
+- CSS
+- HTML
 - [JQuery](https://jquery.com/)
 - [Bootstrap](https://getbootstrap.com/)
+- Firebase UI
+- Google Material Icons and Fonts
+- The Noun Project
 
 ### Backend
 - [Node.JS](https://nodejs.org/en)
 - [Firebase](https://firebase.google.com/)
+- Javascript
+- OpenAI API
 
 ### Node.JS Modules
 
@@ -158,7 +164,7 @@ Development was done using [Visual Studio Code](https://code.visualstudio.com/),
         - Type `npm run start` in the console and hit Enter.
 
 
-## Usage
+## 6. Usage
 
 Our web application has five pages: index, profile, board editor, previous boards, and board analysis.
 
@@ -168,9 +174,9 @@ On the profile page, users can view their profile, as well as edit and update th
 
 Users can use the chessboard in the board editor page to configure the pieces on the chessboard. Pieces can be moved, deleted, or added to the board. Pawns have the ability to be promoted to their respective legal promotions; queen, rook, bishop, knight. The knight is the only piece that is unable to be deleted from the board. The board is also able to reset to the board's starting positions.
 
-Any board configuration that a user creates can be saved or analyzed using the buttons above the chessboard. 
+Any board configuration that a user creates can be saved or analyzed using the buttons above the chessboard. However, the user must be logged in in order to use these functions. 
 
-Previous board states can be found on the previous boards page. Each board a user has saved displays as a card that the user can click on. Users can edit and update the board name and description, or they can choose to open this saved board card into the board editor or board analysis page. Finally, users can delete the board if they no longer need it saved. Users can also use the search bar to find previous boards they have saved.
+Previous board states saved by users can be found on the previous boards page. Saved boards are displayed as a card that the user can click on. Users can edit and update the board name and description, or they can choose to open this saved board card into the board editor or board analysis page. Finally, users can delete the board if they no longer need it saved. Users can also use the search bar to find previous boards they have saved.
 
 
 
