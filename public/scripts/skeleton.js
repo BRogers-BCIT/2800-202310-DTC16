@@ -1,5 +1,7 @@
 const indexPage = "/index.html";
 
+// This function loads a different navbar and footer based on if the user is logged in or not.
+
 function loadSkeleton() {
 
     let path = window.location.pathname;
@@ -11,7 +13,6 @@ function loadSkeleton() {
             // User is at a different page.
             if (user) {
                 // User is signed in.
-                // Do something for the user here.
                 console.log($('#navbarPlaceholder').load('../bars/nav_after_login.html'));
             } else {
                 // Check if the user is opening a page they should not see (e.g. analysis, openBoard, profile, saved)

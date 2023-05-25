@@ -7,17 +7,22 @@ ChessMind.AI is a chess analysis tool to help players improve their board analys
 
 ## 3. Technologies Used
 ### Frontend
-
+- CSS
+- HTML
 - [JQuery](https://jquery.com/)
 - [Bootstrap](https://getbootstrap.com/)
+- Firebase UI
+- Google Material Icons and Fonts
+- The Noun Project
 
 ### Backend
 - [Node.JS](https://nodejs.org/en)
 - [Firebase](https://firebase.google.com/)
+- Javascript
+- OpenAI API
 
 ### Node.JS Modules
 
-(TODO: Add links to all Node modules)
 - [OpenAI API](https://platform.openai.com/overview) ([NPM Module](https://www.npmjs.com/package/openai))
 - [Express](https://expressjs.com/) ([NPM Module](https://www.npmjs.com/package/express))
 - [Nodemon](https://www.npmjs.com/package/nodemon)
@@ -128,8 +133,6 @@ Development was done using [Visual Studio Code](https://code.visualstudio.com/),
 
 ## 5. Installation
 
-(WIP)
-
 1. Ensure [Node.JS](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) are installed and on your system's PATH.
 
 2. Inside of the repository, run `install_packages.bat` to install all necessary node modules.
@@ -158,9 +161,9 @@ Development was done using [Visual Studio Code](https://code.visualstudio.com/),
         - Type `npm run start` in the console and hit Enter.
 
 
-## Usage
+## 6. Usage
 
-Our web application has five pages: index, profile, board editor, previous boards, and board analysis.
+Our web application has six pages: index, login, profile, board editor, previous boards, and board analysis.
 
 On the index page, users are able to sign up, log in, or they can choose to continue without logging in and head straight to the board editor.
 
@@ -168,9 +171,9 @@ On the profile page, users can view their profile, as well as edit and update th
 
 Users can use the chessboard in the board editor page to configure the pieces on the chessboard. Pieces can be moved, deleted, or added to the board. Pawns have the ability to be promoted to their respective legal promotions; queen, rook, bishop, knight. The knight is the only piece that is unable to be deleted from the board. The board is also able to reset to the board's starting positions.
 
-Any board configuration that a user creates can be saved or analyzed using the buttons above the chessboard. 
+Any board configuration that a user creates can be saved or analyzed using the buttons above the chessboard. However, the user must be logged in in order to use these functions. 
 
-Previous board states can be found on the previous boards page. Each board a user has saved displays as a card that the user can click on. Users can edit and update the board name and description, or they can choose to open this saved board card into the board editor or board analysis page. Finally, users can delete the board if they no longer need it saved. Users can also use the search bar to find previous boards they have saved.
+Previous board states saved by users can be found on the previous boards page. Saved boards are displayed as a card that the user can click on. Users can edit and update the board name and description, or they can choose to open this saved board card into the board editor or board analysis page. Finally, users can delete the board if they no longer need it saved. Users can also use the search bar to find previous boards they have saved.
 
 By default, the board analysis page prompts the user to choose a board to analyze. Once a board is chosen from either the board editor or previous boards page, the website will ask GPT for the best possible move on a board and post its response on a newly-updated board analysis page.
 
