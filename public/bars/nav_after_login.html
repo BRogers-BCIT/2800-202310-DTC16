@@ -1,28 +1,41 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
+    <!-- HTML Formatting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Page Title  -->
     <title>Bootstrap Navbar with Hamburger Menu</title>
-    <!-- Why does having bootstrap here break things?!? -->
+
+    <!-- Scripts -->
     <script src="../scripts/eggLinkafterlogin.js" defer></script>
 
     <!-- Material icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../style/nav.css">
 
 </head>
 
 <body>
+
+    <!-- Navbar -->
     <header class="pt-3">
         <div class="container">
+
+            <!-- Navbar Bootstrap -->
             <nav class="navbar navbar-expand-md navbar-light border-bottom border-primary">
+
+                <!-- Logo and Name Div -->
                 <div id="chessMindLogo">
 
                     <button id="firstStep"><img src="../img/chessmind-logo-small.png" alt="logo" width="64"
                             height="64"></button>
+
                     <button id="notAStep"><a class="navbar-brand" href="/profile"
                             style="color: #6c757d">Chess</a></button>
                     <button id="secondStep"><a class="navbar-brand" href="/profile"
@@ -31,38 +44,60 @@
                             style="color: #6c757d">.AI</a></button>
 
                 </div>
+
+                <!-- Hamburger Menu Button -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <!-- NavBar Links -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
+
+                        <!-- Board Editor (Board.html) -->
                         <li class="nav-item">
                             <a class="nav-link text-link" href="/board" style="color: #6c757d">Board Editor</a>
                         </li>
+
+                        <!-- Board Analysis (Analysis.html) -->
                         <li class="nav-item">
                             <a class="nav-link text-link" href="/analysis" style="color: #6c757d">Board Analysis</a>
                         </li>
+
+                        <!-- Saved Boards (Saved.html) -->
                         <li class="nav-item">
                             <a class="nav-link text-link" href="/saved" style="color: #6c757d">Previous Boards</a>
                         </li>
+
+                        <!-- Profile Page (Profile.html) -->
                         <li class="nav-item">
                             <a class="nav-link text-link" href="/profile" style="color: #6c757d">
-                                <span class="material-icons pt-sm-1 pt-md-2 pt-lg-0" title="View Profile">account_circle</span>
+                                <span class="material-icons pt-sm-1 pt-md-2 pt-lg-0"
+                                    title="View Profile">account_circle</span>
                             </a>
                         </li>
+
+                        <!-- Home Page (Index.html) -->
                         <li class="nav-item">
                             <a id="image" class="nav-link" href="/index" style="color: #6c757d; padding-top: 6px;">
                                 <span class="material-icons pt-sm-1 pt-md-2 pt-lg-0" title="Log Out">logout</span>
                             </a>
                         </li>
+
                     </ul>
+
                 </div>
+
             </nav>
-        </div>
-        <div id="break">
 
         </div>
+
+        <!-- Break Before Content -->
+        <div id="break">
+        </div>
+
     </header>
+    
 </body>
 
 </html>
