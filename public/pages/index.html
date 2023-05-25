@@ -1,66 +1,71 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+    <!-- HTML Formatting-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page Title-->
     <title>ChessMind.AI</title>
 
-    <!--bootstrap js -->
+    <!--Bootstrap Imports -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-    <!--bootstrap links -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <!--Firebase and Jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--Firebase and Jquery Imports -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-    <!--Javascript-->
+    <!-- Script Calls -->
     <script src="../scripts/firebaseapi.js"></script>
     <script src="../scripts/skeleton.js"></script>
     <script src="../scripts/logout.js"></script>
+
+    <!-- CSS Calls-->
     <link rel="stylesheet" href="../style/font.css">
     <link rel="stylesheet" href="../style/index.css">
+
+    <!-- Automatically Log Out The User-->
     <script>
-        logout();       //make sure user is logged out
+        logout();
     </script>
+
 </head>
 
 
 <body class="">
-    <!--
-        Sprint 3 Minimum Viable Product Deliverable
-    -->
 
+    <!-- Navbar -->
     <nav id="navbarPlaceholder"></nav>
 
 
     <main>
 
+        <!-- Index Page Elements Div-->
         <div id="indexElements">
+
+            <!-- Call To Action-->
             <div class="px-4 py-5 my-5 text-center" id="title">
                 <h2 class="display-5 fw-bold">Improve your chess game with ChessMind.AI</h2>
             </div>
 
-
-
+            <!-- Action Buttons Container-->
             <div class="container">
+
                 <div class="row justify-content-center mt-5">
 
-                    <!-- Log In Button -->
+                    <!-- Log In / Sign Up Button -->
                     <a href="/login" class="btn btn-secondary btn-block px-4 py-3 mb-3" id="logInButton">Log In / Sign
                         Up</a>
-
-                    <!-- Sign Up Button -->
-                    <!-- <a href="login.html" class="btn btn-secondary btn-block px-4 py-3 mb-3">Sign Up</a> -->
 
                     <!-- Continue Without Logging In Button -->
                     <a href="/board" class="btn btn-secondary btn-block px-4 py-3 " id="continueButton">Continue Without
@@ -68,14 +73,15 @@
                         In</a>
 
                 </div>
+
             </div>
 
         </div>
 
     </main>
 
+    <!-- Footer -->
     <nav id="footerPlaceholder"></nav>
-
 
 </body>
 
