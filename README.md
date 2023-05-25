@@ -23,7 +23,6 @@ ChessMind.AI is a chess analysis tool to help players improve their board analys
 
 ### Node.JS Modules
 
-(TODO: Add links to all Node modules)
 - [OpenAI API](https://platform.openai.com/overview) ([NPM Module](https://www.npmjs.com/package/openai))
 - [Express](https://expressjs.com/) ([NPM Module](https://www.npmjs.com/package/express))
 - [Nodemon](https://www.npmjs.com/package/nodemon)
@@ -134,8 +133,6 @@ Development was done using [Visual Studio Code](https://code.visualstudio.com/),
 
 ## 5. Installation
 
-(WIP)
-
 1. Ensure [Node.JS](https://nodejs.org/en) and [NPM](https://www.npmjs.com/) are installed and on your system's PATH.
 
 2. Inside of the repository, run `install_packages.bat` to install all necessary node modules.
@@ -166,7 +163,7 @@ Development was done using [Visual Studio Code](https://code.visualstudio.com/),
 
 ## 6. Usage
 
-Our web application has five pages: index, profile, board editor, previous boards, and board analysis.
+Our web application has six pages: index, login, profile, board editor, previous boards, and board analysis.
 
 On the index page, users are able to sign up, log in, or they can choose to continue without logging in and head straight to the board editor.
 
