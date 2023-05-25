@@ -29,7 +29,7 @@ function eggFeedback() {
 // for the logo to get to the easter egg page
 
 let setup = function () {
-        eggStep = 0;
+    eggStep = 0;
 
     $("#firstStep").click(function () {
         eggStep = 1;
