@@ -17,13 +17,25 @@
 
     --text-color: black;
 }
+
 /**/
 
 
+
+/* Page Formatting */
 #form {
     padding-top: calc((100vh - 720px) / 2);
 }
 
+#title {
+    margin-bottom: 30px;
+}
+
+/**/
+
+
+
+/** Form Buttons */
 #resetButton {
     margin-top: 10px !important;
 }
@@ -37,9 +49,8 @@
     margin-bottom: 20px !important;
 }
 
-#title {
-    margin-bottom: 30px;
-}
+/**/
+
 
 
 /* User Field CSS */
