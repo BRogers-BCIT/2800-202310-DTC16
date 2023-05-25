@@ -2,6 +2,10 @@ let eggStep;
 const homePage = `/index`;
 const eggPage = `/egg`;
 
+
+// this function changes colors of parts of the logo
+// to indicate the progress of getting to the easter egg page
+
 function eggFeedback() {
 
     if (eggStep >= 1) {
@@ -16,8 +20,11 @@ function eggFeedback() {
     }
 }
 
+// this function sets up the click events
+// for the logo to get to the easter egg page
 
-setup = function () {
+
+let setup = function () {
     eggStep = 0;
 
     $("#firstStep").click(function () {
@@ -26,7 +33,7 @@ setup = function () {
         eggFeedback();
     });
     $("#secondStep").click(function (event) {
-        if (eggStep == 1) {
+        if (eggStep === 1) {
             event.preventDefault();
             eggStep = 2;
             $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${eggPage}">.AI</a>`);
@@ -37,11 +44,11 @@ setup = function () {
         eggFeedback();
     });
     $("#thirdStep").click(function () {
-        if (eggStep != 2) {
+        if (eggStep !== 2) {
             eggStep = 0;
             $("#thirdStep").html(`<a id="thirdStep" class="navbar-brand" href="${homePage}">.AI</a>`);
         }
         eggFeedback();
     });
-}
-$(document).ready(setup)
+};
+$(document).ready(setup);
