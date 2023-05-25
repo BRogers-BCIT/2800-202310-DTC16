@@ -20,6 +20,7 @@
 
 /**/
 
+/* Layout CSS */
 table {
     max-width: 100%;
     max-height: none;
@@ -38,6 +39,8 @@ table {
     margin: auto;
 }
 
+
+/* Buttons CSS */
 .promote {
     width: 70%;
     margin: 0.2em auto;
@@ -60,3 +63,5 @@ table {
     max-width: 24%;
     margin-left: 0;
 }
+
+/**/

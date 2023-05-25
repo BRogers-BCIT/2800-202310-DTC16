@@ -1,3 +1,28 @@
+/* Color Palate */
+:root {
+    --lightSquare: #C9E7FA;
+    --buttonBackground: #C9E7FA;
+    --menuBackground: #C9E7FA;
+    --background: #C9E7FA;
+
+    --darkSquare: #329BFA;
+    --buttonBorder: #329BFA;
+    --border: #329BFA;
+
+    --selectSquare: #280BE3;
+    --contrast: #280BE3;
+
+    --movePiece: #00BCFA;
+    --highlight: #00BCFA;
+
+    --text-color: black;
+}
+
+/**/
+
+
+
+/* Layout CSS */
 body {
     background-color: var(--background-color);
     min-width: 300px;
@@ -18,6 +43,17 @@ table {
     max-width: 75%;
 }
 
+#mainControls {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: start;
+}
+
+/**/
+
+
+/* Feature Buttons CSS */
 .promote {
     margin: 1em;
     flex: 1;
@@ -46,12 +82,11 @@ table {
     margin: auto;
 }
 
-#mainControls {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: start;
-}
+/**/
+
+
+
+/* Board Buttons CSS */
 
 #promote {
     display: flex;
@@ -61,28 +96,6 @@ table {
     min-width: 390px;
     max-width: 80%;
 }
-
-/* Color Palate */
-:root {
-    --lightSquare: #C9E7FA;
-    --buttonBackground: #C9E7FA;
-    --menuBackground: #C9E7FA;
-    --background: #C9E7FA;
-
-    --darkSquare: #329BFA;
-    --buttonBorder: #329BFA;
-    --border: #329BFA;
-
-    --selectSquare: #280BE3;
-    --contrast: #280BE3;
-
-    --movePiece: #00BCFA;
-    --highlight: #00BCFA;
-
-    --text-color: black;
-}
-
-/**/
 
 #buttons {
     display: flex;
@@ -99,3 +112,5 @@ table {
     text-align: center;
     top: 15vh;
 }
+
+/**/
