@@ -1,11 +1,15 @@
+/* Color Palate */
 :root {
     --buttonBorder: #329BFA;
     --buttonBackground: #C9E7FA;
-    --text-color: black;
     --menuBackground: #C9E7FA;
+    --text-color: black;
 }
 
+/**/
 
+
+/* Body CSS */
 body {
     margin: 0px;
 }
@@ -13,9 +17,11 @@ body {
 #title {
     text-align: center;
 }
+/**/
+
+
 
 #savedBoardMenu {
-    /* display: none; */
     position: absolute;
     width: 90%;
     height: 50%;
