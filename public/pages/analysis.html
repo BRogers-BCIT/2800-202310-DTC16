@@ -1,21 +1,24 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
+    <!-- HTML Setup -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analysis - ChessMind.AI</title>
 
-    <!--boostrap js -->
+    <!-- Page Title -->
+    <title>Board Analysis</title>
+
+    <!--Bootstrap Imports -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-    <!--boostrap links -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <!--Firebase and Jquery-->
+    <!--Firebase and Jquery Imports -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
@@ -23,25 +26,38 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-    <!-- Script call-->
+
+    <!-- Script calls -->
     <script src="../scripts/firebaseapi.js"></script>
     <script src="../scripts/skeleton.js"></script>
     <script src="../scripts/chess.js"></script>
 
-    <!-- CSS Import -->
-    <link rel="stylesheet" href="../style/analysis.css" media="all">
+    <!-- CSS Calls -->
+    <link rel="stylesheet" href="../style/board-mobile.css" media="(min-width: 350px)">
+    <link rel="stylesheet" href="../style/board.css" media="all">
+    <link rel="stylesheet" href="../style/board-medium.css" media="(min-width: 415px)">
+    <link rel="stylesheet" href="../style/board-wide.css" media="(min-width: 700px)">
+    <link rel="stylesheet" href="../style/board-ultrawide.css" media="(min-width: 900px)">
     <link rel="stylesheet" href="../style/font.css">
-
 
 </head>
 
 <body>
 
+    <!-- Navbar -->
     <nav id="navbarPlaceholder"></nav>
 
     <main>
+
+        <!-- Chessboard Table-->
         <table>
+
+            <!-- Alternate Pattern for Light and Dark square Rows-->
+            <!-- Top row starts light square. Dark squares have class ds.-->
+
+            <!-- Row 8 (Top Row) -->
             <tr id="8">
+                <!-- Column Squares in Row 8-->
                 <td id="a8"></td>
                 <td id="b8" class="ds"></td>
                 <td id="c8"></td>
@@ -51,7 +67,10 @@
                 <td id="g8"></td>
                 <td id="h8" class="ds"></td>
             </tr>
+
+            <!-- Row 7 -->
             <tr id="7">
+                <!-- Column Squares in Row 7-->
                 <td id="a7" class="ds"></td>
                 <td id="b7"></td>
                 <td id="c7" class="ds"></td>
@@ -61,7 +80,10 @@
                 <td id="g7" class="ds"></td>
                 <td id="h7"></td>
             </tr>
+
+            <!-- Row 6 -->
             <tr id="6">
+                <!-- Column Squares in Row 6-->
                 <td id="a6"></td>
                 <td id="b6" class="ds"></td>
                 <td id="c6"></td>
@@ -71,7 +93,10 @@
                 <td id="g6"></td>
                 <td id="h6" class="ds"></td>
             </tr>
+
+            <!-- Row 5 -->
             <tr id="5">
+                <!-- Column Squares in Row 5-->
                 <td id="a5" class="ds"></td>
                 <td id="b5"></td>
                 <td id="c5" class="ds"></td>
@@ -81,7 +106,10 @@
                 <td id="g5" class="ds"></td>
                 <td id="h5"></td>
             </tr>
+
+            <!-- Row 4 -->
             <tr id="4">
+                <!-- Column Squares in Row 4-->
                 <td id="a4"></td>
                 <td id="b4" class="ds"></td>
                 <td id="c4"></td>
@@ -91,7 +119,10 @@
                 <td id="g4"></td>
                 <td id="h4" class="ds"></td>
             </tr>
+
+            <!-- Row 3 -->
             <tr id="3">
+                <!-- Column Squares in Row 3-->
                 <td id="a3" class="ds"></td>
                 <td id="b3"></td>
                 <td id="c3" class="ds"></td>
@@ -101,7 +132,10 @@
                 <td id="g3" class="ds"></td>
                 <td id="h3"></td>
             </tr>
+
+            <!-- Row 2 -->
             <tr id="2">
+                <!-- Column Squares in Row 2-->
                 <td id="a2"></td>
                 <td id="b2" class="ds"></td>
                 <td id="c2"></td>
@@ -111,7 +145,10 @@
                 <td id="g2"></td>
                 <td id="h2" class="ds"></td>
             </tr>
+
+            <!-- Row 1 -->
             <tr id="1">
+                <!-- Column Squares in Row 1-->
                 <td id="a1" class="ds"></td>
                 <td id="b1"></td>
                 <td id="c1" class="ds"></td>
@@ -121,17 +158,23 @@
                 <td id="g1" class="ds"></td>
                 <td id="h1"></td>
             </tr>
+
         </table>
 
+        <!-- Analysis Description -->
         <div id="analysisDescription">
             <h2 id="savedBoardDescriptionTitle">Recommended Move: </h2>
+
+            <!-- ChatGPT Output-->
             <textarea id="gptAnalysisText" placeholder="Recommended Move" disabled>
                 <%= gptResponse %>
             </textarea>
+
         </div>
 
     </main>
 
+    <!-- Footer -->
     <nav id="footerPlaceholder"></nav>
 
 </body>
