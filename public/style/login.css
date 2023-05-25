@@ -1,31 +1,53 @@
-body {
-    height: 100vh;
-}
+   /* Color Palate */
+   :root {
+       --lightSquare: #C9E7FA;
+       --buttonBackground: #C9E7FA;
+       --menuBackground: #C9E7FA;
+       --background: #C9E7FA;
 
-main {
-    height: calc(100vh - 220px);
-    overflow: auto;
-}
+       --darkSquare: #329BFA;
+       --buttonBorder: #329BFA;
+       --border: #329BFA;
 
-#firebaseui-auth-container {
-    margin-top: calc((40vh - 220px) / 2);
-    margin-bottom: calc((40vh - 220px) / 2);
-}
+       --selectSquare: #280BE3;
+       --contrast: #280BE3;
 
-.firebaseui-container.mdl-card {
-    max-width: 60vw;
-    min-width: 60vw;
-    min-height: 60vh;
-    max-height: (100vh - 220px);
-}
+       --movePiece: #00BCFA;
+       --highlight: #00BCFA;
 
-form {
-    margin: auto;
-}
+       --text-color: black;
+   }
 
-@media screen and (max-height: 600px) {
-    #firebaseui-auth-container {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-}
+   /**/
+
+   body {
+       height: 100vh;
+   }
+
+   main {
+       height: calc(100vh - 220px);
+       overflow: auto;
+   }
+
+   #firebaseui-auth-container {
+       margin-top: calc((40vh - 220px) / 2);
+       margin-bottom: calc((40vh - 220px) / 2);
+   }
+
+   .firebaseui-container.mdl-card {
+       max-width: 60vw;
+       min-width: 60vw;
+       min-height: 60vh;
+       max-height: (100vh - 220px);
+   }
+
+   form {
+       margin: auto;
+   }
+
+   @media screen and (max-height: 600px) {
+       #firebaseui-auth-container {
+           margin-top: 10px;
+           margin-bottom: 10px;
+       }
+   }
