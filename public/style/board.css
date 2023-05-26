@@ -195,6 +195,7 @@ img {
 
 
 #saveBoardMenu {
+    top: 100px;
     display: none;
     position: absolute;
     width: 90%;
@@ -241,6 +242,7 @@ img {
 
 
 #analyzeBoardMenu {
+    top: 100px;
     display: none;
     position: absolute;
     width: 90%;
